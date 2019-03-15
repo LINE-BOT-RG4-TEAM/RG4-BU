@@ -18,7 +18,7 @@
   <body>
     <header style="margin-bottom: 70px;">
       <!-- Image and text -->
-      <nav class="shadow-sm navbar fixed-top navbar-dark bg-primary">
+      <nav class="shadow-sm navbar fixed-top navbar-light bg-white">
         <div class="container">
           <a class="navbar-brand font-weight-bold" href="#!">
             <img src="./assets/images/pea-logo.png" width="100" class="d-inline-block align-top" alt="">
