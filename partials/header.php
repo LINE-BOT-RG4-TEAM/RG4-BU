@@ -18,12 +18,15 @@
   <body>
     <header style="margin-bottom: 70px;">
       <!-- Image and text -->
-      <nav class="navbar fixed-top navbar-light bg-light">
+      <nav class="shadow-sm navbar fixed-top navbar-dark bg-primary">
         <div class="container">
           <a class="navbar-brand font-weight-bold" href="#!">
             <img src="./assets/images/pea-logo.png" width="100" class="d-inline-block align-top" alt="">
-            Customer Relationship Management (Business Unit)
+            บริหารจัดการฐานข้อมูลลูกค้ารายสำคัญและธุรกิจเสริม
           </a>
+          <span class="navbar-text">
+            Customer Relationship Management (Business Unit)
+          </span>
         </div>
       </nav>
     </header>
@@ -31,7 +34,7 @@
       <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-3">
-          <h1 class="dropdown-header font-weight-bold text-center">เมนูหลัก</h1>
+          <h5 class="header text-dark font-weight-bold text-center">เมนูหลัก</h5>
           <div class="nav flex-column nav-pills border border-primary rounded shadow-sm" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
               <i class="fas fa-home"></i>
