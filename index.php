@@ -7,7 +7,7 @@
     exit(0);
   }
 
-  // get action key to action param
+  // get action value from action key in $_GET
   $action = $_GET['action'];
 
   // filter only php extension
