@@ -1,4 +1,5 @@
 <?php require('./utils/array_utils.php'); ?>
+<?php require('./utils/db_connector.php'); ?>
 <?php require('./partials/header.php'); ?>
 <?php 
   // check 'action' from get params
@@ -24,8 +25,11 @@
 
   // include script control withit page
   $page_script_path = "scripts/{$action}.js";
-  if(file_exists($page_script_path))
+  if(file_exists($page_script_path)){
+    echo "<script>";
     include($page_script_path);
+    echo "</script>";
+  }
   
 ?>
 <?php require("./partials/footer.php"); ?>
