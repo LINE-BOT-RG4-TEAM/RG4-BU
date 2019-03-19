@@ -1,0 +1,4 @@
+function hume_data()
+{
+	
+}
