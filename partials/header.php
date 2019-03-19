@@ -35,23 +35,23 @@
       <div class="row">
         <div class="col-sm-12 col-md-4 col-lg-3">
           <h5 class="header text-dark font-weight-bold text-center">เมนูหลัก</h5>
-          <div class="nav flex-column nav-pills border border-primary rounded shadow-sm" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+          <div class="nav flex-column nav-pills rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
             <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
               <i class="fas fa-home"></i>
               หน้าแรก
             </a>
             <!-- <div class="dropdown-divider"></div> -->
-            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
+            <!-- <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
               <i class="fas fa-star"></i>
               ข้อมูลลูกค้า High Value
             </a>
             <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
               <i class="fab fa-searchengin"></i>
               ค้นหาลูกค้าอัตโนมัติ
-            </a>
+            </a> -->
             <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
               <i class="fas fa-hand-point-up"></i>  
-              ค้นหาลูกค้ากำหนดเงื่อนไขเอง
+              ค้นหาลูกค้า
             </a>
           </div>
         </div>

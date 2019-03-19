@@ -1,6 +1,6 @@
 <div class="row">
   <h6 class="p-3 font-weight-bold pt-3 rounded-pill bg-primary text-white">
-    <i class="fas fa-table"></i> ข้อมูลภาพรวม
+    <i class="fas fa-table"></i> ข้อมูลภาพรวมของระบบ
   </h6>
 </div>
 <!-- <div class="dropdown-divider"></div> -->
