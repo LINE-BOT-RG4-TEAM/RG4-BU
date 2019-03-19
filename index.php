@@ -1,15 +1,16 @@
 <?php require('./utils/array_utils.php'); ?>
 <?php require('./utils/db_connector.php'); ?>
-<?php require('./partials/header.php'); ?>
 <?php 
   // check 'action' from get params
   if(!array_key_exists("action", $_GET)){
     header("Location: ?action=home");
     exit(0);
   }
-
   // get action value from action key in $_GET
   $action = $_GET['action'];
+?>
+<?php require('./partials/header.php'); ?>
+<?php 
 
   // filter only php extension
   $filter_file_name = array_filter(scandir("./"), "filter_php_file");

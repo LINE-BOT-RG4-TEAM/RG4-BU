@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Title of the document</title>
+    <title>ระบบบริหารจัดการฐานข้อมูลลูกค้ารายสำคัญและธุรกิจเสริม - สายงานการไฟฟ้า ภาค 4</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/theme_1545570683953.css">
     <link href="https://fonts.googleapis.com/css?family=Sarabun|Roboto" rel="stylesheet">
@@ -36,7 +36,7 @@
         <div class="col-sm-12 col-md-4 col-lg-3">
           <h5 class="header text-dark font-weight-bold text-center">เมนูหลัก</h5>
           <div class="nav flex-column nav-pills rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-            <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true">
+            <a class="nav-link <?=$action=='home'?'active':'' ?>" href="?action=home">
               <i class="fas fa-home"></i>
               หน้าแรก
             </a>
@@ -49,7 +49,7 @@
               <i class="fab fa-searchengin"></i>
               ค้นหาลูกค้าอัตโนมัติ
             </a> -->
-            <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="#v-pills-settings" role="tab" aria-controls="v-pills-settings" aria-selected="false">
+            <a class="nav-link <?=$action=='search'?'active':'' ?>" href="?action=search">
               <i class="fas fa-hand-point-up"></i>  
               ค้นหาลูกค้า
             </a>
