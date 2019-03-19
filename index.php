@@ -11,7 +11,6 @@
 ?>
 <?php require('./partials/header.php'); ?>
 <?php 
-
   // filter only php extension
   $filter_file_name = array_filter(scandir("./"), "filter_php_file");
 
