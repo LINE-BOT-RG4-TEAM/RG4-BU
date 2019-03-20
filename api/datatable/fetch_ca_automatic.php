@@ -10,7 +10,7 @@
           ,MAX_BILL
           ,AVG_BILL
           ,kVA_SIZE
-          ,COUNT(history.CA) AS 'quantity_purchase'
+          ,COUNT(history.CA) AS 'QUANTITY_PURCHASE'
     FROM crm_bu.ca 
     JOIN crm_bu.bp ON ca.bp = bp.BP
     JOIN crm_bu.history ON ca.CA = history.CA
