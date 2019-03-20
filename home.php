@@ -8,9 +8,9 @@
   <div class="col-sm-12 col-md-6 col-lg-4">
     <div class="card mt-2 mt-2">
       <div class="card-body">
-        <h5 class="card-title">ลูกค้า High Value</h5>
-        <p class="card-text">จำนวน 5 ราย</p>
-        <a href="#" class="btn btn-primary">รายละเอียด</a>
+        <h5 class="card-title">ลูกค้ารายสำคัญ</h5>
+        <p class="card-text" id="high_value_card"></p>
+        <a href="?action=high_value" class="btn btn-primary">รายละเอียด</a>
       </div>
     </div>
   </div>
@@ -18,17 +18,17 @@
     <div class="card mt-2 mt-2">
       <div class="card-body">
         <h5 class="card-title">ลูกค้าธุรกิจเสริม</h5>
-        <p class="card-text">จำนวน 288 ราย</p>
-        <a href="#" class="btn btn-primary">รายละเอียด</a>
+        <p class="card-text" id="bu_card"></p>
+        <a href="?action=bu" class="btn btn-primary">รายละเอียด</a>
       </div>
     </div>
   </div>
   <div class="col-sm-12 col-md-6 col-lg-4">
     <div class="card mt-2 mt-2">
       <div class="card-body">
-        <h5 class="card-title">ลูกค้าที่ไม่เคบใช้บริการธุรกิจเสริม</h5>
-        <p class="card-text">จำนวน ...... ราย</p>
-        <a href="#" class="btn btn-primary">รายละเอียด</a>
+        <h5 class="card-title">ลูกค้าไม่มีธุรกิจเสริม</h5>
+        <p class="card-text" id="not_bu_card"></p>
+        <a href="?action=not_bu" class="btn btn-primary">รายละเอียด</a>
       </div>
     </div>
   </div>
