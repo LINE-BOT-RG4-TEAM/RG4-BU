@@ -3,3 +3,4 @@
 <script src="./assets/js/bootstrap.min.js"></script>
 <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
 <script src="./assets/js/bootstrap-table-sticky-header.min.js"></script>
+<script src="./scripts/global.js"></script>

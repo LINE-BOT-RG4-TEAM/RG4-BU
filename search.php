@@ -11,7 +11,8 @@
         data-toggle="table" 
         data-url="./api/datatable/fetch_ca_automatic.php" 
         data-fixed-columns="true"
-        data-sticky-header="true">
+        data-sticky-header="true"
+        data-pagination="true">
       <thead>
         <tr>
           <th>#</th>

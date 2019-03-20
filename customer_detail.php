@@ -7,12 +7,14 @@
           <span class="float-right badge badge-pill badge-primary">หมายเลข CA : <?=$_GET['ca']?></span>
         </h4>
         <div class="dropdown-divider"></div>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the bulk of the card's content.
-        </p>
-        <a href="#" class="btn btn-primary">
-          Go somewhere
-        </a>
+        <div class="card-text row">
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            <h4>หมายเลข BP</h4>
+          </div>
+          <div class="col-sm-12 col-md-12 col-lg-6">
+            seccond column
+          </div>
+        </div>
       </div>
     </div>
   </div>
