@@ -19,7 +19,7 @@
           , ca.TEL
           , ca.HML_Type
           , ca.MAX_BILL
-          , 4S
+          , KAM_TYPE
           , KAMR
     FROM crm_bu.ca 
     JOIN crm_bu.bp ON ca.BP = bp.BP

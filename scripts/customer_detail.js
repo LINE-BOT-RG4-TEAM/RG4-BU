@@ -27,6 +27,6 @@ function setCustomerDetail(detail_ca) {
   $("[id^=address]").val(detail_ca.ADDRESS);
   $("[id^=max_bill]").val(detail_ca.MAX_BILL);
   $("[id^=hml_type]").val(detail_ca["HML_Type"]);
-  $("[id^=4S]").val(detail_ca["4S"]);
+  $("[id^=KAM_TYPE]").val(detail_ca.KAM_TYPE);
   $("[id^=kamr]").val(detail_ca.KAMR);
 }

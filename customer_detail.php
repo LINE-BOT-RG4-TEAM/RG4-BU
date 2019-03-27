@@ -91,10 +91,10 @@
             <div class="col-sm-12 col-md-12 col-lg-6">
               <div class="form-group">
                 <label for="bp" class="text-center font-weight-bold">
-                  <i class="fas fa-sort-numeric-up"></i> 4S
+                  <i class="fas fa-sort-numeric-up"></i> KAM_TYPE
                 </label>
-                <input type="text" class="text-center form-control readonly" id="4S" name="4S" disabled="disabled">
-                <input type="hidden" id="hidden_4S" name="hidden_4S" />
+                <input type="text" class="text-center form-control readonly" id="KAM_TYPE" name="KAM_TYPE" disabled="disabled">
+                <input type="hidden" id="hidden_KAM_TYPE" name="hidden_KAM_TYPE" />
               </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6">
