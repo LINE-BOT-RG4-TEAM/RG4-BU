@@ -6,7 +6,7 @@
           ,ca.CA AS Ca1
           ,history.CA AS Ca2
           ,ca.HML_Type
-          ,ca.4S
+          ,ca.KAM_TYPE
           ,ca.KAMR
           ,COUNT(history.CA) AS num 
           FROM ca
@@ -16,7 +16,7 @@
           ON ca.BP = bp.BP 
           WHERE KAMR IS NOT NULL
           GROUP BY ca.CA
-          ORDER BY CASE WHEN ca.4S='strategic' THEN 1 WHEN ca.4S = 'star' THEN 2 WHEN ca.4S = 'status' THEN 3 WHEN ca.4S = 'streamline' THEN 4 END,num DESC,ca.MAX_BILL DESC,ca.kVA_SIZE DESC";
+          ORDER BY CASE WHEN ca.KAM_TYPE='strategic' THEN 1 WHEN ca.KAM_TYPE = 'star' THEN 2 WHEN ca.KAM_TYPE = 'status' THEN 3 WHEN ca.KAM_TYPE = 'streamline' THEN 4 END,num DESC,ca.MAX_BILL DESC,ca.kVA_SIZE DESC";
 
   $fetch_automatic_query = $conn->query($fetch_automatic);
   $ca_obj = $fetch_automatic_query->fetch_all(MYSQLI_ASSOC);
