@@ -13,7 +13,7 @@
                         ON ca.BP = bp.BP
                         INNER JOIN history 
                         ON history.CA = ca.CA
-                        WHERE LENGTH(ca.KAMR) = 0
+                        WHERE ca.KAMR IS NULL
                         GROUP BY history.CA
                         ORDER BY ca.MAX_BILL DESC,ca.kVA_SIZE DESC,num DESC";
 

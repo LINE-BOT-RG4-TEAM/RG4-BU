@@ -17,7 +17,7 @@ function operateFormatter(value, row, index) {
   window.operateEvents = {
     "click .customer-detail": function(e, value, row, index) {
       // redirect to page for show ca detail
-      window.location.href = "?action=customer_detail&ca=" + row["CA"];
+      window.location.href = "?action=customer_detail&ca=" + row["Ca1"];
     }
   };
   

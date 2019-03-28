@@ -17,7 +17,7 @@
 			ON ca.BP = bp.BP
 			INNER JOIN history 
 			ON history.CA = ca.CA
-			WHERE LENGTH(ca.KAMR) = 0
+			WHERE ca.KAMR IS NULL
 			GROUP BY history.CA
 			ORDER BY ca.MAX_BILL DESC,ca.kVA_SIZE DESC,num DESC";
 	$query_bu = mysqli_query($conn, $sql_bu);
@@ -33,7 +33,7 @@
 					ON history.CA = ca.CA
 					INNER JOIN bp
 					ON ca.BP = bp.BP
-					WHERE history.CA IS NULL AND LENGTH(ca.KAMR) = 0
+					WHERE history.CA IS NULL AND ca.KAMR IS NULL
 					ORDER BY ca.MAX_BILL DESC,ca.kVA_SIZE DESC
 					";
 	$query_not_bu = mysqli_query($conn,$sql_not_bu);
