@@ -33,7 +33,7 @@ $(function() {
         window.alert("beforeSend alert");
       },
       success: function(response) {
-        window.alert(JSON.parse(response));
+        window.alert(response);
       },
       error: function() {
         window.alert("error");
