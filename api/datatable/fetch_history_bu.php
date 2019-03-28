@@ -16,8 +16,8 @@
           , code.CODE_NAME
           , STAFF
           , PAYMENT 
-    FROM crm_bu.history
-      JOIN crm_bu.code ON history.CODE = code.CODE
+    FROM history
+      JOIN code ON history.CODE = code.CODE
     WHERE history.ca = ?
     ORDER BY history DESC
   ";
