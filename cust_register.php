@@ -14,7 +14,7 @@
         <form>
           <div class="form-group text-center">
             <h3 class="font-weight-bold">ยินดีต้อนรับ, คุณ<div id="uNameInput"></div></h3>
-            <img id="profileImage" class="shadow" style="width:100px;height:100px;border-radius:50px 50px;"/>
+            <img id="profileImage" class="shadow-sm" style="width:100px;height:100px;border-radius:50px 50px;"/>
           </div>
           <div class="form-group">
             <label for="uIdInput" class="font-weight-bold">User ID</label>
