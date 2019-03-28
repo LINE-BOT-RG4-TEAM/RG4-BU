@@ -29,10 +29,10 @@ $(function() {
       },
       success: function(data) {
         var obj = JSON.parse(data) || {};
-        //var html_text = render_card(obj);
+        var html_text = render_card(obj);
         $("#content_header").html('<i class="fas fa-table"></i>' +' '+ obj[0].level.cate_name);
         $("#content_body").html(obj[0].level.content_body);
-        //$("#card-area").html(html_text);
+        $("#card-area").html(html_text);
       },
       error: function(error) {
         console.log("error");
