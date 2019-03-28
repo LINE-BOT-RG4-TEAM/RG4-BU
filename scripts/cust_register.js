@@ -20,7 +20,6 @@ function initializeApp(data) {
 $(function() {
   $("form").submit(function(event) {
     event.preventDefault();
-    window.alert("submiting form");
     $.ajax({
       url: "api/update_line_infomation.php",
       method: "POST",
@@ -30,9 +29,22 @@ $(function() {
       },
       success: function(response) {
         window.alert(JSON.stringify(response));
+        Swal.fire({
+          title: "สำเร็จ!",
+          text: "ระบบบันทึกข้อมูลของท่านเรียบร้อยแล้ว ขอบคุณครับ",
+          type: "success",
+          confirmButtonText: "ปิดหน้าต่างนี้"
+        }).then(function() {
+          location.reload();
+        });
       },
       error: function() {
-        window.alert("error");
+        Swal.fire({
+          title: "Error!",
+          text: "ระบบผิดพลาด กรุณาส่งข้อมูลอีกครั้ง",
+          type: "error",
+          confirmButtonText: "ปิดหน้าต่างนี้"
+        });
       },
       complete: function() {
         window.alert("endding form");
