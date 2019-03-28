@@ -15,6 +15,15 @@
       <div class="card-body">
         <form>
           <div class="form-group">
+            <img id="profileImage" style="width:100px;height:100px;"/>
+            <label for="uIdInput" class="font-weight-bold">หมายเลข UserId จากแอพพลิเคชั่น LINE</label>
+            <input type="text" class="form-control" id="uIdInput" disabled readonly>
+          </div>
+          <div class="form-group">
+            <label for="uNameInput" class="font-weight-bold">ชื่อที่แสดงจากแอพพลิเคชั่น LINE</label>
+            <input type="text" class="form-control" id="uNameInput" disabled readonly>
+          </div>
+          <div class="form-group">
             <label for="caInput" class="font-weight-bold">หมายเลข CA</label>
             <input type="number" class="form-control" id="caInput" aria-describedby="emailHelp" placeholder="กรอกหมายเลข CA ของท่าน" size="12" required>
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
