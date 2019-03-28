@@ -18,7 +18,7 @@ function render_card(obj)
         if(obj[i].short_description == 'null')
         {
           var short_des = "...";
-          console.log(short is n);
+          console.log('short is n');
         }
         else
         {
