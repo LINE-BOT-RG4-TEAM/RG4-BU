@@ -1,5 +1,5 @@
 <?php
-  require('./utils/db_connector.php');
+  require('../utils/db_connector.php');
   // echo json_encode($_POST, JSON_UNESCAPED_UNICODE);
 
   $update_line = "
