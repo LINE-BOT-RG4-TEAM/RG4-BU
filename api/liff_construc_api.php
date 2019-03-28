@@ -6,7 +6,7 @@ $query_cate_id = mysqli_query($conn,$sql_cate_id);
 $data =array();
 while($obj = mysqli_fetch_assoc($query_cate_id))
 {
-    push_array($data,$obj);
+    array_push($data,$obj);
 }
 echo json_encode($data);
 
