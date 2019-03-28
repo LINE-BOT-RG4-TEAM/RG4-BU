@@ -14,4 +14,3 @@
 
 	// $conn = mysqli_connect($serverName, $userName, $userPassword, $dbName, $db_port) or die('Unable to establish a CRM_BU connection');
   $conn->set_charset("utf8");
-  echo "success";
