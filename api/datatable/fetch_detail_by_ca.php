@@ -21,8 +21,8 @@
           , ca.MAX_BILL
           , KAM_TYPE
           , KAMR
-    FROM crm_bu.ca 
-    JOIN crm_bu.bp ON ca.BP = bp.BP
+    FROM ca 
+    JOIN bp ON ca.BP = bp.BP
     WHERE ca.CA = ?
   ";
 
