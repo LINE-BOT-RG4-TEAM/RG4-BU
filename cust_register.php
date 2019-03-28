@@ -3,25 +3,22 @@
     <h4 class="font-weight-bold text-center">
       ลงทะเบียนการใช้บริการธุรกิจเสริมการไฟฟ้าผ่านแอพพลิเคชั่น LINE
     </h4>
-    <div class="mt-3 alert alert-primary" role="alert">
-      <p class="font-weight-bold">A simple primary alert—check it out!</p>
-      <p class=""></p>
-    </div>
   </div>
 </div>
 <div class="row mt-2">
   <div class="col-sm-12 col-md-12">
     <div class="card">
       <div class="card-body">
+        <div class="row">
+        </div>
         <form>
-          <div class="form-group">
-            <img id="profileImage" style="width:100px;height:100px;"/>
-            <label for="uIdInput" class="font-weight-bold">หมายเลข UserId จากแอพพลิเคชั่น LINE</label>
-            <input type="text" class="form-control" id="uIdInput" disabled readonly>
+          <div class="form-group text-center">
+            <h3 class="font-weight-bold">ยินดีต้อนรับ, คุณ<div id="uNameInput"></div></h3>
+            <img id="profileImage" class="shadow" style="width:100px;height:100px;border-radius:50px 50px;"/>
           </div>
           <div class="form-group">
-            <label for="uNameInput" class="font-weight-bold">ชื่อที่แสดงจากแอพพลิเคชั่น LINE</label>
-            <input type="text" class="form-control" id="uNameInput" disabled readonly>
+            <label for="uIdInput" class="font-weight-bold">User ID</label>
+            <input type="text" class="form-control" id="uIdInput" disabled readonly>
           </div>
           <div class="form-group">
             <label for="caInput" class="font-weight-bold">หมายเลข CA</label>
