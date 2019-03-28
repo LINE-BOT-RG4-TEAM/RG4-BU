@@ -15,27 +15,23 @@
           <div class="form-group text-center">
             <h3 class="font-weight-bold">ยินดีต้อนรับ, คุณ<div id="uNameInput"></div></h3>
             <img id="profileImage" class="shadow-sm" style="width:100px;height:100px;border-radius:50px 50px;"/>
-          </div>
-          <div class="form-group">
-            <label for="uIdInput" class="font-weight-bold">User ID</label>
-            <input type="text" class="form-control" id="uIdInput" disabled readonly>
+            <input type="hidden" id="uIdInput" name="uIdInput">
           </div>
           <div class="form-group">
             <label for="caInput" class="font-weight-bold">หมายเลข CA</label>
-            <input type="number" class="form-control" id="caInput" aria-describedby="emailHelp" placeholder="กรอกหมายเลข CA ของท่าน" size="12" required>
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input type="number" class="form-control" id="caInput" name="caInput" aria-describedby="emailHelp" placeholder="กรอกหมายเลข CA ของท่าน" size="12" required>
           </div>
           <div class="form-group">
             <label for="nameInput">ชื่อ - นามสกุล</label>
-            <input type="text" class="form-control" id="nameInput" placeholder="กรอกชื่อ - นามสกุลของท่าน" required>
+            <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="กรอกชื่อ - นามสกุลของท่าน" required>
           </div>
           <div class="form-group">
             <label for="telInput">เบอร์โทรศัพท์</label>
-            <input type="text" class="form-control" id="telInput" placeholder="กรอกเบอร์โทรศัพท์" required>
+            <input type="text" class="form-control" id="telInput" name="telInput" placeholder="กรอกเบอร์โทรศัพท์" required>
           </div>
           <div class="form-group">
             <label for="emailInput">Email</label>
-            <input type="text" class="form-control" id="emailInput" placeholder="ระบุ Email ของท่าน" required>
+            <input type="text" class="form-control" id="emailInput" name="emailInput" placeholder="ระบุ Email ของท่าน" required>
           </div>
           <button type="submit" class="btn btn-primary">ส่งข้อมูล</button>
         </form>
