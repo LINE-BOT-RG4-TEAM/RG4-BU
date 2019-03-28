@@ -5,6 +5,10 @@
   </h6>
 </div>
 <!-- <div class="dropdown-divider"></div> -->
+<div class="row" id="card-area">
+
+</div>
+<!---->
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
         <div class="panel panel-primary">
