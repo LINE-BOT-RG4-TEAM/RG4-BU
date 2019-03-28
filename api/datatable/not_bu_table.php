@@ -11,7 +11,7 @@ RIGHT JOIN ca
 ON history.CA = ca.CA
 INNER JOIN bp
 ON ca.BP = bp.BP
-WHERE history.CA IS NULL AND LENGTH(ca.KAMR) = 0
+WHERE history.CA IS NULL AND ca.KAMR IS NULL
 ORDER BY ca.MAX_BILL DESC,ca.kVA_SIZE DESC ";
 
   $fetch_automatic_query = $conn->query($fetch_automatic);
