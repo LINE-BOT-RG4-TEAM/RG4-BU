@@ -14,7 +14,7 @@
           ON history.CA = ca.CA
           INNER JOIN bp
           ON ca.BP = bp.BP 
-          WHERE LENGTH(KAMR) <>0
+          WHERE KAMR IS NOT NULL
           GROUP BY ca.CA
           ORDER BY CASE WHEN ca.4S='strategic' THEN 1 WHEN ca.4S = 'star' THEN 2 WHEN ca.4S = 'status' THEN 3 WHEN ca.4S = 'streamline' THEN 4 END,num DESC,ca.MAX_BILL DESC,ca.kVA_SIZE DESC";
 
