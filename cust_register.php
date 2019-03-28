@@ -6,7 +6,7 @@
   </div>
 </div>
 <?php 
-  if(array_key_exists("status", $_GET['status']) && $_GET['status'] == "success"){
+  if(array_key_exists("status", $_GET) && $_GET['status'] == "success"){
 ?>
   <div class="row mt-2">
     <p class="text-center">ลงทะเบียนเรียบร้อยแล้ว</p>
