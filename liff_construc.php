@@ -11,7 +11,7 @@
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
         <div class="panel panel-primary">
-            <div class="panel-body">ให้บริการก่อสร้างระบบไฟฟ้า สายส่ง สถานีไฟฟ้า ระบบจําหน่ายแรงสูง และแรงต่ำ พร้อม และติดตั้งอุปกรณ์ไฟฟ้าแบบครบวงจร ภายในที่เป็นทรัพย์สินของลูกค้า</div>
+            <div class="panel-body" id="content_body"></div>
         </div>
     </div>
 </div>
