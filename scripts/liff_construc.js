@@ -22,7 +22,7 @@ $(function() {
       success: function(data) {
         var obj = JSON.parse(data) || {};
         //var html_text = render_card(obj);
-        $("#content_header").html(obj[0].level.cate_name);
+        $("#content_header").html('<i class="fas fa-table"></i>' + obj[0].level.cate_name);
         //$("#card-area").html(html_text);
       },
       error: function(error) {
