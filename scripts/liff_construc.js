@@ -6,7 +6,7 @@ function render_card(obj)
     while(obj[i])
     {
       //ดูรูปภาพว่ามีหรือไม่  
-      if(obj[i].picture_name == 'null')
+      if(obj[i].picture_name == null)
         {
           var picture_name = 'pea';
         }
