@@ -22,9 +22,15 @@
             <div class="card-body">
                 <h5 class="card-title">สินค้าตัวอย่าง</h5>
                 <p class="card-text">สินค้าตัวอย่าง</p>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-primary">ประสงค์ให้ กฟภ. เข้าตรวจสอบ</button>
-                    <button type="button" class="btn btn-primary">แจ้งรายละเอียดเพิ่มเติม</button>
+                <div class="form-check">
+                    <label class="form-check-label" for="radio1">
+                        <input type="radio" class="form-check-input" id="radio1" name="optradio" value="option1" checked>ประสงค์ให้เจ้าหน้าที่เข้าตรวจสอบ
+                     </label>
+                </div>
+                <div class="form-check">
+                    <label class="form-check-label" for="radio2">
+                        <input type="radio" class="form-check-input" id="radio2" name="optradio" value="option2">แจ้งรายละเอียดเพิ่มเติม
+                    </label>
                 </div>
                 <div class="form-group mt-3">
                     <textarea class="form-control" rows="5" id="comment"></textarea>
@@ -36,3 +42,13 @@
         </div>
     </div>
 </div>
+<script>
+$(document).ready(function(){
+  $("#radio1").click(function(){
+    $("comment").hide();
+  });
+  $("#radio2").click(function(){
+    $("comment").show();
+  });
+});
+</script>
