@@ -15,3 +15,24 @@
 
 </div>
 <!---->
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
+        <div class="card h-100">
+            <img class="card-img-top" src="images/pea.jpg" alt="Card image">
+            <div class="card-body">
+                <h5 class="card-title">สินค้าตัวอย่าง</h5>
+                <p class="card-text">สินค้าตัวอย่าง</p>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-primary">ประสงค์ให้ กฟภ. เข้าตรวจสอบ</button>
+                    <button type="button" class="btn btn-primary">แจ้งรายละเอียดเพิ่มเติม</button>
+                </div>
+                <div class="form-group mt-3">
+                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#" class="btn btn-primary">เพิ่มในตะกร้า</a>
+            </div>
+        </div>
+    </div>
+</div>
