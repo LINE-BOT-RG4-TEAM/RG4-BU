@@ -36,7 +36,7 @@ function render_card(obj)
           var href = "?action=liff_construc&cate_id=" + obj[i].cate_id;
           var text_area = "";
         }
-        card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title">' +obj[i].cate_name + '</h5><p class="card-text">'+short_des+'</p>' + text_area + '</div><div class="card-footer"><a href="' + href + '" class="btn btn-primary">'+button_label+'</a></div></div></div>';
+        card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title">' +obj[i].cate_name + '</h5><p class="card-text">'+short_des+'</p><p class="card-text">การรับประกัน :'+obj[i].warranty+'</p>' + text_area + '</div><div class="card-footer"><a href="' + href + '" class="btn btn-primary">'+button_label+'</a></div></div></div>';
         console.log(obj[i].cate_name);
         i++;
     }

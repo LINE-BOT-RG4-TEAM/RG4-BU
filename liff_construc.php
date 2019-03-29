@@ -6,7 +6,7 @@
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-3">
         <div class="panel panel-primary">
-            <div class="panel-body" id="content_body"></div>
+            <div class="panel-body" id="content_body" sytle="text-indent: 25px;"></div>
         </div>
     </div>
 </div>
