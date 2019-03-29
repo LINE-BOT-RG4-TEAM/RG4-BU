@@ -8,6 +8,8 @@ function initializeApp(data) {
   liff
     .getProfile()
     .then(function(profile) {
+      // check registered status
+      var status = checkRegisteredStatus(profile.userId);
       $("#uIdInput").val(profile.userId);
       $("#profileImage").attr("src", profile.pictureUrl);
       $("#uNameInput").text(profile.displayName);
@@ -15,6 +17,20 @@ function initializeApp(data) {
     .catch(function(error) {
       window.alert("Error getting profile: " + error);
     });
+}
+
+function checkRegisteredStatus(userId) {
+  $.ajax({
+    url: "api/check_registered_status.php",
+    method: "GET",
+    data: "userId=" + userId,
+    beforeSend: function() {},
+    success: function(response) {
+      window.location.href = "?action=cust_register&status=success";
+    },
+    error: function() {},
+    complete: function() {}
+  });
 }
 
 $(function() {
@@ -25,7 +41,7 @@ $(function() {
       method: "POST",
       data: $(this).serializeArray(),
       beforeSend: function() {
-        window.alert("beforeSend alert");
+        // window.alert("beforeSend alert");
       },
       success: function(response) {
         window.alert(JSON.stringify(response));
@@ -35,7 +51,16 @@ $(function() {
           type: "success",
           confirmButtonText: "ปิดหน้าต่างนี้"
         }).then(function() {
-          location.reload();
+          liff
+            .sendMessages([
+              {
+                type: "text",
+                text: "ลงทะเบียนสำเร็จ"
+              }
+            ])
+            .then(function() {
+              liff.closeWindow();
+            });
         });
       },
       error: function() {
@@ -47,7 +72,7 @@ $(function() {
         });
       },
       complete: function() {
-        window.alert("endding form");
+        // window.alert("endding form");
       }
     });
   });

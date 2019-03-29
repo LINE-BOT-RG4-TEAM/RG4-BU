@@ -1,5 +1,5 @@
 <?php
-  require('./utils/db_connector.php');
+  require('../utils/db_connector.php');
   // echo json_encode($_POST, JSON_UNESCAPED_UNICODE);
 
   $update_line = "
@@ -9,7 +9,7 @@
   ";
 
   $stmt = $conn->prepare($update_line);
-  $stmt->bind_param("ssssi", $_POST['uIdInput'], 
+  $stmt->bind_param("sssss", $_POST['uIdInput'], 
   $_POST['nameInput'], $_POST['telInput'], $_POST['emailInput'], $_POST['caInput']);
   $stmt->execute();
   if($stmt->error) {
