@@ -9,28 +9,25 @@ function initializeApp(data) {
     .getProfile()
     .then(function(profile) {
       // check registered status
-      var status = checkRegisteredStatus(profile.userId);
-      $("#uIdInput").val(profile.userId);
-      $("#profileImage").attr("src", profile.pictureUrl);
-      $("#uNameInput").text(profile.displayName);
+      $.ajax({
+        url: "api/check_registered_status.php",
+        method: "GET",
+        data: "userId=" + profile.userId,
+        beforeSend: function() {},
+        success: function(response) {
+          window.location.href = "?action=cust_register&status=success";
+        },
+        error: function() {
+          $("#uIdInput").val(profile.userId);
+          $("#profileImage").attr("src", profile.pictureUrl);
+          $("#uNameInput").text(profile.displayName);
+        },
+        complete: function() {}
+      });
     })
     .catch(function(error) {
       window.alert("Error getting profile: " + error);
     });
-}
-
-function checkRegisteredStatus(userId) {
-  $.ajax({
-    url: "api/check_registered_status.php",
-    method: "GET",
-    data: "userId=" + userId,
-    beforeSend: function() {},
-    success: function(response) {
-      window.location.href = "?action=cust_register&status=success";
-    },
-    error: function() {},
-    complete: function() {}
-  });
 }
 
 $(function() {
