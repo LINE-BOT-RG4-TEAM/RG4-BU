@@ -17,7 +17,7 @@ function render_card(obj)
         //ดู short_des 
         if(obj[i].short_description == null)
         {
-          var short_des = "...";
+          var short_des = "";
           console.log('short is n');
         }
         else
@@ -27,12 +27,14 @@ function render_card(obj)
         if(obj[i].is_product == 'Y')
         {
           var button_label = "เพิ่มในตะกร้า";
+          var href = "#";
         }
         else if (obj[i].is_product == 'N')
         {
           var button_label = "รายละเอียด";
+          var href = "?action=liff_construc&cate_id=" + obj[i].cate_id;
         }
-        card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title">' +obj[i].cate_name + '</h5><p class="card-text">'+short_des+'</p></div><div class="card-footer"><a href="?action=liff_construc&cate_id='+obj[i].cate_id+'" class="btn btn-primary">'+button_label+'</a></div></div></div>';
+        card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title">' +obj[i].cate_name + '</h5><p class="card-text">'+short_des+'</p></div><div class="card-footer"><a href="' + href + '" class="btn btn-primary">'+button_label+'</a></div></div></div>';
         console.log(obj[i].cate_name);
         i++;
     }
