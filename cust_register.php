@@ -5,6 +5,7 @@
     </h4>
   </div>
 </div>
+<?="show a status:".array_key_exists("status", $_GET) ?>
 <?php 
   if(array_key_exists("status", $_GET) && $_GET['status'] == "success"){
 ?>
