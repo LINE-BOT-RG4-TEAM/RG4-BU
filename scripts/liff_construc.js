@@ -15,7 +15,7 @@ function render_card(obj)
           var picture_name = obj[i].picture_name;
         }
         //ดู short_des 
-        if(obj[i].short_description == ' ')
+        if(obj[i].short_description == null)
         {
           var short_des = "...";
           console.log('short is n');
