@@ -11,6 +11,7 @@
   $stmt = $conn->prepare($fetch_status);
   $stmt->bind_param("s", $userId);
   $stmt->execute();
+  $stmt->store_result();
   if($stmt->error) {
     // http_response_code(503);
     echo json_encode(['status'=>'503']);
