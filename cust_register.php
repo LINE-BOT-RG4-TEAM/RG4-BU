@@ -5,16 +5,6 @@
     </h4>
   </div>
 </div>
-<?="show a status:".array_key_exists("status", $_GET) ?>
-<?php 
-  if(array_key_exists("status", $_GET) && $_GET['status'] == "success"){
-?>
-  <div class="row mt-2">
-    <p class="text-center">ลงทะเบียนเรียบร้อยแล้ว</p>
-  </div>
-<?php
-  }else{
-?>
 <div class="row mt-2">
   <div class="col-sm-12 col-md-12">
     <div class="card">
@@ -49,4 +39,3 @@
     </div>
   </div>
 </div>
-<?php } ?>
