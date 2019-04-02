@@ -15,12 +15,22 @@ function initializeApp(data) {
         data: "userId=" + profile.userId,
         beforeSend: function() {},
         success: function(response) {
-          window.location.href = "?action=cust_register&status=success";
+          var responseJSON = JSON.parse(response) || {};
+          if (!("status" in responseJSON)) {
+            window.alert("ระบบทำงานไม่ถูกต้อง, กรุณาลองใหม่อีกครั้ง");
+            liff.closeWindow();
+            return;
+          }
+          if (responseJSON.status === 200) {
+            window.location.replace("?action=cust_register&status=success");
+          } else {
+            $("#uIdInput").val(profile.userId);
+            $("#profileImage").attr("src", profile.pictureUrl);
+            $("#uNameInput").text(profile.displayName);
+          }
         },
         error: function() {
-          $("#uIdInput").val(profile.userId);
-          $("#profileImage").attr("src", profile.pictureUrl);
-          $("#uNameInput").text(profile.displayName);
+          window.alert("Error ajax fetch data");
         }
       });
     })
