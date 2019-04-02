@@ -1,9 +1,9 @@
 <div class="row">
-  <div class="col-sm-12 col-md-12 col-lg-8 offset-xl-1 col-xl-5 text-right">
+  <div class="col-sm-12 col-md-12 col-lg-8 offset-xl-1 col-xl-5">
     <div style="height: 20%"></div>
     <div style="height: 40%">
-      <h1 style="font-family: Roboto;" class="text-sm-center text-md-center text-lg-right font-weight-bold">PEA Marketplace</h1>
-      <p style="font-family: Roboto;" class="text-muted text-sm-center text-md-center text-lg-right text-grey">Shop a PEA service with our best service</p>
+      <h1 style="font-family: Roboto;" class="text-sm-center text-md-center text-lg-center text-xl-right font-weight-bold">PEA Marketplace</h1>
+      <p style="font-family: Roboto;" class="text-muted text-sm-center text-md-center text-lg-center text-xl-right text-grey">Shop a PEA service with our best service</p>
     </div>
   </div>
   <div class="col-sm-12 col-md-12 col-lg-4 col-xl-6">
