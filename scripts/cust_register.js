@@ -21,7 +21,8 @@ function initializeApp(data) {
             liff.closeWindow();
             return;
           }
-          if (responseJSON.status === 200) {
+          window.alert(response);
+          if (responseJSON.status == 200) {
             window.location.replace("?action=cust_register&status=success");
           } else {
             $("#uIdInput").val(profile.userId);
