@@ -10,7 +10,7 @@ function initializeUserId(data) {
   input.setAttribute("name", "userId");
   input.setAttribute("id", "userId");
   input.setAttribute("value", data.context.userId);
-  document.getElementsByTagName("body")[0].appendChild(input);
+  document.getElementsByTagName("body")[0].append(input);
   window.alert("created element successfully: " + data.context.userId);
   // document.getElementById("languagefield").textContent = data.language;
   // document.getElementById("viewtypefield").textContent = data.context.viewType;
