@@ -21,10 +21,11 @@ function initializeApp(data) {
             liff.closeWindow();
             return;
           }
-          window.alert(
-            "ท่านลงทะเบียนเรียบร้อยแล้ว, ระบบจะนำท่านสู่ PEA Marketplace ค่ะ"
-          );
+
           if (responseJSON.status == 200) {
+            window.alert(
+              "ท่านลงทะเบียนเรียบร้อยแล้ว, ระบบจะนำท่านสู่ PEA Marketplace ค่ะ"
+            );
             window.location.replace("customer.php?action=liff_service");
           } else {
             $("#uIdInput").val(profile.userId);
