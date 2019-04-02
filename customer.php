@@ -20,7 +20,7 @@
   else
     include("404.php");
   
-  // include essentails scripts 
+  // include essentials scripts 
   require("./partials/scripts.php");
 
   // include script control withit page

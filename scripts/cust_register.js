@@ -21,8 +21,7 @@ function initializeApp(data) {
           $("#uIdInput").val(profile.userId);
           $("#profileImage").attr("src", profile.pictureUrl);
           $("#uNameInput").text(profile.displayName);
-        },
-        complete: function() {}
+        }
       });
     })
     .catch(function(error) {
