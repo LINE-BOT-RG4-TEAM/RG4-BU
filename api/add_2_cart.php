@@ -13,7 +13,7 @@ else
 {
     $last_purchase = $obj_check["l_purchase"];
     $num_last_purchasr = substr($last_purchase,2,5);
-    $num_new_purchase = str_pad($num_last_purchasr + 1, 5, 0, STR_PAD_LEFT)
+    $num_new_purchase = str_pad($num_last_purchasr + 1, 5, 0, STR_PAD_LEFT);
     $new_purchase = "PO".$num_new_purchase;
     $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID) VALUE('$new_purchase')";
     mysqli_query($conn,$sql_insert_po);
