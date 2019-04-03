@@ -28,10 +28,11 @@ function render_card(obj)
         {
           var button_label = "เพิ่มในตะกร้า";
           var href = "";
-          var add2cart = "onclick='add2cart('" + obj[i].cate_id + "')'";
+          var cate_id_string = obj[i].cate_id;
+          var add2cart = "onclick='add2cart(" + cate_id_string.toString() + ")'";
           var text_area = '<div class="form-group mt-3"><textarea class="form-control" rows="5" id="comment' + obj[i].cate_id + '" placeholder="แจ้งรายละเอียดเพิ่ม(ถ้ามี)"></textarea></div>';
         }
-        else if (obj[i].is_product == 'N')
+        else if (obj[i].is_product == 'N'
         {
           var button_label = "รายละเอียด";
           var href = "href='?action=liff_construc&cate_id=" + obj[i].cate_id +"'";
