@@ -1,6 +1,6 @@
 <?php 
 require('../utils/db_connector.php');
-$sql_check_purchase_id = "SELECT LAST(PURCHASE_ID) as l_purchase FROM purchase";
+$sql_check_purchase_id = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase";
 $query_check = mysqli_query($conn,$sql_check_purchase_id);
 $obj_check = mysqli_fetch_assoc($query_check);
 if($obj_check["l_purchase"] == null)
