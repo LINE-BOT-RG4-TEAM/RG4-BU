@@ -55,7 +55,7 @@ function add2cart(product_data)
 {
   var comment = document.getElementById('comment' + product_data);
   var UserID = document.getElementById('userId').value;
-  formdata = new FormData();
+  var formdata = new FormData();
   formdata.append('UserId',UserID);
   formdata.append('cate_id',product_data);
   formdata.append('comment',comment);

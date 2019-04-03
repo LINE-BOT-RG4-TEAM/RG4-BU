@@ -12,7 +12,7 @@ if($obj_check["l_purchase"] == null)
     $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID,UserID) VALUES('PO00001','$UserID')";
     mysqli_query($conn,$sql_insert_po);
 
-    $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,description) VALUES('PO00001','$cate_id','$comment')";
+    $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('PO00001','$cate_id','$comment')";
     mysqli_query($conn,$sql_insertlineitem);
 }
 else
@@ -24,7 +24,7 @@ else
     $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID,UserID) VALUES('$new_purchase','$UserID')";
     mysqli_query($conn,$sql_insert_po);
 
-    $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,description) VALUES('$new_purchase','$cate_id','$comment')";
+    $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$new_purchase','$cate_id','$comment')";
     mysqli_query($conn,$sql_insertlineitem);
     echo $new_purchase;
 }
