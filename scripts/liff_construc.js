@@ -55,8 +55,8 @@ function render_card(obj)
 function add2cart(product_data)
 {
   
-  var comment = document.getElementById('comment' + product_data).Value;
-  console.log('add complete'+ product_data.cate_id + 'with comment :' + comment);
+  var comment = document.getElementById('comment' + product_data[0].cate_id).Value;
+  console.log('add complete'+ product_data[0].cate_id + 'with comment :' + comment);
 }
 $(function() {
     $.ajax({
