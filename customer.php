@@ -18,9 +18,27 @@
   if(in_array($page_php_path, $filter_file_name, true)){
     include($page_php_path);
     if($action != "cust_register"){
-      echo "<button class='animated fadeIn font-weight-bold btn btn-outline-primary float-btn bg-white text-primary border-primary shadow-lg'>
-        <i class='fas fa-2x fa-shopping-cart'></i><br/>ตะกร้าสินค้า<br/><span id='quantity_service' class='badge badge-light'>3 บริการ</span>
-      </button>";
+      echo "<button type='button' data-toggle='modal' data-target='#cartModal' class='animated fadeIn font-weight-bold btn btn-outline-primary float-btn bg-white text-primary border-primary shadow-lg'>
+        <i class='fas fa-2x fa-shopping-cart'></i><br/>ตะกร้าสินค้า<br/><span id='quantity_service' style='font-size:16px;' class='badge badge-light'>3 บริการ</span>
+      </button>
+      <div class='modal fade' tabindex='-1' role='dialog' id='cartModal'>
+        <div class='modal-dialog' role='document'>
+          <div class='modal-content'>
+            <div class='modal-header'>
+              <h5 class='modal-title font-weight-bold'><i class='fas fa-shopping-cart'></i> รายการบริการ</h5>
+              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                <span aria-hidden='true'>&times;</span>
+              </button>
+            </div>
+            <div class='modal-body'>
+              <p>Modal body text goes here.</p>
+            </div>
+            <div class='modal-footer'>
+              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+            </div>
+          </div>
+        </div>
+      </div>";
       echo "<style> 
         .float-btn{
           position: fixed;
