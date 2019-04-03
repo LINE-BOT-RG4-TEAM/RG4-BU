@@ -60,12 +60,16 @@ function add2cart(product_data)
   formdata.append('cate_id',product_data);
   formdata.append('comment',comment);
   $.ajax({
-          method: "GET",
+          method: "POST",
           url: "./api/add_2_cart.php",
           data: formdata,
           beforeSend: function() {
                                     console.log("beforeSend");
-                                  }
+                                  },
+          success:function()
+          {
+            alert('success....');
+          }
                                 });
 
   console.log('add complete'+ product_data + 'with comment :' + comment.value);

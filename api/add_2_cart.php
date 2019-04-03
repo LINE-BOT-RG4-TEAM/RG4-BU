@@ -1,8 +1,8 @@
 <?php 
 require('../utils/db_connector.php');
-$UserID = $_GET["UserId"];
-$cate_id = $_GET["cate_id"];
-$comment = $_GET["comment"];
+$UserID = $_POST["UserId"];
+$cate_id = $_POST["cate_id"];
+$comment = $_POST["comment"];
 $sql_check_purchase_id = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase";
 $query_check = mysqli_query($conn,$sql_check_purchase_id);
 $obj_check = mysqli_fetch_assoc($query_check);
