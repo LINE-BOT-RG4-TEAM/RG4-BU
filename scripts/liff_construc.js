@@ -53,8 +53,21 @@ function render_card(obj)
 }
 function add2cart(product_data)
 {
-  
   var comment = document.getElementById('comment' + product_data);
+  var UserID = document.getElementById('userId').value;
+  formdata = new FormData();
+  formdata.append('UserId',UserID);
+  formdata.append('cate_id',product_data);
+  formdata.append('comment',comment);
+  $.ajax({
+          method: "GET",
+          url: "./api/add_2_cart.php",
+          data: formdata,
+          beforeSend: function() {
+                                    console.log("beforeSend");
+                                  }
+                                });
+
   console.log('add complete'+ product_data + 'with comment :' + comment.value);
 }
 $(function() {

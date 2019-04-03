@@ -1,13 +1,19 @@
 <?php 
 require('../utils/db_connector.php');
+$UserID = $_GET["UserId"];
+$cate_id = $_GET["cate_id"];
+$comment = $_GET["comment"];
 $sql_check_purchase_id = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase";
 $query_check = mysqli_query($conn,$sql_check_purchase_id);
 $obj_check = mysqli_fetch_assoc($query_check);
 if($obj_check["l_purchase"] == null)
 {
     echo "Next Purchase NO. IS PO00001" ;
-    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID) VALUE('PO00001')";
+    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID,UserID) VALUES('PO00001','$UserID')";
     mysqli_query($conn,$sql_insert_po);
+
+    $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,description) VALUES('PO00001','$cate_id','$comment')";
+    mysqli_query($conn,$sql_insertlineitem);
 }
 else
 {
@@ -15,8 +21,11 @@ else
     $num_last_purchasr = substr($last_purchase,2,5);
     $num_new_purchase = str_pad($num_last_purchasr + 1, 5, 0, STR_PAD_LEFT);
     $new_purchase = "PO".$num_new_purchase;
-    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID) VALUE('$new_purchase')";
+    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID,UserID) VALUES('$new_purchase','$UserID')";
     mysqli_query($conn,$sql_insert_po);
+
+    $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,description) VALUES('$new_purchase','$cate_id','$comment')";
+    mysqli_query($conn,$sql_insertlineitem);
     echo $new_purchase;
 }
 ?>
