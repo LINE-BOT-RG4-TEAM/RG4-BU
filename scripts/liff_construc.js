@@ -34,7 +34,7 @@ function render_card(obj)
         else if (obj[i].is_product == 'N')
         {
           var button_label = "รายละเอียด";
-          var href = "?action=liff_construc&cate_id=" + obj[i].cate_id;
+          var href = "href='?action=liff_construc&cate_id=" + obj[i].cate_id +"'";
           var text_area = "";
         }
         if(obj[i].warranty == null)
@@ -45,7 +45,7 @@ function render_card(obj)
         {
           var warranty =  'การรับประกัน :' + obj[i].warranty ;
         }
-        card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title">' +obj[i].cate_name + '</h5><p class="card-text">'+short_des+'</p><p class="card-text">' + warranty + '</p><img class="card-img-top" src="images/pea-price.jpg" alt="Card image">' + text_area + '</div><div class="card-footer"><a href="' + href + '" class="btn btn-primary" ' + add2cart + '>'+button_label+'</a></div></div></div>';
+        card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title">' +obj[i].cate_name + '</h5><p class="card-text">'+short_des+'</p><p class="card-text">' + warranty + '</p><img class="card-img-top" src="images/pea-price.jpg" alt="Card image">' + text_area + '</div><div class="card-footer"><a ' + href + ' class="btn btn-primary" ' + add2cart + '>'+button_label+'</a></div></div></div>';
         console.log(obj[i].cate_name);
         i++;
     }
