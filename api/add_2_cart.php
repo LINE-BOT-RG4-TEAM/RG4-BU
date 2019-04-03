@@ -13,6 +13,7 @@ if($obj_check["l_purchase"] == null)
     mysqli_query($conn,$sql_insert_po);
 
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('PO00001','$cate_id','$comment')";
+    echo $sql_insertlineitem;
     mysqli_query($conn,$sql_insertlineitem);
 }
 else
