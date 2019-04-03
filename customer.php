@@ -15,10 +15,27 @@
   $filter_file_name = array_filter(scandir("./"), "filter_php_file");
 
   $page_php_path = "{$action}.php";
-  if(in_array($page_php_path, $filter_file_name, true))
+  if(in_array($page_php_path, $filter_file_name, true)){
     include($page_php_path);
-  else
+    if($action != "cust_register"){
+      echo "<button class='animated fadeIn font-weight-bold btn btn-outline-primary float-btn bg-white text-primary border-primary shadow-lg'>
+        <i class='fas fa-2x fa-shopping-cart'></i><br/>ตะกร้าสินค้า<br/><span id='quantity_service' class='badge badge-light'>3 บริการ</span>
+      </button>";
+      echo "<style> 
+        .float-btn{
+          position: fixed;
+          bottom: 0px;
+          right: 0px;
+          padding: 20px;
+          margin-right: 30px;
+          margin-bottom: 30px;
+          border-radius: 15% 15%;
+        }
+      </style>";
+    }
+  } else {
     include("404.php");
+  }
   
   // include essentials scripts 
   require("./partials/scripts.php");
