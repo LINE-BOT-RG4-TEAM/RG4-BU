@@ -55,7 +55,7 @@ function add2cart(product_data)
 {
   
   var comment = document.getElementById('comment' + product_data);
-  console.log('add complete'+ product_data + 'with comment :' + comment);
+  console.log('add complete'+ product_data + 'with comment :' + comment.value);
 }
 $(function() {
     $.ajax({
