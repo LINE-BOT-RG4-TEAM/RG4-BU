@@ -4,7 +4,7 @@ $UserID = $_POST["userid"];
 $cate_id = $_POST["cate_id"];
 $comment = $_POST["comment"];
 //////check ใบสั่งซื้อที่มีสถานะ A
-/*$sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '".$UserID".' AND PURCHASE_STATUS = 'A'";
+$sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '".$UserID".' AND PURCHASE_STATUS = 'A'";
 $query_check = mysqli_query($conn,$sql_check_purchase_id_a);
 $obj_check = mysqli_fetch_assoc($query_check);
 
@@ -29,12 +29,14 @@ if($obj_check["l_purchase"] == null && $obj_check_c["l_purchase"] == null)
 
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$new_purchase','$cate_id','$comment')";
     mysqli_query($conn,$sql_insertlineitem);
+    echo "if 1";
     
 }
 else if($obj_check["l_purchase"] <> null)
 {
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$obj_check["l_purchase"]','$cate_id','$comment')";
     mysqli_query($conn,$sql_insertlineitem);
+    echo "if 2";
 }
 else if($obj_check_c["l_purchase"] <> null)
 {
@@ -52,5 +54,7 @@ else if($obj_check_c["l_purchase"] <> null)
 
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$new_purchase','$cate_id','$comment')";
     mysqli_query($conn,$sql_insertlineitem);
-}*/
+    echo "if 3";
+}
+echo "end";
 ?>
