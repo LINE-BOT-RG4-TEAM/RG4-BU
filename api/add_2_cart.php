@@ -5,15 +5,15 @@ $cate_id = $_POST["cate_id"];
 $comment = $_POST["comment"];
 //////check ใบสั่งซื้อที่มีสถานะ A
 $sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'A'";
-/*$query_check = mysqli_query($conn,$sql_check_purchase_id_a);
+$query_check = mysqli_query($conn,$sql_check_purchase_id_a);
 $obj_check = mysqli_fetch_assoc($query_check);
 
 ///// check ใบสั่งซื้อที่มีสถานะ C
-$sql_check_purchase_id_c = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '".$UserID."' AND PURCHASE_STATUS = 'C'";
+$sql_check_purchase_id_c = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'C'";
 $query_check_c = mysqli_query($conn,$sql_check_purchase_id_c);
 $obj_check_c = mysqli_fetch_assoc($query_check_c); 
 
-if($obj_check["l_purchase"] == null && $obj_check_c["l_purchase"] == null)
+/*if($obj_check["l_purchase"] == null && $obj_check_c["l_purchase"] == null)
 {
     $sql_max_purchase = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase";
     $query_max_purchase = mysqli_query($conn,$sql_max_purchase);
