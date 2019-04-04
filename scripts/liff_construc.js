@@ -55,25 +55,11 @@ function add2cart(product_data)
 {
   var comment = document.getElementById('comment' + product_data);
   var UserID = document.getElementById('userId').value;
-  var formdata = new FormData();
-  formdata.append('UserId',UserID);
-  formdata.append('cate_id',product_data);
-  formdata.append('comment',comment);
-  $.ajax({
-          method: "POST",
-          url: "./api/add_2_cart.php",
-          data: formdata,
-          beforeSend: function() {
-                                    console.log("beforeSend");
-                                  },
-          success:function()
-          {
-            alert('success....');
-          }
-                                });
+  alert(comment + UserID);
 
   console.log('add complete'+ product_data + 'with comment :' + comment.value);
 }
+
 $(function() {
     $.ajax({
       method: "GET",
