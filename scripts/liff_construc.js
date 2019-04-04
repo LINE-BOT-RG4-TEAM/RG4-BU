@@ -56,7 +56,25 @@ function add2cart(product_data)
   var comment = document.getElementById('comment' + product_data).value;
   var UserID = document.getElementById('userId').value;
   alert(comment + UserID + product_data);
-
+  var formData = new FormData();
+	formData.append('userid',UserID);
+	formData.append('comment',comment);
+  formData.append('cate_id',product_data);
+	$.ajax({
+			url: './api/add_2_cart.php',
+			method: 'POST',
+			data: formData,
+			async: true,
+			cache: false,
+			processData: false,
+			contentType: false,
+			success: function(response) {
+                        alert('Yes...');
+                    },
+                    complete: function() {
+                        location.reload();
+                    }				
+			});
   console.log('add complete'+ product_data + 'with comment :' + comment.value);
 }
 

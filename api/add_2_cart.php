@@ -1,6 +1,6 @@
 <?php 
 require('../utils/db_connector.php');
-$UserID = $_POST["UserId"];
+$UserID = $_POST["userid"];
 $cate_id = $_POST["cate_id"];
 $comment = $_POST["comment"];
 $sql_check_purchase_id = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase";
