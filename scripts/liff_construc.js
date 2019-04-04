@@ -70,10 +70,7 @@ function add2cart(product_data)
 			contentType: false,
 			success: function(response) {
                         alert('Yes...');
-                    },
-                    complete: function() {
-                        location.reload();
-                    }				
+                    }			
 			});
   console.log('add complete'+ product_data + 'with comment :' + comment.value);
 }
