@@ -32,7 +32,7 @@ if($obj_check["l_purchase"] == null && $obj_check_c["l_purchase"] == null)
     echo "if 1";
     
 }
-else if($obj_check["l_purchase"] <> null)
+/*else if($obj_check["l_purchase"] <> null)
 {
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$obj_check["l_purchase"]','$cate_id','$comment')";
     mysqli_query($conn,$sql_insertlineitem);
@@ -55,6 +55,6 @@ else if($obj_check_c["l_purchase"] <> null)
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$new_purchase','$cate_id','$comment')";
     mysqli_query($conn,$sql_insertlineitem);
     echo "if 3";
-}
+}*/
 echo "end";
 ?>
