@@ -13,7 +13,7 @@ $sql_check_purchase_id_c = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase 
 $query_check_c = mysqli_query($conn,$sql_check_purchase_id_c);
 $obj_check_c = mysqli_fetch_assoc($query_check_c); 
 
-if($obj_check["l_purchase"] == null && $obj_check_c["l_purchase"] == null)
+/*if($obj_check["l_purchase"] == null && $obj_check_c["l_purchase"] == null)
 {
     $sql_max_purchase = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase";
     $query_max_purchase = mysqli_query($conn,$sql_max_purchase);
@@ -52,5 +52,5 @@ else if($obj_check_c["l_purchase"] <> null)
 
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$new_purchase','$cate_id','$comment')";
     mysqli_query($conn,$sql_insertlineitem);
-}
+}*/
 ?>
