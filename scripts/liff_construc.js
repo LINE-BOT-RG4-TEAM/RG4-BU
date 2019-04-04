@@ -53,9 +53,9 @@ function render_card(obj)
 }
 function add2cart(product_data)
 {
-  var comment = document.getElementById('comment' + product_data);
+  var comment = document.getElementById('comment' + product_data).value;
   var UserID = document.getElementById('userId').value;
-  alert(comment + UserID);
+  alert(comment + UserID + product_data);
 
   console.log('add complete'+ product_data + 'with comment :' + comment.value);
 }
