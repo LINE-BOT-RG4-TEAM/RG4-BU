@@ -4,7 +4,7 @@ $UserID = $_POST["userid"];
 $cate_id = $_POST["cate_id"];
 $comment = $_POST["comment"];
 //////check ใบสั่งซื้อที่มีสถานะ A
-$sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '".$UserID".' AND PURCHASE_STATUS = 'A'";
+$sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'A'";
 /*$query_check = mysqli_query($conn,$sql_check_purchase_id_a);
 $obj_check = mysqli_fetch_assoc($query_check);
 
