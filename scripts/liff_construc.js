@@ -55,7 +55,7 @@ function add2cart(product_data)
 {
   var comment = document.getElementById('comment' + product_data).value;
   var UserID = document.getElementById('userId').value;
-  alert(comment + UserID + product_data);
+  //alert(comment + UserID + product_data);
   var formData = new FormData();
 	formData.append('userid',UserID);
 	formData.append('comment',comment);
@@ -70,6 +70,7 @@ function add2cart(product_data)
 			contentType: false,
 			success: function(response) {
                         alert('Yes...');
+                        quantity_service();
                     }			
 			});
   console.log('add complete'+ product_data + 'with comment :' + comment.value);
