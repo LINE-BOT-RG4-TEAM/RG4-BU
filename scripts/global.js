@@ -23,6 +23,7 @@ window.operateEvents = {
 //// เพิ่ม function เชคจำนวนบริการในตะกร้า
 function quantity_service()
 {
+  alert("function quantity_service ");
   var UserID = document.getElementById('userId').value;
   var formData = new FormData();
 	formData.append('userid',UserID);
@@ -36,6 +37,7 @@ function quantity_service()
     contentType: false,
     success: function(response) 
               {
+                alert("function quantity_service success ");
                 $("#quantity_service").html(response + " บริการ");
               }				
     });
