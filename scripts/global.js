@@ -40,3 +40,4 @@ function quantity_service()
               }				
     });
 }
+quantity_service();
