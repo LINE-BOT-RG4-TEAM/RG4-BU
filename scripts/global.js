@@ -31,10 +31,14 @@ function quantity_service()
     url: './api/check_service_api.php',
     method: 'POST',
     data: formData,
+    async: true,
+		cache: false,
+		processData: false,
+		contentType: false,
     success: function(response) 
               {
                 alert("function quantity_service success ");
-                $("#quantity_service").html(response + " บริการ");
+               // $("#quantity_service").html(response + " บริการ");
               }				
     });
 }
