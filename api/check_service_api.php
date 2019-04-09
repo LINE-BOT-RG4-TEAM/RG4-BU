@@ -7,7 +7,7 @@
     $obj_check = mysqli_fetch_assoc($query_check);
     $purchase_id = $obj_check["l_purchase"];
 
-    $sql_select_lineitem = "SELECT count(purchase_id) as num_purchase FROM purchase_lineitem WHERE purchaseid = '$purchase_id'";
+    $sql_select_lineitem = "SELECT count(purchase_id) as num_purchase FROM purchase_lineitem WHERE purchase_id = '$purchase_id'";
     $num_lineitem = mysqli_query($conn,$sql_select_lineitem);
     $obj = mysqli_fetch_assoc($num_lineitem);
     echo $obj["num_purchase"];
