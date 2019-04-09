@@ -34,8 +34,8 @@ function quantity_service()
     success: function(response) 
               {
                 alert("function quantity_service success ");
-                //$("#quantity_service").html(response + " บริการ");
+                $("#quantity_service").html(response + " บริการ");
               }				
     });
 }
-quantity_service();
+
