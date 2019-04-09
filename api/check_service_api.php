@@ -9,5 +9,6 @@
 
     $sql_select_lineitem = "SELECT count(purchase_id) as num_purchase FROM purchase_lineitem WHERE purchaseid = '$purchase_id'";
     $num_lineitem = mysqli_query($conn,$sql_select_lineitem);
-    echo $num_lineitem;
+    $obj = mysqli_fetch_assoc($num_lineitem);
+    echo $obj["num_purchase"];
 ?>
