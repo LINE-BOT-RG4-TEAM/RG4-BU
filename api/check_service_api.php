@@ -25,7 +25,7 @@
 
         $sql_select_lineitem = "SELECT * FROM purchase_lineitem WHERE purchase_id = '$purchase_id'";
         $lineitem = mysqli_query($conn,$sql_select_lineitem);
-        $obj = mysqli_fetch_assoc($num_lineitem);
+        $obj = mysqli_fetch_assoc($lineitem);
         echo $obj;
 
     }
