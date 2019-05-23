@@ -31,11 +31,10 @@
               </button>
             </div>
             <div class='modal-body'>
-              <ul class='list-group'>
-                <li class='list-group-item'>First item</li>
-                <li class='list-group-item'>Second item</li>
-                <li class='list-group-item'>Third item</li>
-              </ul>
+              <p>Modal body text goes here.</p>
+              <div class='dropdown-divider'></div>
+              <p>Modal body text goes here.</p>
+              <div class='dropdown-divider'></div>
             </div>
             <div class='modal-footer'>
               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
