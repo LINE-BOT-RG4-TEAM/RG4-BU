@@ -1,7 +1,7 @@
 <?php
     require('../utils/db_connector.php');
     $UserID = $_POST["userid"];
-    $item = 'cart';
+    $item = $_POST["item"];
     
     if($item == 'cart')
     {
