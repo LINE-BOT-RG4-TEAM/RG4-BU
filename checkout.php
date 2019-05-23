@@ -4,7 +4,7 @@
 </h2>
 <div class="alert alert-primary" role="alert">
     <p id="dear_title" class="font-weight-bold" style="font-size:18px;">
-        เรียน คุณ ....
+        เรียน คุณลูกค้า
     </p>
     <p style="text-indent:20px;">
         เรามีความยินดีที่ท่านสนใจบริการเสริมของการไฟฟ้าส่วนภูมิภาค
