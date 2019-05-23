@@ -26,7 +26,8 @@ function quantity_service()
   //alert("function quantity_service ");
   var UserID = document.getElementById('userId').value;
   var formData = new FormData();
-	formData.append('userid',UserID);
+  formData.append('userid',UserID);
+  formData.append('item','cart');
   $.ajax({
     url: './api/check_service_api.php',
     method: 'POST',
@@ -42,4 +43,8 @@ function quantity_service()
               }				
     });
 }
+
+$("#cartModal").on('show.bs.modal', function(){
+  alert("Hello World!");
+});
 
