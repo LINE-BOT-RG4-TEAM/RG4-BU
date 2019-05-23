@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap-table-sticky-header.css">
     <link rel="stylesheet" href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css">
+
+    <!-- datepicker -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
     <style>
       * {
         font-family: 'Sarabun', 'Roboto', sans-serif;
@@ -32,26 +35,3 @@
     </header>
     <main class="mb-3">
       <div class="container">
-        <!-- <div class="row"> -->
-          <!-- <div class="col-sm-12 col-md-4 col-lg-3">
-            <h5 class="header text-dark font-weight-bold text-center">เมนูหลัก</h5>
-            <div class="nav flex-column nav-pills rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link <?=$action=='home'?'active':'' ?>" href="?action=home">
-                <i class="fas fa-home"></i>
-                หน้าแรก
-              </a> -->
-              <!-- <div class="dropdown-divider"></div> -->
-              <!-- <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                <i class="fas fa-star"></i>
-                ข้อมูลลูกค้า High Value
-              </a>
-              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                <i class="fab fa-searchengin"></i>
-                ค้นหาลูกค้าอัตโนมัติ
-              </a> -->
-              <!-- <a class="nav-link <?=$action=='search'?'active':'' ?>" href="?action=search">
-                <i class="fas fa-hand-point-up"></i>  
-                ค้นหาลูกค้า
-              </a>
-            </div>
-          </div> -->
