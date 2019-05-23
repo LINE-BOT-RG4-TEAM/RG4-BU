@@ -1,6 +1,6 @@
 <?php
     require('../utils/db_connector.php');
-    $UserID = $_POST['userid'];
+    $UserID = $_POST['cmd'];
     
     
     /*if($cmd == 'cart')

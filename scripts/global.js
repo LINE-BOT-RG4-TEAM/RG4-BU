@@ -27,7 +27,7 @@ function quantity_service()
   var UserID = document.getElementById('userId').value;
   var formData = new FormData();
   formData.append('userid',UserID);
-  formData.append('cmd','123456');
+  formData.append('cmd',UserID);
   $.ajax({
     url: './api/check_service_api.php',
     method: 'POST',
