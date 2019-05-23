@@ -31,15 +31,11 @@
               </button>
             </div>
             <div class='modal-body'>
-              <div role='main' class='ui-content'>
-                <ul data-role='listview'>
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 4</li>
-                    <li>Item 5</li>
-                </ul>
-              </div>
+              <ul class='list-group'>
+                <li class='list-group-item'>First item</li>
+                <li class='list-group-item'>Second item</li>
+                <li class='list-group-item'>Third item</li>
+              </ul>
             </div>
             <div class='modal-footer'>
               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
