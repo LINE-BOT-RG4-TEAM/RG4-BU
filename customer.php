@@ -47,6 +47,7 @@
               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
             </div>
           </div>
+          <script src='./scripts/global.js'></script>
         </div>
       </div>";
       echo "<style> 

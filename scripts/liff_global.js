@@ -17,7 +17,7 @@ function initializeUserId(data) {
   input.setAttribute("id", "userId");
   input.setAttribute("value", data.context.userId);
   document.getElementsByTagName("body")[0].append(input);
-  window.alert("created element successfully: " + $("#userId").val());
+  //window.alert("created element successfully: " + $("#userId").val());
   // document.getElementById("languagefield").textContent = data.language;
   // document.getElementById("viewtypefield").textContent = data.context.viewType;
   // document.getElementById("useridfield").textContent = data.context.userId;
