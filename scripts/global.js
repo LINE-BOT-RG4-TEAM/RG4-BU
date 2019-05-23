@@ -42,9 +42,3 @@ function quantity_service()
     });
 }
 
-$("#cartModal").on('show.bs.modal', function(){
-  alert("Hello World!");
-});
-
-alert("global....");
-
