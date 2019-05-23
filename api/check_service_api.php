@@ -1,9 +1,9 @@
 <?php
     require('../utils/db_connector.php');
     $UserID = $_POST['userid'];
-    $item = $_POST['item'];
+    $cmd = $_POST['cmd'];
     
-    if($item == 'cart')
+    if($cmd == 'cart')
     {
         //////เลือกใบสั่งซื้อ ที่มีสถานะ A ของ UID นั้น...
         $sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'A'";
@@ -16,7 +16,7 @@
         $obj = mysqli_fetch_assoc($num_lineitem);
         echo $obj["num_purchase"];
     }
-    else if($item == 'modal')
+    else if($cmd == 'modal')
     {
         $data =array();
         $sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'A'";
