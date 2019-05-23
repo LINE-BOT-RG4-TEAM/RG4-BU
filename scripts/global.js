@@ -44,7 +44,7 @@ function quantity_service()
     });
 }
 
-$("#cartModal").on('show.bs.modal', function(){
+$("#cartModal").on('shown.bs.modal', function(){
   alert("Hello World!");
 });
 
