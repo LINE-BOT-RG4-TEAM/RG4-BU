@@ -3,7 +3,7 @@
     นัดหมายช่วงเวลา
 </h2>
 <div class="alert alert-primary" role="alert">
-    <p class="font-weight-bold" style="font-size:18px;">
+    <p id="dear_title" class="font-weight-bold" style="font-size:18px;">
         เรียน คุณ ....
     </p>
     <p style="text-indent:20px;">

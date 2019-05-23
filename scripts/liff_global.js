@@ -1,7 +1,12 @@
 window.onload = function(e) {
   liff.init(function(data) {
     initializeUserId(data);
-    alert(JSON.stringify(data));
+    liff
+    .getProfile()
+    .then(function(profile){
+      $("#dear_title").text("เรียน คุณ "+profile.displayName);
+      console.log(JSON.stringify(profile));
+    });
   });
 };
 
