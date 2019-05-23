@@ -1,7 +1,7 @@
 <?php
     require('../utils/db_connector.php');
     $UserID = $_POST['userid'];
-    $cmd = $_POST['cmd'];
+    
     
     /*if($cmd == 'cart')
     {
@@ -37,6 +37,6 @@
         echo json_encode($data);
 
     }*/
-    echo $cmd;
+    echo $UserID;
     
 ?>
