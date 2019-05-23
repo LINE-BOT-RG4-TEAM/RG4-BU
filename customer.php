@@ -31,7 +31,15 @@
               </button>
             </div>
             <div class='modal-body'>
-              <p>Modal body text goes here.</p>
+              <div role='main' class='ui-content'>
+                <ul data-role='listview'>
+                    <li>Item 1</li>
+                    <li>Item 2</li>
+                    <li>Item 3</li>
+                    <li>Item 4</li>
+                    <li>Item 5</li>
+                </ul>
+              </div>
             </div>
             <div class='modal-footer'>
               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
