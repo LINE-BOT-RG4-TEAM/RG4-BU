@@ -23,26 +23,26 @@ window.operateEvents = {
 //// เพิ่ม function เชคจำนวนบริการในตะกร้า
 function quantity_service()
 {
-  //alert("function quantity_service ");
+  alert("function quantity_service ");
   var UserID = document.getElementById('userId').value;
-  var form = new FormData();
-  form.append("userid", UserID);
-  form.append("cmd", "cart");
-  
-  var settings = {
-    "async": true,
-    "crossDomain": true,
-    "url": "https://pea-crm.herokuapp.com/api/check_service_api.php",
-    "method": "POST",
-    "headers": {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "cache-control": "no-cache"
-    },
-    "processData": false,
-    "contentType": false,
-    "mimeType": "multipart/form-data",
-    "data": form
-  }
+  var formData = new FormData();
+  formData.append('userid',UserID);
+  formData.append('cmd',UserID);
+  $.ajax({
+    url: './api/check_service_api.php',
+    method: 'POST',
+    data: formData,
+    async: true,
+		cache: false,
+		processData: false,
+		contentType: false,
+    success: function(response) 
+              {
+                //alert("function quantity_service success ");
+               $("#quantity_service").text(response + " บริการ");
+               alert(response);
+              }				
+    });
 }
 
 $("#cartModal").on('show.bs.modal', function(){
