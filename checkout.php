@@ -2,6 +2,17 @@
     style='border:1px; border-style:solid; border-color:#F1F1F1; padding: 20px;border-radius:40px 40px;'>
     นัดหมายช่วงเวลา
 </h2>
+<div class="alert alert-primary" role="alert">
+    <p class="font-weight-bold" style="font-size:18px;">
+        เรียน คุณ ....
+    </p>
+    <p style="text-indent:20px;">
+        เรามีความยินดีที่ท่านสนใจบริการเสริมของการไฟฟ้าส่วนภูมิภาค
+        เพื่อความสะดวกในการรับบริการ ท่านสามารถนัดหมายวันที่ต้องการรับบริการเบื้องต้น
+        ผ่านช่องว่าง "นัดหมายวันรับบริการ" ในแต่ละรายการบริการด้านล่างค่ะ
+    </p>
+    <p class="blockquote-footer text-right" style="font-size:18px;">ขอบคุณค่ะ</p>
+</div>
 <img class="animated fadeInUp img-fluid" style="display: block;margin-left:auto;margin-right:auto;" src="./assets/images/appointment.jpg" />
 <h4><i class="fas fa-list-alt"></i> รายการบริการที่ท่านสนใจ</h4>
 <?php
@@ -20,6 +31,7 @@
     $lineitem_result_set = mysqli_query($conn,$fetch_purchase_lineitem);
     // $lineitem_result = $lineitem_result_set->fetch_all(MYSQLI_ASSOC);
 ?>
+<form action="#!" method="POST">
 <ul class="list-group list-group-flush">
 <?php 
     $i = 1;
@@ -66,5 +78,6 @@
     }
 ?>
 </ul>
+</form>
 <br/>
 <button type="button" onclick="console.log(this);" class="btn btn-block btn-lg btn-success">ส่งข้อมูล</button>

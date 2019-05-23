@@ -1,6 +1,7 @@
 window.onload = function(e) {
   liff.init(function(data) {
     initializeUserId(data);
+    alert(JSON.stringify(data));
   });
 };
 

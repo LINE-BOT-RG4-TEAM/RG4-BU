@@ -24,7 +24,7 @@ function initializeApp(data) {
 
           if (responseJSON.status == 200) {
             window.alert(
-              "ท่านลงทะเบียนเรียบร้อยแล้ว, ระบบจะนำท่านสู่ PEA Marketplace ค่ะ"
+              "ท่านลงทะเบียนเรียบร้อยแล้ว, ระบบจะนำท่านสู่ PEA SmartBiz ค่ะ"
             );
             window.location.replace("customer.php?action=liff_service");
           } else {
