@@ -17,7 +17,7 @@
   $page_php_path = "{$action}.php";
   if(in_array($page_php_path, $filter_file_name, true)){
     include($page_php_path);
-    if(!in_array($action, array("cust_register", "checkout"))){
+    if($action != "cust_register"){
       echo "<button type='button' data-toggle='modal' data-target='#cartModal' class='animated fadeIn font-weight-bold btn btn-outline-primary float-btn bg-white text-primary border-primary shadow-lg'>
         <i class='fas fa-2x fa-shopping-cart'></i><br/>ตะกร้าสินค้า<br/><span id='quantity_service' style='font-size:16px;' class='badge badge-light'>0 บริการ</span>
       </button>
@@ -47,7 +47,6 @@
               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
             </div>
           </div>
-          <script src='./scripts/global.js'></script>
         </div>
       </div>";
       echo "<style> 

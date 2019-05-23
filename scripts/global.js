@@ -36,13 +36,13 @@ function quantity_service()
 		contentType: false,
     success: function(response) 
               {
-                //alert("function quantity_service success ");
+               alert("function quantity_service success ");
                $("#quantity_service").text(response + " บริการ");
               }				
     });
 }
 
-$("#cartModal").on('shown.bs.modal', function(){
+$("#cartModal").on('show.bs.modal', function(){
   alert("Hello World!");
 });
 

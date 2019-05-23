@@ -5,7 +5,7 @@ window.onload = function(e) {
     .getProfile()
     .then(function(profile){
       $("#dear_title").text("เรียน คุณ "+profile.displayName);
-      alert(JSON.stringify(profile));
+      //alert(JSON.stringify(profile));
     });
   });
 };
