@@ -1,10 +1,9 @@
 <?php
     require('../utils/db_connector.php');
-    $UserID = $_POST["cmd"];
+    $UserID = $_POST["userid"];
     
     
-    /*if($cmd == 'cart')
-    {
+    
         //////เลือกใบสั่งซื้อ ที่มีสถานะ A ของ UID นั้น...
         $sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'A'";
         $query_check = mysqli_query($conn,$sql_check_purchase_id_a);
@@ -15,9 +14,7 @@
         $num_lineitem = mysqli_query($conn,$sql_select_lineitem);
         $obj = mysqli_fetch_assoc($num_lineitem);
         echo $obj["num_purchase"];
-    }
-    else if($cmd == 'modal')
-    {
+   /*
         $data =array();
         $sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'A'";
         $query_check = mysqli_query($conn,$sql_check_purchase_id_a);
@@ -36,7 +33,7 @@
         }
         echo json_encode($data);
 
-    }*/
-    echo $UserID;
+    */
+    
     
 ?>
