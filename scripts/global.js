@@ -36,7 +36,7 @@ function quantity_service()
 		contentType: false,
     success: function(response) 
               {
-               alert("function quantity_service success ");
+               alert("function quantity_service success... ");
                $("#quantity_service").text(response + " บริการ");
               }				
     });
@@ -45,4 +45,6 @@ function quantity_service()
 $("#cartModal").on('show.bs.modal', function(){
   alert("Hello World!");
 });
+
+alert("global....");
 
