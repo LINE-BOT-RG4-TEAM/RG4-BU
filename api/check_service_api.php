@@ -31,7 +31,7 @@
             $select_product_name ="SELECT * FROM product WHERE product_id = '".$obj['cate_id']."'";
             $query_product_name = mysqli_query($conn,$select_product_name);
             $product_name = mysqli_fetch_assoc($query_product_name);
-            //array_push($obj,$product_name['product_name']); 
+            array_push($obj,$product_name['product_name']); 
             array_push($data,$obj);
         }
         echo json_encode($data);
