@@ -40,6 +40,7 @@ function quantity_service()
               {
                 //alert("function quantity_service success ");
                $("#quantity_service").text(response + " บริการ");
+               alert(response);
               }				
     });
 }
