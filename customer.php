@@ -31,10 +31,17 @@
               </button>
             </div>
             <div class='modal-body'>
-              <p>Modal body text goes here.</p>
-              <div class='dropdown-divider'></div>
-              <p>Modal body text goes here.</p>
-              <div class='dropdown-divider'></div>
+              <div class='form-check'>
+                <label class='form-check-label' for='check2'>
+                  <input type='checkbox' class='form-check-input' id='check2' name='option2' value='something'>Option 2
+                </label>
+              </div>
+              <hr>
+              <div class='form-check'>
+                <label class='form-check-label' for='check2'>
+                  <input type='checkbox' class='form-check-input' id='check2' name='option2' value='something'>Option 2
+                </label>
+              </div>
             </div>
             <div class='modal-footer'>
               <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
