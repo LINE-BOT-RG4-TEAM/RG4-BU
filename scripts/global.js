@@ -23,10 +23,10 @@ window.operateEvents = {
 //// เพิ่ม function เชคจำนวนบริการในตะกร้า
 function quantity_service()
 {
-  //alert("function quantity_service ");
+  alert("function quantity_service ");
   var UserID = document.getElementById('userId').value;
   var formData = new FormData();
-	formData.append('userid',UserID);
+  formData.append('userid',UserID);
   $.ajax({
     url: './api/check_service_api.php',
     method: 'POST',
@@ -39,7 +39,12 @@ function quantity_service()
               {
                 //alert("function quantity_service success ");
                $("#quantity_service").text(response + " บริการ");
+               alert(response);
               }				
     });
 }
+
+$("#cartModal").on('show.bs.modal', function(){
+  alert("Hello World!");
+});
 
