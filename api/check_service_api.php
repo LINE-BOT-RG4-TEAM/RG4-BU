@@ -3,7 +3,7 @@
     $UserID = $_POST['userid'];
     $cmd = $_POST['cmd'];
     
-    if($cmd == 'cart')
+    /*if($cmd == 'cart')
     {
         //////เลือกใบสั่งซื้อ ที่มีสถานะ A ของ UID นั้น...
         $sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'A'";
@@ -36,6 +36,7 @@
         }
         echo json_encode($data);
 
-    }
+    }*/
+    echo $cmd;
     
 ?>
