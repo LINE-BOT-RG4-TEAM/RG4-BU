@@ -30,7 +30,7 @@
                 <span aria-hidden='true'>&times;</span>
               </button>
             </div>
-            <div class='modal-body'>
+            <div class='modal-body' id='lineitem_area'>
               <div class='form-check'>
                 <label class='form-check-label' for='check2'>
                   <input type='checkbox' class='form-check-input' id='check2' name='option2' value='something'>Option 2

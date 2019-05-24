@@ -27,7 +27,7 @@ function initializeUserId(data) {
   quantity_service();
 }
 
-$("#cartModal").on('show.bs.modal', function(){
-  alert("Hello World!");
+$("#cartModal").on('shown.bs.modal', function(){
+  //check_lineitem();
 });
 
