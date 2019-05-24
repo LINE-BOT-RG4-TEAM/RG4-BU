@@ -87,6 +87,7 @@ function check_lineitem()
                   alert(response);
                   $("#lineitem_area").html('');
                   check_lineitem()
+                  quantity_service()
                 }				
     });
   }
