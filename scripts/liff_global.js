@@ -58,7 +58,7 @@ function check_lineitem()
               {
                 alert("check lineitem success");
                 var obj = JSON.parse(response) || {};
-                var html_text = render_lineitem(obj);
+                //var html_text = render_lineitem(obj);
                 alert(obj[0].cate_id);
                 $("#lineitem_area").html(html_text);
               }				
