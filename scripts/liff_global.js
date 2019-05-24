@@ -8,6 +8,14 @@ window.onload = function(e) {
       //alert(JSON.stringify(profile));
     });
   });
+  var input = document.createElement("input");
+  input.setAttribute("type", "hidden");
+  input.setAttribute("name", "userId");
+  input.setAttribute("id", "userId");
+  //input.setAttribute("value", data.context.userId);
+  input.setAttribute("value", 'Uaef7a8e9eedce02d663bf83aec1dd910');
+  document.getElementsByTagName("body")[0].append(input);
+  quantity_service();
 };
 
 function initializeUserId(data) {
@@ -29,13 +37,11 @@ function initializeUserId(data) {
 
 function render_lineitem(obj)
 {
-  alert("render line item");
   var i = 0;
   var html_text = "";
   while(obj[i])
   {
-    alert("render while");
-    html_text = html_text + "<div class='form-check'><label class='form-check-label' for='check"+i+"'><input type='checkbox' class='form-check-input' id='check"+i+"' name='option"+i+"' value='something'>"+obj[i].cate_id+"</label></div><hr>";
+    html_text = "<p>" + obj[i][0].product_name + "<i class='fa fa-trash float-right' onclick='del("+obj[i].purchase_lineitem_id+")' aria-hidden='true'></i></p><hr>" + html_text;
     i++;
   }
   return html_text;
@@ -43,7 +49,6 @@ function render_lineitem(obj)
 
 function check_lineitem()
 {
-  alert("check lineitem");
   var UserID = document.getElementById('userId').value;
   var formData = new FormData();
   formData.append('userid',UserID);
@@ -57,16 +62,35 @@ function check_lineitem()
 		contentType: false,
     success: function(response) 
               {
-                alert("check lineitem success");
                 var obj = JSON.parse(response) || {};
                 var html_text = render_lineitem(obj);
-                //alert(obj[0].cate_id);
                 $("#lineitem_area").html(html_text);
               }				
     });
   }
+
+  function del(itemId)
+  {
+    alert(itemId);
+    var formData = new FormData();
+    formData.append('lineitem_id',itemId);
+    $.ajax({
+      url: './api/del_lineitem_api.php',
+      method: 'POST',
+      data: formData,
+      async: true,
+      cache: false,
+      processData: false,
+      contentType: false,
+      success: function(response) 
+                {
+                  alert(response);
+                  $("#lineitem_area").html('');
+                  check_lineitem()
+                }				
+    });
+  }
 $("#cartModal").on('shown.bs.modal', function(){
-  alert("modal shown...");
   check_lineitem();
 });
 

@@ -36,7 +36,6 @@ function quantity_service()
 		contentType: false,
     success: function(response) 
               {
-               alert("function quantity_service success... ");
                $("#quantity_service").text(response + " บริการ");
               }				
     });
