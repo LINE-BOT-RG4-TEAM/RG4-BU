@@ -28,6 +28,6 @@ function initializeUserId(data) {
 }
 
 $("#cartModal").on('shown.bs.modal', function(){
-  //check_lineitem();
+  check_lineitem();
 });
 
