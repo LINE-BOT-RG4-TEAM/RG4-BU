@@ -30,12 +30,13 @@ function initializeUserId(data) {
 function render_lineitem(obj)
 {
   alert("render line item");
-  var i = 1;
+  var i = 0;
   var html_text = "";
   while(obj[i])
   {
     alert("render while");
     html_text = html_text + "<div class='form-check'><label class='form-check-label' for='check"+i+"'><input type='checkbox' class='form-check-input' id='check"+i+"' name='option"+i+"' value='something'>"+obj[i].cate_id+"</label></div><hr>";
+    i++;
   }
   return html_text;
 }
@@ -58,7 +59,7 @@ function check_lineitem()
               {
                 alert("check lineitem success");
                 var obj = JSON.parse(response) || {};
-                //var html_text = render_lineitem(obj);
+                var html_text = render_lineitem(obj);
                 alert(obj[0].cate_id);
                 $("#lineitem_area").html(html_text);
               }				
