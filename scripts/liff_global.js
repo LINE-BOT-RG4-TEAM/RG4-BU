@@ -60,7 +60,7 @@ function check_lineitem()
                 var obj = JSON.parse(response) || {};
                 var html_text = render_lineitem(obj);
                 alert(obj[0].cate_id);
-                $("#lineitem_area-area").html(html_text);
+                $("#lineitem_area").html(html_text);
               }				
     });
   }
