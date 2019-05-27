@@ -12,8 +12,8 @@ window.onload = function(e) {
   input.setAttribute("type", "hidden");
   input.setAttribute("name", "userId");
   input.setAttribute("id", "userId");
-  //input.setAttribute("value", data.context.userId);
-  input.setAttribute("value", 'Uaef7a8e9eedce02d663bf83aec1dd910555');
+  input.setAttribute("value", data.context.userId);
+  //input.setAttribute("value", 'Uaef7a8e9eedce02d663bf83aec1dd910');
   document.getElementsByTagName("body")[0].append(input);
   quantity_service();
 };
@@ -82,7 +82,10 @@ function check_lineitem()
     success: function(response) 
               {
                 var obj = JSON.parse(response) || {};
-                var html_text = render_lineitem(obj);
+                if(obj !== null)
+                {
+                  var html_text = render_lineitem(obj);
+                }
                 $("#lineitem_area").html(html_text);
               },
     complete :function(){
