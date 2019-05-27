@@ -1,13 +1,13 @@
 <div id="circularMenu" class="circular-menu">
     <a class="floating-btn" onclick="document.getElementById('circularMenu').classList.toggle('active');">       
-            <i class="fa fa-bars" style="color:white;"></i>
+            <i class="fas fa-bars" style="color:white;"></i>
             <span class="badge badge-float badge-danger badge-counter" id="notify_total">0</span>
     </a>
     <menu class="items-wrapper">
-        <a href="#" class="menu-item fa fa-shopping-cart" data-toggle='modal' data-target='#cartModal'><span class="badge badge-danger badge-counter" id="notify_cart">0</span></a>
+        <a href="#" class="menu-item fas fa-shopping-cart" data-toggle='modal' data-target='#cartModal'><span class="badge badge-danger badge-counter" id="notify_cart">0</span></a>
         <a href="#" class="menu-item fas fa-history"></a>
-        <a href="#" class="menu-item fa fa-list-alt"></a>
-        <a href="#" class="menu-item fa fa-user"></a>
+        <a href="#" class="menu-item fas fa-list-alt"></a>
+        <a href="#" class="menu-item fas fa-user"></a>
     </menu>
 </div>
 <div class='modal fade' tabindex='-1' role='dialog' id='cartModal'>
