@@ -13,10 +13,11 @@ window.onload = function(e) {
   input.setAttribute("name", "userId");
   input.setAttribute("id", "userId");
   //input.setAttribute("value", data.context.userId);
-  input.setAttribute("value", 'Uaef7a8e9eedce02d663bf83aec1dd910');
+  input.setAttribute("value", 'Uaef7a8e9eedce02d663bf83aec1dd910555');
   document.getElementsByTagName("body")[0].append(input);
   quantity_service();
 };
+
 
 function initializeUserId(data) {
   var input = document.createElement("input");
@@ -41,9 +42,11 @@ function render_lineitem(obj)
   var html_text = "";
   while(obj[i])
   {
-    html_text = "<p>" + obj[i][0].product_name + "<i class='fa fa-trash float-right' onclick='del("+obj[i].purchase_lineitem_id+")' aria-hidden='true'></i></p><hr>" + html_text;
+    var num = i+1;
+    html_text = html_text + "<p>" + num + "." + obj[i][0].product_name + "<i class='fas fa-trash float-right' onclick='del("+obj[i].purchase_lineitem_id+")' aria-hidden='true'></i></p><hr>";
     i++;
   }
+  $("#head_modal").html("<i class='fas fa-shopping-cart'></i> รายการบริการ " + i + " รายการ");
   return html_text;
 }
 
@@ -59,19 +62,38 @@ function check_lineitem()
     async: true,
 		cache: false,
 		processData: false,
-		contentType: false,
+    contentType: false,
+    beforeSend : function()
+            {
+                //$.blockUI({message : '<h1>กำลังเข้าสู่ระบบ</h1>'});
+                console.log("beforesend.....");
+                $('div.modal-dialog').block({
+                    message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div>',
+                    overlayCSS : { 
+                      backgroundColor: '#ffffff',
+                      opacity: 0.8
+                    },
+                    css : {
+                      opacity: 1,
+                      border: 'none',
+                    }
+                  });
+            },
     success: function(response) 
               {
                 var obj = JSON.parse(response) || {};
                 var html_text = render_lineitem(obj);
                 $("#lineitem_area").html(html_text);
-              }				
+              },
+    complete :function(){
+                $('div.modal-dialog').unblock();
+                }					
     });
   }
 
   function del(itemId)
   {
-    alert(itemId);
+    //alert(itemId);
     var formData = new FormData();
     formData.append('lineitem_id',itemId);
     $.ajax({
@@ -84,7 +106,8 @@ function check_lineitem()
       contentType: false,
       success: function(response) 
                 {
-                  alert(response);
+                  //alert(response);
+                  $.notify("ลบรายการสำเร็จ", "success", { position:"top" });
                   $("#lineitem_area").html('');
                   check_lineitem()
                   quantity_service()

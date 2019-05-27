@@ -35,9 +35,21 @@ if($obj_check["l_purchase"] == null && $obj_check_c["l_purchase"] == null)
 else if($obj_check["l_purchase"] <> null)
 {
     $purchase_id = $obj_check["l_purchase"];
-    $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$purchase_id','$cate_id','$comment')";
-    mysqli_query($conn,$sql_insertlineitem);
-    echo "if 2";
+
+    $sql_check_product_in_cart = "SELECT * FROM purchase_lineitem WHERE purchase_id = '$purchase_id' AND cate_id = '$cate_id'";
+    $sql_check_product_in_cart_query = mysqli_query($conn,$sql_check_product_in_cart);
+    $obj_check_incart = mysqli_fetch_assoc($sql_check_product_in_cart_query);
+    if($obj_check_incart <> null)
+    {
+        echo "already";
+    }
+    else if($obj_check_incart == null)
+    {
+        $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$purchase_id','$cate_id','$comment')";
+        mysqli_query($conn,$sql_insertlineitem);
+        echo "inserted";
+    }
+    
 }
 else if($obj_check_c["l_purchase"] <> null && $obj_check["l_purchase"] == null )
 {
@@ -57,5 +69,4 @@ else if($obj_check_c["l_purchase"] <> null && $obj_check["l_purchase"] == null )
     mysqli_query($conn,$sql_insertlineitem);
     echo "if 3";
 }
-echo "end";
 ?>

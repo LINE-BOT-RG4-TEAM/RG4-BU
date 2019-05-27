@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap-table-sticky-header.css">
     <link rel="stylesheet" href="https://raw.githubusercontent.com/daneden/animate.css/master/animate.css">
-
+    <link rel="stylesheet" href="./assets/css/font-awesome.min.css">
     <!-- datepicker -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css" />
     <style>

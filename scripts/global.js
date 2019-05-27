@@ -36,7 +36,17 @@ function quantity_service()
 		contentType: false,
     success: function(response) 
               {
-               $("#quantity_service").text(response + " บริการ");
+                if(response == 0 )
+                {
+                  $("#notify_total").hide();
+                  $("#notify_cart").hide();
+                }
+                else if (response > 0 )
+                {
+                  $("#notify_total").text(response);
+                  $("#notify_cart").text(response);
+                }
+                
               }				
     });
 }
