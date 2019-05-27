@@ -45,6 +45,8 @@ function quantity_service()
                 {
                   $("#notify_total").text(response);
                   $("#notify_cart").text(response);
+                  $("#notify_total").show();
+                  $("#notify_cart").show();
                 }
                 
               }				
