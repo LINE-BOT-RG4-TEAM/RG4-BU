@@ -11,7 +11,7 @@
         $lineitem = mysqli_query($conn,$sql_select_lineitem);
         while($obj = mysqli_fetch_assoc($lineitem))
         {
-            $select_product_name ="SELECT product_name FROM product WHERE product_id = '".$obj['cate_id']."'";
+            $select_product_name ="SELECT cate_name FROM product_category WHERE cate_id = '".$obj['cate_id']."'";
             $query_product_name = mysqli_query($conn,$select_product_name);
             $product_name = mysqli_fetch_assoc($query_product_name);
             array_push($obj,$product_name); 
