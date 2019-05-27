@@ -12,8 +12,8 @@ window.onload = function(e) {
   input.setAttribute("type", "hidden");
   input.setAttribute("name", "userId");
   input.setAttribute("id", "userId");
-  input.setAttribute("value", data.context.userId);
-  //input.setAttribute("value", 'Uaef7a8e9eedce02d663bf83aec1dd910');
+  //input.setAttribute("value", data.context.userId);
+  input.setAttribute("value", 'U25ee4efac3534dab5c1342dc9d9de476');
   document.getElementsByTagName("body")[0].append(input);
   quantity_service();
 };
@@ -40,13 +40,16 @@ function render_lineitem(obj)
 {
   var i = 0;
   var html_text = "";
+  var purchase_id = obj[0].purchase_id;
   while(obj[i])
   {
     var num = i+1;
     html_text = html_text + "<p>" + num + "." + obj[i][0].product_name + "<i class='fas fa-trash float-right' onclick='del("+obj[i].purchase_lineitem_id+")' aria-hidden='true'></i></p><hr>";
     i++;
   }
-  $("#head_modal").html("<i class='fas fa-shopping-cart'></i> รายการบริการ " + i + " รายการ");
+  $("#head_modal").html("<i class='fas fa-shopping-cart'></i> รายการบริการ " + i + " รายการ(" + purchase_id + ")");
+  var btn = document.getElementById("check_out");
+  btn.setAttribute("href","?action=checkout&purchase_id=" + purchase_id);
   return html_text;
 }
 

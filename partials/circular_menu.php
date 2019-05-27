@@ -22,7 +22,8 @@
                 <div class='modal-body' id='lineitem_area'>
                 </div>
                 <div class='modal-footer'>
-                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                    <a type='button' class='btn btn-primary'  href="#" id="check_out">ยืนยัน</a>
+                    <button type='button' class='btn btn-primary' data-dismiss='modal' >ปิด</button>
                 </div>
             </div>
         </div>
