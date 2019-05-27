@@ -1,5 +1,5 @@
 <div id="circularMenu" class="circular-menu">
-    <a class="floating-btn" onclick="document.getElementById('circularMenu').classList.toggle('active');">       
+    <a class="floating-btn" onclick="toggle_menu()">       
             <i class="fas fa-bars" style="color:white;"></i>
             <span class="badge badge-float badge-danger badge-counter" id="notify_total">0</span>
     </a>
@@ -136,12 +136,12 @@
     transform: translate3d(-7em,1em,0);
     }
 
-    .circular-menu.active .badge {
+    /*.circular-menu.active .badge {
         display: block;
         position: absolute;
         top: -5px;
         right: -5px;
-        }
+        }*/
     
     .circular-menu .badge {
         display: none;
@@ -157,12 +157,12 @@
         right: -5px;
         }
 
-        .circular-menu.active .badge-float {
+       /*.circular-menu.active .badge-float {
         display: none;
         position: absolute;
         top: -5px;
         right: -5px;
-        }
+        }*/
     
 
 

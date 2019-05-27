@@ -36,7 +36,7 @@ function quantity_service()
 		contentType: false,
     success: function(response) 
               {
-                if(response == 0 )
+                /*if(response == 0 )
                 {
                   $("#notify_total").hide();
                   $("#notify_cart").hide();
@@ -45,11 +45,52 @@ function quantity_service()
                 {
                   $("#notify_total").text(response);
                   $("#notify_cart").text(response);
-                  $("#notify_total").show();
-                  $("#notify_cart").show();
-                }
+                  if($("#circularMenu").hasClass('active'))
+                  {
+                    $("#notify_cart").show();
+                    $("#notify_total").hide();
+                  }
+                  else
+                  {
+                    $("#notify_cart").hide();
+                    $("#notify_total").show();
+                  } 
+                }*/
+                show_num_service(response);
                 
               }				
     });
+}
+function toggle_menu()
+{
+  document.getElementById('circularMenu').classList.toggle('active');
+  quantity_service();
+}
+
+function show_num_service(num)
+{
+  if(num == 0)
+  {
+    $("#notify_total").hide();
+    $("#notify_cart").hide();
+  }
+  else if (num > 0)
+  {
+    $("#notify_total").text(num);
+    $("#notify_cart").text(num);
+    if($("#circularMenu").hasClass('active'))
+    {
+      $("#notify_cart").show();
+      $("#notify_total").hide();
+    }
+    else
+    {
+      $("#notify_cart").hide();
+      $("#notify_total").show();
+    }
+  }
+  
+  
+  
 }
 
