@@ -14,6 +14,9 @@
       * {
         font-family: 'Sarabun', 'Roboto', sans-serif;
       }
+      .font-roboto {
+        font-family: 'Roboto';
+      }
     </style>
   </head>
 
@@ -27,7 +30,7 @@
             บริหารจัดการฐานข้อมูลลูกค้ารายสำคัญและธุรกิจเสริม
           </a>
           <span class="navbar-text">
-            Customer Relationship Management (Business Unit)
+            PEA SmartBiz
           </span>
         </div>
       </nav>
@@ -36,7 +39,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-4 col-lg-3">
-            <h5 class="header text-dark font-weight-bold text-center">เมนูหลัก</h5>
+            <h5 class="header text-secondary font-weight-bold text-left">เมนูหลัก</h5>
             <div class="nav flex-column nav-pills rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <a class="nav-link <?=$action=='home'?'active':'' ?>" href="?action=home">
                 <i class="fas fa-home"></i>
@@ -54,6 +57,18 @@
               <a class="nav-link <?=$action=='search'?'active':'' ?>" href="?action=search">
                 <i class="fas fa-hand-point-up"></i>  
                 ค้นหาลูกค้า
+              </a>
+            </div>
+            <hr class="clearfix"/>
+            <h5 class="header text-secondary font-weight-bold"><i class="fas fa-cogs"></i> จัดการ</h5>
+            <div class="nav flex-column nav-pills rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link <?=$action=='notify_authorize'?'active':'' ?>" href="?action=notify_authorize">
+                <i class="far fa-bell"></i> บริการรับข้อความแจ้งเตือน
+              </a>
+            </div>
+            <div class="nav flex-column nav-pills rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="nav-link <?=$action=='logout'?'active':'' ?>" href="?action=logout">
+              <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
               </a>
             </div>
           </div>

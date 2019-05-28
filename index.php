@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <?php require('./utils/array_utils.php'); ?>
 <?php require('./utils/db_connector.php'); ?>
 <?php 
@@ -11,6 +12,8 @@
 ?>
 <?php require('./partials/header.php'); ?>
 <?php 
+    echo $_SESSION['username']."<br/>";
+    echo $_SESSION['pea_code'];
   // filter only php extension
   $filter_file_name = array_filter(scandir("./"), "filter_php_file");
 
