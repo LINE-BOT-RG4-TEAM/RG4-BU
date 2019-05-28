@@ -6,7 +6,7 @@
     <menu class="items-wrapper">
         <a href="#" class="menu-item fas fa-shopping-cart" data-toggle='modal' data-target='#cartModal'><span class="badge badge-danger badge-counter" id="notify_cart">0</span></a>
         <a href="#" class="menu-item fas fa-history"></a>
-        <a href="#" class="menu-item fas fa-list-alt"></a>
+        <a href="?action=purchase_status" class="menu-item fas fa-list-alt"></a>
         <a href="#" class="menu-item fas fa-user"></a>
     </menu>
 </div>

@@ -23,6 +23,7 @@ window.operateEvents = {
 //// เพิ่ม function เชคจำนวนบริการในตะกร้า
 function quantity_service()
 {
+  console.log("quantity...");
   var UserID = document.getElementById('userId').value;
   var formData = new FormData();
   formData.append('userid',UserID);
