@@ -19,8 +19,19 @@
         font-family: 'Roboto';
       }
     </style>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="http://malsup.github.io/jquery.blockUI.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script>
+      window.onload = function(){
+        document.getElementsByTagName('form')[0].addEventListener('submit', function(e){
+          $.blockUI({
+            fadeIn: 1000,
+            message:'<div class="font-weight-bold text-primary" style="font-size:26px">กำลังตรวจสอบข้อมูล...</div>'
+          });
+        });
+      };
+    </script>
   </head>
 
   <body>

@@ -14,7 +14,7 @@
     $params = array(
         'response_type' => 'code',
         'client_id' => CLIENT_ID,
-        'redirect_uri' => 'https://inter.serveo.net/crm-bu/callback.php',
+        'redirect_uri' => 'https://pea-crm.herokuapp.com/callback.php',
         'scope' => 'notify',
         'state' => 'cheevavorn'
     );
