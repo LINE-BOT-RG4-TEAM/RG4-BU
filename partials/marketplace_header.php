@@ -19,6 +19,10 @@
       * {
         font-family: 'Sarabun', 'Roboto', sans-serif;
       }
+
+      .font-roboto {
+        font-family: 'Roboto';
+      }
     </style>
   </head>
 

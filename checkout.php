@@ -14,10 +14,9 @@
     <p class="blockquote-footer text-right" style="font-size:18px;">ขอบคุณค่ะ</p>
 </div>
 <img class="animated fadeInUp img-fluid" style="display: block;margin-left:auto;margin-right:auto;" src="./assets/images/appointment.jpg" />
-<h4><i class="fas fa-list-alt"></i> รายการบริการที่ท่านสนใจ</h4>
+<h4 class="font-roboto font-weight-bold"><i class="fas fa-list-alt"></i> รายการบริการที่ท่านสนใจ</h4>
 <?php
-    // dummy purchase id
-    $POST_PURCHASE_ID = "PO00007";
+    $POST_PURCHASE_ID = $_GET['purchase_id'];
     $fetch_purchase_lineitem = "
         SELECT lineitem.cate_id
                 , cate_name
@@ -80,4 +79,12 @@
 </ul>
 </form>
 <br/>
-<button type="button" onclick="console.log(this);" class="btn btn-block btn-lg btn-success">ส่งข้อมูล</button>
+<div class="btn-block">
+    <button type="button" class="btn btn-block btn-lg btn-success"><i class="fas fa-paper-plane"></i> ส่งข้อมูล</button>
+    <button type="button" href="javascript:void(0);" 
+        onclick="javascript: window.location.href='?action=liff_service';" 
+        class="btn btn-block btn-lg btn-outline-danger">
+        <i class="fas fa-chevron-circle-left"></i> 
+        กลับไปเลือกสินค้า
+    </button>
+</div>
