@@ -17,40 +17,13 @@
   $page_php_path = "{$action}.php";
   if(in_array($page_php_path, $filter_file_name, true)){
     include($page_php_path);
+
     if(!in_array($action, array("cust_register","checkout","purchase_detail"))){
-      require('./partials/circular_menu.php');
-      /*echo "<button type='button' data-toggle='modal' data-target='#cartModal' class='animated fadeIn font-weight-bold btn btn-outline-primary float-btn bg-white text-primary border-primary shadow-lg'>
-        <i class='fas fa-2x fa-shopping-cart'></i><br/>ตะกร้าสินค้า<br/><span id='quantity_service' style='font-size:16px;' class='badge badge-light'>0 บริการ</span>
-      </button>
-      <div class='modal fade' tabindex='-1' role='dialog' id='cartModal'>
-        <div class='modal-dialog' role='document'>
-          <div class='modal-content'>
-            <div class='modal-header'>
-              <h5 class='modal-title font-weight-bold'><i class='fas fa-shopping-cart'></i> รายการบริการ</h5>
-              <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                <span aria-hidden='true'>&times;</span>
-              </button>
-            </div>
-            <div class='modal-body' id='lineitem_area'>
-            </div>
-            <div class='modal-footer'>
-              <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-            </div>
-          </div>
-        </div>
-      </div>";
-      echo "<style> 
-        .float-btn{
-          position: fixed;
-          bottom: 0px;
-          right: 0px;
-          padding: 20px;
-          margin-right: 30px;
-          margin-bottom: 30px;
-          border-radius: 15% 15%;
-        }
-      </style>";*/
+      $keys_arr = array_keys($_GET);
+      if(!in_array("purchase_id", $keys_arr))
+        require('./partials/circular_menu.php');
     }
+    
   } else {
     include("404.php");
   }
