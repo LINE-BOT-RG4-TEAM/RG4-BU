@@ -90,8 +90,4 @@ function show_num_service(num)
       $("#notify_total").show();
     }
   }
-  
-  
-  
 }
-

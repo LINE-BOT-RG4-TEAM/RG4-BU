@@ -22,23 +22,20 @@
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs" id="bologna-list" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#description">รอการยืนยัน</a>
+              <a class="nav-link active" data-toggle="tab" href="#pending"><span class="font-weight-bold text-primary"><i class="fas fa-clock-o fa-2x" aria-hidden="true"></i>  รอการยืนยัน</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  data-toggle="tab" href="#history">ยืนยัน</a>
+              <a class="nav-link"  data-toggle="tab" href="#approve"><span class="font-weight-bold text-primary"><i class="fas fa-check-circle fa-2x"></i>  ได้รับการยืนยัน</span></a>
             </li>
           </ul>
         </div>
         <div class="card-body">
            <div class="tab-content mt-3">
-            <div class="tab-pane active" id="description" role="tabpanel">
-                <a class="nav-link"><p>1.รายที่1</p><hr></a>
-                <a class="nav-link"><p>1.รายที่1</p><hr></a>
-                <a class="nav-link"><p>1.รายที่1</p><hr></a>
+            <div class="tab-pane active" id="pending" role="tabpanel">
+                
             </div>
-            <div class="tab-pane" id="history" role="tabpanel" aria-labelledby="history-tab">  
-              <p class="card-text">First settled around 1000 BCE and then founded as the Etruscan Felsina about 500 BCE, it was occupied by the Boii in the 4th century BCE and became a Roman colony and municipium with the name of Bononia in 196 BCE. </p>
-              <a href="#" class="card-link text-danger">Read more</a>
+            <div class="tab-pane" id="approve" role="tabpanel" >  
+              
             </div>
           </div>
         </div>

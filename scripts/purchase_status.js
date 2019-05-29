@@ -1,17 +1,44 @@
-console.log("js run");
-var UserID = document.getElementById('userId').value;
-console.log(UserID);
- /* var formData = new FormData();
-  formData.append('userid',UserID);
-  $.ajax({
-    url: './api/purchase_status_api.php',
-    method: 'POST',
-    data: formData,
-    async: true,
-		cache: false,
-		processData: false,
-    contentType: false,
-    beforeSend : function()
+
+function render_purchase_status(obj)
+{
+    console.log(obj.pending);
+    var i = 0;
+    var html_purchase_pending = '';
+    while(obj.pending[i])
+    {
+        var num = i+1;
+        html_purchase_pending = html_purchase_pending + '<a class="nav-link" href="?action=purchase_detail&purchase_id='+obj.pending[i]+'"><p>'+num+'.เลขที่ '+obj.pending[i]+'</p><hr></a>';
+        i++;
+    }
+    if(html_purchase_pending == ''){html_purchase_pending = '--ไม่มีข้อมูล--'}
+    $("#pending").html(html_purchase_pending);
+
+    var i = 0;
+    var html_purchase_approve = '';
+    while(obj.approve[i])
+    {
+        var num = i+1;
+        html_purchase_approve = html_purchase_approve + '<a class="nav-link"><p>'+num+'.เลขที่ '+obj.approve[i]+'</p><hr></a>';
+        i++;
+    }
+    if(html_purchase_approve == ''){html_purchase_approve = '--ไม่มีข้อมูล--'}
+    $("#approve").html(html_purchase_approve);
+}
+function purchase_status()
+{
+    console.log("js run");
+    var UserID = document.getElementById('userId').value;
+    var formData = new FormData();
+    formData.append('userid',UserID);
+    $.ajax({
+            url: './api/purchase_status_api.php',
+            method: 'POST',
+            data: formData,
+            async: true,
+		    cache: false,
+		    processData: false,
+            contentType: false,
+            beforeSend : function()
             {
                 //$.blockUI({message : '<h1>กำลังเข้าสู่ระบบ</h1>'});
                 console.log("beforesend.....");
@@ -29,14 +56,17 @@ console.log(UserID);
             },
     success: function(response) 
               {
+                console.log("success");
                 var obj = JSON.parse(response) || {};
-                if(obj.length > 0)
-                {
-                  var html_text = render_lineitem(obj);
-                }
-                $("#lineitem_area").html(html_text);
+                render_purchase_status(obj);
               },
     complete :function(){
+        console.log("complete");
                 $.unblockUI();
                 }					
-    });*/
+    });
+}
+
+$( document ).ready(function() {
+  purchase_status();
+});

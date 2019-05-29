@@ -16,6 +16,7 @@ window.onload = function(e) {
   input.setAttribute("value", 'Uaef7a8e9eedce02d663bf83aec1dd910555');
   document.getElementsByTagName("body")[0].append(input);
   quantity_service();
+  //purchase_status();
 };
 
 
@@ -44,7 +45,7 @@ function render_lineitem(obj)
   while(obj[i])
   {
     var num = i+1;
-    html_text = html_text + "<p>" + num + "." + obj[i][0].cate_name + "<i class='fas fa-trash float-right' onclick='del("+obj[i].purchase_lineitem_id+")' aria-hidden='true'></i></p><hr>";
+    html_text = html_text + "<p>" + num + "." + obj[i][0].cate_name + "<span class='font-weight-bold text-danger'><i class='fas fa-trash float-right' onclick='del("+obj[i].purchase_lineitem_id+")' aria-hidden='true'></i></span></p><hr>";
     i++;
   }
   $("#head_modal").html("<i class='fas fa-shopping-cart'></i> รายการบริการ " + i + " รายการ(" + purchase_id + ")");
@@ -127,4 +128,12 @@ $("#cartModal").on('shown.bs.modal', function(){
 $("#cartModal").on('hide.bs.modal', function(){
   $("#lineitem_area").html('');
 });
+
+function getUrlVars() {
+  var vars = {};
+  var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+  });
+  return vars;
+}
 
