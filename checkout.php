@@ -16,8 +16,8 @@
 <img class="animated fadeInUp img-fluid" style="display: block;margin-left:auto;margin-right:auto;" src="./assets/images/appointment.jpg" />
 <h4 class="font-roboto font-weight-bold"><i class="fas fa-list-alt"></i> รายการบริการที่ท่านสนใจ</h4>
 <?php
-    // $GET_PURCHASE_ID = $_GET['purchase_id'];
-    $GET_PURCHASE_ID = 'PO00009';
+    $GET_PURCHASE_ID = $_GET['purchase_id'];
+    // $GET_PURCHASE_ID = 'PO00009';
     $fetch_purchase_lineitem = "
         SELECT  purchase_lineitem_id
                 , lineitem.cate_id
