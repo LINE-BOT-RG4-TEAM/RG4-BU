@@ -2,30 +2,37 @@
     require("./utils/db_connector.php");
     require("./api/notify/notify_func.php");
     $purchase_list = $_POST['purchases'];
+    $purchase_id = $_POST['purchase_id'];
 
-    $update_lineitem_sql = "";
+    $update_lineitem_and_status = "";
     foreach($purchase_list as $purchase_line_item_id => $data){
         $desc = trim($data['desc']);
         $appointment_date = trim($data['appointment_date']);
-        $update_lineitem_sql .= "
+        $update_lineitem_and_status .= "
             UPDATE purchase_lineitem
             SET `des` = '$desc', `appointment_date` = '$appointment_date'
             WHERE `purchase_lineitem_id` = '$purchase_line_item_id';
         ";
     }
 
-    if (!$conn->multi_query($update_lineitem_sql)) {
+    // add query for update status to Pending (P)
+    $update_lineitem_and_status .= "
+        UPDATE purchase 
+        SET PURCHASE_STATUS = 'P'
+        WHERE PURCHASE_ID = '$purchase_id';
+    ";
+
+    if (!$conn->multi_query($update_lineitem_and_status)) {
         die("can't update line item appointment");
     }
 
     // update header status to pending
-    $purchase_id = $_POST['purchase_id'];
-    $set_pending_status_sql = "
-        UPDATE purchase 
-        SET `PURCHASE_STATUS` = 'P'
-        WHERE `PURCHASE_ID` = '$purchase_id';
-    ";
-    $conn->query($set_pending_status_sql);
+    // $set_pending_status_sql = "
+    //     UPDATE purchase 
+    //     SET PURCHASE_STATUS = 'P'
+    //     WHERE PURCHASE_ID = '$purchase_id';
+    // ";
+    // $conn->query($set_pending_status_sql) or die($conn->error);
     $conn->close();
 
     $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า 'นายชีววร เศรษฐกุล' สนใจบริการธุรกิจเสริม จำนวน 8 รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ ท่านสามารถตรวจสอบได้จาก https://nuntio.serveo.net/crm-bu/login.php";
