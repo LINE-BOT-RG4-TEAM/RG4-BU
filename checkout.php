@@ -16,21 +16,24 @@
 <img class="animated fadeInUp img-fluid" style="display: block;margin-left:auto;margin-right:auto;" src="./assets/images/appointment.jpg" />
 <h4 class="font-roboto font-weight-bold"><i class="fas fa-list-alt"></i> รายการบริการที่ท่านสนใจ</h4>
 <?php
-    $POST_PURCHASE_ID = $_GET['purchase_id'];
+    // $GET_PURCHASE_ID = $_GET['purchase_id'];
+    $GET_PURCHASE_ID = 'PO00009';
     $fetch_purchase_lineitem = "
-        SELECT lineitem.cate_id
+        SELECT  purchase_lineitem_id
+                , lineitem.cate_id
                 , cate_name
                 , warranty
                 , picture_name
                 , des 
         FROM purchase_lineitem lineitem JOIN product_category product
             ON lineitem.cate_id  = product.cate_id
-        WHERE product.is_product = 'Y' AND lineitem.purchase_id = '$POST_PURCHASE_ID';
+        WHERE product.is_product = 'Y' AND lineitem.purchase_id = '$GET_PURCHASE_ID';
     ";
-    $lineitem_result_set = mysqli_query($conn,$fetch_purchase_lineitem);
+    $lineitem_result_set = mysqli_query($conn, $fetch_purchase_lineitem);
     // $lineitem_result = $lineitem_result_set->fetch_all(MYSQLI_ASSOC);
 ?>
-<form action="#!" method="POST">
+<form action="checkout-success.php" method="POST">
+<input type="hidden" name="purchase_id" value="<?=$GET_PURCHASE_ID ?>" />
 <ul class="list-group list-group-flush">
 <?php 
     $i = 1;
@@ -38,7 +41,7 @@
 ?>
     <li class="list-group-item">
         <div class="text-center">
-            <label class="font-weight-bold text-primary bg-light py-2 px-5 shadow-sm" style="font-size:22px;border-radius: 20px;">
+            <label class="font-weight-bold text-white bg-dark py-2 px-5 shadow-sm" style="font-size:22px;border-radius: 20px;">
                 <i class="fas fa-check"></i>
                 บริการที่ <?= $i++ ?>
             </label>
@@ -56,8 +59,16 @@
                 <i class="fas fa-comment-dots"></i> ความต้องการเพิ่มเติม:
             </span> 
             <br/>
-            <span class="pl-4">
-                <?=($product['des'] == null)?"- ไม่มีข้อมูล -":$product['des'] ?>
+            <span>
+                <?php 
+                    $desc = null; 
+                    if($product['des'] !== null){
+                        $desc = $product['des'];
+                    }
+                ?>
+                <textarea class="form-control" 
+                    name="purchases[<?=$product['purchase_lineitem_id']?>][desc]" 
+                    placeholder="ท่านไม่มีความต้องการเพิ่มเติมในบริการนี้" autocomplete="off" ><?= $desc ?></textarea>
             </span>
         </p>
         <p class="font-weight-bold" style="font-size:20px;">
@@ -70,17 +81,20 @@
                 type="text" 
                 data-cate-id="<?=$product['cate_id']?>" 
                 id="<?=$product['cate_id']?>_appointment_date" 
-                name="<?=$product['cate_id']?>_appointment_date" />
+                name="purchases[<?=$product['purchase_lineitem_id']?>][appointment_date]"
+                required 
+                autocomplete="off" />
         </p>
     </li>
 <?php 
     }
 ?>
 </ul>
-</form>
 <br/>
 <div class="btn-block">
-    <button type="button" class="btn btn-block btn-lg btn-success"><i class="fas fa-paper-plane"></i> ส่งข้อมูล</button>
+    <button type="submit" class="btn btn-block btn-lg btn-success">
+        <i class="fas fa-paper-plane"></i> ส่งข้อมูล
+    </button>
     <button type="button" href="javascript:void(0);" 
         onclick="javascript: window.location.href='?action=liff_service';" 
         class="btn btn-block btn-lg btn-outline-danger">
@@ -88,3 +102,4 @@
         กลับไปเลือกสินค้า
     </button>
 </div>
+</form>

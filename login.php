@@ -74,7 +74,7 @@
                         ?>
                         <div class="form-group">
                             <div class="alert alert-danger" role="alert">
-                                ข้อมูลผู้ใช้ และรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
+                                ชื่อผู้ใช้ หรือรหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
                             </div>
                         </div>
                         <?php
@@ -100,12 +100,11 @@
                                         <?php
                                     }else{
                                         ?>
-                                        
-                        <div class="form-group">
-                            <div class="alert alert-danger" role="alert">
-                                รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
-                            </div>
-                        </div>
+                                        <div class="form-group">
+                                            <div class="alert alert-danger" role="alert">
+                                                รหัสผ่านไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
+                                            </div>
+                                        </div>
                                         <?php
                                     }
                                 }
