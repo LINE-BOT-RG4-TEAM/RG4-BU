@@ -99,11 +99,23 @@ function add2cart(product_data)
                         //alert(response);
                         if(response == 'already')
                         {
-                            $.notify("มีรายการนี้อยู่ในตะกร้าแล้ว", "warn", { position:"top" });
+                            //$.notify("มีรายการนี้อยู่ในตะกร้าแล้ว", "warn", { position:"top" });
+                            Swal.fire({
+                              title: 'แจ้งเตือน !',
+                              html: 'มีรายการนี้อยู่ในตะกร้าแล้ว...<br/> ',
+                              type: 'warning',
+                              timer: 5000
+                          });
                         }
                         else if(response == 'inserted')
                         { 
-                          $.notify("เพิ่มรายการเข้าตะกร้าเรียบร้อย", "success", { position:"top" });
+                          //$.notify("เพิ่มรายการเข้าตะกร้าเรียบร้อย", "success", { position:"top" });
+                          Swal.fire({
+                            title: 'สำเร็จ !',
+                            html: 'เพิ่มรายการเข้าตะกร้าเรียบร้อย...<br/> ',
+                            type: 'success',
+                            timer: 5000
+                        });
                         }
                         
                         quantity_service();
@@ -152,11 +164,23 @@ function add2pending(product_data)
                       //alert(response);
                       if(response == 'already')
                       {
-                          $.notify("มีรายการนี้อยู่ในตะกร้าแล้ว", "warn", { position:"top" });
+                          //$.notify("มีรายการนี้อยู่ในตะกร้าแล้ว", "warn", { position:"top" });
+                          Swal.fire({
+                            title: 'แจ้งเตือน !',
+                            html: 'มีรายการนี้อยู่ในตะกร้าแล้ว...<br/> ',
+                            type: 'warning',
+                            timer: 5000
+                        });
                       }
                       else if(response == 'inserted')
                       { 
-                        $.notify("เพิ่มรายการเข้าตะกร้าเรียบร้อย", "success", { position:"top" });
+                        //$.notify("เพิ่มรายการเข้าตะกร้าเรียบร้อย", "success", { position:"top" });
+                        Swal.fire({
+                          title: 'สำเร็จ !',
+                          html: 'เพิ่มรายการเข้าตะกร้าเรียบร้อย...<br/> ',
+                          type: 'success',
+                          timer: 5000
+                      });
                         $.unblockUI();
                         window.location.href = '?action=purchase_detail&edit=true&purchase_id=' + purchase_id
                       }

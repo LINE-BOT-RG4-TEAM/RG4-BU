@@ -48,7 +48,7 @@ function fetch_pending_data(obj)
         {
             appointment_date = '';
         }
-        purchase_status_html = purchase_status_html + '<li  class="list-group-item"><div class="text-center"><label class="font-weight-bold text-primary bg-light py-2 px-5 shadow-sm" style="font-size:22px;border-radius: 20px;"><i class="fas fa-check"></i>บริการที่ '+ num +'</label></div><p style="font-size:20px;"><span class="font-weight-bold text-success"><i class="far fa-handshake"></i> บริการ: </span><span class="pl-1">'+ obj[i].cate_name +'</span></p><p style="font-size:20px;"><span class="font-weight-bold text-secondary"><i class="fas fa-comment-dots"></i> ความต้องการเพิ่มเติม:</span> <br/><span class="pl-4"><textarea class="form-control" rows="5" id="des" name="purchases['+obj[i].purchase_lineitem_id+'][desc]" disabled>' + obj[i].des + '</textarea></span><p class="font-weight-bold" style="font-size:20px;"><i class="far fa-calendar-alt"></i> นัดหมายวันรับบริการ:</p><p><input class="form-control text-center datepicker" style="font-size:22px; type="date" disabled name="purchases['+obj[i].purchase_lineitem_id+'][appointment_date]" value="' + appointment_date +'"/></p></p></li>';
+        purchase_status_html = purchase_status_html + '<li  class="list-group-item"><div class="text-center"><label class="font-weight-bold text-primary bg-light py-2 px-5 shadow-sm" style="font-size:22px;border-radius: 20px;"><i class="fas fa-check"></i>บริการที่ '+ num +'</label></div><p style="font-size:20px;"><span class="font-weight-bold text-success"><i class="far fa-handshake"></i> บริการ: </span><span class="pl-1">'+ obj[i].cate_name +'</span></p><p style="font-size:20px;"><span class="font-weight-bold text-secondary"><i class="fas fa-comment-dots"></i> ความต้องการเพิ่มเติม:</span> <br/><span class="pl-4"><textarea class="form-control" rows="5" id="des" name="purchases['+obj[i].purchase_lineitem_id+'][desc]" disabled>' + obj[i].des + '</textarea></span><p class="font-weight-bold" style="font-size:20px;"><i class="far fa-calendar-alt"></i> นัดหมายวันรับบริการ:</p><p><input class="form-control text-center datepicker" style="font-size:22px;" type="text" disabled required name="purchases['+obj[i].purchase_lineitem_id+'][appointment_date]" value="' + appointment_date +'"/></p></p></li>';
         i++;
     }
     
@@ -64,8 +64,8 @@ function fetch_pending_data(obj)
         $('#edit_btn').val('confirm');
         $('#edit_btn').html('ยืนยัน');
         $('#edit_status').html(' (กำลังแก้ไข)');
-        $("textarea[name='des']").prop( "disabled", false );
-        $("input[name='date_input']").prop( "disabled", false );
+        $("textarea[name*='desc']").prop( "disabled", false );
+        $("input[name*='appointment_date']").prop( "disabled", false );
         $('#edit_btn').attr('type','submit');
     } 
 }
@@ -104,6 +104,7 @@ function fetch_pending()
                     var obj = JSON.parse(response) || {};
                     fetch_pending_data(obj);
                     $('#purchase_id').html(purchase_id);
+                    $('#purchase_id_hid').val(purchase_id);
                     $('#btn_select_more').attr('href','?action=liff_service&purchase_id='+purchase_id);
                   },
         complete :function(){
@@ -119,7 +120,7 @@ $( document).ready(function() {
   });
 
 $('#edit_btn').click(
-                        function()
+                        function(event)
                         {
                             console.log($('#edit_btn').val());
                             if($('#edit_btn').val() == 'edit')
@@ -127,19 +128,21 @@ $('#edit_btn').click(
                                 $('#edit_btn').val('confirm');
                                 $('#edit_btn').html('ยืนยัน');
                                 $('#edit_status').html(' (กำลังแก้ไข)');
-                                $("textarea[name='des']").prop( "disabled", false );
-                                $("input[name='date_input']").prop( "disabled", false );
+                                $("textarea[name*='desc']").prop( "disabled", false );
+                                $("input[name*='appointment_date']").prop( "disabled", false );
+                                $('#edit_btn').attr('type','submit');
                             }
-                            else if($('#edit_btn').val() == 'confirm')
-                            {
-                                //confirm_edit();
-                                /*$('#edit_btn').val('edit');
-                                $('#edit_btn').html('แก้ไข');
-                                $('#edit_status').html('');
-                                $("textarea[name='des']").prop( "disabled", true );
-                                $("input[name='date_input']").prop( "disabled", true );*/
-                                //$("form").submit();
-                            }
+                            // else if($('#edit_btn').val() == 'confirm')
+                            // {
+                            //     //confirm_edit();
+                            //     /*$('#edit_btn').val('edit');
+                            //     $('#edit_btn').html('แก้ไข');
+                            //     $('#edit_status').html('');
+                            //     $("textarea[name='des']").prop( "disabled", true );
+                            //     $("input[name='date_input']").prop( "disabled", true );*/
+                            //     event.preventDefault();
+                            //     $("form").submit();
+                            // }
                             
                         }
                     );

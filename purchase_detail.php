@@ -17,7 +17,8 @@
 </div>
 <div class="row">
   <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
-  <form action="test.php" method="post">
+  <form action="checkout-success.php" method="post">
+    <input type="hidden" id="purchase_id_hid" name="purchase_id"/>
     <ul class="list-group list-group-flush" id="fetch_area">
       <li  class="list-group-item">
         <div class="text-center">
@@ -95,4 +96,4 @@
     </div>
   </form>
   </div>
-</div>
+<!-- </div> -->
