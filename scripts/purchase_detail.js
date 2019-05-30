@@ -119,30 +119,16 @@ $( document).ready(function() {
     fetch_pending();
   });
 
-$('#edit_btn').click(
-                        function(event)
-                        {
-                            console.log($('#edit_btn').val());
-                            if($('#edit_btn').val() == 'edit')
-                            {
-                                $('#edit_btn').val('confirm');
-                                $('#edit_btn').html('ยืนยัน');
-                                $('#edit_status').html(' (กำลังแก้ไข)');
-                                $("textarea[name*='desc']").prop( "disabled", false );
-                                $("input[name*='appointment_date']").prop( "disabled", false );
-                                $('#edit_btn').attr('type','submit');
-                            }
-                            // else if($('#edit_btn').val() == 'confirm')
-                            // {
-                            //     //confirm_edit();
-                            //     /*$('#edit_btn').val('edit');
-                            //     $('#edit_btn').html('แก้ไข');
-                            //     $('#edit_status').html('');
-                            //     $("textarea[name='des']").prop( "disabled", true );
-                            //     $("input[name='date_input']").prop( "disabled", true );*/
-                            //     event.preventDefault();
-                            //     $("form").submit();
-                            // }
-                            
-                        }
-                    );
+$('#edit_btn').click(function(event){
+    console.log($('#edit_btn').val());
+    if($('#edit_btn').val() == 'edit'){
+      event.preventDefault();
+      $('#edit_btn').val('confirm');
+      $('#edit_btn').html('ยืนยัน');
+      $('#edit_status').html(' (กำลังแก้ไข)');
+      $("textarea[name*='desc']").prop( "disabled", false );
+      $("input[name*='appointment_date']").prop( "disabled", false );
+      $('#edit_btn').attr('type','submit');
+    }
+  }
+);

@@ -28,7 +28,7 @@
     $conn->query($set_pending_status_sql);
     $conn->close();
 
-    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า 'นายชีววร เศรษฐกุล' สนใจบริการธุรกิจเสริม จำนวน 8 รายการ พร้อมวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ ท่านสามารถตรวจสอบได้จาก https://nuntio.serveo.net/crm-bu/login.php";
+    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า 'นายชีววร เศรษฐกุล' สนใจบริการธุรกิจเสริม จำนวน 8 รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ ท่านสามารถตรวจสอบได้จาก https://nuntio.serveo.net/crm-bu/login.php";
     notifyToOfficer('HfxxJygBYroHH0Xojwm1j873oHhTICwlzkPFWaN5Bio', $notifyOfficerText);
 ?>
 <html>
@@ -37,13 +37,15 @@
         <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
         <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
         <script>
+            var responseHTML = '<p style="font-size:24px;">ได้รับข้อมูลบริการที่ท่านสนใจพร้อมวันนัดหมายเรียบร้อยแล้ว</p>'+ 
+                            '<p style="font-size:20px">การไฟฟ้าส่วนภูมิภาคจะดำเนินการตรวจสอบข้อมูล และวางแผนในการให้บริการต่อไปค่ะ</p>';
             Swal.fire({
                 title: 'สำเร็จ !',
-                html: 'การไฟฟ้าส่วนภูมิภาค ได้รับข้อมูลบริการที่ท่านสนใจพร้อมวันนัดหมายเรียบร้อยแล้ว...<br/> ',
+                html: ,
                 type: 'success',
                 timer: 5000
             }).then(function(){
-                window.location.href = "customer.php?action=liff_construc";
+                window.location.href = "customer.php?action=liff_service";
             });
         </script>
     </body>
