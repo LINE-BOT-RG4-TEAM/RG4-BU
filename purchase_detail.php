@@ -1,5 +1,4 @@
 <div class="row">
-  <form action="/" id="form">
   <div class="col-sm-12 col-md-12 col-lg-8 offset-xl-1 col-xl-5">
     <div style="height: 20%"></div>
     <div style="height: 40%">
@@ -18,6 +17,7 @@
 </div>
 <div class="row">
   <div class="col-sm-12 col-md-6 col-lg-4 mt-3">
+  <form action="test.php" method="post">
     <ul class="list-group list-group-flush" id="fetch_area">
       <li  class="list-group-item">
         <div class="text-center">
@@ -50,7 +50,6 @@
                 style="font-size:22px;"
                 placeholder="เลือกวันนัดหมาย" 
                 type="date" disabled name="date_input"/>
-
             </p>
         </p>
       </li>
@@ -89,10 +88,11 @@
         </p>
       </li>
     </ul>
-  </div>
-  <div class="col-sm-12 col-md-6 col-lg-4 text-center mt-3">
-    <a href="#" id="btn_select_more" class="btn btn-lg btn-success">เลือกสินค้าเพิ่ม</a>
-    <button type="button"  class="btn btn-lg btn-success" id="edit_btn" value="edit">แก้ไข</button>
-  </div>
+  <!-- </div> -->
+    <div class="col-sm-12 col-md-6 col-lg-4 text-center mt-3">
+      <a href="#" id="btn_select_more" class="btn btn-lg btn-success">เลือกสินค้าเพิ่ม</a>
+      <button type="button"  class="btn btn-lg btn-success" id="edit_btn" value="edit">แก้ไข</button>
+    </div>
   </form>
+  </div>
 </div>

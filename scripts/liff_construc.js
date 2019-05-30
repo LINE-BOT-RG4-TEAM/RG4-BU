@@ -36,6 +36,10 @@ function render_card(obj)
           var button_label = "เพิ่มในตะกร้า";
           var href = "";
           var add2cart = 'onclick="add2cart(' + "'" + obj[i].cate_id + "'" +')"';
+          if('purchase_id' in get_param)
+          {
+            var add2cart = 'onclick="add2pending(' + "'" + obj[i].cate_id + "'" +')"';
+          }
           var text_area = '<div class="form-group mt-3"><textarea class="form-control" rows="5" id="comment' + obj[i].cate_id + '" placeholder="แจ้งรายละเอียดเพิ่ม(ถ้ามี)"></textarea></div>';
         }
         else if (obj[i].is_product == 'N')
@@ -109,6 +113,59 @@ function add2cart(product_data)
         		}	
 			});
   console.log('add complete'+ product_data + 'with comment :' + comment.value);
+}
+
+function add2pending(product_data)
+{
+  var comment = document.getElementById('comment' + product_data).value;
+  var purchase_id = getUrlVars()["purchase_id"];
+  console.log(comment + purchase_id);
+  var formData = new FormData();
+	formData.append('purchase_id',purchase_id);
+	formData.append('comment',comment);
+  formData.append('cate_id',product_data);
+  $.ajax({
+    url: './api/add_2_pending.php',
+    method: 'POST',
+    data: formData,
+    async: true,
+    cache: false,
+    processData: false,
+    contentType: false,
+    beforeSend : function()
+          {
+              //$.blockUI({message : '<h1>กำลังเข้าสู่ระบบ</h1>'});
+              console.log("beforesend.....");
+              $.blockUI({
+                  message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div>',
+                  overlayCSS : { 
+                    backgroundColor: '#ffffff',
+                    opacity: 0.8
+                  },
+                  css : {
+                    opacity: 1,
+                    border: 'none',
+                  }
+                });
+          },
+    success: function(response) {
+                      //alert(response);
+                      if(response == 'already')
+                      {
+                          $.notify("มีรายการนี้อยู่ในตะกร้าแล้ว", "warn", { position:"top" });
+                      }
+                      else if(response == 'inserted')
+                      { 
+                        $.notify("เพิ่มรายการเข้าตะกร้าเรียบร้อย", "success", { position:"top" });
+                        $.unblockUI();
+                        window.location.href = '?action=purchase_detail&edit=true&purchase_id=' + purchase_id
+                      }
+                  },
+      complete :function(){
+          $.unblockUI();
+          
+          }	
+    });
 }
 
 $(function() {

@@ -1,9 +1,9 @@
 function confirm_edit()
 {
-    $.ajax({
+    /* $.ajax({
         url: './api/pending_api.php',
         method: 'POST',
-        data: $("#form").serialize(),
+        data: {form_data : $("#form").serialize()},
         async: true,
             cache: false,
             processData: false,
@@ -31,24 +31,43 @@ function confirm_edit()
         complete :function(){
                     $.unblockUI();
                     }					
-        });
+        });*/
 
 }
 function fetch_pending_data(obj)
 {
     var i = 0;
     var purchase_status_html = "";
+    var json = '';
     while(obj[i])
     {
+        //json = json + '<input type="hidden" name="purchases['+obj[i].purchase_lineitem_id+'][desc]" value="'+obj[i].des+'"/><input type="hidden" name="purchases['+obj[i].purchase_lineitem_id+'][appointment_date]" value="'+obj[i].appointment_date+'"/>';
         var num = i+1;
-        purchase_status_html = purchase_status_html + '<li  class="list-group-item"><div class="text-center"><label class="font-weight-bold text-primary bg-light py-2 px-5 shadow-sm" style="font-size:22px;border-radius: 20px;"><i class="fas fa-check"></i>บริการที่ '+ num +'</label></div><p style="font-size:20px;"><span class="font-weight-bold text-success"><i class="far fa-handshake"></i> บริการ: </span><span class="pl-1">'+ obj[i].cate_name +'</span></p><p style="font-size:20px;"><span class="font-weight-bold text-secondary"><i class="fas fa-comment-dots"></i> ความต้องการเพิ่มเติม:</span> <br/><span class="pl-4"><textarea class="form-control" rows="5" id="des" name = "des" disabled>' + obj[i].des + '</textarea></span><p class="font-weight-bold" style="font-size:20px;"><i class="far fa-calendar-alt"></i> นัดหมายวันรับบริการ:</p><p><input class="form-control text-center datepicker" style="font-size:22px; type="date" disabled name="date_input" value="' + obj[i].appointment_date +'"/></p></p></li>';
+        var appointment_date = obj[i].appointment_date;
+        if(obj[i].appointment_date == null)
+        {
+            appointment_date = '';
+        }
+        purchase_status_html = purchase_status_html + '<li  class="list-group-item"><div class="text-center"><label class="font-weight-bold text-primary bg-light py-2 px-5 shadow-sm" style="font-size:22px;border-radius: 20px;"><i class="fas fa-check"></i>บริการที่ '+ num +'</label></div><p style="font-size:20px;"><span class="font-weight-bold text-success"><i class="far fa-handshake"></i> บริการ: </span><span class="pl-1">'+ obj[i].cate_name +'</span></p><p style="font-size:20px;"><span class="font-weight-bold text-secondary"><i class="fas fa-comment-dots"></i> ความต้องการเพิ่มเติม:</span> <br/><span class="pl-4"><textarea class="form-control" rows="5" id="des" name="purchases['+obj[i].purchase_lineitem_id+'][desc]" disabled>' + obj[i].des + '</textarea></span><p class="font-weight-bold" style="font-size:20px;"><i class="far fa-calendar-alt"></i> นัดหมายวันรับบริการ:</p><p><input class="form-control text-center datepicker" style="font-size:22px; type="date" disabled name="purchases['+obj[i].purchase_lineitem_id+'][appointment_date]" value="' + appointment_date +'"/></p></p></li>';
         i++;
     }
+    
+    //$('#hidden_var').append(json);
     $('#fetch_area').html(purchase_status_html);
     $('.datepicker').datepicker({
         format: 'yyyy-mm-dd',
         startDate: '+5d'
     });
+    var get_param = getUrlVars();
+    if('edit' in get_param)
+    {
+        $('#edit_btn').val('confirm');
+        $('#edit_btn').html('ยืนยัน');
+        $('#edit_status').html(' (กำลังแก้ไข)');
+        $("textarea[name='des']").prop( "disabled", false );
+        $("input[name='date_input']").prop( "disabled", false );
+        $('#edit_btn').attr('type','submit');
+    } 
 }
 function fetch_pending()
 {
@@ -81,7 +100,7 @@ function fetch_pending()
                 },
         success: function(response) 
                   {
-                    console.log(response);
+                    //console.log(response);
                     var obj = JSON.parse(response) || {};
                     fetch_pending_data(obj);
                     $('#purchase_id').html(purchase_id);
@@ -97,12 +116,6 @@ function fetch_pending()
 
 $( document).ready(function() {
     fetch_pending();
-    var obj_test = getUrlVars();
-    console.log(obj_test);
-    if('purchase_id1' in obj_test)
-    {
-        console.log('มีนะ');
-    }
   });
 
 $('#edit_btn').click(
@@ -119,14 +132,14 @@ $('#edit_btn').click(
                             }
                             else if($('#edit_btn').val() == 'confirm')
                             {
-                                confirm_edit();
+                                //confirm_edit();
                                 /*$('#edit_btn').val('edit');
                                 $('#edit_btn').html('แก้ไข');
                                 $('#edit_status').html('');
                                 $("textarea[name='des']").prop( "disabled", true );
                                 $("input[name='date_input']").prop( "disabled", true );*/
+                                //$("form").submit();
                             }
                             
                         }
                     );
-
