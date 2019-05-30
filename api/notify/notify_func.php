@@ -35,9 +35,9 @@
             $json = json_decode($res);
             $status = $json->status;
         
-            var_dump($status);
+            // var_dump($status);
         } catch (Exception $e) {
-            var_dump($e);
+            // var_dump($e);
         }
     }
 
