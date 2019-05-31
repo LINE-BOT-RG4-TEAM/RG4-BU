@@ -92,10 +92,9 @@
                 ";
             } else {
                 $insert_notify_officer = "
-                    INSERT INTO notify_officer(pea_code, access_token)
+                    INSERT INTO notify_officers(pea_code, access_token)
                     VALUES('$pea_code', '$access_token');
                 ";
-                echo "console.log('$insert_notify_officer')";
                 if($conn->query($insert_notify_officer) === TRUE){
                     echo "
                         Swal.fire({
