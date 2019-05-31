@@ -70,7 +70,7 @@
     <body>
             <script>
                 window.onload = function(){
-                    console.log("<?=json_encode($_GET, JSON_UNESCAPED_UNICODE) ?>");
+                    console.log(<?=json_encode($_GET, JSON_UNESCAPED_UNICODE) ?>);
     <?php 
         if($status == 200){
             $access_token = $json['access_token'];
