@@ -17,7 +17,9 @@
         die($_GET['error_description']);
     }
 
-    $pea_code = $_GET['state'];
+    $payload = split(",", $_GET['state']);
+    $pea_code = $payload[0];
+    $employee_code = $payload[1];
     if(isset($_GET['code']) && strlen($_GET['code']) > 0){
         $headers = [
             'Content-Type' => 'application/x-www-form-urlencoded'
@@ -75,11 +77,12 @@
         if($status == 200){
             $access_token = $json->access_token;
             $fetch_exist_access_token = "
-                SELECT pea_code, access_token
+                SELECT employee_code, pea_code, access_token
                 FROM notify_officers
                 WHERE status = 'A' 
                         AND pea_code = '$pea_code'
-                        AND access_token = '$access_token';
+                        AND access_token = '$access_token'
+                        AND employee_code = '$employee_code';
             ";
             $exist_results_set = $conn->query($fetch_exist_access_token);
             
@@ -92,8 +95,8 @@
                 ";
             } else {
                 $insert_notify_officer = "
-                    INSERT INTO notify_officers(pea_code, access_token)
-                    VALUES('$pea_code', '$access_token');
+                    INSERT INTO notify_officers(pea_code, employee_code, access_token)
+                    VALUES('$pea_code', '$employee_code', '$access_token');
                 ";
                 if($conn->query($insert_notify_officer) === TRUE){
                     echo "

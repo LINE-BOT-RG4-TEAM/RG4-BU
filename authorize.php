@@ -11,7 +11,7 @@
     $authorizeURL = "https://notify-bot.line.me/oauth/authorize";
     
     // get pea_code from
-    $pea_code = $_GET['pea_code'];
+    $payload = $_GET['payload'];
 
     $params = array(
         'response_type' => 'code',
@@ -19,7 +19,7 @@
         'redirect_uri' => SITE_URL."callback.php",
         // 'redirect_uri' => SITE_URL."crm-bu/"."callback.php",
         'scope' => 'notify',
-        'state' => $pea_code
+        'state' => $payload
     );
     // Redirect the user to Github's authorization page
     header('Location: ' . $authorizeURL . '?' . http_build_query($params));
