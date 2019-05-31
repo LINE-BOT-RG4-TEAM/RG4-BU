@@ -77,11 +77,10 @@
         if($status == 200){
             $access_token = $json->access_token;
             $fetch_exist_access_token = "
-                SELECT employee_code, pea_code, access_token
+                SELECT employee_code, pea_code
                 FROM notify_officers
                 WHERE status = 'A' 
                         AND pea_code = '$pea_code'
-                        AND access_token = '$access_token'
                         AND employee_code = '$employee_code';
             ";
             $exist_results_set = $conn->query($fetch_exist_access_token);
