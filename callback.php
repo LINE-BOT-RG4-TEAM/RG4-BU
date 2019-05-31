@@ -84,42 +84,38 @@
             $exist_results_set = $conn->query($fetch_exist_access_token);
             
             if(mysqli_num_rows($exist_results_set) > 0){
-                // echo "<script>";
                 echo "
                     Swal.fire({
                         type: 'warn',
                         html: 'ไม่สามารถมีผู้ระบการแจ้งเตือนนี้อยู่แล้วในระบบ'
                     });
                 ";
-                // echo "</script>";
             } else {
                 $insert_notify_officer = "
                     INSERT INTO notify_officer(pea_code, access_token)
                     VALUES('$pea_code', '$access_token');
                 ";
+                echo "console.log('$insert_notify_officer')";
                 if($conn->query($insert_notify_officer) === TRUE){
-                    // echo "<script>";
                     echo "
                         Swal.fire({
                             type: 'success',
                             html: 'ลงทะเบียนเรียบร้อยแล้ว'
                         });
                     ";
-                    // echo "</script>";
                 } else {
                     die('เกิดข้อผิดพลาดกับระบบ กรุณาลองใหม่อีกครั้ง');
                     header("Location: ".siteURL()."authorize.php");
                 }
             }
         } else {
-            // echo "<script>";
             echo "
                 Swal.fire({
                     type:'error',
                     html: 'ท่านทำรายการไม่ถูกต้อง<br/>ระบบจะนำท่านไปยังหน้าลงทะเบียนใหม่อีกครั้ง'
                 });
             ";
-            // echo "</script>";
+            echo "alert('เมื่อระบบส่งค่ากลับด้วยสถานะอื่น');";
             header("Location: ".siteURL()."authorize.php");
             die();
         }
