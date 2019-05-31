@@ -1,5 +1,5 @@
 <?php
-    echo json_encode($_GET, JSON_UNESCAPED_UNICODE);
+    // echo json_encode($_GET, JSON_UNESCAPED_UNICODE);
     function siteURL(){
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $domainName = $_SERVER['HTTP_HOST'].'/';
@@ -69,6 +69,8 @@
     </head>
     <body>
             <script>
+                window.onload = function(){
+                    console.log("<?=json_encode($_GET, JSON_UNESCAPED_UNICODE) ?>");
     <?php 
         if($status == 200){
             $access_token = $json['access_token'];
@@ -122,6 +124,7 @@
             die();
         }
     ?>
+                }
         </script>
     </body>
 </html>
