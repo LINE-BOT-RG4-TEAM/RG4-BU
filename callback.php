@@ -17,7 +17,7 @@
         die($_GET['error_description']);
     }
 
-    $payload = split(",", $_GET['state']);
+    $payload = explode(",", $_GET['state']);
     $pea_code = $payload[0];
     $employee_code = $payload[1];
     if(isset($_GET['code']) && strlen($_GET['code']) > 0){
