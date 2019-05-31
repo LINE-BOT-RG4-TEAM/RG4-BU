@@ -46,7 +46,6 @@
             }
         </style>
 
-
         <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
