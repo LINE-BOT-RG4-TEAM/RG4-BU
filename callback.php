@@ -104,6 +104,11 @@
                             html: 'ลงทะเบียนเรียบร้อยแล้ว'
                         });
                     ";
+                    ?>
+                        document
+                            .getElementsByTagName('body')[0]
+                            .append("<h3>ลงทะเบียนในระบบเรียบร้อยแล้ว...</h3>");
+                    <?php
                 } else {
                     die('เกิดข้อผิดพลาดกับระบบ กรุณาลองใหม่อีกครั้ง');
                     header("Location: ".siteURL()."authorize.php");
