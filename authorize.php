@@ -11,13 +11,12 @@
     $authorizeURL = "https://notify-bot.line.me/oauth/authorize";
     
     // get pea_code from
-    $payload = $_GET['payload'];
+    $payload = base64_decode($_GET['payload']);
 
     $params = array(
         'response_type' => 'code',
         'client_id' => CLIENT_ID,
         'redirect_uri' => SITE_URL."callback.php",
-        // 'redirect_uri' => SITE_URL."crm-bu/"."callback.php",
         'scope' => 'notify',
         'state' => $payload
     );

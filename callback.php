@@ -1,5 +1,4 @@
 <?php
-    // echo json_encode($_GET, JSON_UNESCAPED_UNICODE);
     function siteURL(){
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
         $domainName = $_SERVER['HTTP_HOST'].'/';
@@ -8,6 +7,7 @@
 
     require('./utils/db_connector.php');
     define('TOKEN_URI', 'https://notify-bot.line.me/oauth/token');
+    define('STATUS_URI', 'https://notify-api.line.me/api/status');
     define('REDIRECT_URI', siteURL().'callback.php');
     define('CLIENT_ID', 'YQz4zuElk6zePoTWmsOte7');
     define('CLIENT_SECRET', 'ArleV3DuZ4rpFX0I6v2Utb879SjGAo4s46za8jSaY5g');
@@ -85,6 +85,7 @@
             ";
             $exist_results_set = $conn->query($fetch_exist_access_token);
             
+            // มีผู้ใช้ดังกล่าวอยู่แล้วในระบบ
             if(mysqli_num_rows($exist_results_set) > 0){
                 echo "
                     Swal.fire({
@@ -92,10 +93,37 @@
                         html: 'ไม่สามารถมีผู้ระบการแจ้งเตือนนี้อยู่แล้วในระบบ'
                     });
                 ";
+            // ยังไม่มีในระบบต้องเพิ่ม
             } else {
+                // เรียกชื่อในโปรแกรมไลน์ของผู้ลงทะเบียน
+                $headers = [
+                    "Authorization: Bearer {$access_token}"
+                ];
+
+                $ch = curl_init();
+                curl_setopt($ch, CURLOPT_URL, STATUS_URI);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            
+                $res = curl_exec($ch);
+                curl_close($ch);
+
+                if ($res == false)
+                    throw new Exception(curl_error($ch), curl_errno($ch));
+                
+                $json = json_decode($res);
+                $status = $json->status;
+                if($status !== 200){
+                    die("เกิดข้อผิดพลาดจากระบบ LINE Notify, กรุณาลองใหม่อีกครั้ง");
+                }
+                $target_type = $json->targetType;
+                $target_name = $json->targetName;
+
+                // เพิ่มข้อมูลของผู้ลงทะเบียนไปยังตาราง notify_officers
                 $insert_notify_officer = "
-                    INSERT INTO notify_officers(pea_code, employee_code, access_token)
-                    VALUES('$pea_code', '$employee_code', '$access_token');
+                    INSERT INTO notify_officers(pea_code, employee_code, target_type, target_name, access_token)
+                    VALUES('$pea_code', '$employee_code', '$target_type', '$target_name', '$access_token');
                 ";
                 if($conn->query($insert_notify_officer) === TRUE){
                     echo "

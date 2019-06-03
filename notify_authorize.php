@@ -44,7 +44,7 @@
             <input type="text" class="form-control" id="authorize_uri" name="authorize_uri" placeholder="ลิงก์สำหรับลงทะเบียน" aria-describedby="button-addon" disabled>
             <div class="input-group-append" id="button-addon">
                 <button class="btn btn-primary" type="button" id="create_link">สร้างลิงก์</button>
-                <button class="btn btn-outline-secondary disabled" type="button" id="copy_link">คัดลอกลิงก์</button>
+                <button class="btn btn-outline-secondary" type="button" id="copy_link">คัดลอกลิงก์</button>
             </div>
         </div>
     </div>
