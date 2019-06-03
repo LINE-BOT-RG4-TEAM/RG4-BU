@@ -123,10 +123,17 @@
                 $target_name = $json->target;
 
                 // เพิ่มข้อมูลของผู้ลงทะเบียนไปยังตาราง notify_officers
-                $insert_notify_officer = "
-                    INSERT INTO notify_officers(pea_code, employee_code, target_type, target_name, access_token)
-                    VALUES('$pea_code', '$employee_code', '$target_type', '$target_name', '$access_token');
-                ";
+                if($target_type === "USER"){
+                    $insert_notify_officer = "
+                        INSERT INTO notify_officers(pea_code, employee_code, target_type, target_name, access_token)
+                        VALUES('$pea_code', '$employee_code', '$target_type', '$target_name', '$access_token');
+                    ";
+                }else if($target_type === "GROUP"){
+                    $insert_notify_officer = "
+                        INSERT INTO notify_officers(pea_code, target_type, target_name, access_token)
+                        VALUES('$pea_code', '$target_type', '$target_name', '$access_token');
+                    ";
+                }
                 if($conn->query($insert_notify_officer) === TRUE){
                     echo "
                         Swal.fire({
