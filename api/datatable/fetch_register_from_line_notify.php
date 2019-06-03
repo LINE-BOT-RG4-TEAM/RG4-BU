@@ -4,8 +4,11 @@
   $pea_code = $_GET['pea_code'];
 
   $fetch_list_user = "
-    SELECT 'ต้องเพิ่มฟิลด์ใน table ชื่อ targetType' AS notifyType
-          , 'ต้องเพิ่มฟิลด์ใน table ชื่อ name' AS receviedName
+    SELECT CASE 
+            WHEN target_type = 'USER' THEN 'ผู้ใช้'
+            WHEN target_type = 'GROUP' THEN 'กลุ่ม'
+            ELSE END AS target_type
+          , target_name
           , CONCAT(LEFT(access_token, 20), '...') AS access_token
     FROM notify_officers
     WHERE pea_code = '$pea_code';

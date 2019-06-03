@@ -41,7 +41,7 @@
     <div class="row">
         <div class="mx-5 input-group">
             <input type="hidden" name="pea_code" id="pea_code" value="<?=$_SESSION['pea_code']?>" />
-            <input type="text" class="form-control" id="authorize_uri" name="authorize_uri" placeholder="ลิงก์สำหรับลงทะเบียน" aria-describedby="button-addon" disabled>
+            <input type="text" class="form-control" id="authorize_uri" name="authorize_uri" placeholder="ลิงก์สำหรับลงทะเบียน" aria-describedby="button-addon" readonly>
             <div class="input-group-append" id="button-addon">
                 <button class="btn btn-primary" type="button" id="create_link">สร้างลิงก์</button>
                 <button class="btn btn-outline-secondary" type="button" id="copy_link">คัดลอกลิงก์</button>
@@ -65,10 +65,9 @@
                 <thead>
                     <tr>
                     <!-- <th data-field="INDEX">#</th> -->
-                    <th data-field="notifyType" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-indent"></i> ประเภทผู้รับ</th>
-                    <th data-field="receviedName" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-business-time"></i> ชื่อผู้รับ/ชื่อกลุ่ม</th>
+                    <th data-field="target_type" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-indent"></i> ประเภทผู้รับ</th>
+                    <th data-field="target_name" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-business-time"></i> ชื่อผู้รับ/ชื่อกลุ่ม</th>
                     <th data-field="access_token"><i class="fas fa-user-tie"></i> access token</th>
-                    <!-- <th data-field="QUANTITY_PURCHASE" data-formatter="suffixQuantityTextCenterFormatter" data-sortable="true"><i class="fas fa-receipt"></i> จำนวนครั้ง</th> -->
                     <th data-formatter="operateFormatter"><i class="fas fa-cogs"></i> จัดการ</th>
                     </tr>
                 </thead>
