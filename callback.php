@@ -19,7 +19,7 @@
 
     $payload = explode(",", $_GET['state']);
     $pea_code = $payload[0];
-    $employee_code = $payload[1];
+    // $employee_code = $payload[1];
     if(isset($_GET['code']) && strlen($_GET['code']) > 0){
         $headers = [
             'Content-Type' => 'application/x-www-form-urlencoded'
@@ -75,6 +75,7 @@
                     console.log(<?=json_encode($_GET, JSON_UNESCAPED_UNICODE) ?>);
     <?php 
         if($status == 200){
+            $employee_code = $payload[2];
             $access_token = $json->access_token;
             $fetch_exist_access_token = "
                 SELECT employee_code, pea_code
@@ -117,8 +118,9 @@
                 if($status !== 200){
                     die("เกิดข้อผิดพลาดจากระบบ LINE Notify, กรุณาลองใหม่อีกครั้ง");
                 }
+
                 $target_type = $json->targetType;
-                $target_name = $json->targetName;
+                $target_name = $json->target;
 
                 // เพิ่มข้อมูลของผู้ลงทะเบียนไปยังตาราง notify_officers
                 $insert_notify_officer = "
