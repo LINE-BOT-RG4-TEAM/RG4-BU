@@ -68,7 +68,7 @@
                     <th data-field="target_type" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-indent"></i> ประเภทผู้รับ</th>
                     <th data-field="target_name" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-business-time"></i> ชื่อผู้รับ/ชื่อกลุ่ม</th>
                     <th data-field="access_token"><i class="fas fa-user-tie"></i> access token</th>
-                    <th data-formatter="operateFormatter"><i class="fas fa-cogs"></i> จัดการ</th>
+                    <!-- <th data-formatter="operateFormatter"><i class="fas fa-cogs"></i> จัดการ</th> -->
                     </tr>
                 </thead>
             </table>

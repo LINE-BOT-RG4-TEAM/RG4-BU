@@ -2,6 +2,11 @@
 <?php require('./utils/array_utils.php'); ?>
 <?php require('./utils/db_connector.php'); ?>
 <?php 
+  // check user session
+  if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
+    header("Location: ?action=logout");
+  }
+
   // check 'action' from get params
   if(!array_key_exists("action", $_GET)){
     header("Location: ?action=home");
@@ -12,8 +17,8 @@
 ?>
 <?php require('./partials/header.php'); ?>
 <?php 
-    echo $_SESSION['username']."<br/>";
-    echo $_SESSION['pea_code'];
+    echo (isset($_SESSION['username'])?$_SESSION['username']:"")."<br/>";
+    echo (isset($_SESSION['pea_code'])?$_SESSION['pea_code']:"");
   // filter only php extension
   $filter_file_name = array_filter(scandir("./"), "filter_php_file");
 

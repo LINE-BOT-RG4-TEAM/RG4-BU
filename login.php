@@ -90,7 +90,7 @@
                                                 Swal.fire({
                                                     type: 'success',
                                                     title: 'ยืนยันข้อมูลถูกต้อง',
-                                                    text: 'ระบบกำลังนำท่านเข้าสู่ระบบ...',
+                                                    text: 'กำลังนำท่านเข้าสู่ระบบ...',
                                                     showConfirmButton: false,
                                                     timer: 1500
                                                 }).then(function(){
