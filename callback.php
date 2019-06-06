@@ -18,6 +18,9 @@
     }
 
     $payload = explode(",", $_GET['state']);
+
+    // payload = J00000,user,505397
+    // payload = J00000,group
     $pea_code = $payload[0];
     // $employee_code = $payload[1];
     if(isset($_GET['code']) && strlen($_GET['code']) > 0){
@@ -73,7 +76,7 @@
             <script>
                 window.onload = function(){
     <?php 
-        if($status == 200){
+        if($status == 200) {
             $employee_code = $payload[2];
             $access_token = $json->access_token;
             $fetch_exist_access_token = "
