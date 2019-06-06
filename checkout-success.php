@@ -62,13 +62,11 @@
                     html: responseHTML,
                     type: 'success'
                 }).then(function(){
-                    // send message from liff
                     <?php 
-                        $encode_purchase_id = md5("purchase_id=$purchase_id");
+                        $encode_purchase_id = base64_encode("purchase_id=$purchase_id");
                     ?>
-                    // [ข้อความจาก SmartBiz]\n\nคุณสนใจบริการเลือกบริการเสริมจาก กฟภ. จำนวน <?=$quantity_purchase ?> บริการ ด้วยหมายเลขคำสั่งซื้อ #<?=$purchase_id?> \n\n ทำรายการเมื่อวันที่ <?= date("Y-m-d"); ?> เวลา <?= date("H:i:s") ?>น. \n\n เอกสารยืนยันประกอบการสั่งซื้อ: https://pea-crm.herokuapp.com/ 
-                    var liff_message = "[ข้อความจาก SmartBiz]\n\nเรียน คุณลูกค้า\n\nคุณสนใจบริการเลือกบริการเสริมจาก กฟภ. จำนวน <?=$quantity_purchase ?> บริการ จากหมายเลขคำสั่งซื้อ #<?=$purchase_id?> เมื่อวันที่ <?= date("Y-m-d"); ?> เวลา <?= date("H:i") ?>น. โดยพนักงาน กฟภ. จะดำเนินการวางแผนในการให้บริการ และติดต่อนัดหมายท่านอีกครั้งเพื่อยืนยันวันนัดหมาย \n\n เอกสารยืนยันการสั่งซื้อ: https://pea-crm.herokuapp.com/show_invoice.php?<?= $encode_purchase_id ?> \n\n";
-                    // var liff_message = "[ข้อความจากระบบ SmartBiz]\n\nคุณสนใจบริการเสริมจาก กฟภ. จำนวน <?=$quantity_purchase ?> รายการ จากหมายเลขคำสั่งซื้อ #<?=$purchase_id?> \n\nทำรายการในวันที่ <?= date("Y-m-d"); ?>";
+                    var liff_message = "[ข้อความจาก SmartBiz]\n\nเรียน คุณลูกค้า\n\nคุณสนใจเลือกบริการเสริมจาก กฟภ. จำนวน <?=$quantity_purchase ?> บริการ จากหมายเลขคำสั่งซื้อ #<?=$purchase_id?> เมื่อวันที่ <?= date("Y-m-d"); ?> เวลา <?= date("H:i") ?>น. โดยพนักงาน กฟภ. จะดำเนินการวางแผนในการให้บริการ และติดต่อนัดหมายท่านอีกครั้งเพื่อยืนยันวันนัดหมาย \n\n เอกสารยืนยันการสั่งซื้อ: https://pea-crm.herokuapp.com/show_invoice.php?<?= $encode_purchase_id ?>";
+                    // send message from liff
                     liff.sendMessages([
                         {
                             type: 'text',
