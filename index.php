@@ -4,7 +4,8 @@
 <?php 
   // check user session
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
-    header("Location: ?action=logout");
+    header("Location: login.php");
+    // header("Location: ?action=logout");
   }
 
   // check 'action' from get params
