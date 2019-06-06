@@ -71,7 +71,7 @@
               </a>
             </div>
             <div class="nav flex-column nav-pills rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link <?=$action=='logout'?'active':'' ?>" href="?action=logout">
+              <a class="nav-link <?=$action=='logout'?'active':'' ?>" href="logout.php">
               <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
               </a>
             </div>
