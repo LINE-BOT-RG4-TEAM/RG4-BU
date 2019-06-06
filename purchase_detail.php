@@ -93,6 +93,7 @@
     <div class="col-sm-12 col-md-6 col-lg-4 text-center mt-3">
       <a href="#" id="btn_select_more" class="btn btn-lg btn-success">เลือกสินค้าเพิ่ม</a>
       <button type="button"  class="btn btn-lg btn-success" id="edit_btn" value="edit">แก้ไข</button>
+      <button type="button" class="btn btn-lg btn-success" id="cancle" onclick="reload()" >ยกเลิก</button>
     </div>
   </form>
   </div>

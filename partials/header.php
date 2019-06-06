@@ -36,7 +36,7 @@
       </nav>
     </header>
     <main class="mb-3">
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12 col-md-4 col-lg-3">
             <h5 class="header text-secondary font-weight-bold text-left">เมนูหลัก</h5>
@@ -57,6 +57,10 @@
               <a class="nav-link <?=$action=='search'?'active':'' ?>" href="?action=search">
                 <i class="fas fa-hand-point-up"></i>  
                 ค้นหาลูกค้า
+              </a>
+              <a class="nav-link <?=$action=='po_emp'?'active':'' ?>" href="?action=po_emp">
+              <i class="fas fa-clipboard-list"></i>  
+                ใบสั่งซื้อ
               </a>
             </div>
             <hr class="clearfix"/>

@@ -114,7 +114,13 @@ function check_lineitem()
       success: function(response) 
                 {
                   //alert(response);
-                  $.notify("ลบรายการสำเร็จ", "success", { position:"top" });
+                  //$.notify("ลบรายการสำเร็จ", "success", { position:"top" });
+                  Swal.fire({
+                    title: 'สำเร็จ !',
+                    html: 'ลบรายการจากตะกร้าเรียบร้อย...<br/> ',
+                    type: 'success',
+                    timer: 5000
+                });
                   $("#lineitem_area").html('');
                   check_lineitem()
                   quantity_service()

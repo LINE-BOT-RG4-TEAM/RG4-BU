@@ -3,6 +3,30 @@
     <i class="fas fa-table"></i> ข้อมูลภาพรวมของระบบ
   </h6>
 </div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6 col-lg-12">
+    <div class="card mt-2 mt-2">
+      <div class="card-header">
+				กราฟแสดงจำนวนลูกค้าที่ครบกำหนดบำรุงรักษา
+        <div class="float-right">
+        <div class="dropdown d-inline-block">
+          <button class="btn btn-ยพรทฟพั dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            รูปแบบการแสดงผล
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#">รายเดือน</a>
+            <a class="dropdown-item" href="#">รายไตรมาส</a>
+          </div>
+        </div>
+        </div>
+			</div>
+      <div class="card-body">
+        <canvas id="myChart" style="height:40vh; width:70vw"></canvas>
+      </div>
+    </div>
+</div>
+
 <!-- <div class="dropdown-divider"></div> -->
 <div class="row">
   <div class="col-sm-12 col-md-6 col-lg-4">
