@@ -93,6 +93,13 @@ class FontVariables
 			 */
 
 			'fontdata' => [
+				/* PrintForU */
+				"printable4u" => [
+					'R' => "PrintAble4U Regular.ttf",
+					'B' => "PrintAble4U Bold.ttf",
+					'I' => "PrintAble4U Italic.ttf",
+					'BI' => "PrintAble4U Bold Italic.ttf",
+				],
 				/* Sarabun fonts */
 				"sarabun" => [
 					'R' => "THSarabunNew.ttf",
