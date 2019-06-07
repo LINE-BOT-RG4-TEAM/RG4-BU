@@ -1,7 +1,7 @@
 function po_Formatter(value, row, index) {
     return [
       '<a class="btn btn-sm btn-outline-primary po-detail" href="javascript:void(0)" title="Like">',
-      '<i class="fa fa-eye"></i> รายละเอียดนะ',
+      '<i class="fa fa-eye"></i> รายละเอียด',
       "</a>  "
     ].join("");
   }
@@ -17,6 +17,6 @@ function po_Formatter(value, row, index) {
   window.po_Events = {
     "click .po-detail": function(e, value, row, index) {
       // redirect to page for show ca detail
-      window.location.href = "?action=customer_detail&ca=" + row["purchase_id"];
+      window.location.href = "?action=purchase_detail_emp&purchase_id=" + row["purchase_id"];
     }
   };
