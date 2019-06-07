@@ -1,4 +1,5 @@
 <?php
+    date_default_timezone_set("Asia/Bangkok");
     require("./utils/db_connector.php");
     require("./api/notify/notify_func.php");
     $purchase_list = $_POST['purchases'];
@@ -55,13 +56,17 @@
             window.onload = function(){
                 var responseHTML = '<p style="font-size:24px;">ได้รับข้อมูลบริการที่ท่านสนใจพร้อมวันนัดหมายเรียบร้อยแล้ว</p>'+ 
                                 '<p style="font-size:20px">การไฟฟ้าส่วนภูมิภาคจะดำเนินการตรวจสอบข้อมูล และวางแผนในการให้บริการต่อไปค่ะ</p>';
+                
                 Swal.fire({
                     title: 'สำเร็จ !',
                     html: responseHTML,
                     type: 'success'
                 }).then(function(){
+                    <?php 
+                        $encode_purchase_id = base64_encode("purchase_id=$purchase_id");
+                    ?>
+                    var liff_message = "[ข้อความจาก SmartBiz]\n\nเรียน คุณลูกค้า\n\nคุณสนใจเลือกบริการเสริมจาก กฟภ. จำนวน <?=$quantity_purchase ?> บริการ จากหมายเลขคำสั่งซื้อ #<?=$purchase_id?> เมื่อวันที่ <?= date("Y-m-d"); ?> เวลา <?= date("H:i") ?>น. โดยพนักงาน กฟภ. จะดำเนินการวางแผนในการให้บริการ และติดต่อนัดหมายท่านอีกครั้งเพื่อยืนยันวันนัดหมาย \n\n เอกสารยืนยันการสั่งซื้อ: https://pea-crm.herokuapp.com/show_invoice.php?<?= $encode_purchase_id ?>";
                     // send message from liff
-                    var liff_message = "[ข้อความจาก SmartBiz]\n\nดิฉันสนใจบริการเสริมจาก กฟภ. จำนวน <?=$quantity_purchase ?> รายการ จากหมายเลขคำสั่งซื้อ #<?=$purchase_id?> \n\nทำรายการในวันที่ <?= date("Y-m-d"); ?>";
                     liff.sendMessages([
                         {
                             type: 'text',
