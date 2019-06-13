@@ -1,8 +1,32 @@
 <?php
+    date_default_timezone_set("Asia/Bangkok");
     require("../vendor/autoload.php"); 
     require("../utils/db_connector.php"); 
 
+    if(!isset($_GET['purchase_id']) && !array_key_exists("purchase_id", $_GET)){
+        http_response_code(403);
+        die("ไม่สามารถส่งอีเมล์ เนื่องจากไม่มีเลขที่คำสั่งซื้อ");
+    }
+
     $css_contents = file_get_contents('../assets/css/email-style.css');
+    $purchase_id = $_GET['purchase_id'];
+
+    $fetch_general_data = "
+        SELECT bp.BP
+                , bp.CUSTOMER_NAME
+                , ca.PEA_CODE
+                , ADDRESS
+                , FullName
+                , CA_TEL
+                , CA_EMAIL
+                , purchase.UserID
+        FROM purchase 
+            JOIN ca ON ca.UserID = purchase.UserID
+            JOIN bp ON ca.bp = bp.BP
+        WHERE purchase_id = '$purchase_id';
+    ";
+    $general_results = $conn->query($fetch_general_data);
+    $general_row = $general_results->fetch_assoc();
 
     $html_template = '
   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -78,7 +102,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td class="esd-block-text" align="center">
-                                                                                        <h2>เอกสารหลักฐานการสั่งซื้อบริการเสริมจาก กฟภ.</h2>
+                                                                                        <h3 style="font-weight: bold;">เอกสารหลักฐานการสั่งซื้อบริการเสริมจาก กฟภ.</h3>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -110,7 +134,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <h4><strong>ข้อมูลการสั่งซื้อ</strong></h4>
+                                                                                        <h4 style="font-size:24px;"><strong>ข้อมูลการสั่งซื้อ</strong></h4>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -121,44 +145,73 @@
                                                         </table>
                                                     </td>
                                                 </tr>
+                                                <!-- header section -->
                                                 <tr>
                                                     <td class="esd-structure es-p10t es-p10b es-p20r es-p20l" align="left">
-                                                        <!--[if mso]><table width="560" cellpadding="0"
-                            cellspacing="0"><tr><td width="160" valign="top"><![endif]-->
-                                                        <table cellpadding="0" cellspacing="0" class="es-left" align="left">
+                                                        <table cellpadding="0" cellspacing="0" width="100%">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td width="160" class="es-m-p0r es-m-p20b esd-container-frame" valign="top" align="center">
+                                                                    <td width="560" class="es-m-p0r esd-container-frame" valign="top" align="center">
                                                                         <table cellpadding="0" cellspacing="0" width="100%">
                                                                             <tbody>
                                                                                 <tr>
-                                                                                    <td align="right" class="esd-block-text">
-                                                                                        <p><strong>หมายเลขคำสั่งซื้อ :&nbsp;</strong></p>
+                                                                                    <td align="left" class="esd-block-text">
+                                                                                        <p style="font-size:20px;"><strong>หมายเลขคำสั่งซื้อ :&nbsp;</strong></p>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td align="right" class="esd-block-text">
-                                                                                        <p><strong>ชื่อธุรกิจ :&nbsp;</strong></p>
+                                                                                    <td align="center" style="border: 1px solid black;padding: 2px 2px 2px 2px;" class="esd-block-text">
+                                                                                        <p style="font-size:20px;">'.$purchase_id.'</p>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td align="right" class="esd-block-text">
-                                                                                        <p><strong>ผู้สั่งซื้อ :&nbsp;</strong></p>
+                                                                                    <td align="left" class="esd-block-text">
+                                                                                        <p style="margin-top:15px;font-size:20px;"><strong>ชื่อธุรกิจ :&nbsp;</strong></p>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td align="right" class="esd-block-text">
-                                                                                        <p><strong>ที่อยู่ :&nbsp;</strong></p>
+                                                                                    <td align="center" style="border: 1px solid black;padding: 2px 2px 2px 2px;" class="esd-block-text">
+                                                                                        <p style="font-size:16px;">'.$general_row['CUSTOMER_NAME'].'</p>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td align="right" class="esd-block-text">
-                                                                                        <p><strong>เบอร์โทรศัพท์ :&nbsp;</strong></p>
+                                                                                    <td align="left" class="esd-block-text">
+                                                                                        <p style="margin-top:15px;font-size:20px;"><strong>ผู้สั่งซื้อ :&nbsp;</strong></p>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
-                                                                                    <td align="right" class="esd-block-text">
-                                                                                        <p><strong>อีเมลล์ :&nbsp;</strong></p>
+                                                                                    <td align="center" style="border: 1px solid black;padding: 2px 2px 2px 2px;" class="esd-block-text">
+                                                                                        <p style="font-size:16px;">'.$general_row['FullName'].'</p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="left" class="esd-block-text">
+                                                                                        <p style="margin-top:15px;font-size:20px;"><strong>ที่อยู่ :&nbsp;</strong></p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="center" style="border: 1px solid black;padding: 2px 2px 2px 2px;" class="esd-block-text">
+                                                                                        <p style="font-size:16px;">'.$general_row['ADDRESS'].'</p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="left" class="esd-block-text">
+                                                                                        <p style="margin-top:15px;font-size:20px;"><strong>เบอร์โทรศัพท์ :&nbsp;</strong></p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="center" style="border: 1px solid black;padding: 2px 2px 2px 2px;" class="esd-block-text">
+                                                                                        <p style="font-size:16px;">'.$general_row['CA_TEL'].'</p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="left" class="esd-block-text">
+                                                                                        <p style="margin-top:15px;font-size:20px;"><strong>อีเมล :&nbsp;</strong></p>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td align="center" style="border: 1px solid black;padding: 2px 2px 2px 2px;" class="esd-block-text">
+                                                                                        <p style="font-size:16px;">'.$general_row['CA_EMAIL'].'</p>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -167,52 +220,10 @@
                                                                 </tr>
                                                             </tbody>
                                                         </table>
-                                                        <!--[if mso]></td><td width="10"></td><td width="390" valign="top"><![endif]-->
-                                                        <table cellpadding="0" cellspacing="0" align="right">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td width="390" align="left" class="esd-container-frame" esdev-config="h3">
-                                                                        <table cellpadding="0" cellspacing="0" width="100%">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td align="left" class="esd-block-text">
-                                                                                        <p>PO00009</p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td align="left" class="esd-block-text">
-                                                                                        <p>ที่ทำการองค์การบริหารส่วนตำบลบางรัก</p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td align="left" class="esd-block-text">
-                                                                                        <p>นายการไฟฟ้า ส่วนภูมิภาค</p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td align="left" class="esd-block-text">
-                                                                                        <p>201 ม.4 ต.บางรัก อ.เมืองตรัง จ.ตรัง 92000</p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td align="left" class="esd-block-text">
-                                                                                        <p>0898786733</p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                                <tr>
-                                                                                    <td align="left" class="esd-block-text">
-                                                                                        <p>kanfaifa.suan@gmail.com</p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                        <!--[if mso]></td></tr></table><![endif]-->
                                                     </td>
                                                 </tr>
+
+                                                <!-- end of header section -->
                                                 <tr>
                                                     <td class="esd-structure es-p10t es-p20r es-p20l" align="left">
                                                         <table width="100%" cellspacing="0" cellpadding="0">
@@ -223,7 +234,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <h4><strong>บริการเสริมที่ท่านสนใจ</strong></h4>
+                                                                                        <h4 style="font-size:24px;"><strong>บริการเสริมที่ท่านสนใจ</strong></h4>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -255,30 +266,33 @@
                                                                                                 </tr>
                                                                                             </thead>
                                                                                             <tbody>
-                                                                                                <tr>
-                                                                                                    <td style="text-align: center;">1</td>
-                                                                                                    <td style="text-align: left;">MP3100 - ตรวจสอบหาความร้อนของจุดต่ออุปกรณ์ระบบไฟฟ้า</td>
-                                                                                                    <td style="text-align: center;">2019-09-01</td>
-                                                                                                    <td>อยากทราบข้อมูลเพิ่มเติมมากกว่านี้</td>
-                                                                                                </tr>
-                                                                                                <tr>
-                                                                                                    <td style="text-align: center;">2</td>
-                                                                                                    <td style="text-align: left;">MP3200 - ตรวจสอบระบบและอุปกรณ์ไฟฟ้าสำหรับลูกค้า</td>
-                                                                                                    <td style="text-align: center;">2019-08-04</td>
-                                                                                                    <td>บริการนี้มีค่าใช้จ่ายเท่าไหร่ค่ะ</td>
-                                                                                                </tr>
-                                                                                                <tr>
-                                                                                                    <td style="text-align: center;">3</td>
-                                                                                                    <td style="text-align: left;">MP3400 - งานบริหารจัดการการใช้พลังงานไฟฟ้าอย่างมีประสิทธิภาพ</td>
-                                                                                                    <td style="text-align: center;">2019-05-04</td>
-                                                                                                    <td>ต้องการให้พนักงงานการไฟฟ้า เข้ามาตรวจสอบพื้นที่หน้างานก่อนนะคะ</td>
-                                                                                                </tr>
-                                                                                                <tr>
-                                                                                                    <td style="text-align: center;">4</td>
-                                                                                                    <td style="text-align: left;">MP1101 - สายส่งระบบแรงดัน 115kV (เหนือดิน/ใต้ดิน)</td>
-                                                                                                    <td style="text-align: center;">2019-06-03</td>
-                                                                                                    <td>ไม่มีความประสงค์เพิ่มเติม</td>
-                                                                                                </tr>
+    ';
+
+    $fetch_lineitem = "
+        SELECT lineitem.cate_id
+            , cate_name
+            , CASE
+                WHEN LENGTH(des) = 0 THEN '--ท่านไม่มีความประสงค์เพิ่มเติม--'
+                ELSE des
+            END AS `description`
+            , lineitem.appointment_date
+        FROM purchase_lineitem lineitem
+            JOIN product_category category ON lineitem.cate_id = category.cate_id
+        WHERE lineitem.purchase_id = '$purchase_id';
+    ";
+    $lineitem_results = $conn->query($fetch_lineitem);
+    $i = 1;
+    while($row = $lineitem_results->fetch_assoc()){
+        $html_template .= '
+            <tr>
+                <td style="text-align: center;">'.($i++).'</td>
+                <td style="text-align: left;">'.$row['cate_id'].' - '.$row['cate_name'].'</td>
+                <td style="text-align: center;">'.$row['appointment_date'].'</td>
+                <td>'.$row['description'].'</td>
+            </tr>
+        ';
+    }
+    $html_template .= '
                                                                                             </tbody>
                                                                                         </table>
                                                                                         <p style="line-height: 120%;"><br></p>
@@ -356,28 +370,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <p>Text</p>
-                                                                                    </td>
-                                                                                </tr>
-                                                                            </tbody>
-                                                                        </table>
-                                                                    </td>
-                                                                </tr>
-                                                            </tbody>
-                                                        </table>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="esd-structure es-p20t es-p15b es-p20r es-p20l" align="left">
-                                                        <table width="100%" cellspacing="0" cellpadding="0">
-                                                            <tbody>
-                                                                <tr>
-                                                                    <td class="esd-container-frame" width="560" valign="top" align="center">
-                                                                        <table width="100%" cellspacing="0" cellpadding="0">
-                                                                            <tbody>
-                                                                                <tr>
-                                                                                    <td align="left" class="esd-block-text">
-                                                                                        <p>Text</p>
+                                                                                        <p style="font-weight: bold;color:white;">อีเมล์ส่งเมื่อ '.date('วันที่ Y/m/d เวลา h:i:sa').'</p>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -405,11 +398,10 @@
   
   ';
 
-  $purchase_id = $_GET['purchase_id'];
   $email = new \SendGrid\Mail\Mail(); 
   $email->setFrom("crm_bu@pea.co.th", "Support PEA SmartBiz");
-  $email->setSubject("คำสั่งซื้อ $purchase_id - เอกสารหลักฐานการสั่งซื้อบริการเสริมจาก กฟภ.");
-  $email->addTo("mean.mea2@gmail.com", "Cheevavorn Saitthakool");
+  $email->setSubject("[คำสั่งซื้อ $purchase_id] เอกสารหลักฐานการสั่งซื้อบริการเสริมจาก กฟภ.");
+  $email->addTo($general_row['CA_EMAIL'], $general_row['FullName']);
   $email->addContent(
       "text/html", $html_template
   );
