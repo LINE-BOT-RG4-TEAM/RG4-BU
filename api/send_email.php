@@ -2,6 +2,7 @@
     date_default_timezone_set("Asia/Bangkok");
     require("../vendor/autoload.php"); 
     require("../utils/db_connector.php"); 
+    require("../utils/date_utils.php");
 
     if(!isset($_GET['purchase_id']) && !array_key_exists("purchase_id", $_GET)){
         http_response_code(403);
@@ -50,8 +51,8 @@
             <tr>
                 <td style="text-align: center;">'.($i++).'</td>
                 <td style="text-align: left;">'.$row['cate_id'].' - '.$row['cate_name'].'</td>
-                <td style="text-align: center;">'.$row['appointment_date'].'</td>
-                <td>'.$row['description'].'</td>
+                <td style="text-align: center;">'.dateThai($row['appointment_date']).'</td>
+                <!-- <td>'.$row['description'].'</td> -->
             </tr>
         ';
     }
@@ -67,24 +68,17 @@
     $email->addContent(
         "text/html", $html_template
     );
-    $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+    
+    $sendgrid = new \SendGrid("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");
     try {
         $response = $sendgrid->send($email);
-        echo "<pre>";
-        var_dump($response);
-        echo "</pre>";
 
-        echo "<pre>";
-        print $response->statusCode() . "\n";
-        echo "</pre>";
-
-        echo "<pre>";
-        print_r($response->headers());
-        echo "</pre>";
-
-        echo "<pre>";
-        print_r($response->body());
-        echo "</pre>";
+        $return_json = array(
+            'status' => $response->statusCode(),
+            'message' => $response->headers()[2]
+        );
+        http_response_code($response->statusCode());
+        print_r(json_encode($return_json));
     } catch (Exception $e) {
         echo 'Caught exception: '. $e->getMessage() ."\n";
     }

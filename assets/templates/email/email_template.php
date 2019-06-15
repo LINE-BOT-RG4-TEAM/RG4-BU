@@ -231,7 +231,7 @@
                                                                                                     <th scope="col">ลำดับ</th>
                                                                                                     <th scope="col">บริการ</th>
                                                                                                     <th scope="col" style="width:18%;">วันนัดหมาย</th>
-                                                                                                    <th scope="col">หมายเหตุ</th>
+                                                                                                    <!--<th scope="col">หมายเหตุ</th>-->
                                                                                                 </tr>
                                                                                             </thead>
                                                                                             <tbody>
