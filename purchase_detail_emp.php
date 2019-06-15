@@ -103,7 +103,7 @@
               <h4 class="font-weight-bold">รายการบริการที่เลือก</h4>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6">
-                    <button class="btn btn-primary btn-sm"><i class="fas fa-plus"></i>  เลือกสินค้าเพิ่ม</button>
+                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#select_service_modal"><i class="fas fa-plus"></i>  เลือกสินค้าเพิ่ม</button>
                     <button class="ml-2 btn btn-primary btn-sm" id="btn-confirm"><i class="fas fa-check"></i>  ยืนยัน</button>
             </div>
           </div>
@@ -135,7 +135,8 @@
                 </thead>
               </table>
             </div>
-            <div class='modal fade' tabindex='-1' role='dialog' id='cartModal'>
+            <!-- modal -ของสินค้า -->
+            <div class='modal fade' tabindex='-1' role='dialog' id='PoModal'>
                 <div class='modal-dialog modal-lg' role='document' >
                     <div class='modal-content'>
                         <div class='modal-header'>
@@ -161,12 +162,60 @@
                         </div>
                         <div class='modal-footer'>
                             <button type='button' class='btn btn-primary'  href="#" id="edit" onclick="edit()" value="edit">แก้ไข</button>
-                            <button type='button' class='btn btn-primary'  href="#" id="del">ลบ</button>
+                            <button type='button' class='btn btn-primary'  href="#" id="del" onclick="del()">ลบ</button>
                             <button type='button' class='btn btn-primary' data-dismiss='modal' >ปิด</button>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- จบ MOdal ของสินค้า -->
+            <!-- modal -เลือกสินค้าเพิ่ม -->
+            <div class='modal fade' tabindex='-1' role='dialog' id='select_service_modal'>
+                <div class='modal-dialog modal-lg' role='document' >
+                    <div class='modal-content'>
+                        <div class='modal-header'>
+                            <h5 class='modal-title font-weight-bold' id="head_modal"><i class='fas fa-shopping-cart'></i> เลือกบริการเพิ่ม--ใบสั่งซื้อเลขที่ <span id="select_service_modal_purchase_id"></span></h5>
+                            <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+                                <span aria-hidden='true'>&times;</span>
+                            </button>
+                        </div>
+                        <div class='modal-body'>
+                            <div class="form-group">
+                                <label> หมวดหมู่หลัก</label>
+                                <select class="form-control" id="select_service_cate_name" name = "select_service_cate_name" onclick="fetch_level2(this.value)">
+                                  <option>กรุณาเลือก</option>
+                                  
+                                </select>
+                            </div>
+                            <div class="form-group sub_cate">
+                                <label id="sub_cate_label"> หมวดหมู่ย่อย</label>
+                                <select class="form-control" id="select_sub_cate" name = "select_sub_cate" onchange="fetch_level3(this.value)">
+                                <option>กรุณาเลือก</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label> คำอธิบาย</label>
+                                <textarea class="form-control desc" rows="5" id="select_service_des" name = "select_service_des" disabled></textarea>
+                            </div>
+                            <div class="form-group detail">
+                                <label> รายละเอียดเพิ่มเติม</label>
+                                <textarea class="form-control" rows="5" id="detail_from_cus" name = "detail_from_cus"></textarea>
+                            </div>
+                            <div id="div_date">
+                            <label>วันที่นัดหมาย</label>
+                            <input class="form-control text-center datepicker" 
+                                style="font-size:22px;"
+                                placeholder="เลือกวันนัดหมาย" 
+                                type="date" name="date_input" id="app_date_add2po"/>
+                            </div>
+                        </div>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-primary'  href="#" id="btn_add" onclick="" >เพิ่ม</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- จบ modal -เลือกสินค้าเพิ่ม -->
           </div>
         </div>
       </div>

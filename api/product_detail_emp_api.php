@@ -39,5 +39,66 @@
         echo $purchase_id." ".$cate_id;
         
     }
+    else if ($request == 'product_cate')
+    {
+        $sql = "SELECT * FROM product_category WHERE parent_cate_id IS NULL";
+        $query = mysqli_query($conn,$sql);
+        $obj = mysqli_fetch_all($query,MYSQLI_ASSOC);
+        echo json_encode($obj);
+    }
+    else if($request == 'product_cate_level_2')
+    {
+        $cate_id =$_POST["cate_id"];
+        $sql = "SELECT * FROM product_category WHERE parent_cate_id = '$cate_id'";
+        $query = mysqli_query($conn,$sql);
+        $obj = mysqli_fetch_all($query,MYSQLI_ASSOC);
+        echo json_encode($obj);
+    }
+    else if($request == 'product_cate_level_3')
+    {
+        $cate_id =$_POST["cate_id"];
+        $sql = "SELECT * FROM product_category WHERE parent_cate_id = '$cate_id'";
+        $query = mysqli_query($conn,$sql);
+        $obj = mysqli_fetch_all($query,MYSQLI_ASSOC);
+        echo json_encode($obj);
+    }
+    else if($request == 'fetch_desc')
+    {
+        $cate_id =$_POST["cate_id"];
+        $sql = "SELECT content_body FROM product_category WHERE cate_id = '$cate_id'";
+        $query = mysqli_query($conn,$sql);
+        $obj = mysqli_fetch_all($query,MYSQLI_ASSOC);
+        echo json_encode($obj);
+    }
+    else if($request == 'add2po')
+    {
+        $cate_id =$_POST["cate_id"];
+        $purchase_id = $_POST["purchase_id"];
+        $des = $_POST["des"];
+        $app_date = $_POST["app_date"];
+        //check ก่อนว่ามีรายการอยู่แล้วหรือไม่
+        $sql_check_item = "SELECT * FROM purchase_lineitem WHERE purchase_id = '$purchase_id' AND cate_id = '$cate_id'";
+        $query_check_item_ = mysqli_query($conn,$sql_check_item);
+        $obj_check_item = mysqli_fetch_assoc($query_check_item_);
+        if($obj_check_item <> null)
+        {
+            echo "already";
+        }
+        else if ($obj_check_item == null)
+        {
+            $sql = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des,appointment_date) VALUES('$purchase_id','$cate_id','$des','$app_date')";
+            $query = mysqli_query($conn,$sql);
+            echo "inserted";
+        }
+    }
+    else if($request == 'del')
+    {
+        $purchase_id =$_POST["purchase_id"];
+        $cate_id = $_POST["cate_id"];
+        $sql = "DELETE FROM purchase_lineitem WHERE purchase_id = '$purchase_id' AND cate_id = '$cate_id'";
+        $query = mysqli_query($conn,$sql);
+        echo "Deleted....";
+        
+    }
     
 ?>
