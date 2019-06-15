@@ -1,6 +1,11 @@
 <?php session_start(); ?>
 <?php require('./utils/array_utils.php'); ?>
 <?php require('./utils/db_connector.php'); ?>
+<?php 
+  if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
+    header("Location: index.php?action=home");
+  }
+?>
 <!DOCTYPE html>
 <html lang="th">
   <head>
@@ -65,7 +70,7 @@
                             if($_POST){
                                 $username = $_POST['username_txt'];
                                 $verify_user_sql = "
-                                    SELECT username, password, pea_code
+                                    SELECT username, password, pea_code, role
                                     FROM users
                                     WHERE username = '{$username}' AND status = 'A'
                                 ";
@@ -80,11 +85,13 @@
                         <?php
                                 } else {
                                     $row = $results->fetch_assoc();
-                                    $hash_password = sha1($_POST['password_txt']);
+                                    $hash_password = $_POST['password_txt'];
                                     $input_password = $row['password'];
                                     if($hash_password === $input_password){
                                         $_SESSION['username'] = $row['username'];
                                         $_SESSION['pea_code'] = $row['pea_code'];
+                                        $_SESSION['role'] = $row['role'];
+                                        $_SESSION['loggedin_time'] = time();  
                                         ?>
                                             <script>
                                                 Swal.fire({

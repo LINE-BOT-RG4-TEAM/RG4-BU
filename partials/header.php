@@ -24,13 +24,13 @@
     <header class="pb-3">
       <!-- Image and text -->
       <nav class="shadow-sm navbar navbar-light bg-white">
-        <div class="container">
+        <div class="container-fluid">
           <a class="navbar-brand font-weight-bold" href="#!">
             <img src="./assets/images/pea-logo.png" width="100" class="d-inline-block align-top" alt="">
             บริหารจัดการฐานข้อมูลลูกค้ารายสำคัญและธุรกิจเสริม
           </a>
           <span class="navbar-text">
-            PEA SmartBiz
+            <?="สังกัด: ".$_SESSION['pea_code']." "."สิทธิ: ".$_SESSION['role'] ?>
           </span>
         </div>
       </nav>
@@ -45,34 +45,32 @@
                 <i class="fas fa-home"></i>
                 หน้าแรก
               </a>
-              <!-- <div class="dropdown-divider"></div> -->
-              <!-- <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="#v-pills-profile" role="tab" aria-controls="v-pills-profile" aria-selected="false">
-                <i class="fas fa-star"></i>
-                ข้อมูลลูกค้า High Value
-              </a>
-              <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="#v-pills-messages" role="tab" aria-controls="v-pills-messages" aria-selected="false">
-                <i class="fab fa-searchengin"></i>
-                ค้นหาลูกค้าอัตโนมัติ
-              </a> -->
-              <a class="nav-link <?=$action=='search'?'active':'' ?>" href="?action=search">
-                <i class="fas fa-hand-point-up"></i>  
-                ค้นหาลูกค้า
-              </a>
-              <a class="nav-link <?=$action=='po_emp'?'active':'' ?>" href="?action=po_emp">
-              <i class="fas fa-clipboard-list"></i>  
-                ใบสั่งซื้อ
-              </a>
-            </div>
-            <hr class="clearfix"/>
-            <h5 class="header text-secondary font-weight-bold"><i class="fas fa-cogs"></i> จัดการ</h5>
-            <div class="nav flex-column nav-pills rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-              <a class="nav-link <?=$action=='notify_authorize'?'active':'' ?>" href="?action=notify_authorize">
-                <i class="far fa-bell"></i> บริการรับข้อความแจ้งเตือน
-              </a>
-            </div>
-            <div class="nav flex-column nav-pills rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+              <?php 
+                $role = $_SESSION['role'];
+                $fetch_menu_by_role = "
+                    SELECT menu_role.menu_action
+                    , menu.menu_description
+                    , menu.menu_icon
+                  FROM menu_role 
+                    JOIN menu ON menu_role.`menu_action` = menu.`menu_action`
+                  WHERE menu_role.`role` = '{$role}' AND menu_role.`is_active` = 'A'
+                  ORDER BY `order`
+                ";
+                $menu_object = $conn->query($fetch_menu_by_role);
+                while($menu = $menu_object->fetch_assoc()){
+              ?>
+                <a class="nav-link <?=$action==$menu['menu_action']?'active':'' ?>" href="?action=<?=$menu['menu_action']?>">
+                  <i class="<?=$menu['menu_icon']?>"></i>
+                  <?=$menu['menu_description'] ?>
+                </a>
+              <?php
+                }
+              ?>
+
               <a class="nav-link <?=$action=='logout'?'active':'' ?>" href="logout.php">
-              <i class="fas fa-sign-out-alt"></i> ออกจากระบบ
+                <i class="fas fa-sign-out-alt"></i> 
+                ออกจากระบบ
               </a>
             </div>
           </div>

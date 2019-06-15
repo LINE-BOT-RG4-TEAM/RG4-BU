@@ -5,7 +5,14 @@
   // check user session
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
     header("Location: login.php");
-    // header("Location: ?action=logout");
+  }
+  
+  // check timeout session
+  $login_session_duration = 60 * 5;
+  $current_time = time();
+  $loggedint_time = $_SESSION["loggedin_time"];
+  if( $current_time - $loggedint_time > $login_session_duration){
+    header("Location: logout.php");
   }
 
   // check 'action' from get params
@@ -18,8 +25,8 @@
 ?>
 <?php require('./partials/header.php'); ?>
 <?php 
-    echo (isset($_SESSION['username'])?$_SESSION['username']:"")."<br/>";
-    echo (isset($_SESSION['pea_code'])?$_SESSION['pea_code']:"");
+    // echo (isset($_SESSION['username'])?$_SESSION['username']:"")."<br/>";
+    // echo (isset($_SESSION['pea_code'])?$_SESSION['pea_code']:"");
   // filter only php extension
   $filter_file_name = array_filter(scandir("./"), "filter_php_file");
 
