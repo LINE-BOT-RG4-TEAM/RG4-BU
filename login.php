@@ -2,7 +2,7 @@
 <?php require('./utils/array_utils.php'); ?>
 <?php require('./utils/db_connector.php'); ?>
 <?php 
-  if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
+  if(!empty($_SESSION['username'])) {
     header("Location: index.php?action=home");
   }
 ?>

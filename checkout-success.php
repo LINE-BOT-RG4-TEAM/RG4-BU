@@ -29,6 +29,10 @@
     }
     $conn->close();
 
+    /* TODO
+     * แก้ไขให้ไปแจ้งเตือนทุกคนตามสังกัดไฟฟ้าดังกล่าว
+     * และแจ้งเตือน กบล. ที่เขต
+     */
     $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า 'นายชีววร เศรษฐกุล' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ ท่านสามารถตรวจสอบได้จาก https://nuntio.serveo.net/crm-bu/login.php";
     notifyToOfficer('HfxxJygBYroHH0Xojwm1j873oHhTICwlzkPFWaN5Bio', $notifyOfficerText);
 ?>
@@ -49,8 +53,6 @@
 
         <script src="https://d.line-scdn.net/liff/1.0/sdk.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
-        <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
         <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
         <script>
             window.onload = function(){
@@ -66,6 +68,7 @@
                         $encode_purchase_id = base64_encode("purchase_id=$purchase_id");
                     ?>
                     var liff_message = "[ข้อความจาก SmartBiz]\n\nเรียน คุณลูกค้า\n\nคุณสนใจเลือกบริการเสริมจาก กฟภ. จำนวน <?=$quantity_purchase ?> บริการ จากหมายเลขคำสั่งซื้อ #<?=$purchase_id?> เมื่อวันที่ <?= date("Y-m-d"); ?> เวลา <?= date("H:i") ?>น. โดยพนักงาน กฟภ. จะดำเนินการวางแผนในการให้บริการ และติดต่อนัดหมายท่านอีกครั้งเพื่อยืนยันวันนัดหมาย \n\n เอกสารยืนยันการสั่งซื้อ: https://pea-crm.herokuapp.com/show_invoice.php?<?= $encode_purchase_id ?>";
+                    
                     // send message from liff
                     liff.sendMessages([
                         {

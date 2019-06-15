@@ -11,22 +11,22 @@
   $login_session_duration = 60 * 5;
   $current_time = time();
   $loggedint_time = $_SESSION["loggedin_time"];
-  if( $current_time - $loggedint_time > $login_session_duration){
+  if($current_time - $loggedint_time > $login_session_duration){
     header("Location: logout.php");
+    exit(0);
   }
 
   // check 'action' from get params
   if(!array_key_exists("action", $_GET)){
-    header("Location: ?action=home");
+    header("Location: index.php?action=home");
     exit(0);
   }
+
   // get action value from action key in $_GET
   $action = $_GET['action'];
 ?>
 <?php require('./partials/header.php'); ?>
 <?php 
-    // echo (isset($_SESSION['username'])?$_SESSION['username']:"")."<br/>";
-    // echo (isset($_SESSION['pea_code'])?$_SESSION['pea_code']:"");
   // filter only php extension
   $filter_file_name = array_filter(scandir("./"), "filter_php_file");
 
