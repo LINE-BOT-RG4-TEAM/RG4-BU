@@ -22,6 +22,9 @@
     exit(0);
   }
 
+  // update time session
+  $_SESSION["loggedin_time"] = time();
+
   // get action value from action key in $_GET
   $action = $_GET['action'];
 ?>
