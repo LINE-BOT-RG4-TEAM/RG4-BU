@@ -23,6 +23,7 @@ home_data();
 window.onload = function () {graph_month();}
 function graph_quater()
 {
+    $('#month_name').text("รายไตรมาส");
     $('#myChart').remove();
     $('#chartarea').append('<canvas id="myChart" style="height:40vh; width:70vw"></canvas>');
     var ctx = document.getElementById('myChart');
@@ -80,6 +81,9 @@ function graph_quater()
                                                                         },
                                                                 options: {
                                                                             responsive: false,
+                                                                            legend: {
+                                                                                display: false
+                                                                            },
                                                                             scales: {
                                                                                 yAxes: [{
                                                                                     ticks: {
@@ -93,6 +97,7 @@ function graph_quater()
 
 function graph_month()
 {
+    $('#month_name').text("รายเดือน");
     $('#myChart').remove();
     $('#chartarea').append('<canvas id="myChart" style="height:40vh; width:70vw"></canvas>');
     var ctx = document.getElementById('myChart');
@@ -161,6 +166,9 @@ function graph_month()
                                                                                     }
                                                                                 }]
                                                                             },
+                                                                            legend: {
+                                                                                display: false
+                                                                            },
                                                                             'onClick' : function (evt, item) {
                                                                                 graph_monthly(item[0]['_model'].label);
                                                                                 console.log('legd item', item);
@@ -173,6 +181,7 @@ function graph_month()
 function graph_monthly(month_name)
 {
     //alert("monthlyyy");
+    $('#month_name').text("เดือน " + month_name);
     $('#myChart').remove();
     $('#chartarea').append('<canvas id="myChart" style="height:40vh; width:70vw"></canvas>');
     var ctx = document.getElementById('myChart');
@@ -245,6 +254,9 @@ function graph_monthly(month_name)
                                                                                         beginAtZero: true
                                                                                     }
                                                                                 }]
+                                                                            },
+                                                                            legend: {
+                                                                                display: false
                                                                             }
                                                                         }
                                                                 });

@@ -8,7 +8,7 @@
   <div class="col-sm-12 col-md-6 col-lg-12">
     <div class="card mt-2 mt-2">
       <div class="card-header">
-				กราฟแสดงจำนวนลูกค้าที่ครบกำหนดบำรุงรักษา
+				กราฟแสดงจำนวนลูกค้าที่ครบกำหนดบำรุงรักษา  <span id="month_name"></span>
         <div class="float-right">
         <div class="dropdown d-inline-block">
           <button class="btn btn-ยพรทฟพั dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
