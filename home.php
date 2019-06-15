@@ -26,6 +26,7 @@
       </div>
     </div>
 </div>
+</div>
 
 <!-- <div class="dropdown-divider"></div> -->
 <div class="row">
