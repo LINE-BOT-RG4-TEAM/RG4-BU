@@ -30,3 +30,17 @@ function setCustomerDetail(detail_ca) {
   $("[id^=KAM_TYPE]").val(detail_ca.KAM_TYPE);
   $("[id^=kamr]").val(detail_ca.KAMR);
 }
+
+function dateThaiFormatter(value, row) {
+  var now = new Date(Date.parse(value));
+
+  var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม",
+            "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน",
+            "ตุลาคม","พฤศจิกายน","ธันวาคม"); 
+
+  var str_thai = now.getDate()+ " " 
+          + thmonth[now.getMonth()]+ " " + (0+now.getFullYear()+543);
+
+  console.log(str_thai);
+  return str_thai;
+}

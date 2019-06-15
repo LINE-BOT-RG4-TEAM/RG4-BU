@@ -29,15 +29,10 @@
             $res = curl_exec($ch);
             curl_close($ch);
         
-            if ($res == false)
-                throw new Exception(curl_error($ch), curl_errno($ch));
-        
             $json = json_decode($res);
-            $status = $json->status;
-        
-            // var_dump($status);
+            http_response_code($json->status);
         } catch (Exception $e) {
-            // var_dump($e);
+            http_response_code(404);
         }
     }
 
