@@ -15,13 +15,13 @@
             รูปแบบการแสดงผล
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">รายเดือน</a>
-            <a class="dropdown-item" href="#">รายไตรมาส</a>
+            <a class="dropdown-item" href="#" onclick="graph_month()">รายเดือน</a>
+            <a class="dropdown-item" href="#" onclick="graph_quater()">รายไตรมาส</a>
           </div>
         </div>
         </div>
 			</div>
-      <div class="card-body">
+      <div class="card-body" id="chartarea">
         <canvas id="myChart" style="height:40vh; width:70vw"></canvas>
       </div>
     </div>
