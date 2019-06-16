@@ -27,7 +27,6 @@ function purchase_status()
 {
     console.log("js run");
     var UserID = document.getElementById('userId').value;
-    // alert(UserID);
     var formData = new FormData();
     formData.append('userid',UserID);
     $.ajax({
@@ -69,4 +68,5 @@ function purchase_status()
 
 $( document ).ready(function() {
   purchase_status();
+  alert('from purchase_status: '+document.getElementById("userId").value);
 });
