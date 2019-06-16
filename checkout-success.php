@@ -37,6 +37,7 @@
         SELECT purchase.purchase_id
             , purchase.UserID
             , ca.PEA_CODE
+            , office.PEA_NAME
             , ca.FullName
             , notify_officers.access_token
             , notify_officers.employee_code
@@ -44,12 +45,14 @@
         FROM purchase
             JOIN ca ON purchase.UserID = ca.UserID
             JOIN notify_officers ON ca.PEA_CODE = notify_officers.PEA_CODE
+            JOIN office ON ca.PEA_CODE = office.PEA_CODE
         WHERE purchase.purchase_id = '{$purchase_id}';
     ";
     $received_result = $conn->query($fetch_notify_received_person);
     $person = $received_result->fetch_assoc();
     $pea_code = $person["PEA_CODE"];
-    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า '".$person["FullName"]."' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ";
+    $pea_name = $person["PEA_NAME"];
+    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า '".$person["FullName"]."' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ ในสังกัด '{$pea_name}'";
     notifyToOfficer($person["access_token"], $notifyOfficerText);
     while($person = $received_result->fetch_assoc()){
         notifyToOfficer($person["access_token"], $notifyOfficerText);

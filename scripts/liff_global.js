@@ -35,7 +35,7 @@ function initializeUserId(data) {
   // document.getElementById("roomidfield").textContent = data.context.roomId;
   // document.getElementById("groupidfield").textContent = data.context.groupId;
   quantity_service();
-  alert('from onload');
+  purchase_status();
 }
 
 function render_lineitem(obj)
