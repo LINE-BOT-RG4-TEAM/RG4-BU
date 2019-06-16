@@ -37,6 +37,7 @@
         SELECT purchase.purchase_id
             , purchase.UserID
             , ca.PEA_CODE
+            , ca.FullName
             , notify_officers.access_token
             , notify_officers.employee_code
             , notify_officers.target_type
@@ -46,10 +47,11 @@
         WHERE purchase.purchase_id = '{$purchase_id}';
     ";
     $received_result = $conn->query($fetch_notify_received_person);
-    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า 'นายชีววร เศรษฐกุล' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ";
-    $pea_code = "";
+    $person = $received_result->fetch_assoc();
+    $pea_code = $person["PEA_CODE"];
+    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า '".$person["FullName"]."' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ";
+    notifyToOfficer($person["access_token"], $notifyOfficerText);
     while($person = $received_result->fetch_assoc()){
-        $pea_code = $person["pea_code"];
         notifyToOfficer($person["access_token"], $notifyOfficerText);
     }
     mysqli_free_result($received_result);
@@ -60,7 +62,7 @@
             , employee_code
             , target_type
         FROM notify_officers
-        WHERE notify_officers.pea_code = CONCAT(LEFT('{$pea_code}',1), '00000');
+        WHERE notify_officers.pea_code = CONCAT(LEFT('$pea_code',1), '00000');
     ";
     $received_result = $conn->query($fetch_district_notify_recevied_person);
     while($person = $received_result->fetch_assoc()){
