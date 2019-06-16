@@ -1,3 +1,6 @@
+window.onload = function(){
+  alert(document.getElementById("userId").value);
+};
 
 function render_purchase_status(obj)
 {
@@ -28,7 +31,7 @@ function purchase_status()
 {
     console.log("js run");
     var UserID = document.getElementById('userId').value;
-    alert(UserID);
+    // alert(UserID);
     var formData = new FormData();
     formData.append('userid',UserID);
     $.ajax({
@@ -59,7 +62,7 @@ function purchase_status()
               {
                 console.log("success");
                 var obj = JSON.parse(response) || {};
-                alert(response);
+                // alert(response);
                 render_purchase_status(obj);
               },
     complete :function(){
