@@ -10,22 +10,23 @@
     foreach($purchase_list as $purchase_line_item_id => $data){
         $desc = trim($data['desc']);
         $appointment_date = trim($data['appointment_date']);
-        $update_lineitem_and_status .= "
+        $update_lineitem_and_status = "
             UPDATE purchase_lineitem
             SET `des` = '$desc', `appointment_date` = '$appointment_date'
             WHERE `purchase_lineitem_id` = '$purchase_line_item_id';
         ";
+        $conn->query($update_lineitem_and_status);
     }
 
     // add query for update status to Pending (P)
-    $update_lineitem_and_status .= "
+    $update_purchase_status = "
         UPDATE purchase 
         SET PURCHASE_STATUS = 'P'
-        WHERE PURCHASE_ID = '$purchase_id';
+        WHERE PURCHASE_ID = '{$purchase_id}';
     ";
 
-    if (!$conn->multi_query($update_lineitem_and_status)) {
-        die("can't update line item appointment");
+    if (!$conn->query($update_purchase_status)) {
+        die("can't update purchase status");
     }
 
     /* 
@@ -45,7 +46,6 @@
         WHERE purchase.purchase_id = '{$purchase_id}';
     ";
     $received_result = $conn->query($fetch_notify_received_person);
-    die(var_dump($received_result));
     $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า 'นายชีววร เศรษฐกุล' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ";
     $pea_code = "";
     while($person = $received_result->fetch_assoc()){
