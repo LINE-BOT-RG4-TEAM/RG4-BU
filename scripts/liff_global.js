@@ -8,14 +8,14 @@ window.onload = function(e) {
       //alert(JSON.stringify(profile));
     });
   });
-  var input = document.createElement("input");
-  input.setAttribute("type", "hidden");
-  input.setAttribute("name", "userId");
-  input.setAttribute("id", "userId");
-  input.setAttribute("value", data.context.userId);
+  // var input = document.createElement("input");
+  // input.setAttribute("type", "hidden");
+  // input.setAttribute("name", "userId");
+  // input.setAttribute("id", "userId");
+  // input.setAttribute("value", data.context.userId);
   // input.setAttribute("value", 'Uaef7a8e9eedce02d663bf83aec1dd910555');
-  document.getElementsByTagName("body")[0].append(input);
-  quantity_service();
+  // document.getElementsByTagName("body")[0].append(input);
+  // quantity_service();
   //purchase_status();
 };
 
@@ -34,6 +34,7 @@ function initializeUserId(data) {
   // document.getElementById("utouidfield").textContent = data.context.utouId;
   // document.getElementById("roomidfield").textContent = data.context.roomId;
   // document.getElementById("groupidfield").textContent = data.context.groupId;
+  alert(document.getElementById("userId").value);
   quantity_service();
 }
 
