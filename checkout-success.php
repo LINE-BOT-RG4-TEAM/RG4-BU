@@ -29,12 +29,42 @@
     }
     $conn->close();
 
-    /* TODO
-     * แก้ไขให้ไปแจ้งเตือนทุกคนตามสังกัดไฟฟ้าดังกล่าว
+    /* 
+     * แจ้งเตือนทุกคนตามสังกัดไฟฟ้าดังกล่าว
      * และแจ้งเตือน กบล. ที่เขต
      */
-    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า 'นายชีววร เศรษฐกุล' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ ท่านสามารถตรวจสอบได้จาก https://nuntio.serveo.net/crm-bu/login.php";
-    notifyToOfficer('HfxxJygBYroHH0Xojwm1j873oHhTICwlzkPFWaN5Bio', $notifyOfficerText);
+    $fetch_notify_received_person = "
+        SELECT purchase.purchase_id
+            , purchase.UserID
+            , ca.PEA_CODE
+            , notify_officers.access_token
+            , notify_officers.employee_code
+            , notify_officers.target_type
+        FROM purchase
+            JOIN ca ON purchase.UserID = ca.UserID
+            JOIN notify_officers ON ca.PEA_CODE = notify_officers.PEA_CODE
+        WHERE purchase.purchase_id = '{$purchase_id}';
+    ";
+    $received_result = $conn->query($fetch_notify_received_person);
+    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า 'นายชีววร เศรษฐกุล' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ";
+    $pea_code = "";
+    while($person = $received_result->fetch_assoc()){
+        $pea_code = $person["pea_code"];
+        notifyToOfficer($person["access_token"], $notifyOfficerText);
+    }
+
+    $fetch_district_notify_recevied_person = "
+        SELECT pea_code
+            , access_token
+            , employee_code
+            , target_type
+        FROM notify_officers
+        WHERE notify_officers.pea_code = CONCAT(LEFT('{$pea_code}',1), '00000');
+    ";
+    $received_result = $conn->query($fetch_district_notify_recevied_person);
+    while($person = $received_result->fetch_assoc()){
+        notifyToOfficer($person["access_token"], $notifyOfficerText);
+    }
 ?>
 <!DOCTYPE html>
 <html lang="th">
