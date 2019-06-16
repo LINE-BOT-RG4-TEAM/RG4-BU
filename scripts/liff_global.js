@@ -34,9 +34,8 @@ function initializeUserId(data) {
   // document.getElementById("utouidfield").textContent = data.context.utouId;
   // document.getElementById("roomidfield").textContent = data.context.roomId;
   // document.getElementById("groupidfield").textContent = data.context.groupId;
-  alert('from liff global: '+document.getElementById("userId").value);
   quantity_service();
-  purchase_status();
+  alert('from onload');
 }
 
 function render_lineitem(obj)
