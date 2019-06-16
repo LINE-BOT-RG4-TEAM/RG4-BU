@@ -27,7 +27,6 @@
     if (!$conn->multi_query($update_lineitem_and_status)) {
         die("can't update line item appointment");
     }
-    $conn->close();
 
     /* 
      * แจ้งเตือนทุกคนตามสังกัดไฟฟ้าดังกล่าว
@@ -52,6 +51,7 @@
         $pea_code = $person["pea_code"];
         notifyToOfficer($person["access_token"], $notifyOfficerText);
     }
+    mysqli_free_result($received_result);
 
     $fetch_district_notify_recevied_person = "
         SELECT pea_code
