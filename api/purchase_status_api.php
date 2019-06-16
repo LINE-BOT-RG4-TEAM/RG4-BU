@@ -10,11 +10,6 @@
     $query_purchase_app = mysqli_query($conn,$sql_purchase_app);
     $obj_app = mysqli_fetch_all($query_purchase_app,MYSQLI_ASSOC);
 
-    
-
     $data = array("pending"=>$obj_pre,'approve'=>$obj_app);
-    error_log(json_encode($data));
     echo json_encode($data);
-
-
 ?>

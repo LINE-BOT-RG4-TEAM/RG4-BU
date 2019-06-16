@@ -31,40 +31,39 @@ function purchase_status()
     var formData = new FormData();
     formData.append('userid',UserID);
     $.ajax({
-            url: './api/purchase_status_api.php',
-            method: 'POST',
-            data: formData,
-            async: true,
-		    cache: false,
-		    processData: false,
-            contentType: false,
-            beforeSend : function()
-            {
-                //$.blockUI({message : '<h1>กำลังเข้าสู่ระบบ</h1>'});
-                console.log("beforesend.....");
-                $.blockUI({
-                    message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div>',
-                    overlayCSS : { 
-                      backgroundColor: '#ffffff',
-                      opacity: 0.8
-                    },
-                    css : {
-                      opacity: 1,
-                      border: 'none',
-                    }
-                  });
-            },
-    success: function(response) 
-              {
-                console.log("success");
-                var obj = JSON.parse(response) || {};
-                // alert(response);
-                render_purchase_status(obj);
-              },
-    complete :function(){
+      url: './api/purchase_status_api.php',
+      method: 'POST',
+      data: formData,
+      async: true,
+      cache: false,
+      processData: false,
+      contentType: false,
+      beforeSend : function(){
+        //$.blockUI({message : '<h1>กำลังเข้าสู่ระบบ</h1>'});
+        console.log("beforesend.....");
+        $.blockUI({
+          message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div>',
+          overlayCSS : { 
+            backgroundColor: '#ffffff',
+            opacity: 0.8
+          },
+          css : {
+            opacity: 1,
+            border: 'none',
+          }
+        });
+      },
+      success: function(response) {
+        console.log("success");
+        alert('success', response);
+        var obj = JSON.parse(response) || {};
+        render_purchase_status(obj);
+      },
+      complete :function(){
         console.log("complete");
-                $.unblockUI();
-                }					
+        alert('complete');
+        $.unblockUI();
+      }					
     });
 }
 
