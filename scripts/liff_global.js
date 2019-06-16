@@ -36,6 +36,7 @@ function initializeUserId(data) {
   // document.getElementById("groupidfield").textContent = data.context.groupId;
   alert('from liff global: '+document.getElementById("userId").value);
   quantity_service();
+  purchase_status();
 }
 
 function render_lineitem(obj)

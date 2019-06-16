@@ -66,7 +66,7 @@ function purchase_status()
     });
 }
 
-$( document ).ready(function() {
-  purchase_status();
-  alert('from purchase_status: '+document.getElementById("userId").value);
-});
+// $( document ).ready(function() {
+//   purchase_status();
+//   alert('from purchase_status: '+document.getElementById("userId").value);
+// });
