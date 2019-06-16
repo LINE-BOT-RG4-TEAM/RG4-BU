@@ -54,13 +54,11 @@ function purchase_status()
       },
       success: function(response) {
         console.log("success");
-        alert('success', response);
         var obj = JSON.parse(response) || {};
         render_purchase_status(obj);
       },
       complete :function(){
         console.log("complete");
-        alert('complete');
         $.unblockUI();
       }					
     });
