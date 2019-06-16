@@ -45,6 +45,7 @@
         WHERE purchase.purchase_id = '{$purchase_id}';
     ";
     $received_result = $conn->query($fetch_notify_received_person);
+    die(var_dump($received_result));
     $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า 'นายชีววร เศรษฐกุล' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ\n\nรายละเอียดบริการต่างๆ";
     $pea_code = "";
     while($person = $received_result->fetch_assoc()){
