@@ -29,8 +29,8 @@
         </div>
     </div>
 <style>
-    HTML  CSS Result
-    EDIT ON
+    /* HTML  CSS Result
+    EDIT ON */
     body {
             background-color: #EDEDED;
         }

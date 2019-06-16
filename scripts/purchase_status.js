@@ -28,6 +28,7 @@ function purchase_status()
 {
     console.log("js run");
     var UserID = document.getElementById('userId').value;
+    alert(UserID);
     var formData = new FormData();
     formData.append('userid',UserID);
     $.ajax({
@@ -58,6 +59,7 @@ function purchase_status()
               {
                 console.log("success");
                 var obj = JSON.parse(response) || {};
+                alert(response);
                 render_purchase_status(obj);
               },
     complete :function(){
