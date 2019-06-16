@@ -13,7 +13,7 @@
     
 
     $data = array("pending"=>$obj_pre,'approve'=>$obj_app);
-
+    error_log(json_encode($data));
     echo json_encode($data);
 
 

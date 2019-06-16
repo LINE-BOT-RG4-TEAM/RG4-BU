@@ -1,7 +1,3 @@
-window.onload = function(){
-  alert(document.getElementById("userId").value);
-};
-
 function render_purchase_status(obj)
 {
     console.log(obj.pending);
