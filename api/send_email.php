@@ -69,7 +69,7 @@
         "text/html", $html_template
     );
     
-    $sendgrid = new \SendGrid("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");
+    $sendgrid = new \SendGrid(getenv("SENDGRID_API_KEY"));
     try {
         $response = $sendgrid->send($email);
 
