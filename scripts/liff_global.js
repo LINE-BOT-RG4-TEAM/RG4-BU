@@ -5,22 +5,13 @@ window.onload = function(e) {
     .getProfile()
     .then(function(profile){
       $("#dear_title").text("เรียน คุณ "+profile.displayName);
-      //alert(JSON.stringify(profile));
     });
   });
-  // var input = document.createElement("input");
-  // input.setAttribute("type", "hidden");
-  // input.setAttribute("name", "userId");
-  // input.setAttribute("id", "userId");
-  // input.setAttribute("value", data.context.userId);
-  // input.setAttribute("value", 'Uaef7a8e9eedce02d663bf83aec1dd910555');
-  // document.getElementsByTagName("body")[0].append(input);
-  // quantity_service();
-  //purchase_status();
 };
 
 
 function initializeUserId(data) {
+  var userId = data.context.userId;
   var input = document.createElement("input");
   input.setAttribute("type", "hidden");
   input.setAttribute("name", "userId");
@@ -37,6 +28,10 @@ function initializeUserId(data) {
   quantity_service();
   purchase_status();
   // showUserId(data.context.userId);
+
+  // add params to queryString
+  var cust_bu_history_btn = document.getElementById("cust_bu_history_btn");
+  cust_bu_history_btn.setAttribute("href","?action=cust_bu_history&userId=" + userId);
 }
 
 function render_lineitem(obj)
@@ -145,3 +140,12 @@ function getUrlVars() {
   return vars;
 }
 
+function getParameterByName(name, url) {
+  if (!url) url = window.location.href;
+  name = name.replace(/[\[\]]/g, '\\$&');
+  var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+  if (!results) return null;
+  if (!results[2]) return '';
+  return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}

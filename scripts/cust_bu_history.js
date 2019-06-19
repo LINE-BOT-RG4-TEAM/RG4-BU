@@ -11,6 +11,8 @@ function dateThaiFormatter(value, row) {
 }
 
 window.onload = function(){
+  var userId = getUrlVars()["userId"];
+  alert(userId);
   var callback = fetchDataByCa(20018553633);
   callback.done(function(data){
     var array_data = JSON.parse(data) || [];
@@ -24,10 +26,6 @@ window.onload = function(){
 $("input#userId").on('DOMNodeInserted', function(e) {
   alert(JSON.stringify(e));
 });
-
-function showUserId(userId){
-  alert('userId from showUserId is '+userId);
-}
 
 function fetchDataByCa(ca){
   return $.ajax({
