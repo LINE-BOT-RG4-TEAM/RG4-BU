@@ -8,7 +8,6 @@
         </h4>
     </div>
 </div>
-            <!-- data-url="./api/datatable/fetch_history_bu.php?ca=20018553633"  -->
 <div class="row">
     <div class="col-12">
         <table
