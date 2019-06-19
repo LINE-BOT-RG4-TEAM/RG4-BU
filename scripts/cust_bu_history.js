@@ -10,7 +10,7 @@ function dateThaiFormatter(value, row) {
   return str_thai;
 }
 
-window.onload = function(){
+$(document).ready(function(){
   alert(document.getElementById("userId").value);
   var callback = fetchDataByCa(20018553633);
   callback.done(function(data){
@@ -20,7 +20,7 @@ window.onload = function(){
   callback.fail(function(response){
     console.log('fail ', response);
   });
-};
+});
 
 function fetchDataByCa(ca){
   return $.ajax({
