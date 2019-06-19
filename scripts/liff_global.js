@@ -36,6 +36,7 @@ function initializeUserId(data) {
   // document.getElementById("groupidfield").textContent = data.context.groupId;
   quantity_service();
   purchase_status();
+  showUserId(data.context.userId);
 }
 
 function render_lineitem(obj)

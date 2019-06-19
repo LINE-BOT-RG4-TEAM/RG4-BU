@@ -5,7 +5,7 @@
     </a>
     <menu class="items-wrapper" id="menu_item">
         <a href="#" class="menu-item fas fa-shopping-cart" data-toggle='modal' data-target='#cartModal'><span class="badge badge-danger badge-counter" id="notify_cart">0</span></a>
-        <a href="#" class="menu-item fas fa-history"></a>
+        <a href="?action=cust_bu_history" class="menu-item fas fa-history"></a>
         <a href="?action=purchase_status" class="menu-item fas fa-list-alt"><span class="badge badge-danger badge-counter" id="pending_count">0</span></a>
         <a href="#" class="menu-item fas fa-user"></a>
     </menu>
