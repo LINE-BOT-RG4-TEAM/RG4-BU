@@ -11,8 +11,7 @@ function dateThaiFormatter(value, row) {
 }
 
 window.onload = function(){
-  var params = getUrlVars();
-  alert(JSON.stringify(params));
+  alert(document.getElementById("userId").value);
   var callback = fetchDataByCa(20018553633);
   callback.done(function(data){
     var array_data = JSON.parse(data) || [];
