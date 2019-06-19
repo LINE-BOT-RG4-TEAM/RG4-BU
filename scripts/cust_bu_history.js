@@ -11,18 +11,36 @@ function dateThaiFormatter(value, row) {
 }
 
 $(document).ready(function(){
-  alert(document.getElementById("userId").value);
-  var callback = fetchDataByCa(20018553633);
-  callback.done(function(data){
-    var array_data = JSON.parse(data) || [];
-    $("table").bootstrapTable('load', array_data);
-  });
-  callback.fail(function(response){
-    console.log('fail ', response);
+  var userId = document.getElementById("userId").value;
+
+  var ca_callback = fetchCAFromUserId(userId);
+  ca_callback.done(function(data){
+    var obj = JSON.parse(data) || {};
+    var ca = obj["CA"];
+
+    var history_callback = fetchDataByCA(ca);
+    history_callback.done(function(data){
+      var array_data = JSON.parse(data) || [];
+      $("table").bootstrapTable('load', array_data);
+    });
+    history_callback.fail(function(response){
+      console.log('fail ', response);
+    });
   });
 });
 
-function fetchDataByCa(ca){
+function fetchCAFromUserId(userId){
+  return $.ajax({
+    url: './api/fetch_ca_by_userId.php?userId='+userId,
+    method: 'POST',
+    async: true,
+    cache: false,
+    processData: false,
+    contentType: false			
+  });
+}
+
+function fetchDataByCA(ca){
   return $.ajax({
     url: './api/datatable/fetch_history_bu.php?ca='+ca,
     method: 'POST',
