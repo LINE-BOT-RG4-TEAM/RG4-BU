@@ -18,20 +18,16 @@ function initializeUserId(data) {
   input.setAttribute("id", "userId");
   input.setAttribute("value", data.context.userId);
   document.getElementsByTagName("body")[0].append(input);
-  //window.alert("created element successfully: " + $("#userId").val());
-  // document.getElementById("languagefield").textContent = data.language;
-  // document.getElementById("viewtypefield").textContent = data.context.viewType;
-  // document.getElementById("useridfield").textContent = data.context.userId;
-  // document.getElementById("utouidfield").textContent = data.context.utouId;
-  // document.getElementById("roomidfield").textContent = data.context.roomId;
-  // document.getElementById("groupidfield").textContent = data.context.groupId;
+
+  // update data in page by functions
   quantity_service();
   purchase_status();
-  // showUserId(data.context.userId);
 
   // add params to queryString
   var cust_bu_history_btn = document.getElementById("cust_bu_history_btn");
+  alert(JSON.stringify(cust_bu_history_btn.getAttribute("href")));
   cust_bu_history_btn.setAttribute("href","?action=cust_bu_history&userId=" + userId);
+  alert(JSON.stringify(cust_bu_history_btn.getAttribute("href")));
 }
 
 function render_lineitem(obj)
