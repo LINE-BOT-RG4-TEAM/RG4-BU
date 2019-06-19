@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-12">
-        <a href="?action=liff_construc" class="float-left btn">
+        <a href="?action=liff_service" class="float-left btn">
             <i class="fas fa-arrow-left"></i>
         </a>
         <h4 class="font-weight-bold text-center">
