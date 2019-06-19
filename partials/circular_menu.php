@@ -1,7 +1,7 @@
 <div id="circularMenu" class="circular-menu">
     <a class="floating-btn" onclick="toggle_menu()">       
-            <i class="fas fa-bars" style="color:white;"></i>
-            <span class="badge badge-float badge-danger badge-counter" id="notify_total">0</span>
+        <i class="fas fa-bars" style="color:white;"></i>
+        <span class="badge badge-float badge-danger badge-counter" id="notify_total">0</span>
     </a>
     <menu class="items-wrapper" id="menu_item">
         <a href="#" class="menu-item fas fa-shopping-cart" data-toggle='modal' data-target='#cartModal'><span class="badge badge-danger badge-counter" id="notify_cart">0</span></a>

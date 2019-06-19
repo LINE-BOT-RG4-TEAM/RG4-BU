@@ -11,8 +11,8 @@ function dateThaiFormatter(value, row) {
 }
 
 window.onload = function(){
-  var userId = getUrlVars()["userId"];
-  alert(userId);
+  var params = getUrlVars();
+  alert(JSON.stringify(params));
   var callback = fetchDataByCa(20018553633);
   callback.done(function(data){
     var array_data = JSON.parse(data) || [];
@@ -22,10 +22,6 @@ window.onload = function(){
     console.log('fail ', response);
   });
 };
-
-$("input#userId").on('DOMNodeInserted', function(e) {
-  alert(JSON.stringify(e));
-});
 
 function fetchDataByCa(ca){
   return $.ajax({
