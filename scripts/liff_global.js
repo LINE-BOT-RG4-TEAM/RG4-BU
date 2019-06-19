@@ -22,13 +22,15 @@ function initializeUserId(data) {
   // update data in page by functions
   quantity_service();
   purchase_status();
+
+  bindUserIdToQueryString(userId);
+}
+
+function bindUserIdToQueryString(userId){
   
   alert('from initialUserId '+userId);
-  // add params to queryString
   var cust_bu_history_btn = document.getElementById("cust_bu_history_btn");
-  alert(JSON.stringify(cust_bu_history_btn.getAttribute("href")));
   cust_bu_history_btn.setAttribute("href","?action=cust_bu_history&userId=" + userId);
-  alert(JSON.stringify(cust_bu_history_btn.getAttribute("href")));
 }
 
 function render_lineitem(obj)
