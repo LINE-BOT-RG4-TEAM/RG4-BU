@@ -17,7 +17,8 @@ $(document).ready(function(){
 
   ca_callback.done(function(data){
     var obj = JSON.parse(data) || {};
-    var ca = obj["CA"];
+    var ca = '20018553633';
+    // var ca = obj["CA"];
 
     var history_callback = fetchDataByCA(ca);
     history_callback.done(function(data){
