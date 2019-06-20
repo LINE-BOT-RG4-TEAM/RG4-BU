@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>PEA SmartBiz - สายงานการไฟฟ้า ภาค 4</title>
+    <title>PEA SmartBiz</title>
     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/theme_1545570683953.css">
     <link rel="stylesheet" href="./assets/css/ribbon.css">

@@ -6,7 +6,7 @@
   $userId = $_GET['userId'];
 
   $fetch_ca_by_user_id = "
-    SELECT CA
+    SELECT CA, FullName, CA_TEL, CA_EMAIL
     FROM ca
     WHERE UserID = '{$userId}'
   ";

@@ -9,10 +9,16 @@ function dateThaiFormatter(value, row) {
 
   return str_thai;
 }
-
 $.blockUI({
-  fadeIn: 1000,
-  message:'<div class="font-weight-bold text-primary" style="font-size:20px">กำลังดึงข้อมูลจากระบบ</div>'
+  message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"></div>',
+  overlayCSS : { 
+      backgroundColor: '#ffffff',
+      opacity: 1
+  },
+  css : {
+      opacity: 1,
+      border: 'none',
+  }
 });
 
 function initialLIFFData(data){
