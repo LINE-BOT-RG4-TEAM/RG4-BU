@@ -27,6 +27,7 @@
   $stmt->execute();
   $result = $stmt->get_result();
 
+  $data_list = array();
   while($row = $result->fetch_assoc()){
     $data_list[] = $row;
   }

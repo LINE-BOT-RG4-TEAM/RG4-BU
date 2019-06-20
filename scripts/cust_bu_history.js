@@ -10,23 +10,27 @@ function dateThaiFormatter(value, row) {
   return str_thai;
 }
 
-$(document).ready(function(){
+$.blockUI({
+  fadeIn: 1000,
+  message:'<div class="font-weight-bold text-primary" style="font-size:20px">กำลังดึงข้อมูลจากระบบ</div>'
+});
 
-  var userId = document.getElementById("userId").value || 'U25ee4efac3534dab5c1342dc9d9de476';
+function initialLIFFData(data){
+  var userId = data.context.userId;
   var ca_callback = fetchCAFromUserId(userId);
 
   ca_callback.done(function(data){
     var obj = JSON.parse(data) || {};
-    var ca = '20018553633';
-    // var ca = obj["CA"];
+    var ca = obj["CA"];
 
     var history_callback = fetchDataByCA(ca);
     history_callback.done(function(data){
+      $.unblockUI();
       var array_data = JSON.parse(data) || [];
-      if(array_data.length === 0){
+      if(array_data.length == 0){
         Swal.fire(
           'ไม่มีประวัติการทำธุรกิจเสริมกับ กฟภ.',
-          '',
+          'ท่านสามารถเลือกบริการเสริมที่สนใจ ได้จากหน้าหลักค่ะ',
           'info'
         );
       }
@@ -35,6 +39,18 @@ $(document).ready(function(){
     history_callback.fail(redirectWhenError);
   });
   ca_callback.fail(redirectWhenError);
+}
+
+function handleErrorLIFF(error){
+  Swal.fire(
+    'เกิดข้อผิดพลาด',
+    'การตั้งค่าผู้ใช้จากไลน์เกิดข้อผิดพลาด',
+    'error'
+  ).then(redirectWhenError);
+}
+
+$(document).ready(function(){
+  liff.init(initialLIFFData, handleErrorLIFF);
 });
 
 function redirectWhenError(response){
@@ -43,6 +59,7 @@ function redirectWhenError(response){
     'มีข้อผิดพลาดในระบบ<br/>กำลังนำท่านไปยังหน้าหลัก',
     'error'
   ).then(function(){
+    $.unblockUI();
     window.location.href = "?action=liff_service";
   });
 }
