@@ -11,9 +11,10 @@ function dateThaiFormatter(value, row) {
 }
 
 $(document).ready(function(){
-  var userId = document.getElementById("userId").value;
 
+  var userId = document.getElementById("userId").value;
   var ca_callback = fetchCAFromUserId(userId);
+
   ca_callback.done(function(data){
     var obj = JSON.parse(data) || {};
     var ca = obj["CA"];
@@ -21,13 +22,29 @@ $(document).ready(function(){
     var history_callback = fetchDataByCA(ca);
     history_callback.done(function(data){
       var array_data = JSON.parse(data) || [];
+      if(array_data.length === 0){
+        Swal.fire(
+          'ไม่มีประวัติการทำธุรกิจเสริมกับ กฟภ.',
+          '',
+          'info'
+        );
+      }
       $("table").bootstrapTable('load', array_data);
     });
-    history_callback.fail(function(response){
-      console.log('fail ', response);
-    });
+    history_callback.fail(redirectWhenError);
   });
+  ca_callback.fail(redirectWhenError);
 });
+
+function redirectWhenError(response){
+  Swal.fire(
+    'เกิดข้อผิดพลาด',
+    'มีข้อผิดพลาดในระบบ<br/>กำลังนำท่านไปยังหน้าหลัก',
+    'error'
+  ).then(function(){
+    window.location.href = "?action=liff_service";
+  });
+}
 
 function fetchCAFromUserId(userId){
   return $.ajax({
