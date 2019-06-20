@@ -12,7 +12,7 @@ function dateThaiFormatter(value, row) {
 
 $(document).ready(function(){
 
-  var userId = document.getElementById("userId").value;
+  var userId = document.getElementById("userId").value || 'U25ee4efac3534dab5c1342dc9d9de476';
   var ca_callback = fetchCAFromUserId(userId);
 
   ca_callback.done(function(data){
