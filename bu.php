@@ -1,12 +1,8 @@
 <div class="row">
-  <!-- <h6 class="p-3 font-weight-bold pt-3 rounded-pill bg-primary text-white"> -->
-  <h4 class="p-3 font-weight-bold">
-    <i class="fas fa-search"></i> ลูกค้าธุรกิจเสริม
-  </h4>
-  <!-- </h6> -->
-</div>
-<div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
+    <h2 class="float-left font-weight-bold text-primary">
+      <i class="fas fa-search"></i> ลูกค้าธุรกิจเสริม
+    </h2>
     <table 
       data-toggle="table" 
       data-pagination="true"

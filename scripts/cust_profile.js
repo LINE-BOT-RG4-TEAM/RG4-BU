@@ -123,7 +123,6 @@ $("form").submit(function(event){
   $.ajax({
     url: './api/update_customer_profile.php',
     method: 'POST',
-    // dataType : 'json',
     data: params_obj,
     beforeSend: function(){
 

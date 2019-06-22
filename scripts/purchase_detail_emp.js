@@ -1,6 +1,6 @@
 function lineitem_format(value, row, index) {
   return [
-    '<a class="btn btn-sm btn-outline-primary po-detail" href="#" title="Like" data-toggle="modal" onclick="set_cate_id_modal('+"'" + value + "'" +')" data-target="#PoModal">',
+    '<a class="btn btn-block btn-sm btn-outline-primary po-detail" href="#" title="Like" data-toggle="modal" onclick="set_cate_id_modal('+"'" + value + "'" +')" data-target="#PoModal">',
     '<i class="fa fa-eye"></i> รายละเอียด..',
     "</a>  "
   ].join("");
@@ -129,6 +129,8 @@ function fetch_purchase_emp()
                     $('#hml_type').val(obj[0].HML_Type);
                     $('#KAM_TYPE').val(obj[0].KAM_TYPE);
                     $('#kamr').val(obj[0].KAMR);
+                    $("#FullName").val(obj[0].FullName);
+                    $("#CA_EMAIL").val(obj[0].CA_EMAIL);
                   },
         complete :function(){
                     $.unblockUI();
@@ -433,6 +435,18 @@ function fetch_desc(product_id)
 
 function add2po(product)
 {
+    // validate data
+    var appointment_date = $("#app_date_add2po").val() || '';
+    console.log();
+    if(appointment_date.length == 0){
+      Swal.fire(
+        '',
+        'กรุณากรอกวันที่นัดหมายของบริการ',
+        'warning'
+      );
+      $("#app_date_add2po").focus();
+      return;
+    }
     var purchase_id = getUrlVars()["purchase_id"];
     var formData = new FormData();
     formData.append('cate_id',product);

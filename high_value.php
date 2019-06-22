@@ -1,16 +1,12 @@
 <div class="row">
-  <!-- <h6 class="p-3 font-weight-bold pt-3 rounded-pill bg-primary text-white"> -->
-  <h4 class="p-3 font-weight-bold" id="high_value_text">
-    <i class="fas fa-search"></i> ลูกค้ารายสำคัญ
-  </h4>
-  <!-- </h6> -->
-</div>
-<div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
+    <h1 class="float-left font-weight-bold text-primary" id="high_value_text">
+      <i class="fas fa-search"></i> ลูกค้ารายสำคัญ
+    </h1>
     <table 
         data-toggle="table"
         data-pagination="true"
-        data-pagination-v-align="both" 
+        data-pagination-v-align="both"
         data-fixed-columns="true"
         data-sticky-header="true"
         data-search="true"

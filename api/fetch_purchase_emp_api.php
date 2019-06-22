@@ -10,12 +10,14 @@
                         ca.CA,
                         ca.BUSINESS_TYPE,
                         ca.ADDRESS,
-                        ca.CA_TEL,
                         ca.HML_Type,
                         ca.KAM_TYPE,
                         ca.KAMR,
                         ca.UserID,
-                        bp.BP
+                        bp.BP,
+                        ca.FullName,
+                        ca.CA_TEL,
+                        ca.CA_EMAIL
                     FROM 
                         purchase  
                     INNER JOIN ca 

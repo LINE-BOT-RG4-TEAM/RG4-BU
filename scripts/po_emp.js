@@ -1,6 +1,6 @@
 function po_Formatter(value, row, index) {
     return [
-      '<a class="btn btn-sm btn-outline-primary po-detail" href="javascript:void(0)" title="Like">',
+      '<a class="btn btn-block btn-sm btn-outline-primary po-detail" href="javascript:void(0)" title="Like">',
       '<i class="fa fa-eye"></i> รายละเอียด',
       "</a>  "
     ].join("");

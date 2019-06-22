@@ -58,16 +58,33 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="col-sm-12 col-md-12 col-lg-4">
               <div class="form-group">
-                <label for="bp" class="text-center font-weight-bold">
+                <label class="text-center font-weight-bold">
+                  <i class="fas fa-sort-numeric-up"></i> ชื่อ-สกุล (ที่ลงทะเบียนไว้)
+                </label>
+                <input type="text" class="text-center form-control readonly" id="FullName" name="FullName" disabled="disabled">
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4">
+              <div class="form-group">
+                <label class="text-center font-weight-bold">
                   <i class="fas fa-sort-numeric-up"></i> เบอร์โทรศัพท์
                 </label>
                 <input type="text" class="text-center form-control readonly" id="tel" name="tel" disabled="disabled">
-                <input type="hidden" id="hidden_tel" name="hidden_tel" />
               </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="col-sm-12 col-md-12 col-lg-4">
+              <div class="form-group">
+                <label class="text-center font-weight-bold">
+                  <i class="fas fa-sort-numeric-up"></i> E-mail
+                </label>
+                <input type="text" class="text-center form-control readonly" id="CA_EMAIL" name="CA_EMAIL" disabled="disabled">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-4">
               <div class="form-group">
                 <label for="bp" class="text-center font-weight-bold">
                   <i class="fas fa-sort-numeric-up"></i> ประเภทมูลค่าลูกค้า
@@ -76,10 +93,7 @@
                 <input type="hidden" id="hidden_hml_type" name="hidden_hml_type" />
               </div>
             </div>
-            
-          </div>
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="col-sm-12 col-md-12 col-lg-4">
               <div class="form-group">
                 <label for="bp" class="text-center font-weight-bold">
                   <i class="fas fa-sort-numeric-up"></i> KAM_TYPE
@@ -88,7 +102,7 @@
                 <input type="hidden" id="hidden_KAM_TYPE" name="hidden_KAM_TYPE" />
               </div>
             </div>
-            <div class="col-sm-12 col-md-12 col-lg-6">
+            <div class="col-sm-12 col-md-12 col-lg-4">
               <div class="form-group">
                 <label for="bp" class="text-center font-weight-bold">
                   <i class="fas fa-sort-numeric-up"></i> KAMR
@@ -103,8 +117,8 @@
               <h4 class="font-weight-bold">รายการบริการที่เลือก</h4>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-6">
-                    <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#select_service_modal"><i class="fas fa-plus"></i>  เลือกสินค้าเพิ่ม</button>
-                    <button class="ml-2 btn btn-primary btn-sm" id="btn-confirm"><i class="fas fa-check"></i>  ยืนยัน</button>
+              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#select_service_modal"><i class="fas fa-plus"></i>  เลือกสินค้าเพิ่ม</button>
+              <button class="ml-2 btn btn-primary btn-sm" id="btn-confirm"><i class="fas fa-check"></i>  ยืนยัน</button>
             </div>
           </div>
           <!-- <div class="dropdown-divider"></div> -->
@@ -115,18 +129,15 @@
                   data-url="./api/datatable/purchase_lineitem_emp_table.php?purchase_id=<?=$_GET['purchase_id']?>" 
                   data-fixed-columns="true"
                   data-sticky-header="true"
-                  data-show-footer="true"
                   data-pagination="true">
                 <thead>
                   <tr>
                     <th data-field="cate_id" data-sortable="true">
                       <i class="fas fa-indent"></i> รหัสสินค้า
                     </th>
-                    <!-- <th data-field="CODE" data-sortable="true"><i class="fas fa-business-time"></i> รหัสการจัดทำ</th> -->
                     <th data-field="cate_name">
                       <i class="fas fa-user-tie"></i> ชื่อสินค้า
                     </th>
-                    <!-- <th data-field="STAFF" data-sortable="true"><i class="fas fa-receipt"></i> ผู้ดูแล</th> -->
                     <th data-field="appointment_date" data-sortable="true">
                       <i class="fas fa-receipt"></i> วันที่นัดหมาย
                     </th>
@@ -206,7 +217,7 @@
                             <input class="form-control text-center datepicker" 
                                 style="font-size:22px;"
                                 placeholder="เลือกวันนัดหมาย" 
-                                type="date" name="date_input" id="app_date_add2po"/>
+                                type="date" name="date_input" id="app_date_add2po" required/>
                             </div>
                         </div>
                         <div class='modal-footer'>
