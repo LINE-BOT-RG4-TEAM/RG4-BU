@@ -17,7 +17,9 @@
                         bp.BP,
                         ca.FullName,
                         ca.CA_TEL,
-                        ca.CA_EMAIL
+                        ca.CA_EMAIL,
+                        purchase.confident_document,
+                        purchase.PURCHASE_ID
                     FROM 
                         purchase  
                     INNER JOIN ca 

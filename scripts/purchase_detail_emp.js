@@ -1,7 +1,7 @@
 function lineitem_format(value, row, index) {
   return [
     '<a class="btn btn-block btn-sm btn-outline-primary po-detail" href="#" title="Like" data-toggle="modal" onclick="set_cate_id_modal('+"'" + value + "'" +')" data-target="#PoModal">',
-    '<i class="fa fa-eye"></i> รายละเอียด..',
+    '<i class="fas fa-pen"></i> แก้ไข/ลบบริการ',
     "</a>  "
   ].join("");
 }
@@ -13,13 +13,6 @@ function textCenterFormatter(value, row, index) {
 function suffixQuantityTextCenterFormatter(value, row) {
   return "<div class='font-weight-bold text-center'>" + value + " ครั้ง</div>";
 }
-
-/*window.lineitem_format_Events = {
-  "click .po-detail": function(e, value, row, index) {
-    // redirect to page for show ca detail
-    window.location.href = "?action=purchase_detail_emp&purchase_id=" + row["purchase_id"];
-  }
-};*/
 
 function set_cate_id_modal(data)
 {
@@ -40,8 +33,8 @@ function product_detail()
     method: 'POST',
     data: formData,
     async: true,
-        cache: false,
-        processData: false,
+    cache: false,
+    processData: false,
     contentType: false,
     beforeSend : function()
             {
@@ -79,63 +72,217 @@ function product_detail()
 
 }
 
+// Your web app's Firebase configuration
+var firebaseConfig = {
+  apiKey: "<?=getenv('FIREBASE_API_KEY')?>",
+  authDomain: "<?=getenv('FIREBASE_AUTH_DOMAIN')?>",
+  databaseURL: "<?=getenv('FIREBASE_DATABASE_URL')?>",
+  projectId: "<?=getenv('FIREBASE_PROJECT_ID')?>",
+  storageBucket: "<?=getenv('FIREBASE_STORAGE_BUCKET')?>",
+  messagingSenderId: "<?=getenv('FIREBASE_MESSAGING_SENDER_ID')?>",
+  appId: "<?=getenv('FIREBASE_APP_ID')?>"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
 $( document).ready(function() {
-    var purchase_id = getUrlVars()["purchase_id"];
-    $('#purchase_id').html(purchase_id);
-    $('#btn-confirm').hide();
-    fetch_purchase_emp();
-   });
+  var purchase_id = getUrlVars()["purchase_id"];
+  $('#purchase_id').html(purchase_id);
+  // $('#btn-confirm').hide();
+  fetch_purchase_emp();
+
+  // listener for upload file 
+  var uploaderProgress = document.getElementById('uploaderProgress');
+  var confidentFile = document.getElementById('confidentFile');
+  confidentFile.addEventListener('change', function(e){
+    var PONumber = $("span#purchase_id").text();
+    var file = e.target.files[0];
+    var storageRef = firebase.storage().ref(PONumber+'/confident-document.pdf');
+    var task = storageRef.put(file);
+    task.on('state_changed', 
+      function progress(snapshot) {
+        var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+        uploaderProgress.value = percentage;
+        console.log('percentage now ', percentage);
+      }, function error(err) {
+        switch (error.code) {
+          case 'storage/canceled':
+            // User canceled the upload
+            Swal.fire(
+              '',
+              'อัปโหลดไฟล์ไม่สำเร็จ เนื่องจากท่านยกเลิกการอัปโหลด',
+              'error'
+            ).then(function(){
+              // document.getElementById("confidentFile").value = "";
+              uploaderProgress.value = 0;
+            });
+            break;
+      
+          case 'storage/unknown':
+            // Unknown error occurred, inspect error.serverResponse
+            Swal.fire(
+              '',
+              'อัปโหลดไฟล์ไม่สำเร็จ เนื่องจากมีปัญหาเกี่ยวกับระบบอัปโหลดไฟล์ กรุณาลองใหม่อีกครั้ง',
+              'error'
+            ).then(function(){
+              document.getElementById("confidentFile").value = "";
+              uploaderProgress.value = 0;
+            });
+            break;
+        }
+
+      }, function complete() {
+        Swal.fire(
+          '',
+          'อัปโหลดไฟล์เรียบร้อยแล้ว',
+          'success'
+        ).then(function(){
+          task.snapshot.ref.getDownloadURL()
+          .then(function(downloadURL) {
+            $.ajax({
+              url: './api/update_confident_file.php',
+              method: 'POST',
+              data: {
+                PONumber: PONumber,
+                downloadURL: downloadURL
+              },
+              beforeSend: function(){
+                $.blockUI();
+              },
+              success: function(response){
+                console.log('success', response);
+              },
+              error: function(error){
+                console.log('error', error);
+              },
+              complete: function(){
+                console.log('complete');
+                window.location.reload();
+              }
+            });
+            document.getElementById("confidentFile").value = "";
+          });
+        });
+    });
+  });
+});
 
 function fetch_purchase_emp()
 {
     var purchase_id = getUrlVars()["purchase_id"];
     var formData = new FormData();
     formData.append('purchase_id',purchase_id);
+      $.ajax({
+      url: './api/fetch_purchase_emp_api.php',
+      method: 'POST',
+      data: formData,
+      async: true,
+      cache: false,
+      processData: false,
+      contentType: false,
+      beforeSend : function() {
+        console.log("beforesend.....");
+        $.blockUI({
+          message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div>',
+          overlayCSS : { 
+            backgroundColor: '#ffffff',
+            opacity: 1
+          },
+          css : {
+            opacity: 1,
+            border: 'none',
+          }
+      });
+    },
+    success: function(response) {
+      var obj = JSON.parse(response) || {};
+      console.log(obj);
+      $('#bp').val(obj[0].BP);
+      $('#ca').val(obj[0].CA);
+      $('#business_type').val(obj[0].BUSINESS_TYPE);
+      $('#customer_name').val(obj[0].CUSTOMER_NAME);
+      $('#address').val(obj[0].ADDRESS);
+      $('#tel').val(obj[0].CA_TEL);
+      $('#hml_type').val(obj[0].HML_Type);
+      $('#KAM_TYPE').val(obj[0].KAM_TYPE);
+      $('#kamr').val(obj[0].KAMR);
+      $("#FullName").val(obj[0].FullName);
+      $("#CA_EMAIL").val(obj[0].CA_EMAIL);
+
+      var purchase_id = obj[0].PURCHASE_ID;
+      var confident_document_path = obj[0].confident_document || '';
+      if(confident_document_path.length > 0) {
+        // view document config
+        $("#view_document").attr("target", "_blank");
+        $("#view_document")
+          .removeClass("btn-outline-success disabled")
+          .addClass("btn-success");
+        $("#view_document").attr("href", obj[0].confident_document);
+
+        // delete document config
+        $("#delete_document")
+          .removeClass("btn-outline-danger disabled")
+          .addClass("btn-danger")
+          .attr("onclick", "javascript:delete_document('"+purchase_id+"');");
+
+        // set send email btn config
+        $("#send_confirm_email")
+          .removeClass("btn-outline-dark disabled")
+          .addClass("btn-dark");
+      }
+    },
+    complete :function(){
+      $.unblockUI();
+    }					
+  });
+}
+
+function delete_document(purchase_id){
+  if(!confirm("ต้องการลบเอกสารใบเสร็จหรือไม่ ?")){
+    return;
+  }
+  var documentRef = firebase.storage().ref().child(purchase_id+'/confident-document.pdf');
+
+  // Delete the file
+  documentRef.delete().then(function() {
     $.ajax({
-        url: './api/fetch_purchase_emp_api.php',
-        method: 'POST',
-        data: formData,
-        async: true,
-            cache: false,
-            processData: false,
-        contentType: false,
-        beforeSend : function()
-                {
-                    //$.blockUI({message : '<h1>กำลังเข้าสู่ระบบ</h1>'});
-                    console.log("beforesend.....");
-                    $.blockUI({
-                        message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div>',
-                        overlayCSS : { 
-                          backgroundColor: '#ffffff',
-                          opacity: 0.8
-                        },
-                        css : {
-                          opacity: 1,
-                          border: 'none',
-                        }
-                      });
-                },
-        success: function(response) 
-                  {
-                    //console.log(response);
-                    var obj = JSON.parse(response) || {};
-                    console.log(obj);
-                    $('#bp').val(obj[0].BP);
-                    $('#ca').val(obj[0].CA);
-                    $('#business_type').val(obj[0].BUSINESS_TYPE);
-                    $('#customer_name').val(obj[0].CUSTOMER_NAME);
-                    $('#address').val(obj[0].ADDRESS);
-                    $('#tel').val(obj[0].CA_TEL);
-                    $('#hml_type').val(obj[0].HML_Type);
-                    $('#KAM_TYPE').val(obj[0].KAM_TYPE);
-                    $('#kamr').val(obj[0].KAMR);
-                    $("#FullName").val(obj[0].FullName);
-                    $("#CA_EMAIL").val(obj[0].CA_EMAIL);
-                  },
-        complete :function(){
-                    $.unblockUI();
-                    }					
+      url: "./api/delete_document.php",
+      method: "POST",
+      data: {
+        purchase_id: purchase_id
+      },
+      beforeSend: function(){
+        $.blockUI();
+      },
+      success: function(response){
+        Swal.fire(
+          'ลบเอกสารเรียบร้อยแล้ว',
+          '',
+          'success'
+        ).then(function(){
+          window.location.reload();
         });
+      },
+      error: function(err){
+        Swal.fire(
+          'ลบเอกสารไม่สำเร็จ, กรุณาลองใหม่อีกครั้ง',
+          '',
+          'error'
+        ).then(function(){
+          window.location.reload();
+        })
+      }
+    });
+  }).catch(function(error) {
+    Swal.fire(
+      '',
+      'ไม่สามารถลบไฟล์ได้ กรุณาลองใหม่อีกครั้ง',
+      'error'
+    ).then(function(){
+      window.location.reload();
+    });
+  });
 }
 
 function edit()

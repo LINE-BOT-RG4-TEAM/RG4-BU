@@ -1,12 +1,73 @@
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
-    <div class="card shadow-sm">
+    <!-- <div class="card">
+      <div class="card-body"> -->
+        <!-- <h3 class="card-title font-weight-bold text-info">
+          <i class="fas fa-scroll"></i> ข้อมูลเบื้องต้นก่อนยืนยันการให้บริการแก่ลูกค้า
+        </h3> -->
+        <div class="card-text">
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-8">
+              <div class="alert alert-light h-100 text-dark" role="alert">
+                <span class="font-weight-bold text-success" style="font-size: 22px;"><i class="fas fa-bullhorn"></i> ข้อควรทราบก่อนดำเนินการ</span><br/>
+                <div class="dropdown-divider text-light"></div>
+                <span>
+                  ในหน้าเว็บไซต์ปัจจุบันที่ท่านเข้าถึงอยู่ เป็นหน้าเว็บสำหรับจัดการบริการต่างๆ ดังนี้
+                </span>
+                  <ol>
+                    <li>เพิ่ม/ลด/แก้ไข รายบริการต่างๆ ผ่านตาราง `รายการบริการ` (ตามตารางด้านล่าง)</li>
+                    <li>เพิ่มไฟล์ใบเสร็จรับเงินในระบบในรูปแบบไฟล์ pdf เพื่อส่งไปยังผู้ใช้ไฟก่อนที่ กฟฟ. จะให้บริการ (ใบเสร็จรับเงินเกิดขึ้นหลังจากผู้ใช้ไฟเดินทางมายัง กฟฟ. เพื่อชำระเงินตามบริการต่าง)</li>
+                    <li>ยืนยันการเข้าให้บริการแก่ผู้ใช้ไฟตามวันนัดหมาย จากการกดปุ่มยืนยันโดยระบบจะส่งไฟล์จากไฟล์แนบข้อ 2 ไปยัง e-mail ที่ผู้ใช้ไฟกรอกตอนสมัคร</li>
+                    <li>หลังจาก กฟฟ.​ ดำเนินการให้บริการเสร็จสิ้นแล้ว สามารถแนบภาพกิจกรรม ก่อนทำ/หลังทำ</li>
+                  </ol>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-4">
+              <div class="card pt-3 h-100">
+                <div class="card-title font-weight-bold text-primary text-center" style="font-size:20px;">
+                  ยืนยันการให้บริการต่อผู้ใช้ไฟ
+                </div>
+                <div class="card-body">
+                  ความคืบหน้าในการอัปโหลด
+                  <progress class="w-100" id="uploaderProgress" value="0" max="100">0%</progress>
+                  <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="confidentFile" accept="application/pdf">
+                    <label class="custom-file-label" for="confidentFile">ไฟล์ใบเสร็จ</label>
+                  </div>
+                  <div class="mt-3 text-center">
+                    <span class="text-success font-weight-bold"><i class="far fa-check-circle"></i> ไฟล์ที่อัปโหลดเรียบร้อยแล้ว</span><br/>
+                    <div class="btn btn-block">
+                      <a id="view_document" href="javascript:void(0);" class="btn btn-outline-success disabled">
+                        <i class="far fa-eye"></i> ดูไฟล์ใบเสร็จ
+                      </a>
+                      <a id="delete_document" href="javascript:void(0);" class="btn btn-outline-danger disabled">
+                        <i class="far fa-trash-alt"></i> ลบไฟล์แนบ
+                      </a>
+                    </div>
+                  </div>
+                  <div class="mt-3 text-center">
+                    <span class="text-dark font-weight-bold"><i class="fas fa-envelope-open-text"></i> ส่งอีเมล์ยืนยันการให้บริการ</span><br/>
+                    <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">ส่งอีเมล์ไปยังผู้ใช้ไฟ</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <!-- </div>
+    </div> -->
+  </div>
+</div>
+
+<div class="row mt-3">
+  <div class="col-sm-12 col-md-12 col-lg-12">
+    <div class="card border">
       <div class="card-body">
-        <h4 class="card-title font-weight-bold">
+        <h3 class="card-title font-weight-bold text-primary">
           <i class="fas fa-walking"></i> รายละเอียดใบสั่งซื้อ
           <span class="d-none d-lg-block d-lg-none float-right badge badge-pill badge-primary">หมายเลขใบสั่งซื้อ : <span id="purchase_id"></span></span>
           <input type="hidden" name="hidden_ca" id="hidden_ca" value="" />
-        </h4>
+        </h3>
         <div class="dropdown-divider"></div>
         <div class="card-text">
           <div class="row">
@@ -112,13 +173,16 @@
               </div>
             </div>
           </div>
-          <div class="row mt-2">
-            <div class="col-sm-12 col-md-12 col-lg-3">
-              <h4 class="font-weight-bold">รายการบริการที่เลือก</h4>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-6">
-              <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#select_service_modal"><i class="fas fa-plus"></i>  เลือกสินค้าเพิ่ม</button>
-              <button class="ml-2 btn btn-primary btn-sm" id="btn-confirm"><i class="fas fa-check"></i>  ยืนยัน</button>
+          <div class="row mt-3">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <h4 class="font-weight-bold">รายการบริการ
+                <div class="float-right">
+                  <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#select_service_modal">
+                    <i class="fas fa-plus"></i> 
+                    เลือกสินค้าเพิ่ม
+                  </button>
+                </div>
+              </h4>
             </div>
           </div>
           <!-- <div class="dropdown-divider"></div> -->
@@ -172,8 +236,8 @@
                                 type="date" disabled name="date_input" id="app_date"/>
                         </div>
                         <div class='modal-footer'>
-                            <button type='button' class='btn btn-primary'  href="#" id="edit" onclick="edit()" value="edit">แก้ไข</button>
-                            <button type='button' class='btn btn-primary'  href="#" id="del" onclick="del()">ลบ</button>
+                            <button type='button' class='btn btn-primary'  href="javascript:void(0);" id="edit" onclick="edit()" value="edit">แก้ไข</button>
+                            <button type='button' class='btn btn-primary'  href="javascript:void(0);" id="del" onclick="del()">ลบ</button>
                             <button type='button' class='btn btn-primary' data-dismiss='modal' >ปิด</button>
                         </div>
                     </div>
@@ -233,3 +297,7 @@
     </div>
   </div>
 </div>
+
+<!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.2.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.7.0/firebase-storage.js"></script>
