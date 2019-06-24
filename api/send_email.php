@@ -22,6 +22,7 @@
                 , CA_TEL
                 , CA_EMAIL
                 , purchase.UserID
+                , purchase.confident_document
         FROM purchase 
             JOIN ca ON ca.UserID = purchase.UserID
             JOIN bp ON ca.bp = bp.BP
@@ -61,13 +62,27 @@
     include "../assets/templates/email/email_template.php";
     $html_template = ob_get_clean();
 
+    $subject = "[คำสั่งซื้อ $purchase_id] เอกสารหลักฐานการสั่งซื้อบริการเสริมจาก กฟภ.";
     $email = new \SendGrid\Mail\Mail(); 
     $email->setFrom("crm_bu@pea.co.th", "Support PEA SmartBiz");
-    $email->setSubject("[คำสั่งซื้อ $purchase_id] เอกสารหลักฐานการสั่งซื้อบริการเสริมจาก กฟภ.");
+    $email->setSubject($subject);
     $email->addTo($general_row['CA_EMAIL'], $general_row['FullName']);
     $email->addContent(
         "text/html", $html_template
     );
+
+    // attachment confidential document
+    $document_contents = file_get_contents($general_row["confident_document"]);
+    if(isset($document_contents) && !empty($document_contents)){
+        $file_encoded = base64_encode($document_contents);
+        $email->addAttachment(
+            $file_encoded,
+            "application/pdf",
+            "เอกสารการชำระเงินของหมายเลขคำสั่งซื้อ $purchase_id.pdf",
+            "attachment"
+        );
+    }
+
     
     $sendgrid = new \SendGrid(getenv("PROD_SENDGRID_API_KEY"));
     try {
@@ -78,8 +93,11 @@
             'message' => $response->headers()[2]
         );
         http_response_code($response->statusCode());
+        // exit(0);
+        print_r("<pre>");
         // print_r(json_encode($return_json));
         var_dump($response);
+        print_r("</pre>");
     } catch (Exception $e) {
         echo 'Caught exception: '. $e->getMessage() ."\n";
     }
