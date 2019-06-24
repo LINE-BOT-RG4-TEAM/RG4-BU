@@ -6,6 +6,109 @@ function lineitem_format(value, row, index) {
   ].join("");
 }
 
+function uploadBeforePhotoFormatter(photo_path, row, index) {
+  return uploadPhotoFormatter(photo_path, row, "before_operate_photo");
+}
+
+function uploadAfterPhotoFormatter(photo_path, row, index) {
+  return uploadPhotoFormatter(photo_path, row, "after_operate_photo");
+}
+
+function uploadPhotoFormatter(photo_path, row, photo_mode){
+  var html_photo_block = "";
+  if(photo_path != null){
+    html_photo_block += [
+      '<div class="text-center">',
+      '<a href="'+photo_path+'" target="_blank">',
+      '<img src="'+photo_path+'" class="img-thumbnail"></img>',
+      '</a>',
+      '</div>'
+    ].join("");
+  }
+
+  html_photo_block += [
+    '<div class="custom-file">',
+    '  <input type="file" class="custom-file-input" onchange="javascript:uploadPhoto(\''+row["purchase_id"]+'\', \''+row["purchase_lineitem_id"]+'\', this);" data-line-item="'+row["purchase_lineitem_id"]+'" data-upload-mode="'+photo_mode+'"  accept="image/x-png,image/jpeg">',
+    '  <label class="custom-file-label">เลือกภาพ</label>',
+    '</div>'
+  ].join("");
+  return html_photo_block;
+}
+
+function uploadPhoto(purchase_id, purchase_line_item, e){
+  var file = e.files[0];
+  var file_extension = file.type.split("/")[1];
+  var photo_mode = $(e).data("uploadMode");
+  var storageRef = firebase.storage().ref(purchase_id+'/'+purchase_line_item+'/'+photo_mode+'.'+file_extension);
+  var uploadPhotoTask = storageRef.put(file);
+  uploadPhotoTask.on('state_changed', 
+    function progress(snapshot) {
+      var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+      console.log('percentage now ', percentage);
+    }, function error(err) {
+      switch (error.code) {
+        case 'storage/canceled':
+          // User canceled the upload
+          Swal.fire(
+            '',
+            'อัปโหลดไฟล์ไม่สำเร็จ เนื่องจากท่านยกเลิกการอัปโหลด',
+            'error'
+          ).then(function(){
+            // document.getElementById("confidentFile").value = "";
+            // uploaderProgress.value = 0;
+          });
+          break;
+    
+        case 'storage/unknown':
+          // Unknown error occurred, inspect error.serverResponse
+          Swal.fire(
+            '',
+            'อัปโหลดไฟล์ไม่สำเร็จ เนื่องจากมีปัญหาเกี่ยวกับระบบอัปโหลดไฟล์ กรุณาลองใหม่อีกครั้ง',
+            'error'
+          );
+          break;
+      }
+
+    }, function complete() {
+      Swal.fire(
+        '',
+        'อัปโหลดไฟล์เรียบร้อยแล้ว',
+        'success'
+      )
+      .then(function(){
+        uploadPhotoTask.snapshot.ref.getDownloadURL()
+        .then(function(downloadURL) {
+          // console.log('file available : '+downloadURL)
+          $.ajax({
+            url: './api/update_activity_photo.php',
+            method: 'POST',
+            data: {
+              purchase_id: purchase_id,
+              purchase_line_item: purchase_line_item,
+              photo_mode: photo_mode,
+              photo_url: downloadURL
+            },
+            beforeSend: function(){
+              $.blockUI();
+            },
+            success: function(response){
+              console.log('success', response);
+            },
+            error: function(error){
+              console.log('error', error);
+            },
+            complete: function(){
+              console.log('complete');
+              $.unblockUI();
+              $('table').bootstrapTable('refresh');
+            }
+          });
+          document.getElementById("confidentFile").value = "";
+        });
+      });
+  });
+}
+
 function textCenterFormatter(value, row, index) {
   return "<div class='text-center'>" + value + "</div>";
 }
@@ -18,6 +121,7 @@ function set_cate_id_modal(data)
 {
   $('#modal_cate_id').html(data);
 }
+
 function product_detail()
 {
   var purchase_id = getUrlVars()["purchase_id"];
@@ -167,7 +271,6 @@ $( document).ready(function() {
         });
     });
   });
-
 });
 
 function fetch_purchase_emp()
@@ -253,7 +356,7 @@ function sendEmail(purchase_id){
     success: function(response){
       console.log('response', response);
       Swal.fire(
-        'ส่งสำเร็จ',
+        'ส่งอีเมล์สำเร็จ!',
         '',
         'success'
       );

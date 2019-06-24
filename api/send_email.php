@@ -83,7 +83,6 @@
         );
     }
 
-    
     $sendgrid = new \SendGrid(getenv("PROD_SENDGRID_API_KEY"));
     try {
         $response = $sendgrid->send($email);
@@ -94,10 +93,6 @@
         );
         http_response_code($response->statusCode());
         // exit(0);
-        print_r("<pre>");
-        // print_r(json_encode($return_json));
-        var_dump($response);
-        print_r("</pre>");
     } catch (Exception $e) {
         echo 'Caught exception: '. $e->getMessage() ."\n";
     }

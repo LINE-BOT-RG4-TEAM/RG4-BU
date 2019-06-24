@@ -197,16 +197,22 @@
                   data-pagination="true">
                 <thead>
                   <tr>
-                    <th data-field="cate_id" data-sortable="true">
+                    <th data-field="cate_id" data-sortable="true" data-width="7">
                       <i class="fas fa-indent"></i> รหัสสินค้า
                     </th>
-                    <th data-field="cate_name">
+                    <th data-field="cate_name" data-width="200">
                       <i class="fas fa-user-tie"></i> ชื่อสินค้า
                     </th>
-                    <th data-field="appointment_date" data-sortable="true">
+                    <th data-field="appointment_date" data-sortable="true" data-width="10">
                       <i class="fas fa-receipt"></i> วันที่นัดหมาย
                     </th>
-                    <th data-formatter="lineitem_format" data-field="cate_id"  > รายละเอียด</th>
+                    <th data-field="before_operate_photo" data-width="100" data-formatter="uploadBeforePhotoFormatter">
+                      <i class="far fa-images"></i> ภาพก่อนดำเนินการ
+                    </th>
+                    <th data-field="after_operate_photo" data-width="100" data-formatter="uploadAfterPhotoFormatter">
+                      <i class="far fa-images"></i> ภาพหลังดำเนินการ
+                    </th>
+                    <th data-formatter="lineitem_format" data-width="20" data-field="cate_id"  > รายละเอียด</th>
                   </tr>
                 </thead>
               </table>
