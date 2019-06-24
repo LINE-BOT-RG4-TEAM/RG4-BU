@@ -78,7 +78,8 @@
             'message' => $response->headers()[2]
         );
         http_response_code($response->statusCode());
-        print_r(json_encode($return_json));
+        // print_r(json_encode($return_json));
+        var_dump($response);
     } catch (Exception $e) {
         echo 'Caught exception: '. $e->getMessage() ."\n";
     }
