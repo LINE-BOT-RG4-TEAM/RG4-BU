@@ -54,7 +54,6 @@ $(function() {
         // window.alert("beforeSend alert");
       },
       success: function(response) {
-        window.alert(JSON.stringify(response));
         Swal.fire({
           title: "สำเร็จ!",
           text: "ระบบบันทึกข้อมูลของท่านเรียบร้อยแล้ว ขอบคุณครับ",

@@ -3,10 +3,10 @@
     <h1 class="float-left font-weight-bold text-primary">
       <i class="fas fa-clipboard-list"></i>
       ใบสั่งซื้อ
+      <small class="text-secondary">
+        รายการใบสั่งซื้อบริการของ กฟภ. จากผู้ใช้ไฟ
+      </small>
     </h1>
-    <p class="text-secondary">
-      รายการใบสั่ง
-    </p>
     <table 
       data-toggle="table" 
       data-pagination="true"
