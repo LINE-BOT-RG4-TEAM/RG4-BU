@@ -14,6 +14,7 @@
       data-pagination-v-align="both"
       data-sticky-header="true"
       data-search="true"
+      data-page-size="5"
       data-page-list="[5, 10, 20, 100, ALL]"
       data-url="./api/datatable/po_table.php">
       <thead>
