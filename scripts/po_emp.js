@@ -1,9 +1,26 @@
 function po_Formatter(value, row, index) {
     return [
-      '<a class="btn btn-block btn-sm btn-outline-primary po-detail" href="javascript:void(0)" title="Like">',
+      '<a class="btn btn-block btn-primary po-detail" href="javascript:void(0)" title="Like">',
       '<i class="fa fa-eye"></i> รายละเอียด',
       "</a>  "
     ].join("");
+  }
+
+  function documentFormatter(value, row, index){
+    var url = value || '';
+    if(url.length > 0){
+      return [
+        '<a class="btn btn-success btn-block" href="'+url+'" target="_blank">',
+        '<i class="fas fa-file-invoice-dollar"></i> ใบเสร็จ',
+        '</a>'
+      ].join("");
+    }else{
+      return [
+        '<a class="btn btn-outline-success btn-block disabled" href="javascript:void(0);">',
+        '<i class="fas fa-file-invoice-dollar"></i> ใบเสร็จ',
+        '</a>'
+      ].join("");
+    }
   }
   
   function textCenterFormatter(value, row, index) {

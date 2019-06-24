@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
     <h1 class="float-left font-weight-bold text-primary animated fadeIn">
-      <i class="fas fa-search"></i> ค้นหาข้อมูลลูกค้ารายสำคัญ
+      <i class="fas fa-search"></i> ค้นหาข้อมูลลูกค้า
     </h1>
     <table 
         data-toggle="table" 
