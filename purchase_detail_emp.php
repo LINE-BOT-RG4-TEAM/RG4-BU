@@ -11,10 +11,10 @@
               <div class="alert alert-light h-100 text-dark" role="alert">
                 <span class="font-weight-bold text-success" style="font-size: 22px;"><i class="fas fa-bullhorn"></i> ข้อควรทราบก่อนดำเนินการ</span><br/>
                 <div class="dropdown-divider text-light"></div>
-                <span>
+                <span class="font-weight-bold">
                   ในหน้าเว็บไซต์ปัจจุบันที่ท่านเข้าถึงอยู่ เป็นหน้าเว็บสำหรับจัดการบริการต่างๆ ดังนี้
                 </span>
-                  <ol>
+                  <ol class="font-weight-bold">
                     <li>เพิ่ม/ลด/แก้ไข รายบริการต่างๆ ผ่านตาราง `รายการบริการ` (ตามตารางด้านล่าง)</li>
                     <li>เพิ่มไฟล์ใบเสร็จรับเงินในระบบในรูปแบบไฟล์ pdf เพื่อส่งไปยังผู้ใช้ไฟก่อนที่ กฟฟ. จะให้บริการ (ใบเสร็จรับเงินเกิดขึ้นหลังจากผู้ใช้ไฟเดินทางมายัง กฟฟ. เพื่อชำระเงินตามบริการต่าง)</li>
                     <li>ยืนยันการเข้าให้บริการแก่ผู้ใช้ไฟตามวันนัดหมาย จากการกดปุ่มยืนยันโดยระบบจะส่งไฟล์จากไฟล์แนบข้อ 2 ไปยัง e-mail ที่ผู้ใช้ไฟกรอกตอนสมัคร</li>
@@ -48,6 +48,7 @@
                   <div class="mt-3 text-center">
                     <span class="text-dark font-weight-bold"><i class="fas fa-envelope-open-text"></i> ส่งอีเมล์ยืนยันการให้บริการ</span><br/>
                     <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">ส่งอีเมล์ไปยังผู้ใช้ไฟ</a>
+                    <!-- <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">ส่งอีเมล์ไปยังผู้ใช้ไฟ</a> -->
                   </div>
                 </div>
               </div>
@@ -66,7 +67,7 @@
         <h3 class="card-title font-weight-bold text-primary">
           <i class="fas fa-walking"></i> รายละเอียดใบสั่งซื้อ
           <span class="d-none d-lg-block d-lg-none float-right badge badge-pill badge-primary">หมายเลขใบสั่งซื้อ : <span id="purchase_id"></span></span>
-          <input type="hidden" name="hidden_ca" id="hidden_ca" value="" />
+          <input type="hidden" name="hidden_purchase_id" id="hidden_purchase_id" />
         </h3>
         <div class="dropdown-divider"></div>
         <div class="card-text">

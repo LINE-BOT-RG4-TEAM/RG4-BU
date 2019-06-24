@@ -78,7 +78,7 @@
         $email->addAttachment(
             $file_encoded,
             "application/pdf",
-            "เอกสารการชำระเงินของหมายเลขคำสั่งซื้อ $purchase_id.pdf",
+            "เอกสารการชำระเงินหมายเลขคำสั่งซื้อ $purchase_id.pdf",
             "attachment"
         );
     }

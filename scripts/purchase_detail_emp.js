@@ -88,6 +88,7 @@ firebase.initializeApp(firebaseConfig);
 
 $( document).ready(function() {
   var purchase_id = getUrlVars()["purchase_id"];
+  $("#hidden_purchase_id").val(purchase_id);
   $('#purchase_id').html(purchase_id);
   // $('#btn-confirm').hide();
   fetch_purchase_emp();
@@ -166,6 +167,7 @@ $( document).ready(function() {
         });
     });
   });
+
 });
 
 function fetch_purchase_emp()
@@ -229,12 +231,44 @@ function fetch_purchase_emp()
         // set send email btn config
         $("#send_confirm_email")
           .removeClass("btn-outline-dark disabled")
-          .addClass("btn-dark");
+          .addClass("btn-dark")
+          .attr("onclick", "javascript:sendEmail('"+purchase_id+"');");
       }
     },
     complete :function(){
       $.unblockUI();
     }					
+  });
+}
+
+function sendEmail(purchase_id){
+  $.ajax({
+    method: 'GET',
+    url: './api/send_email.php?purchase_id='+purchase_id,
+    beforeSend: function(){
+      $.blockUI({
+        message: '<h3 class="p-2 text-dark">กำลังส่งอีเมล์, กรุณารอสักครู่ค่ะ</h3>'
+      });
+    },
+    success: function(response){
+      console.log('response', response);
+      Swal.fire(
+        'ส่งสำเร็จ',
+        '',
+        'success'
+      );
+    },
+    error: function(err){
+      console.log('err', err);
+      Swal.fire(
+        'ส่งไม่สำเร็จ',
+        '',
+        'error'
+      );
+    }, 
+    complete: function(){
+      $.unblockUI();
+    }
   });
 }
 
@@ -467,74 +501,74 @@ function fetch_level2(cate_id)
           });
           $('#sub_cate_label').html('หมวดหมู่ย่อย');
           $('#select_sub_cate').show();
-  }
+}
 
-  function fetch_level3(cate_id)
-  {
-    console.log(cate_id);
-    var formData = new FormData();
-    formData.append('cate_id',cate_id);
-    formData.append('request','product_cate_level_3'); //กำหนดเงื่อนไขให้ api
-    $.ajax({
-            url: './api/product_detail_emp_api.php',
-            method: 'POST',
-            data: formData,
-            async: true,
-            cache: false,
-            processData: false,
-            contentType: false,
-            beforeSend : function()
+function fetch_level3(cate_id)
+{
+  console.log(cate_id);
+  var formData = new FormData();
+  formData.append('cate_id',cate_id);
+  formData.append('request','product_cate_level_3'); //กำหนดเงื่อนไขให้ api
+  $.ajax({
+          url: './api/product_detail_emp_api.php',
+          method: 'POST',
+          data: formData,
+          async: true,
+          cache: false,
+          processData: false,
+          contentType: false,
+          beforeSend : function()
+          {
+              //$.blockUI({message : '<h1>กำลังเข้าสู่ระบบ</h1>'});
+              console.log("beforesend.....");
+              $('div.sub_cate').block({
+                message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div>',
+                overlayCSS : { 
+                  backgroundColor: '#ffffff',
+                  opacity: 0.8
+                },
+                css : {
+                  opacity: 1,
+                  border: 'none',
+                }
+              });
+              //$('.blockUI.blockMsg').center();
+          },
+          success: function(response) 
             {
-                //$.blockUI({message : '<h1>กำลังเข้าสู่ระบบ</h1>'});
-                console.log("beforesend.....");
-                $('div.sub_cate').block({
-                  message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div>',
-                  overlayCSS : { 
-                    backgroundColor: '#ffffff',
-                    opacity: 0.8
-                  },
-                  css : {
-                    opacity: 1,
-                    border: 'none',
-                  }
-                });
-                //$('.blockUI.blockMsg').center();
-            },
-            success: function(response) 
+              var obj = JSON.parse(response) || {};
+              if(obj.length == 0)
               {
-                var obj = JSON.parse(response) || {};
-                if(obj.length == 0)
-                {
-                  $('#btn_add').show();
-                  $('#sub_cate_label').html('บริการ ' + $("#select_sub_cate :selected").text());
-                  $('#select_sub_cate').hide();
-                  fetch_desc($("#select_sub_cate :selected").val());
-                  $('#btn_add').attr('onclick','add2po("'+$("#select_sub_cate :selected").val()+'")')
-                  $('.detail').show();
-                  $('#div_date').show();
-                }
-                else if(obj.length > 0)
-                {
-                  $('#btn_add').hide();
-                  $('#sub_cate_label').html('หมวดหมู่ย่อย ' + $("#select_sub_cate :selected").text());
-                  $('#select_sub_cate').show();
-                }
-                var i=0;
-                var cate_select = '';
-                while(obj[i])
-                {
-                  cate_select = cate_select + '<option value="'+obj[i].cate_id+'">'+ obj[i].cate_id + '--' + obj[i].cate_name +'('+obj[i].is_product+')</option>';
-                  i++;
-                }
-                $('#select_sub_cate').html('<option>กรุณาเลือก</option>' + cate_select);
+                $('#btn_add').show();
+                $('#sub_cate_label').html('บริการ ' + $("#select_sub_cate :selected").text());
+                $('#select_sub_cate').hide();
+                fetch_desc($("#select_sub_cate :selected").val());
+                $('#btn_add').attr('onclick','add2po("'+$("#select_sub_cate :selected").val()+'")')
+                $('.detail').show();
+                $('#div_date').show();
+              }
+              else if(obj.length > 0)
+              {
+                $('#btn_add').hide();
+                $('#sub_cate_label').html('หมวดหมู่ย่อย ' + $("#select_sub_cate :selected").text());
+                $('#select_sub_cate').show();
+              }
+              var i=0;
+              var cate_select = '';
+              while(obj[i])
+              {
+                cate_select = cate_select + '<option value="'+obj[i].cate_id+'">'+ obj[i].cate_id + '--' + obj[i].cate_name +'('+obj[i].is_product+')</option>';
+                i++;
+              }
+              $('#select_sub_cate').html('<option>กรุณาเลือก</option>' + cate_select);
 
-              },
-             complete :function(){
-              $('div.sub_cate').unblock();
-                }					
-          });
-    
-  }
+            },
+            complete :function(){
+            $('div.sub_cate').unblock();
+              }					
+        });
+  
+}
 
 function fetch_desc(product_id)
 {
