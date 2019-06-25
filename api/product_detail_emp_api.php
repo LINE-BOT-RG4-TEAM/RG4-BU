@@ -95,9 +95,26 @@
     {
         $purchase_id =$_POST["purchase_id"];
         $cate_id = $_POST["cate_id"];
+
+        // fetch available lineitem id from purchase_id
+        $fetch_lineitem = "
+            SELECT purchase_id, purchase_lineitem_id
+            FROM purchase_lineitem
+            WHERE purchase_id = '{$purchase_id}' 
+                AND cate_id = '{$cate_id}'
+                AND (
+                        before_operate_photo IS NOT NULL 
+                        OR after_operate_photo IS NOT NULL
+                );
+        ";
+        $lineitem_result = mysqli_query($conn, $fetch_lineitem);
+        if($lineitem_result->num_rows > 0){
+            echo json_encode($lineitem_result->fetch_assoc(), JSON_UNESCAPED_UNICODE);
+        }
+
+        // remove product from lineitem
         $sql = "DELETE FROM purchase_lineitem WHERE purchase_id = '$purchase_id' AND cate_id = '$cate_id'";
         $query = mysqli_query($conn,$sql);
-        echo "Deleted....";
         
     }
     

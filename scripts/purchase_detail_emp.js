@@ -17,8 +17,12 @@ function uploadAfterPhotoFormatter(photo_path, row, index) {
 function uploadPhotoFormatter(photo_path, row, photo_mode){
   var html_photo_block = "";
   if(photo_path != null){
+    // create a thumbnail and close icon as a remove
     html_photo_block += [
       '<div class="text-center">',
+      '<button type="button" onclick="javascript:removePhoto(\''+row["purchase_id"]+'\', \''+row["purchase_lineitem_id"]+'\', this);" data-upload-mode="'+photo_mode+'" class="close" aria-label="Close">',
+      '  <span aria-hidden="true">&times;</span>',
+      '</button>',
       '<a href="'+photo_path+'" target="_blank">',
       '<img src="'+photo_path+'" class="img-thumbnail"></img>',
       '</a>',
@@ -28,18 +32,74 @@ function uploadPhotoFormatter(photo_path, row, photo_mode){
 
   html_photo_block += [
     '<div class="custom-file">',
-    '  <input type="file" class="custom-file-input" onchange="javascript:uploadPhoto(\''+row["purchase_id"]+'\', \''+row["purchase_lineitem_id"]+'\', this);" data-line-item="'+row["purchase_lineitem_id"]+'" data-upload-mode="'+photo_mode+'"  accept="image/x-png,image/jpeg">',
+    '  <input type="file" class="custom-file-input" onchange="javascript:uploadPhoto(\''+row["purchase_id"]+'\', \''+row["purchase_lineitem_id"]+'\', this);" data-line-item="'+row["purchase_lineitem_id"]+'" data-upload-mode="'+photo_mode+'"  accept="image/jpeg">',
     '  <label class="custom-file-label">เลือกภาพ</label>',
     '</div>'
   ].join("");
   return html_photo_block;
 }
 
+function removePhoto(purchase_id, purchase_line_item, e){
+  // console.log(purchase_id, purchase_line_item, e);
+  Swal.fire({
+    title: 'แน่ใจหรือไม่?',
+    text: "คุณต้องการลบภาพถ่ายกิจกรรมภาพนี้ ?",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'ต้องการลบ',
+    cancelButtonText: 'ยกเลิก'
+  }).then((result) => {
+    if (result.value) {
+      var remove_photo_mode = $(e).data("uploadMode");
+      var photoRef = firebase
+                      .storage()
+                      .ref()
+                      .child(purchase_id+'/'+purchase_line_item+'/'+remove_photo_mode+".jpeg");
+      var deletePhotoTask = photoRef.delete();
+
+      deletePhotoTask
+      .then(function(){
+        $.blockUI();
+        $.ajax({
+          url: "./api/remove_activity_photo.php",
+          method: "POST",
+          data: {
+            purchase_id: purchase_id,
+            purchase_line_item: purchase_line_item,
+            remove_photo_mode: remove_photo_mode
+          },
+          success: function(response){
+            console.log('success', response);
+            $('table').bootstrapTable('refresh');
+            Swal.fire(
+              'ลบเรียบร้อยแล้ว!',
+              'ไฟล์ภาพกิจกรรมถูกลบเรียบร้อยแล้ว',
+              'success'
+            );
+          },
+          error: function(error){
+            console.log('error', error);
+          },
+          complete: function(){
+            console.log('complete');
+            $.unblockUI();
+          }
+        });
+      }).catch(function(error){
+        console.log('error', error);
+      });
+    }
+  });
+  
+}
+
 function uploadPhoto(purchase_id, purchase_line_item, e){
   var file = e.files[0];
-  var file_extension = file.type.split("/")[1];
+  // var file_extension = file.type.split("/")[1];
   var photo_mode = $(e).data("uploadMode");
-  var storageRef = firebase.storage().ref(purchase_id+'/'+purchase_line_item+'/'+photo_mode+'.'+file_extension);
+  var storageRef = firebase.storage().ref(purchase_id+'/'+purchase_line_item+'/'+photo_mode+'.jpeg');
   var uploadPhotoTask = storageRef.put(file);
   uploadPhotoTask.on('state_changed', 
     function progress(snapshot) {
@@ -804,45 +864,59 @@ function del()
     formData.append('cate_id',$('#modal_cate_id').text());
     formData.append('request','del'); //กำหนดเงื่อนไขให้ api
     $.ajax({
-            url: './api/product_detail_emp_api.php',
-            method: 'POST',
-            data: formData,
-            async: true,
-            cache: false,
-            processData: false,
-            contentType: false,
-            beforeSend : function()
-            {
-                //$.blockUI({message : '<h1>กำลังเข้าสู่ระบบ</h1>'});
-                console.log("beforesend.....");
-                $('div.modal-dialog').block({
-                  message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div>',
-                  overlayCSS : { 
-                    backgroundColor: '#ffffff',
-                    opacity: 0.8
-                  },
-                  css : {
-                    opacity: 1,
-                    border: 'none',
-                  }
-                });
-                //$('.blockUI.blockMsg').center();
-            },
-            success: function(response) 
-              {
-                console.log(response);
-                Swal.fire({
-                  title: 'สำเร็จ !',
-                  html: 'ลบรายการเรียบร้อย...<br/> ',
-                  type: 'success',
-                  timer: 5000
-              });
-              window.location.reload();
-              },
-             complete :function(){
-              $('div.modal-dialog').unblock();
-                }					
+      url: './api/product_detail_emp_api.php',
+      method: 'POST',
+      data: formData,
+      async: true,
+      cache: false,
+      processData: false,
+      contentType: false,
+      beforeSend : function() {
+        $('div.modal-dialog').block({
+          message: '<div class="spinner-grow text-primary display-4" style="width: 4rem; height: 4rem;" role="status"><span class="sr-only">Loading...</span></div>',
+          overlayCSS : { 
+            backgroundColor: '#ffffff',
+            opacity: 0.8
+          },
+          css : {
+            opacity: 1,
+            border: 'none',
+          }
+        });
+        //$('.blockUI.blockMsg').center();
+      },
+      success: function(response) {
+        console.log('success', response);
+        // remove image from firebase storgage
+        var imageObj = JSON.parse(response) || {};
+        var lineitemBeforeRef = firebase.storage().ref().child(imageObj["purchase_id"]+'/'+imageObj["purchase_lineitem_id"]+'/'+"before_operate_photo.jpeg");
+        lineitemBeforeRef
+          .delete()
+          .then(function(){
+            console.log('delete before success');
+          }).catch(function(){
+            console.log("can't delete before before");
           });
+        var lineitemAfterRef = firebase.storage().ref().child(imageObj["purchase_id"]+'/'+imageObj["purchase_lineitem_id"]+'/'+"after_operate_photo.jpeg");
+        lineitemAfterRef.delete().then(function(){
+          console.log('delete after success');
+        }).catch(function(){
+          console.log("can't delete after before");
+        });
+
+        Swal.fire({
+          title: 'สำเร็จ !',
+          html: 'ลบรายการเรียบร้อย...<br/> ',
+          type: 'success',
+          timer: 3000
+        });
+        window.location.reload();
+        // $("table").bootstrapTable('refresh');
+      },
+      complete :function(){
+        $('div.modal-dialog').unblock();
+      }					
+    });
 }
 
 $('#btn_add').hide();
