@@ -1,7 +1,7 @@
 function lineitem_format(value, row, index) {
   return [
-    '<a class="btn btn-block btn-sm btn-outline-primary po-detail" href="#" title="Like" data-toggle="modal" onclick="set_cate_id_modal('+"'" + value + "'" +')" data-target="#PoModal">',
-    '<i class="fas fa-pen"></i> แก้ไข/ลบบริการ',
+    '<a class="btn btn-block btn-outline-primary po-detail" href="#" title="Like" data-toggle="modal" onclick="set_cate_id_modal('+"'" + value + "'" +')" data-target="#PoModal">',
+    '<i class="fas fa-pen"></i><br/>แก้ไข/<br/>ลบบริการ',
     "</a>  "
   ].join("");
 }
@@ -37,6 +37,16 @@ function uploadPhotoFormatter(photo_path, row, photo_mode){
     '</div>'
   ].join("");
   return html_photo_block;
+}
+
+function noticeFormatter(notice, row, index){
+  return [
+    "<textarea class='form-control'>",
+    "asdsad",
+    notice,
+    "</textarea>",
+    "<a href='javascript:void(0);' onclick='alert("+row["purchase_lineitem_id"]+");' class='btn btn-block btn-success btn-sm'>บันทึกข้อมูล</a>"
+  ].join("");
 }
 
 function removePhoto(purchase_id, purchase_line_item, e){
@@ -238,13 +248,20 @@ function product_detail()
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  apiKey: "<?=getenv('FIREBASE_API_KEY')?>",
-  authDomain: "<?=getenv('FIREBASE_AUTH_DOMAIN')?>",
-  databaseURL: "<?=getenv('FIREBASE_DATABASE_URL')?>",
-  projectId: "<?=getenv('FIREBASE_PROJECT_ID')?>",
-  storageBucket: "<?=getenv('FIREBASE_STORAGE_BUCKET')?>",
-  messagingSenderId: "<?=getenv('FIREBASE_MESSAGING_SENDER_ID')?>",
-  appId: "<?=getenv('FIREBASE_APP_ID')?>"
+  // apiKey: "<?=getenv('FIREBASE_API_KEY')?>",
+  // authDomain: "<?=getenv('FIREBASE_AUTH_DOMAIN')?>",
+  // databaseURL: "<?=getenv('FIREBASE_DATABASE_URL')?>",
+  // projectId: "<?=getenv('FIREBASE_PROJECT_ID')?>",
+  // storageBucket: "<?=getenv('FIREBASE_STORAGE_BUCKET')?>",
+  // messagingSenderId: "<?=getenv('FIREBASE_MESSAGING_SENDER_ID')?>",
+  // appId: "<?=getenv('FIREBASE_APP_ID')?>"
+  apiKey: "AIzaSyA8SOMa8Fp_8NxueTW5GBIhArdj5Ds_LIE",
+  authDomain: "pea-smartbiz.firebaseapp.com",
+  databaseURL: "https://pea-smartbiz.firebaseio.com",
+  projectId: "pea-smartbiz",
+  storageBucket: "pea-smartbiz.appspot.com",
+  messagingSenderId: "592222996315",
+  appId: "1:592222996315:web:e3e475f81eee8a6a"
 };
 
 // Initialize Firebase
@@ -391,12 +408,12 @@ function fetch_purchase_emp()
           .addClass("btn-danger")
           .attr("onclick", "javascript:delete_document('"+purchase_id+"');");
 
-        // set send email btn config
-        $("#send_confirm_email")
-          .removeClass("btn-outline-dark disabled")
-          .addClass("btn-dark")
-          .attr("onclick", "javascript:sendEmail('"+purchase_id+"');");
-      }
+        }
+      // set send email btn config
+      $("#send_confirm_email")
+        .removeClass("btn-outline-dark disabled")
+        .addClass("btn-dark")
+        .attr("onclick", "javascript:sendEmail('"+purchase_id+"');");
     },
     complete :function(){
       $.unblockUI();
@@ -405,34 +422,55 @@ function fetch_purchase_emp()
 }
 
 function sendEmail(purchase_id){
-  $.ajax({
-    method: 'GET',
-    url: './api/send_email.php?purchase_id='+purchase_id,
-    beforeSend: function(){
-      $.blockUI({
-        message: '<h3 class="p-2 text-dark">กำลังส่งอีเมล์, กรุณารอสักครู่ค่ะ</h3>'
-      });
-    },
-    success: function(response){
-      console.log('response', response);
-      Swal.fire(
-        'ส่งอีเมล์สำเร็จ!',
-        '',
-        'success'
-      );
-    },
-    error: function(err){
-      console.log('err', err);
-      Swal.fire(
-        'ส่งไม่สำเร็จ',
-        '',
-        'error'
-      );
-    }, 
-    complete: function(){
-      $.unblockUI();
+  Swal.fire({
+    title: '<strong>แน่ใจหรือไม่ ?</strong>',
+    type: 'question',
+    html:
+      'ท่านต้องการส่งข้อมูลการสั่งซื้อเพื่อยืนยันการให้บริการ' +
+      'แก่ผู้ใช้ไฟผ่าน email หรือไม่ ',
+    showCloseButton: true,
+    showCancelButton: true,
+    focusConfirm: false,
+    confirmButtonText:
+      '<i class="far fa-paper-plane"></i> ส่งอีเมล์',
+    confirmButtonAriaLabel: 'Thumbs up, great!',
+    cancelButtonText:
+      '<i class="fas fa-times"></i> ยกเลิก',
+    cancelButtonAriaLabel: 'Thumbs down',
+  }).then(function(response){
+    if(!response.value){
+      return;
     }
-  });
+
+    $.ajax({
+      method: 'GET',
+      url: './api/send_email.php?purchase_id='+purchase_id,
+      beforeSend: function(){
+        $.blockUI({
+          message: '<h3 class="p-2 text-dark">กำลังส่งอีเมล์, กรุณารอสักครู่ค่ะ</h3>'
+        });
+      },
+      success: function(response){
+        console.log('response', response);
+        Swal.fire(
+          'ส่งอีเมล์สำเร็จ!',
+          '',
+          'success'
+        );
+      },
+      error: function(err){
+        console.log('err', err);
+        Swal.fire(
+          'ส่งไม่สำเร็จ',
+          '',
+          'error'
+        );
+      }, 
+      complete: function(){
+        $.unblockUI();
+      }
+    });
+  })
 }
 
 function delete_document(purchase_id){

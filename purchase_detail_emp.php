@@ -46,8 +46,8 @@
                     </div>
                   </div>
                   <div class="mt-3 text-center">
-                    <span class="text-dark font-weight-bold"><i class="fas fa-envelope-open-text"></i> ส่งอีเมล์ยืนยันการให้บริการ</span><br/>
-                    <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">ส่งอีเมล์ไปยังผู้ใช้ไฟ</a>
+                    <!-- <span class="text-dark font-weight-bold"><i class="fas fa-envelope-open-text"></i> ส่งอีเมล์ยืนยันการให้บริการ</span><br/>
+                    <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">ส่งอีเมล์ไปยังผู้ใช้ไฟ</a> -->
                     <!-- <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">ส่งอีเมล์ไปยังผู้ใช้ไฟ</a> -->
                   </div>
                 </div>
@@ -183,6 +183,12 @@
                     เลือกสินค้าเพิ่ม
                   </button>
                 </div>
+                <div class="float-right">
+                  <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">
+                    <i class="far fa-envelope"></i>
+                    ส่งอีเมล์ไปยังผู้ใช้ไฟ
+                  </a>
+                </div>
               </h4>
             </div>
           </div>
@@ -211,6 +217,9 @@
                     </th>
                     <th data-field="after_operate_photo" data-width="100" data-formatter="uploadAfterPhotoFormatter">
                       <i class="far fa-images"></i> ภาพหลังดำเนินการ
+                    </th>
+                    <th data-field="notice" data-width="170" data-formatter="noticeFormatter">
+                      <i class="far fa-images"></i> หมายเหตุ
                     </th>
                     <th data-formatter="lineitem_format" data-width="20" data-field="cate_id"  > รายละเอียด</th>
                   </tr>
