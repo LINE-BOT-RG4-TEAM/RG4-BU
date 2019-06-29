@@ -248,20 +248,13 @@ function product_detail()
 
 // Your web app's Firebase configuration
 var firebaseConfig = {
-  // apiKey: "<?=getenv('FIREBASE_API_KEY')?>",
-  // authDomain: "<?=getenv('FIREBASE_AUTH_DOMAIN')?>",
-  // databaseURL: "<?=getenv('FIREBASE_DATABASE_URL')?>",
-  // projectId: "<?=getenv('FIREBASE_PROJECT_ID')?>",
-  // storageBucket: "<?=getenv('FIREBASE_STORAGE_BUCKET')?>",
-  // messagingSenderId: "<?=getenv('FIREBASE_MESSAGING_SENDER_ID')?>",
-  // appId: "<?=getenv('FIREBASE_APP_ID')?>"
-  apiKey: "AIzaSyA8SOMa8Fp_8NxueTW5GBIhArdj5Ds_LIE",
-  authDomain: "pea-smartbiz.firebaseapp.com",
-  databaseURL: "https://pea-smartbiz.firebaseio.com",
-  projectId: "pea-smartbiz",
-  storageBucket: "pea-smartbiz.appspot.com",
-  messagingSenderId: "592222996315",
-  appId: "1:592222996315:web:e3e475f81eee8a6a"
+  apiKey: "<?=getenv('FIREBASE_API_KEY')?>",
+  authDomain: "<?=getenv('FIREBASE_AUTH_DOMAIN')?>",
+  databaseURL: "<?=getenv('FIREBASE_DATABASE_URL')?>",
+  projectId: "<?=getenv('FIREBASE_PROJECT_ID')?>",
+  storageBucket: "<?=getenv('FIREBASE_STORAGE_BUCKET')?>",
+  messagingSenderId: "<?=getenv('FIREBASE_MESSAGING_SENDER_ID')?>",
+  appId: "<?=getenv('FIREBASE_APP_ID')?>"
 };
 
 // Initialize Firebase
