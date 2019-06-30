@@ -23,7 +23,6 @@
           <th data-field="cus_name" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อ BP</th>
           <th data-field="FullName" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อผู้ติดต่อของ BP</th>
           <th data-field="service_num" data-sortable="true"><i class="fas fa-receipt"></i> จำนวนบริการ</th>
-          <th data-field="confident_document" data-sortable="true" data-formatter="documentFormatter"><i class="fas fa-receipt"></i> ใบเสร็จการชำระเงิน</th>
           <th data-formatter="po_Formatter" data-events="po_Events" > รายละเอียด</th>
         </tr>
       </thead>

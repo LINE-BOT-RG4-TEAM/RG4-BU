@@ -1,18 +1,18 @@
 <?php
     require("../utils/db_connector.php");
 
-    $purchase_id = $_POST["purchase_id"];
-    $purchase_line_item = $_POST["purchase_line_item"];
+    $purchase_lineitem_id = $_POST["purchase_lineitem_id"];
     $photo_mode = $_POST["photo_mode"];
+    $firebase_ref = $_POST["firebase_ref"];
+    $photo_name = $_POST["photo_name"];
     $photo_url = $_POST["photo_url"];
 
-    $update_activity_photo = "
-        UPDATE purchase_lineitem
-        SET {$photo_mode} = '{$photo_url}'
-        WHERE purchase_lineitem_id = '{$purchase_line_item}';
+    $insert_activity_photo = "
+        INSERT INTO purchase_activity_photo(purchase_lineitem_id, photo_mode, firebase_ref, photo_name, photo_url, upload_timestamp)
+        VALUES('{$purchase_lineitem_id}', '{$photo_mode}', '{$firebase_ref}', '{$photo_name}', '{$photo_url}', now());
     ";
 
-    if($conn->query($update_activity_photo)){
+    if($conn->query($insert_activity_photo)){
         http_response_code(200);
         exit(0);
     } else {

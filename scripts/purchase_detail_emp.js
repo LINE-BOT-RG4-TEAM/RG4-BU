@@ -1,181 +1,188 @@
-function lineitem_format(value, row, index) {
-  return [
-    '<a class="btn btn-block btn-outline-primary po-detail" href="#" title="Like" data-toggle="modal" onclick="set_cate_id_modal('+"'" + value + "'" +')" data-target="#PoModal">',
-    '<i class="fas fa-pen"></i><br/>แก้ไข/<br/>ลบบริการ',
-    "</a>  "
-  ].join("");
-}
-
-function uploadBeforePhotoFormatter(photo_path, row, index) {
-  return uploadPhotoFormatter(photo_path, row, "before_operate_photo");
-}
-
-function uploadAfterPhotoFormatter(photo_path, row, index) {
-  return uploadPhotoFormatter(photo_path, row, "after_operate_photo");
-}
-
-function uploadPhotoFormatter(photo_path, row, photo_mode){
-  var html_photo_block = "";
-  if(photo_path != null){
-    // create a thumbnail and close icon as a remove
-    html_photo_block += [
-      '<div class="text-center">',
-      '<button type="button" onclick="javascript:removePhoto(\''+row["purchase_id"]+'\', \''+row["purchase_lineitem_id"]+'\', this);" data-upload-mode="'+photo_mode+'" class="close" aria-label="Close">',
-      '  <span aria-hidden="true">&times;</span>',
-      '</button>',
-      '<a href="'+photo_path+'" target="_blank">',
-      '<img src="'+photo_path+'" class="img-thumbnail"></img>',
-      '</a>',
-      '</div>'
-    ].join("");
+function reportFormatter(value, row, index){
+  console.log('value', value, row['purchase_lineitem_id']);
+  var reportFieldArray = [];
+  var report_document_url = value || '';
+  reportFieldArray.push("<div class='text-center'>");
+  if(report_document_url.length > 0){
+    // reportFieldArray.push("<div class='btn-group-vertical'>");
+    reportFieldArray.push("<a class='btn btn-sm btn-success' href='"+report_document_url+"' target='_blank'>ดูรายงาน</a><br/>");
+    reportFieldArray.push("<a class='btn btn-sm btn-danger' onclick='removeReport(\""+row['purchase_id']+"\", \""+row['purchase_lineitem_id']+"\")' href='javascript:void(0);'>ลบรายงาน</a><br/>");
+    // reportFieldArray.push("</div>");
   }
+  reportFieldArray.push([
+    '<div class="image-upload">',
+    '   <label for="file-input_'+row['purchase_lineitem_id']+'">',
+    '     <i class="fas fa-upload">upload</i>',
+    '   </label>',
+    '   <input id="file-input_'+row['purchase_lineitem_id']+'" type="file" onchange="uploadReport(\''+row['purchase_id']+'\', \''+row['purchase_lineitem_id']+'\', this);" accept="application/pdf" data-purchase-lineitem-id="'+row['purchase_lineitem_id']+'" />',
+    '</div>',
+    '</div>',
+    '<style>.image-upload>input { display:none; }</style>'
+  ].join(""));
 
-  html_photo_block += [
-    '<div class="custom-file">',
-    '  <input type="file" class="custom-file-input" onchange="javascript:uploadPhoto(\''+row["purchase_id"]+'\', \''+row["purchase_lineitem_id"]+'\', this);" data-line-item="'+row["purchase_lineitem_id"]+'" data-upload-mode="'+photo_mode+'"  accept="image/jpeg">',
-    '  <label class="custom-file-label">เลือกภาพ</label>',
-    '</div>'
-  ].join("");
-  return html_photo_block;
+  return reportFieldArray.join("");
 }
 
-function noticeFormatter(notice, row, index){
-  return [
-    "<textarea class='form-control'>",
-    "asdsad",
-    notice,
-    "</textarea>",
-    "<a href='javascript:void(0);' onclick='alert("+row["purchase_lineitem_id"]+");' class='btn btn-block btn-success btn-sm'>บันทึกข้อมูล</a>"
-  ].join("");
+function removeReport(purchase_id, purchase_lineitem_id){
+  console.log(purchase_lineitem_id);
+  $.ajax({
+    url: "./api/remove_report_document.php",
+    method: "POST",
+    data: {
+      purchase_lineitem_id: purchase_lineitem_id
+    },
+    beforeSend: function(){
+      $.blockUI();
+    },
+    success: function(response){
+      console.log('success', response);
+      Swal.fire(
+        "ลบรายงานเรียบร้อยแล้ว",
+        "",
+        "success"
+      );
+    },
+    error: function(error){
+      console.log('error', error);
+    },
+    complete: function(){
+      console.log('complete');
+      $("table").bootstrapTable("refresh");
+      $.unblockUI();
+    }
+  });
+  firebase.storage().ref()
+  .child(purchase_id+'/'+purchase_lineitem_id+'/report.pdf')
+  .delete().then(function(){
+    console.log("Delete report successfully");
+  }).catch(function(){
+    console.log("Can't delete report...");
+  });
 }
 
-function removePhoto(purchase_id, purchase_line_item, e){
-  // console.log(purchase_id, purchase_line_item, e);
-  Swal.fire({
-    title: 'แน่ใจหรือไม่?',
-    text: "คุณต้องการลบภาพถ่ายกิจกรรมภาพนี้ ?",
-    type: 'warning',
-    showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
-    confirmButtonText: 'ต้องการลบ',
-    cancelButtonText: 'ยกเลิก'
-  }).then((result) => {
-    if (result.value) {
-      var remove_photo_mode = $(e).data("uploadMode");
-      var photoRef = firebase
-                      .storage()
-                      .ref()
-                      .child(purchase_id+'/'+purchase_line_item+'/'+remove_photo_mode+".jpeg");
-      var deletePhotoTask = photoRef.delete();
-
-      deletePhotoTask
-      .then(function(){
-        $.blockUI();
+function uploadReport(purchase_id, purchase_lineitem_id, e){
+  console.log('uploadReport->', purchase_id, purchase_lineitem_id);
+  var file = e.files[0];
+  var uploadReportStorage = firebase.storage().ref().child(purchase_id+'/'+purchase_lineitem_id+"/report.pdf");
+  var uploadReportTask = uploadReportStorage.put(file);
+  $.blockUI();
+  uploadReportTask.on("state_changed", 
+    function progress(snapshot){
+      var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
+      console.log('percentage now ', percentage);
+    },
+    function error(error){
+      console.log('error');
+      $.unblockUI();
+    },
+    function complete(){
+      var fullPath = uploadReportTask.snapshot.ref.fullPath;
+      uploadReportTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
         $.ajax({
-          url: "./api/remove_activity_photo.php",
+          url: "./api/update_report_document.php",
           method: "POST",
           data: {
-            purchase_id: purchase_id,
-            purchase_line_item: purchase_line_item,
-            remove_photo_mode: remove_photo_mode
+            purchase_lineitem_id: purchase_lineitem_id,
+            report_document_firebase_ref: fullPath,
+            report_document_url: downloadURL
+          },
+          beforeSend: function(){
+            console.log('before_send');
           },
           success: function(response){
-            console.log('success', response);
-            $('table').bootstrapTable('refresh');
-            Swal.fire(
-              'ลบเรียบร้อยแล้ว!',
-              'ไฟล์ภาพกิจกรรมถูกลบเรียบร้อยแล้ว',
-              'success'
-            );
+            console.log('response', response);
           },
           error: function(error){
             console.log('error', error);
           },
           complete: function(){
             console.log('complete');
-            $.unblockUI();
           }
         });
-      }).catch(function(error){
-        console.log('error', error);
+        Swal.fire(
+          "อัปโหลดรายงานเรียบร้อยแล้ว",
+          "",
+          "success"
+        ).then(function(){
+          $.unblockUI();
+          $("table").bootstrapTable("refresh");
+        })
       });
     }
-  });
-  
+  );
 }
 
-function uploadPhoto(purchase_id, purchase_line_item, e){
-  var file = e.files[0];
-  // var file_extension = file.type.split("/")[1];
-  var photo_mode = $(e).data("uploadMode");
-  var storageRef = firebase.storage().ref(purchase_id+'/'+purchase_line_item+'/'+photo_mode+'.jpeg');
-  var uploadPhotoTask = storageRef.put(file);
-  uploadPhotoTask.on('state_changed', 
-    function progress(snapshot) {
-      var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
-      console.log('percentage now ', percentage);
-    }, function error(err) {
-      switch (error.code) {
-        case 'storage/canceled':
-          // User canceled the upload
-          Swal.fire(
-            '',
-            'อัปโหลดไฟล์ไม่สำเร็จ เนื่องจากท่านยกเลิกการอัปโหลด',
-            'error'
-          ).then(function(){
-            // document.getElementById("confidentFile").value = "";
-            // uploaderProgress.value = 0;
-          });
-          break;
-    
-        case 'storage/unknown':
-          // Unknown error occurred, inspect error.serverResponse
-          Swal.fire(
-            '',
-            'อัปโหลดไฟล์ไม่สำเร็จ เนื่องจากมีปัญหาเกี่ยวกับระบบอัปโหลดไฟล์ กรุณาลองใหม่อีกครั้ง',
-            'error'
-          );
-          break;
-      }
+function lineitem_format(value, row, index) {
+  return [
+    '<div class="text-center">',
+    '<div class="btn-group-vertical" role="group" aria-label="Basic example">',
+    ' <a class="btn btn-block btn-outline-primary po-detail" href="javascript:void(0);" title="Like" data-toggle="modal" onclick="set_cate_id_modal('+"'" + value + "'" +')" data-target="#PoModal">',
+    '   <i class="fas fa-pen"></i> แก้ไข/ลบบริการ',
+    " </a>",
+    ' <a class="btn btn-block btn-outline-success" href="javascript:void(0);" title="Upload" data-toggle="modal" onclick="popupUploadWindow(\''+row['purchase_id']+'\', \''+row['purchase_lineitem_id']+'\');">',
+    '   <i class="far fa-images"></i> อัพโหลดรูปภาพ<br/>ก่อนหรือหลังดำเนินการ',
+    " </a>",
+    '</div>',
+    '</div>'
+  ].join("");
+}
 
-    }, function complete() {
+function popupUploadWindow(purchase_id, purchase_lineitem_id) {
+  var new_window = window.open('upload_activity_photo.php?purchase_id='+purchase_id+'&purchase_lineitem_id='+purchase_lineitem_id, "อัพโหลดรูปภาพก่อนหรือหลังดำเนินการ", "height=600,width=1000");
+  if (window.focus) {
+    new_window.focus();
+  }
+  return false;
+}
+
+function noticeFormatter(notice, row, index){
+  return [
+    "<textarea class='form-control' id='notice_id_"+row["purchase_lineitem_id"]+"'>",
+    notice,
+    "</textarea>",
+    "<a href='javascript:void(0);' onclick='javascript:updateNotice("+row["purchase_lineitem_id"]+");' class='btn btn-block btn-success btn-sm'>บันทึกข้อมูล</a>"
+  ].join("");
+}
+
+function updateNotice(purchase_lineitem_id){
+  var notice_value = $.trim($("#notice_id_"+purchase_lineitem_id).val()) || '';
+  if(notice_value.length == 0){
+    Swal.fire(
+      'ไม่สามารถบันทึกหมายเหตุ',
+      'เนื่องจากท่านไม่ได้กรอกข้อมูลใดๆ จึงไม่สามารถบันทึกข้อมูล',
+      'warning'
+    );
+    return;
+  }
+
+  $.ajax({
+    url: "./api/update_notice_purchase_lineitem.php",
+    method: "POST",
+    data: {
+      purchase_lineitem_id: purchase_lineitem_id,
+      notice: notice_value
+    },
+    beforeSend: function(){
+      $.blockUI();
+    },
+    success: function(response){
       Swal.fire(
+        "บันทึกสำเร็จ",
         '',
-        'อัปโหลดไฟล์เรียบร้อยแล้ว',
-        'success'
-      )
-      .then(function(){
-        uploadPhotoTask.snapshot.ref.getDownloadURL()
-        .then(function(downloadURL) {
-          // console.log('file available : '+downloadURL)
-          $.ajax({
-            url: './api/update_activity_photo.php',
-            method: 'POST',
-            data: {
-              purchase_id: purchase_id,
-              purchase_line_item: purchase_line_item,
-              photo_mode: photo_mode,
-              photo_url: downloadURL
-            },
-            beforeSend: function(){
-              $.blockUI();
-            },
-            success: function(response){
-              console.log('success', response);
-            },
-            error: function(error){
-              console.log('error', error);
-            },
-            complete: function(){
-              console.log('complete');
-              $.unblockUI();
-              $('table').bootstrapTable('refresh');
-            }
-          });
-          document.getElementById("confidentFile").value = "";
-        });
-      });
+        "success"
+      );
+    },
+    error: function(error){
+      Swal.fire(
+        'เกิดข้อผิดพลาดในการบันทึกข้อมูล',
+        'กรุณาลองบันทึกใหม่อีกครั้ง',
+        'error'
+      );
+    },
+    complete: function(){
+      $.unblockUI();
+      $("table").bootstrapTable("refresh");
+    }
   });
 }
 
@@ -266,81 +273,6 @@ $( document).ready(function() {
   $('#purchase_id').html(purchase_id);
   // $('#btn-confirm').hide();
   fetch_purchase_emp();
-
-  // listener for upload file 
-  var uploaderProgress = document.getElementById('uploaderProgress');
-  var confidentFile = document.getElementById('confidentFile');
-  confidentFile.addEventListener('change', function(e){
-    var PONumber = $("span#purchase_id").text();
-    var file = e.target.files[0];
-    var storageRef = firebase.storage().ref(PONumber+'/confident-document.pdf');
-    var task = storageRef.put(file);
-    task.on('state_changed', 
-      function progress(snapshot) {
-        var percentage = (snapshot.bytesTransferred/snapshot.totalBytes)*100;
-        uploaderProgress.value = percentage;
-        console.log('percentage now ', percentage);
-      }, function error(err) {
-        switch (error.code) {
-          case 'storage/canceled':
-            // User canceled the upload
-            Swal.fire(
-              '',
-              'อัปโหลดไฟล์ไม่สำเร็จ เนื่องจากท่านยกเลิกการอัปโหลด',
-              'error'
-            ).then(function(){
-              // document.getElementById("confidentFile").value = "";
-              uploaderProgress.value = 0;
-            });
-            break;
-      
-          case 'storage/unknown':
-            // Unknown error occurred, inspect error.serverResponse
-            Swal.fire(
-              '',
-              'อัปโหลดไฟล์ไม่สำเร็จ เนื่องจากมีปัญหาเกี่ยวกับระบบอัปโหลดไฟล์ กรุณาลองใหม่อีกครั้ง',
-              'error'
-            ).then(function(){
-              document.getElementById("confidentFile").value = "";
-              uploaderProgress.value = 0;
-            });
-            break;
-        }
-
-      }, function complete() {
-        Swal.fire(
-          '',
-          'อัปโหลดไฟล์เรียบร้อยแล้ว',
-          'success'
-        ).then(function(){
-          task.snapshot.ref.getDownloadURL()
-          .then(function(downloadURL) {
-            $.ajax({
-              url: './api/update_confident_file.php',
-              method: 'POST',
-              data: {
-                PONumber: PONumber,
-                downloadURL: downloadURL
-              },
-              beforeSend: function(){
-                $.blockUI();
-              },
-              success: function(response){
-                console.log('success', response);
-              },
-              error: function(error){
-                console.log('error', error);
-              },
-              complete: function(){
-                console.log('complete');
-                window.location.reload();
-              }
-            });
-            document.getElementById("confidentFile").value = "";
-          });
-        });
-    });
-  });
 });
 
 function fetch_purchase_emp()
@@ -918,21 +850,14 @@ function del()
       },
       success: function(response) {
         console.log('success', response);
-        // remove image from firebase storgage
-        var imageObj = JSON.parse(response) || {};
-        var lineitemBeforeRef = firebase.storage().ref().child(imageObj["purchase_id"]+'/'+imageObj["purchase_lineitem_id"]+'/'+"before_operate_photo.jpeg");
-        lineitemBeforeRef
-          .delete()
-          .then(function(){
-            console.log('delete before success');
+
+        var photo_array = JSON.parse(response) || [];
+        $.each(photo_array, function(index, photo_obj){
+          firebase.storage().ref().child(photo_obj.firebase_ref).delete().then(function(){
+            console.log('delete', photo_obj.firebase_ref);
           }).catch(function(){
-            console.log("can't delete before before");
+            console.log('error delete', photo_obj.firebase_ref);
           });
-        var lineitemAfterRef = firebase.storage().ref().child(imageObj["purchase_id"]+'/'+imageObj["purchase_lineitem_id"]+'/'+"after_operate_photo.jpeg");
-        lineitemAfterRef.delete().then(function(){
-          console.log('delete after success');
-        }).catch(function(){
-          console.log("can't delete after before");
         });
 
         Swal.fire({
@@ -948,11 +873,9 @@ function del()
         $('div.modal-dialog').unblock();
       }					
     });
+    
 }
 
 $('#btn_add').hide();
 $('.detail').hide();
 $('#div_date').hide();
-
-
-

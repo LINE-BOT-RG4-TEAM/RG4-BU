@@ -93,28 +93,54 @@
     }
     else if($request == 'del')
     {
-        $purchase_id =$_POST["purchase_id"];
+        $purchase_id = $_POST["purchase_id"];
         $cate_id = $_POST["cate_id"];
 
         // fetch available lineitem id from purchase_id
-        $fetch_lineitem = "
-            SELECT purchase_id, purchase_lineitem_id
+        $fetch_lineitem_id = "
+            SELECT purchase_id
+                    , purchase_lineitem_id
             FROM purchase_lineitem
             WHERE purchase_id = '{$purchase_id}' 
-                AND cate_id = '{$cate_id}'
-                AND (
-                        before_operate_photo IS NOT NULL 
-                        OR after_operate_photo IS NOT NULL
-                );
+                    AND cate_id = '{$cate_id}';
         ";
-        $lineitem_result = mysqli_query($conn, $fetch_lineitem);
+        $lineitem_result = mysqli_query($conn, $fetch_lineitem_id);
         if($lineitem_result->num_rows > 0){
-            echo json_encode($lineitem_result->fetch_assoc(), JSON_UNESCAPED_UNICODE);
+            $lineitem_row = $lineitem_result->fetch_assoc();
+            $purchase_lineitem_id = $lineitem_row['purchase_lineitem_id'];
+
+            // fetch select 
+            $fetch_activity_photo = "
+                SELECT firebase_ref
+                FROM purchase_activity_photo
+                WHERE purchase_lineitem_id = '{$purchase_lineitem_id}'
+            ";
+            $photo_result = $conn->query($fetch_activity_photo);
+            if($photo_result->num_rows != 0){
+                // send a photo ref for delete in firebase storage
+                echo json_encode($photo_result->fetch_all(MYSQLI_ASSOC) ,JSON_UNESCAPED_UNICODE);
+
+                $delete_photo = "
+                    DELETE FROM purchase_activity_photo
+                    WHERE purchase_lineitem_id = '{$purchase_lineitem_id}'
+                ";
+                $conn->query($delete_photo);
+            } else {
+                echo json_encode(array());
+            }
+        } else {
+            echo json_encode(array());
         }
 
         // remove product from lineitem
         $sql = "DELETE FROM purchase_lineitem WHERE purchase_id = '$purchase_id' AND cate_id = '$cate_id'";
-        $query = mysqli_query($conn,$sql);
+        if($conn->query($sql)){
+            http_response_code(200);
+            exit(0);
+        } else {
+            http_response_code(500);
+            exit(1);
+        }
         
     }
     

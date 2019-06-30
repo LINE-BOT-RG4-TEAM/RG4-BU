@@ -1,62 +1,24 @@
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
-    <!-- <div class="card">
-      <div class="card-body"> -->
-        <!-- <h3 class="card-title font-weight-bold text-info">
-          <i class="fas fa-scroll"></i> ข้อมูลเบื้องต้นก่อนยืนยันการให้บริการแก่ลูกค้า
-        </h3> -->
-        <div class="card-text">
-          <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-8">
-              <div class="alert alert-light h-100 text-dark" role="alert">
-                <span class="font-weight-bold text-success" style="font-size: 22px;"><i class="fas fa-bullhorn"></i> ข้อควรทราบก่อนดำเนินการ</span><br/>
-                <div class="dropdown-divider text-light"></div>
-                <span class="font-weight-bold">
-                  ในหน้าเว็บไซต์ปัจจุบันที่ท่านเข้าถึงอยู่ เป็นหน้าเว็บสำหรับจัดการบริการต่างๆ ดังนี้
-                </span>
-                  <ol class="font-weight-bold">
-                    <li>เพิ่ม/ลด/แก้ไข รายบริการต่างๆ ผ่านตาราง `รายการบริการ` (ตามตารางด้านล่าง)</li>
-                    <li>เพิ่มไฟล์ใบเสร็จรับเงินในระบบในรูปแบบไฟล์ pdf เพื่อส่งไปยังผู้ใช้ไฟก่อนที่ กฟฟ. จะให้บริการ (ใบเสร็จรับเงินเกิดขึ้นหลังจากผู้ใช้ไฟเดินทางมายัง กฟฟ. เพื่อชำระเงินตามบริการต่าง)</li>
-                    <li>ยืนยันการเข้าให้บริการแก่ผู้ใช้ไฟตามวันนัดหมาย จากการกดปุ่มยืนยันโดยระบบจะส่งไฟล์จากไฟล์แนบข้อ 2 ไปยัง e-mail ที่ผู้ใช้ไฟกรอกตอนสมัคร</li>
-                    <li>หลังจาก กฟฟ.​ ดำเนินการให้บริการเสร็จสิ้นแล้ว สามารถแนบภาพกิจกรรม ก่อนทำ/หลังทำ</li>
-                  </ol>
-              </div>
-            </div>
-            <div class="col-sm-12 col-md-12 col-lg-4">
-              <div class="card pt-3 h-100">
-                <div class="card-title font-weight-bold text-primary text-center" style="font-size:20px;">
-                  ยืนยันการให้บริการต่อผู้ใช้ไฟ
-                </div>
-                <div class="card-body">
-                  ความคืบหน้าในการอัปโหลด
-                  <progress class="w-100" id="uploaderProgress" value="0" max="100">0%</progress>
-                  <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="confidentFile" accept="application/pdf">
-                    <label class="custom-file-label" for="confidentFile">ไฟล์ใบเสร็จ</label>
-                  </div>
-                  <div class="mt-3 text-center">
-                    <span class="text-success font-weight-bold"><i class="far fa-check-circle"></i> ไฟล์ที่อัปโหลดเรียบร้อยแล้ว</span><br/>
-                    <div class="btn btn-block">
-                      <a id="view_document" href="javascript:void(0);" class="btn btn-outline-success disabled">
-                        <i class="far fa-eye"></i> ดูไฟล์ใบเสร็จ
-                      </a>
-                      <a id="delete_document" href="javascript:void(0);" class="btn btn-outline-danger disabled">
-                        <i class="far fa-trash-alt"></i> ลบไฟล์แนบ
-                      </a>
-                    </div>
-                  </div>
-                  <div class="mt-3 text-center">
-                    <!-- <span class="text-dark font-weight-bold"><i class="fas fa-envelope-open-text"></i> ส่งอีเมล์ยืนยันการให้บริการ</span><br/>
-                    <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">ส่งอีเมล์ไปยังผู้ใช้ไฟ</a> -->
-                    <!-- <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">ส่งอีเมล์ไปยังผู้ใช้ไฟ</a> -->
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div class="card-text">
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="alert alert-light h-100 text-dark" role="alert">
+            <span class="font-weight-bold text-success" style="font-size: 22px;"><i class="fas fa-bullhorn"></i> ข้อควรทราบก่อนดำเนินการ</span><br/>
+            <div class="dropdown-divider text-light"></div>
+            <span class="font-weight-bold">
+              ในหน้าเว็บไซต์ปัจจุบันที่ท่านเข้าถึงอยู่ เป็นหน้าเว็บสำหรับจัดการบริการต่างๆ ดังนี้
+            </span>
+              <ol class="font-weight-bold">
+                <li>เพิ่ม/ลด/แก้ไข รายบริการต่างๆ ผ่านตาราง `รายการบริการ` (ตามตารางด้านล่าง)</li>
+                <li>เพิ่มไฟล์ใบเสร็จรับเงินในระบบในรูปแบบไฟล์ pdf เพื่อส่งไปยังผู้ใช้ไฟก่อนที่ กฟฟ. จะให้บริการ (ใบเสร็จรับเงินเกิดขึ้นหลังจากผู้ใช้ไฟเดินทางมายัง กฟฟ. เพื่อชำระเงินตามบริการต่าง)</li>
+                <li>ยืนยันการเข้าให้บริการแก่ผู้ใช้ไฟตามวันนัดหมาย จากการกดปุ่มยืนยันโดยระบบจะส่งไฟล์จากไฟล์แนบข้อ 2 ไปยัง e-mail ที่ผู้ใช้ไฟกรอกตอนสมัคร</li>
+                <li>หลังจาก กฟฟ.​ ดำเนินการให้บริการเสร็จสิ้นแล้ว สามารถแนบภาพกิจกรรม ก่อนทำ/หลังทำ</li>
+              </ol>
           </div>
         </div>
-      <!-- </div>
-    </div> -->
+      </div>
+    </div>
   </div>
 </div>
 
@@ -209,19 +171,18 @@
                     <th data-field="cate_name" data-width="200">
                       <i class="fas fa-user-tie"></i> ชื่อสินค้า
                     </th>
-                    <th data-field="appointment_date" data-sortable="true" data-width="10">
+                    <th data-field="appointment_date" data-sortable="true" data-width="40">
                       <i class="fas fa-receipt"></i> วันที่นัดหมาย
                     </th>
-                    <th data-field="before_operate_photo" data-width="100" data-formatter="uploadBeforePhotoFormatter">
-                      <i class="far fa-images"></i> ภาพก่อนดำเนินการ
+                    <th data-field="report_document_url" data-width="90" data-formatter="reportFormatter">
+                      <i class="fas fa-receipt"></i> รายงาน
                     </th>
-                    <th data-field="after_operate_photo" data-width="100" data-formatter="uploadAfterPhotoFormatter">
-                      <i class="far fa-images"></i> ภาพหลังดำเนินการ
+                    <th data-field="notice" data-width="200" data-formatter="noticeFormatter">
+                      <i class="far fa-images"></i> ข้อความหมายเหตุ<br/>จาก พนง.กฟฟ
                     </th>
-                    <th data-field="notice" data-width="170" data-formatter="noticeFormatter">
-                      <i class="far fa-images"></i> หมายเหตุ
+                    <th data-formatter="lineitem_format" data-width="50" data-field="cate_id">
+                      รายละเอียด
                     </th>
-                    <th data-formatter="lineitem_format" data-width="20" data-field="cate_id"  > รายละเอียด</th>
                   </tr>
                 </thead>
               </table>
