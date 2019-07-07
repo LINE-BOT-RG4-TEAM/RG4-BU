@@ -1,5 +1,9 @@
 <?php
+  session_start();
   require('../../utils/db_connector.php');
+
+  // get current pea_code 
+	$pea_code = $_SESSION['pea_code'];
 
   $fetch_automatic = "
     SELECT 
@@ -15,6 +19,7 @@
       INNER JOIN bp ON ca.BP = bp.BP 
       INNER JOIN purchase_lineitem ON purchase_lineitem.purchase_id = purchase.PURCHASE_ID
     WHERE purchase.PURCHASE_STATUS = 'P'
+          AND ca.PEA_CODE = '{$pea_code}'
     GROUP BY purchase_lineitem.purchase_id
   ";
 
