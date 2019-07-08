@@ -6,6 +6,20 @@ var service_type = {
     'S304': 'ขอตรวจสอบและบำรุงรักษารีเลย์',
     'S305': 'ขอบำรุงรักษาหม้อแปลงไฟฟ้า',
 };
+var month_map_thai = {
+    "January": "มกราคม",
+    "February": "กุมภาพันธ์",
+    "March": "มีนาคม",
+    "April": "เมษายน",
+    "May": "พฤษภาคม",
+    "June": "มิถุนายน",
+    "July": "กรกฎาคม",
+    "August": "สิงหาคม",
+    "September": "กันยายน",
+    "October": "ตุลาคม",
+    "November": "พฤศจิกายน",
+    "December": "ธันวาคม"
+};
 var month_thai = {
     '01': 'มกราคม',
     '02': 'กุมภาพันธ์',
@@ -74,12 +88,20 @@ function home_data() {
             $("#bu_card").html(obj.bu + ' ราย');
             $("#not_bu_card").html(obj.not_bu + ' ราย');
             console.log(obj);
+            $(".quantity_jobs_area").unblock();
         }				
     }); 
 }
 home_data();
 
 window.onload = function () {
+    $("#chartarea, .quantity_jobs_area").block({
+        message: "<h4 class='font-weight-bold'>กำลังดึงข้อมูล</h4>",
+        overlayCSS : { 
+            backgroundColor: '#ffffff',
+            opacity: 0.8
+        }
+    });
     graph_month();
     $.unblockUI();
 }
@@ -180,8 +202,9 @@ function graph_month() {
     var ajaxCallback = fetchMonthlyQuantityJobs();
     ajaxCallback.fail(function(error){
         console.log(error);
-        $("#chartarea").html("<h4 class='p-3 text-center font-weight-bold'>ไม่มีข้อมูลลูกค้าที่ครบกำหนดบำรุงรักษา<br/>เนื่องจากฐานข้อมูลไม่มีข้อมูลลูกค้าที่เคยทำธุรกิจเสริม</h4>");
+        $("#chartarea").html("<h4 class='p-3 text-center text-primary font-weight-bold'>ไม่มีข้อมูลลูกค้าที่ครบกำหนดบำรุงรักษา<br/>เนื่องจากฐานข้อมูลไม่มีข้อมูลลูกค้าที่เคยทำธุรกิจเสริม</h4>");
         $(".sub-criteria").html('');
+        $("#chartarea").unblock();
         return;
     });
 
@@ -192,6 +215,7 @@ function graph_month() {
         $('#myChart').remove();
         $('#chartarea').append('<canvas id="myChart" style="height:40vh; width:70vw"></canvas>');
         var ctx = document.getElementById('myChart');
+        $("#chartarea").unblock();
         var myChart = new Chart(ctx, {
             type: 'bar',
             data: {
@@ -237,12 +261,6 @@ function graph_month() {
                 },
                 legend: {
                     display: false
-                },
-                'onClick' : function (evt, item) {
-                    console.log(item);
-                    graph_monthly(item[0]['_model'].label);
-                    console.log('legd item', item);
-                    console.log(item[0]['_model'].label);
                 }
             }
         });
@@ -269,12 +287,12 @@ function graph_monthly(month_name)
             datasets: [{
                 label: 'จำนวนลูกค้าที่ครบกำหนดบำรุงรักษาในเดือน  ' + month_name,
                 data: [
-                        Math.floor((Math.random() * 10) + 1),
-                        Math.floor((Math.random() * 10) + 1),
-                        Math.floor((Math.random() * 10) + 1),
-                        Math.floor((Math.random() * 10) + 1),
-                        Math.floor((Math.random() * 10) + 1)
-                        ],
+                    Math.floor((Math.random() * 10) + 1),
+                    Math.floor((Math.random() * 10) + 1),
+                    Math.floor((Math.random() * 10) + 1),
+                    Math.floor((Math.random() * 10) + 1),
+                    Math.floor((Math.random() * 10) + 1)
+                ],
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -312,3 +330,193 @@ function graph_monthly(month_name)
         }
     });
 }
+
+function summaryS301Formatter(data){
+    var rows_map_obj = $.map(data, function(row, index){
+        return parseInt(row['S301']);
+    });
+    return "<div class='font-weight-bold text-right'>"+rows_map_obj.reduce(function(initialVal, value){
+        return initialVal + value;
+    }, 0) + " งาน</div>";
+}
+
+function summaryS302Formatter(data){
+    var rows_map_obj = $.map(data, function(row, index){
+        return parseInt(row['S302']);
+    });
+    return "<div class='font-weight-bold text-right'>"+rows_map_obj.reduce(function(initialVal, value){
+        return initialVal + value;
+    }, 0) + " งาน</div>";
+}
+
+function summaryS303Formatter(data){
+    var rows_map_obj = $.map(data, function(row, index){
+        return parseInt(row['S303']);
+    });
+    return "<div class='font-weight-bold text-right'>"+rows_map_obj.reduce(function(initialVal, value){
+        return initialVal + value;
+    }, 0) + " งาน</div>";
+}
+
+function summaryS304Formatter(data){
+    var rows_map_obj = $.map(data, function(row, index){
+        return parseInt(row['S304']);
+    });
+    return "<div class='font-weight-bold text-right'>"+rows_map_obj.reduce(function(initialVal, value){
+        return initialVal + value;
+    }, 0) + " งาน</div>";
+}
+
+function summaryS305Formatter(data){
+    var rows_map_obj = $.map(data, function(row, index){
+        return parseInt(row['S305']);
+    });
+    
+    return "<div class='font-weight-bold text-right'>"+rows_map_obj.reduce(function(initialVal, value){
+        return initialVal + value;
+    }, 0) + " งาน</div>";
+}
+
+function monthlyFormatter(value, row, index){
+    var summaryByMonthly = 0;
+    summaryByMonthly = parseInt(row['S301']) + parseInt(row['S302']) + parseInt(row['S303']) + parseInt(row['S304']) + parseInt(row['S305']);
+    return "<div class='font-weight-bold text-right'>"+summaryByMonthly+" งาน</div>";
+}
+
+function grandSummaryFormatter(data){
+    var rows_map_obj = data.map(function(row){
+        return parseInt(row['S301']) + parseInt(row['S302']) + parseInt(row['S303']) + parseInt(row['S304']) + parseInt(row['S305']);
+    });
+    return rows_map_obj.reduce(function(initialVal, value){
+        return initialVal + value;
+    }, 0) + " งาน";
+}
+
+function quantityJobsS301Formatter(value, row, index) {
+    if(parseInt(value) > 0){
+        return [
+            '<u class="font-weight-bold" data-toggle="modal" data-target="#jobsModalLgCenter" data-code="S301" data-row="'+encodeURIComponent(JSON.stringify(row))+'" data-quantity="'+value+'">',
+            value+" งาน",
+            "</u>"
+        ].join("");
+    } else {
+        return value;
+    }
+}
+function quantityJobsS302Formatter(value, row, index) {
+    if(parseInt(value) > 0){
+        return [
+            '<u class="font-weight-bold" data-toggle="modal" data-target="#jobsModalLgCenter" data-code="S302" data-row="'+encodeURIComponent(JSON.stringify(row))+'" data-quantity="'+value+'">',
+            value+" งาน",
+            "</u>"
+        ].join("");
+    } else {
+        return value;
+    }
+}
+
+function quantityJobsS303Formatter(value, row, index) {
+    if(parseInt(value) > 0){
+        return [
+            '<u class="font-weight-bold" data-toggle="modal" data-target="#jobsModalLgCenter" data-code="S303" data-row="'+encodeURIComponent(JSON.stringify(row))+'" data-quantity="'+value+'">',
+            value+" งาน",
+            "</u>"
+        ].join("");
+    } else {
+        return value;
+    }
+}
+
+function quantityJobsS304Formatter(value, row, index) {
+    if(parseInt(value) > 0){
+        return [
+            '<u class="font-weight-bold" data-toggle="modal" data-target="#jobsModalLgCenter" data-code="S304" data-row="'+encodeURIComponent(JSON.stringify(row))+'" data-quantity="'+value+'">',
+            value+" งาน",
+            "</u>"
+        ].join("");
+    } else {
+        return value;
+    }
+}
+function quantityJobsS305Formatter(value, row, index) {
+    if(parseInt(value) > 0){
+        return [
+            '<u class="font-weight-bold" data-toggle="modal" data-target="#jobsModalLgCenter" data-code="S305" data-row="'+encodeURIComponent(JSON.stringify(row))+'" data-quantity="'+value+'">',
+            value+" งาน",
+            "</u>"
+        ].join("");
+    } else {
+        return value;
+    }
+}
+
+function monthThaiFormatter(value, row){
+    return month_map_thai[value];
+}
+
+function buddistYearFormatter(value, row) {
+    return parseInt(value) + 543;
+}
+
+function caFormatter(value) {
+    return [
+        '<a class="btn btn-dark" target="_blank" href="index.php?action=customer_detail&ca='+value+'">',
+        value,
+        '</a>'
+    ].join("");
+}
+
+function dateThaiFormatter(value, row) {
+    var now = new Date(Date.parse(value));
+  
+    var thmonth = new Array ("มกราคม","กุมภาพันธ์","มีนาคม",
+              "เมษายน","พฤษภาคม","มิถุนายน", "กรกฎาคม","สิงหาคม","กันยายน",
+              "ตุลาคม","พฤศจิกายน","ธันวาคม"); 
+  
+    var str_thai = now.getDate()+ " " 
+            + thmonth[now.getMonth()]+ " " + (0+now.getFullYear()+543);
+  
+    console.log(str_thai);
+    return str_thai;
+  }
+
+$(function(){
+    $("#jobsModalLgCenter").on('hide.bs.modal', function(event) {
+        $("#modal_table").bootstrapTable('destroy');
+    });
+    $('#jobsModalLgCenter').on('show.bs.modal', function (event) {
+        $(".modal-body").block();
+        var button = $(event.relatedTarget); // Button that triggered the modal
+        var row = button.data('row'); // Extract info from data-* attributes
+        var quantity = button.data('quantity'); // Extract info from data-* attributes
+        var code = button.data('code'); // Extract info from data-* attributes
+        var data_row = JSON.parse(decodeURIComponent(row));
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this);
+        modal.find('.modal-title').text('ผู้ที่ใช้ไฟฟ้าที่ครบกำหนดบำรุงรักษารหัส ' + code + ' - ' + service_type[code]);
+        // modal.find('.modal-body').html("ค้นพบ "+quantity+" รายการ");
+        var html_array = [];
+        html_array.push("<div class='font-weight-bold text-primary'>ค้นพบ "+quantity+" รายการ</div>");
+        $.ajax({
+            url: "./api/fetch_list_of_history.php",
+            method: "POST",
+            data: {
+                data_row: JSON.stringify(data_row),
+                code: code
+            },
+            success: function(response){
+                console.log(JSON.parse(response));
+                var data = JSON.parse(response);
+                $("#modal_table").bootstrapTable({data: data});
+            },
+            error: function(error){
+                console.log(error);
+            },
+            complete: function(){
+                console.log('complete');
+                $(".modal-body").unblock();
+            }
+        });
+    })
+});

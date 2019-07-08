@@ -30,7 +30,7 @@
             บริหารจัดการฐานข้อมูลลูกค้ารายสำคัญและธุรกิจเสริม
           </a>
           <span class="navbar-text">
-            <?="สังกัด: ".$_SESSION['pea_code']." "."สิทธิ: ".$_SESSION['role'] ?>
+            <?="สังกัด: ".$_SESSION['pea_code'].":".$_SESSION['pea_name'].", "."สิทธิ: ".$_SESSION['role'] ?>
           </span>
         </div>
       </nav>
@@ -39,8 +39,11 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-sm-12 col-md-4 col-lg-3">
-            <h5 class="header text-secondary font-weight-bold text-left">เมนูหลัก</h5>
-            <div class="nav flex-column nav-pills rounded" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <!-- <h5 class="header text-secondary font-weight-bold text-left">เมนูหลัก</h5> -->
+            <div class="nav flex-column nav-pills rounded sticky-top" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+              <a class="header text-dark bg-light font-weight-bold text-center nav-link disabled" style="font-size:22px;">
+                เมนูหลัก
+              </a>
               <a class="nav-link <?=$action=='home'?'active':'' ?>" href="?action=home">
                 <i class="fas fa-home"></i>
                 หน้าแรก
@@ -71,6 +74,11 @@
               <a class="nav-link <?=$action=='logout'?'active':'' ?>" href="logout.php">
                 <i class="fas fa-sign-out-alt"></i> 
                 ออกจากระบบ
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="nav-link disabled text-center bg-light">
+                <i class="far fa-2x fa-id-card"></i><br/>
+                ติดต่อสอบถาม, แนะนำ <br/>หรือแจ้งปัญหาการใช้งาน<br/>ที่ 5140 หรือ <br/>chiwawon.sae@pea.co.th 
               </a>
             </div>
           </div>

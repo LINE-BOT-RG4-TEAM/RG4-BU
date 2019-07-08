@@ -70,8 +70,9 @@
                             if($_POST){
                                 $username = $_POST['username_txt'];
                                 $verify_user_sql = "
-                                    SELECT username, password, pea_code, role
+                                    SELECT username, password, users.pea_code, office.PEA_NAME, role
                                     FROM users
+                                      JOIN office ON users.pea_code = office.PEA_CODE
                                     WHERE username = '{$username}' AND status = 'A'
                                 ";
                                 $results = $conn->query($verify_user_sql);
@@ -90,6 +91,7 @@
                                     if($hash_password === $input_password){
                                         $_SESSION['username'] = $row['username'];
                                         $_SESSION['pea_code'] = $row['pea_code'];
+                                        $_SESSION['pea_name'] = $row['PEA_NAME'];
                                         $_SESSION['role'] = $row['role'];
                                         $_SESSION['loggedin_time'] = time();  
                                         ?>
