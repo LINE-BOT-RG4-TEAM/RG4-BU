@@ -25,6 +25,19 @@ function initialLIFFData(data){
   var userId = data.context.userId;
   var ca_callback = fetchCAFromUserId(userId);
 
+
+    // append userId 
+    var input = document.createElement("input");
+    input.setAttribute("type", "hidden");
+    input.setAttribute("name", "userId");
+    input.setAttribute("id", "userId");
+    input.setAttribute("value", userId);
+    document.getElementsByTagName("body")[0].append(input);
+
+    // fetch data
+    check_lineitem();
+    quantity_service();
+
   ca_callback.done(function(data){
     var obj = JSON.parse(data) || {};
     var ca = obj["CA"];
