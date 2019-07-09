@@ -155,13 +155,15 @@
       <div class="modal-body">
         <table 
           id="modal_table"
-          data-pagination="true">
+          data-pagination="true"
+          data-page-size="5"
+          data-page-list="[5, 10, 20, 100, ALL]">
           <thead>
             <tr>
               <th data-field="BP">BP</th>
               <th data-field="CA" data-formatter="caFormatter">CA</th>
               <!-- <th data-field="invoice_date" data-formatter="dateThaiFormatter">วันชำระเงิน</th> -->
-              <th data-field="next_due_date" data-formatter="dateThaiFormatter">วันครบกำหนดบำรุงรักษา</th>
+              <th data-field="next_due_date" data-formatter="dateThaiFormatter">ครบกำหนดบำรุงรักษา</th>
               <th data-field="CUSTOMER_NAME">ชื่อลูกค้า</th>
               <th data-field="CODE_EXPLAIN">ดำเนินการ</th>
               <!-- <th data-field="PAYMENT">ค่าใช้จ่าย</th> -->
