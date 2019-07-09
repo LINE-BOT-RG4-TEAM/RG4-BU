@@ -22,9 +22,6 @@ $.blockUI({
 });
 
 function initialLIFFData(data){
-  // initial liff data
-  initializeUserId(data);
-
   var userId = data.context.userId;
   var ca_callback = fetchCAFromUserId(userId);
 

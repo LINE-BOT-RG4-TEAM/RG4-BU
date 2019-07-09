@@ -37,8 +37,6 @@ function initialLIFFData(data){
         $("#caTel_txt, #caTel_hidden").val(caTel_txt);
         $("#caEmail_txt, #caEmail_hidden").val(caEmail_txt);
 
-        initializeUserId(data);
-
         $.unblockUI();
       });
       userProfileAjax.fail(redirectWhenError);

@@ -22,7 +22,7 @@ function initializeUserId(data) {
   // update data in page by functions
   quantity_service();
   purchase_status();
-  check_lineitem();
+  // check_lineitem();
 }
 
 function render_lineitem(obj)
