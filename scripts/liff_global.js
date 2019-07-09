@@ -112,7 +112,7 @@ function check_lineitem()
                 });
                   $("#lineitem_area").html('');
                   check_lineitem();
-                  quantity_service()
+                  quantity_service();
                 }				
     });
   }
@@ -144,4 +144,5 @@ function getParameterByName(name, url) {
 
 $(function(){
   check_lineitem();
+  quantity_service();
 });
