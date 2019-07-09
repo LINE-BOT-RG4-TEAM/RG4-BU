@@ -14,6 +14,18 @@ function initialLIFFData(data){
     liff
     .getProfile()
     .then(function(profile){
+      // append userId 
+      var input = document.createElement("input");
+      input.setAttribute("type", "hidden");
+      input.setAttribute("name", "userId");
+      input.setAttribute("id", "userId");
+      input.setAttribute("value", data.context.userId);
+      document.getElementsByTagName("body")[0].append(input);
+
+      // fetch data
+      check_lineitem();
+      quantity_service();
+
       var displayName = profile.displayName;
       var userId = profile.userId;
       var pictureURL = profile.pictureUrl;
