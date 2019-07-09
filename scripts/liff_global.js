@@ -111,7 +111,7 @@ function check_lineitem()
                     timer: 5000
                 });
                   $("#lineitem_area").html('');
-                  check_lineitem()
+                  check_lineitem();
                   quantity_service()
                 }				
     });
@@ -141,3 +141,7 @@ function getParameterByName(name, url) {
   if (!results[2]) return '';
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+$(function(){
+  check_lineitem();
+});
