@@ -73,9 +73,11 @@ function check_lineitem()
     success: function(response) 
               {
                 var obj = JSON.parse(response) || {};
-                if(obj.length > 0)
-                {
-                  var html_text = render_lineitem(obj);
+                var html_text = "";
+                if(obj.length > 0){
+                  html_text = render_lineitem(obj);
+                } else {
+                  html_text = '<div class="text-primary text-center"><h4><i class="far fa-check-circle"></i> ท่านยังไม่ได้เลือกสินค้าลงตระกร้า</h4></div>';
                 }
                 $("#lineitem_area").html(html_text);
               },
