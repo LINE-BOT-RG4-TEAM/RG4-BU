@@ -22,10 +22,10 @@
         <div class="card-header">
           <ul class="nav nav-tabs card-header-tabs" id="bologna-list" role="tablist">
             <li class="nav-item">
-              <a class="nav-link active" data-toggle="tab" href="#pending"><span class="font-weight-bold text-primary"><i class="fas fa-clock-o fa-2x" aria-hidden="true"></i>  รอการยืนยัน</span></a>
+              <a class="nav-link active" data-toggle="tab" href="#pending"><span class="font-weight-bold text-primary"><i class="fas fa-clock-o fa-2x" aria-hidden="true"></i>  อยู่ระหว่างดำเนินการ</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link"  data-toggle="tab" href="#approve"><span class="font-weight-bold text-primary"><i class="fas fa-check-circle fa-2x"></i>  ได้รับการยืนยัน</span></a>
+              <a class="nav-link"  data-toggle="tab" href="#approve"><span class="font-weight-bold text-primary"><i class="fas fa-check-circle fa-2x"></i>  ดำเนินการเสร็จสิ้นแล้ว</span></a>
             </li>
           </ul>
         </div>

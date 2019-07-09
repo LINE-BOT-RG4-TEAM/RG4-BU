@@ -20,6 +20,9 @@
                     </button>
                 </div>
                 <div class='modal-body' id='lineitem_area'>
+                    <div class="text-primary text-center">
+                        <h4><i class="far fa-check-circle"></i> ท่านยังไม่ได้เลือกสินค้าลงตระกร้า</h4>
+                    </div>
                 </div>
                 <div class='modal-footer'>
                     <a type='button' class='btn btn-primary'  href="#" id="check_out">ยืนยัน</a>
