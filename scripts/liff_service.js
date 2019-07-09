@@ -1,25 +1,21 @@
-
-function render_cate_card(obj)
-{
+function render_cate_card(obj) {
   var get_param = getUrlVars();
   var href= "";
-  if('purchase_id' in get_param)
-    {
-        console.log(get_param["purchase_id"]);
-        href = '&purchase_id=' + get_param["purchase_id"];
-    }
+  if('purchase_id' in get_param) {
+    // console.log(get_param["purchase_id"]);
+    href = '&purchase_id=' + get_param["purchase_id"];
+  }
   var i = 0;
-    var card = "";
-    while(obj[i])
-    {
-        card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ obj[i].picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title">' +obj[i].cate_name + '</h5><p class="card-text">'+obj[i].short_description+'</p></div><div class="card-footer"><a  href="?action=liff_construc&cate_id='+obj[i].cate_id+href+'" class="btn btn-primary nav-link">รายละเอียด</a></div></div></div>';
-        console.log(obj[i].cate_name);
-        i++;
-    }
-    return card;
+  var card = "";
+  while(obj[i]) {
+    card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ obj[i].picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title">' +obj[i].cate_name + '</h5><p class="card-text">'+obj[i].short_description+'</p></div><div class="card-footer"><a  href="?action=liff_construc&cate_id='+obj[i].cate_id+href+'" class="btn btn-primary nav-link">รายละเอียด</a></div></div></div>';
+    // console.log(obj[i].cate_name);
+    i++;
+  }
+  return card;
 }
-function select_cate_product() 
-{
+
+function select_cate_product() {
   $.ajax({
     url: './api/liff_service_api.php',
     method: 'POST',
@@ -27,14 +23,48 @@ function select_cate_product()
     cache: false,
     processData: false,
     contentType: false,
-    success: function(response) 
-              {
-                
-                var obj = JSON.parse(response) || {};
-                var html_text = render_cate_card(obj);
-                $("#card-area").html(html_text);
-                
-              }				
-    }); 
+    success: function(response) {
+      var obj = JSON.parse(response) || {};
+      var html_text = render_cate_card(obj);
+      $("#card-area").html(html_text);
+    }				
+  }); 
 }
 select_cate_product();
+
+$(function(){
+  liff.init(function(data){
+    var userId = data.context.userId;
+    $.ajax({
+      url: "./api/check_existing_user_id.php",
+      method: "POST",
+      data: {
+        userId: userId
+      },
+      beforeSend: function(){
+        $.blockUI({message: "กรุณารอสักครู่ค่ะ..."});
+      },
+      success: function(response){
+        // continue select service
+      },
+      error: function(error){
+        Swal.fire(
+          "กรุณาลงทะเบียนการใช้งานค่ะ...",
+          "",
+          "question"
+        ).then(function(){
+          Swal.fire(
+            "ระบบกำลังนำท่านไปยังหน้าลงทะเบียนค่ะ :)",
+            "",
+            "info"
+          ).then(function(){
+            window.location.href = "customer.php?action=cust_register";
+          });
+        });
+      },
+      complete: function(){
+        $.unblockUI();
+      }
+    });
+  });
+});

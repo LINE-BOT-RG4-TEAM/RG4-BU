@@ -476,7 +476,7 @@ function dateThaiFormatter(value, row) {
     var str_thai = now.getDate()+ " " 
             + thmonth[now.getMonth()]+ " " + (0+now.getFullYear()+543);
   
-    console.log(str_thai);
+    // console.log(str_thai);
     return str_thai;
   }
 
@@ -506,7 +506,7 @@ $(function(){
                 code: code
             },
             success: function(response){
-                console.log(JSON.parse(response));
+                // console.log(JSON.parse(response));
                 var data = JSON.parse(response);
                 $("#modal_table").bootstrapTable({data: data});
             },
@@ -514,7 +514,7 @@ $(function(){
                 console.log(error);
             },
             complete: function(){
-                console.log('complete');
+                // console.log('complete');
                 $(".modal-body").unblock();
             }
         });

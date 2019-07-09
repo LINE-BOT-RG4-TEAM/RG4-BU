@@ -40,7 +40,7 @@
         <div class="row">
           <div class="col-sm-12 col-md-4 col-lg-3">
             <!-- <h5 class="header text-secondary font-weight-bold text-left">เมนูหลัก</h5> -->
-            <div class="nav flex-column nav-pills rounded sticky-top" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <div class="nav flex-column nav-pills rounded sticky-top" style="z-index: -1;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <a class="header text-dark bg-light font-weight-bold text-center nav-link disabled" style="font-size:22px;">
                 เมนูหลัก
               </a>
