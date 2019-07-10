@@ -52,6 +52,9 @@ $(function() {
       data: $(this).serializeArray(),
       beforeSend: function() {
         // window.alert("beforeSend alert");
+        $.blockUI({
+          message: "<h4 class=\"p-1 font-weight-bold text-center\">กำลังตรวจสอบข้อมูล</h4>"
+        });
       },
       success: function(response) {
         Swal.fire({
@@ -82,6 +85,7 @@ $(function() {
       },
       complete: function() {
         // window.alert("endding form");
+        $.unblockUI();
       }
     });
   });
