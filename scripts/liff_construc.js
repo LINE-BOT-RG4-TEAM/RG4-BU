@@ -33,7 +33,7 @@ function render_card(obj)
         }
         if(obj[i].is_product == 'Y')
         {
-          var button_label = "เพิ่มในตะกร้า";
+          var button_label = "<i class=\"fas fa-cart-arrow-down\"></i> เพิ่มในตะกร้า";
           var href = "href=\"javascript:void(0);\"";
           var add2cart = 'onclick="add2cart(' + "'" + obj[i].cate_id + "'" +')"';
           if('purchase_id' in get_param)
@@ -44,7 +44,7 @@ function render_card(obj)
         }
         else if (obj[i].is_product == 'N')
         {
-          var button_label = "รายละเอียด";
+          var button_label = "<i class=\"fas fa-align-left\"></i> รายละเอียด";
           var href = "href='?action=liff_construc&cate_id=" + obj[i].cate_id + href_purchase_id + "'";
           var text_area = "";
         }
