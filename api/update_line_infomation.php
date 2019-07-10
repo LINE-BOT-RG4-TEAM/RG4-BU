@@ -1,6 +1,18 @@
 <?php
   require('../utils/db_connector.php');
-  // echo json_encode($_POST, JSON_UNESCAPED_UNICODE);
+
+  // fetch available userid in our database
+  $caInput = _POST['caInput'];
+  $check_ca = "
+    SELECT CA
+    FROM `ca`
+    WHERE CA = '{$caInput}'
+  ";
+  $check_results = $conn->query($check_ca);
+  if($check_results->num_rows == 0) {
+    http_response_code(404);
+    exit(1);
+  }
 
   $update_line = "
     UPDATE ca

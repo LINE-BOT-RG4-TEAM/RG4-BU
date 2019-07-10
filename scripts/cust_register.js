@@ -78,10 +78,11 @@ $(function() {
       error: function() {
         Swal.fire({
           title: "Error!",
-          text: "ระบบผิดพลาด กรุณาส่งข้อมูลอีกครั้ง",
+          text: "ไม่พบหมายเลข CA ที่ท่านกรอก, กรุณาตรวจสอบหมายเลขดังกล่าวอีกครั้งค่ะ",
           type: "error",
           confirmButtonText: "ปิดหน้าต่างนี้"
         });
+        // window.location.reload();
       },
       complete: function() {
         // window.alert("endding form");
