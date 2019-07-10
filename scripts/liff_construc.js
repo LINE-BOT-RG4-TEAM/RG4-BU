@@ -34,7 +34,7 @@ function render_card(obj)
         if(obj[i].is_product == 'Y')
         {
           var button_label = "เพิ่มในตะกร้า";
-          var href = "";
+          var href = "href=\"javascript:void(0);\"";
           var add2cart = 'onclick="add2cart(' + "'" + obj[i].cate_id + "'" +')"';
           if('purchase_id' in get_param)
           {
