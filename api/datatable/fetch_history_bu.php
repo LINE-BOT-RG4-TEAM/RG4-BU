@@ -13,7 +13,7 @@
   $fetch_bu_history = "
     SELECT history
           , history.CODE
-          , code.CODE_NAME
+          , history.CODE_EXPLAIN AS CODE_NAME
           , STAFF
           , PAYMENT 
     FROM history

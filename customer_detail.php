@@ -126,7 +126,7 @@
                   <tr>
                     <!-- <th data-formatter="dateFormatter" data-field="history" data-sortable="true"> -->
                     <th data-formatter="dateThaiFormatter" data-field="history">
-                      <i class="fas fa-indent"></i> วันที่ทำรายการ
+                      <i class="fas fa-indent"></i> วันที่ชำระเงิน
                     </th>
                     <!-- <th data-field="CODE" data-sortable="true"><i class="fas fa-business-time"></i> รหัสการจัดทำ</th> -->
                     <th data-field="CODE_NAME">
