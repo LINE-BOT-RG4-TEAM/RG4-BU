@@ -17,7 +17,7 @@ function render_purchase_status(obj)
     while(obj.approve[i])
     {
         var num = i+1;
-        html_purchase_approve = html_purchase_approve + '<a class="nav-link"><p>'+num+'.เลขที่ '+JSON.stringify(obj.approve[i])+'</p><hr></a>';
+        html_purchase_approve = html_purchase_approve + '<a class="nav-link"><p>'+num+'.เลขที่ '+obj.approve[i]["PURCHASE_ID"]+'</p><hr></a>';
         i++;
     }
     if(html_purchase_approve == ''){html_purchase_approve = '--ไม่มีข้อมูล--'}
