@@ -2,7 +2,7 @@
   require('../utils/db_connector.php');
 
   // fetch available userid in our database
-  $caInput = _POST['caInput'];
+  $caInput = $_POST['caInput'];
   $check_ca = "
     SELECT CA
     FROM `ca`
