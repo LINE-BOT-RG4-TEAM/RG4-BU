@@ -63,7 +63,7 @@ function po_Formatter(value, row, index) {
       window.location.href = "?action=purchase_detail_emp&purchase_id=" + row["purchase_id"]+"&readonly=true";
     },
     "click .close-po": function(e, value, row, index) {
-      alert('click close po');
+      // alert('click close po');
       $.ajax({
         url: "./api/update_purchase_status.php",
         method: "POST",
