@@ -26,10 +26,10 @@
                     <input type="number" class="col-3 form-control" id="employee_code" name="employee_code" placeholder="รหัสประจำตัวพนักงานผู้รับการแจ้งเตือน" required />
                 </div>
             </div>
-            <div class="form-check mt-2">
+            <!-- <div class="form-check mt-2">
                 <input class="form-check-input position-static" type="radio" name="notifyType" id="LINE_GROUP" value="group">
                 <label for="LINE_GROUP"><i class="fas fa-users"></i> แบบกลุ่ม (Group)</label>
-            </div>
+            </div> -->
         </div>
     </div>
     <div class="row mt-4">
