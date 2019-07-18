@@ -40,7 +40,7 @@ function render_card(obj)
           {
             var add2cart = 'onclick="add2pending(' + "'" + obj[i].cate_id + "'" +')"';
           }
-          var text_area = '<div class="form-group mt-3"><textarea class="form-control" rows="5" id="comment' + obj[i].cate_id + '" placeholder="แจ้งรายละเอียดเพิ่ม(ถ้ามี)"></textarea></div>';
+          var text_area = '<div class="form-group mt-3"><textarea class="form-control" rows="5" id="comment' + obj[i].cate_id + '" placeholder="แจ้งรายละเอียดเพิ่ม(ถ้ามี)"></textarea><div class="alert alert-success" role="alert">PEA จะจัดส่งพนักงานไปสำรวจ และจัดทำประมาณการค่าใช้จ่าย แล้วแจ้งกลับไปในภายหลัง</div></div>';
         }
         else if (obj[i].is_product == 'N')
         {
