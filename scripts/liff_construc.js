@@ -40,7 +40,7 @@ function render_card(obj)
           {
             var add2cart = 'onclick="add2pending(' + "'" + obj[i].cate_id + "'" +')"';
           }
-          var text_area = '<div class="form-group mt-3"><textarea class="form-control" rows="5" id="comment' + obj[i].cate_id + '" placeholder="แจ้งรายละเอียดเพิ่ม(ถ้ามี)"></textarea><div class="alert alert-success" role="alert">PEA จะจัดส่งพนักงานไปสำรวจ และจัดทำประมาณการค่าใช้จ่าย แล้วแจ้งกลับไปในภายหลัง</div></div>';
+          var text_area = '<div class="form-group mt-3"><textarea class="form-control" rows="5" id="comment' + obj[i].cate_id + '" placeholder="แจ้งรายละเอียดเพิ่ม(ถ้ามี)"></textarea><div class="mt-2 font-weight-bold alert alert-success" role="alert"><i class="far fa-comment-dots"></i> PEA จะจัดส่งพนักงานไปสำรวจ และจัดทำประมาณการค่าใช้จ่าย แล้วแจ้งกลับไปในภายหลัง</div></div>';
         }
         else if (obj[i].is_product == 'N')
         {
@@ -56,7 +56,7 @@ function render_card(obj)
         {
           var warranty =  'การรับประกัน :' + obj[i].warranty ;
         }
-        card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title">' +obj[i].cate_name + '</h5><p class="card-text">'+short_des+'</p><p class="card-text">' + warranty + '</p>' + text_area + '</div><div class="card-footer"><a ' + href + ' class="btn btn-lg btn-primary nav-link" ' + add2cart + '>'+button_label+'</a></div><div class="ribbon"><span>' + obj[i].cate_id + '</span></div></div></div>';
+        card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title font-weight-bold">' +obj[i].cate_name + '</h5><p class="card-text">'+short_des+'</p><p class="card-text">' + warranty + '</p>' + text_area + '</div><div class="card-footer"><a ' + href + ' class="btn btn-lg btn-primary nav-link" ' + add2cart + '>'+button_label+'</a></div><div class="ribbon"><span>' + obj[i].cate_id + '</span></div></div></div>';
         // card = card + '<div class="col-sm-12 col-md-6 col-lg-4 mt-3"><div class="card h-100"><img class="card-img-top" src="images/'+ picture_name +'.jpg" alt="Card image"><div class="card-body"><h5 class="card-title">' +obj[i].cate_name + '</h5><p class="card-text">'+short_des+'</p><p class="card-text">' + warranty + '</p><img class="card-img-top" src="images/pea-price.jpg" alt="Card image">' + text_area + '</div><div class="card-footer"><a ' + href + ' class="btn btn-lg btn-primary nav-link" ' + add2cart + '>'+button_label+'</a></div><div class="ribbon"><span>' + obj[i].cate_id + '</span></div></div></div>';
         console.log(obj[i].cate_name);
         i++;
