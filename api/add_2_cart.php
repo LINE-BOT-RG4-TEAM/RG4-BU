@@ -22,7 +22,7 @@ if($obj_check["l_purchase"] == null && $obj_check_c["l_purchase"] == null)
     $last_purchase = $obj_max_purchase["l_purchase"];
     $num_last_purchasr = substr($last_purchase,2,5);
     $num_new_purchase = str_pad($num_last_purchasr + 1, 5, 0, STR_PAD_LEFT);
-    $new_purchase = "PO".$num_new_purchase;
+    $new_purchase = "PR".$num_new_purchase;
 
     $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID,UserID) VALUES('$new_purchase','$UserID')";
     mysqli_query($conn,$sql_insert_po);
@@ -60,7 +60,7 @@ else if($obj_check_c["l_purchase"] <> null && $obj_check["l_purchase"] == null )
     $last_purchase = $obj_max_purchase["l_purchase"];
     $num_last_purchasr = substr($last_purchase,2,5);
     $num_new_purchase = str_pad($num_last_purchasr + 1, 5, 0, STR_PAD_LEFT);
-    $new_purchase = "PO".$num_new_purchase;
+    $new_purchase = "PR".$num_new_purchase;
 
     $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID,UserID) VALUES('$new_purchase','$UserID')";
     mysqli_query($conn,$sql_insert_po);

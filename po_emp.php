@@ -19,7 +19,7 @@
       data-url="./api/datatable/po_table.php">
       <thead>
         <tr>
-          <th data-field="purchase_id" data-sortable="true"><i class="fas fa-indent"></i>หมายเลข PO</th>
+          <th data-field="purchase_id" data-sortable="true"><i class="fas fa-indent"></i>หมายเลข PR</th>
           <th data-field="cus_name" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อ BP</th>
           <th data-field="FullName" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อผู้ติดต่อของ BP</th>
           <th data-field="service_num" data-sortable="true"><i class="fas fa-receipt"></i> จำนวนบริการ</th>
@@ -48,7 +48,7 @@
       data-url="./api/datatable/complete_po_table.php">
       <thead>
         <tr>
-          <th data-field="purchase_id" data-sortable="true"><i class="fas fa-indent"></i>หมายเลข PO</th>
+          <th data-field="purchase_id" data-sortable="true"><i class="fas fa-indent"></i>หมายเลข PR</th>
           <th data-field="cus_name" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อ BP</th>
           <th data-field="FullName" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อผู้ติดต่อของ BP</th>
           <th data-field="service_num" data-sortable="true"><i class="fas fa-receipt"></i> จำนวนบริการ</th>
