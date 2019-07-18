@@ -4,7 +4,7 @@
       <div class="card-body">
         <h4 class="card-title font-weight-bold">
           <i class="fas fa-walking"></i> รายละเอียดข้อมูลลูกค้า 
-          <span class="d-none d-lg-block d-lg-none float-right badge badge-pill badge-primary">หมายเลข CA : <?=$_GET['ca']?></span>
+          <span class="d-none d-lg-block d-lg-none float-right badge badge-pill badge-primary">หมายเลขผู้ใช้ไฟฟ้า (CA) : <?=$_GET['ca']?></span>
           <input type="hidden" name="hidden_ca" id="hidden_ca" value="<?=$_GET['ca']?>" />
         </h4>
         <div class="dropdown-divider"></div>
@@ -22,7 +22,7 @@
             <div class="col-sm-12 col-md-12 col-lg-4">
               <div class="form-group">
                 <label for="bp" class="text-center font-weight-bold">
-                  <i class="fas fa-sort-numeric-up"></i> หมายเลข CA
+                  <i class="fas fa-sort-numeric-up"></i> หมายเลขผู้ใช้ไฟฟ้า (CA)
                 </label>
                 <input type="text" class="text-center form-control readonly" id="ca" name="ca" disabled="disabled">
                 <input type="hidden" id="hidden_ca" name="hidden_ca" />
@@ -51,7 +51,7 @@
             <div class="col-sm-12 col-md-12 col-lg-8">
               <div class="form-group">
                 <label for="bp" class="text-center font-weight-bold">
-                  <i class="fas fa-sort-numeric-up"></i> ที่อยู่ตามหมายเลข CA
+                  <i class="fas fa-sort-numeric-up"></i> ที่อยู่ตามหมายเลขผู้ใช้ไฟฟ้า (CA/Ref.No.1)
                 </label>
                 <input type="text" class="text-center form-control readonly" id="address" name="address" disabled="disabled">
                 <input type="hidden" id="hidden_address" name="hidden_address" />

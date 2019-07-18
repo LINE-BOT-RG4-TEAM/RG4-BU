@@ -18,8 +18,8 @@
             <input type="hidden" id="uIdInput" name="uIdInput">
           </div>
           <div class="form-group">
-            <label for="caInput" class="font-weight-bold">หมายเลข CA</label>
-            <input type="number" class="form-control" id="caInput" name="caInput" aria-describedby="emailHelp" placeholder="กรอกหมายเลข CA ของท่าน" size="12" required>
+            <label for="caInput" class="font-weight-bold">หมายเลขผู้ใช้ไฟฟ้า (CA/Ref.No.1)</label>
+            <input type="number" class="form-control" id="caInput" name="caInput" placeholder="กรอกหมายเลขผู้ใช้ไฟฟ้าของท่าน" size="12" required>
           </div>
           <div class="form-group">
             <label for="nameInput">ชื่อ - นามสกุล</label>

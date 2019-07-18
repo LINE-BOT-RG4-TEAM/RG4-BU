@@ -24,7 +24,7 @@
             <input type="hidden" id="userIdHidden" name="userIdHidden">
           </div>
           <div class="form-group">
-            <label for="ca_txt" class="font-weight-bold">หมายเลข CA</label>
+            <label for="ca_txt" class="font-weight-bold">หมายเลขผู้ใช้ไฟฟ้า (CA/Ref.No.1)</label>
             <input type="number" class="form-control disabled" id="ca_txt" name="ca_txt" size="12" readonly>
             <input type="hidden" id="ca_hidden" name="ca_hidden" />
           </div>

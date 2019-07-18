@@ -15,7 +15,7 @@
       <thead>
         <tr>
           
-          <th data-field="CA" data-sortable="true"><i class="fas fa-indent"></i>หมายเลข CA</th>
+          <th data-field="CA" data-sortable="true"><i class="fas fa-indent"></i>หมายเลขผู้ใช้ไฟฟ้า (CA/Ref.No.1)</th>
           <th data-field="CUSTOMER_NAME" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อลูกค้า</th>
           <th data-field="num" data-sortable="true"><i class="fas fa-receipt"></i> จำนวนครั้งการซื้อธุรกิจเสริม</th>
           <th data-formatter="operateFormatter" data-events="operateEvents" > รายละเอียด</th>

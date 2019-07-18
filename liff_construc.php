@@ -1,7 +1,7 @@
 <div class="row">
     <input type="hidden" name="hidden_cate_id" id="hidden_cate_id" value="<?=$_GET['cate_id']?>" />
     <div class="text-center">
-        <h4 class="pt-3 pb-2 font-weight-bold text-primary" id="content_header">
+        <h4 class="pt-3 pb-2 font-weight-bold text-primary" id="content_header" style="text-align:center;">
         <!-- <h6 class="p-3 font-weight-bold pt-3 rounded-pill bg-primary text-white" id="content_header"> -->
         </h4>
   </div>

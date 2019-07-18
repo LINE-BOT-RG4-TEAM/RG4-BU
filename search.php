@@ -13,7 +13,7 @@
         data-pagination="true">
       <thead>
         <tr>
-          <th data-field="CA" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-indent"></i> หมายเลข CA</th>
+          <th data-field="CA" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-indent"></i> หมายเลขผู้ใช้ไฟฟ้า (CA)</th>
           <th data-field="BP" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-business-time"></i> หมายเลข BP</th>
           <th data-field="BP_NAME"><i class="fas fa-user-tie"></i> ชื่อ BP</th>
           <th data-field="QUANTITY_PURCHASE" data-formatter="suffixQuantityTextCenterFormatter" data-sortable="true"><i class="fas fa-receipt"></i> จำนวนครั้ง</th>

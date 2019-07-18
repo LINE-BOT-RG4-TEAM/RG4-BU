@@ -13,7 +13,7 @@
         data-url="./api/datatable/high_value_table.php">
       <thead>
         <tr>
-        <th data-field="Ca1" data-sortable="true"><i class="fas fa-indent"></i>หมายเลข CA</th>
+        <th data-field="Ca1" data-sortable="true"><i class="fas fa-indent"></i>หมายเลขผู้ใช้ไฟฟ้า (CA)</th>
           <th data-field="CUSTOMER_NAME" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อลูกค้า</th>
           <th data-field="HML_Type" data-sortable="true"><i class="fas fa-receipt"></i> HML_TYPE</th>
           <th data-field="KAM_TYPE" data-sortable="true"><i class="fas fa-receipt"></i>KAM_TYPE </th>
