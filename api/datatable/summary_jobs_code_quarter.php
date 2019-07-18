@@ -12,6 +12,9 @@
         $pea_branch_criteria = "ca.PEA_CODE = '$pea_code'";
     }
 
+    ## get current year
+    $current_year = date("Y");
+
     $fetch_jobs_quarter = "
         SELECT YEAR(DATE_ADD(`HISTORY`, INTERVAL 1 YEAR)) AS `year`
             , QUARTER(DATE_ADD(`HISTORY`, INTERVAL 1 YEAR)) AS `quarter`
@@ -24,7 +27,7 @@
         JOIN `ca` ON `history`.CA = `ca`.CA
         WHERE `history`.CODE in ('S301', 'S302', 'S303', 'S304', 'S305')
             AND $pea_branch_criteria
-            AND YEAR(DATE_ADD(`HISTORY`, INTERVAL 1 YEAR)) >= '2019'
+            AND YEAR(DATE_ADD(`HISTORY`, INTERVAL 1 YEAR)) >= '{$current_year}'
         GROUP BY 1, 2
         ORDER BY 1, 2;
     ";

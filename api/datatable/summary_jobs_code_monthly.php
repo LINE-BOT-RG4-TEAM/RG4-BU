@@ -1,5 +1,6 @@
 <?php
     session_start();
+    date_default_timezone_set("Asia/Bangkok");
     require('../../utils/db_connector.php');
 
     // get current pea_code 
@@ -11,6 +12,9 @@
     } else {
         $pea_branch_criteria = "ca.PEA_CODE = '$pea_code'";
     }
+
+    ## get current year
+    $current_year = date("Y");
 
     $fetch_jobs_monthly = "
         SELECT YEAR(DATE_ADD(`HISTORY`, INTERVAL 1 YEAR)) AS `year`
@@ -25,7 +29,7 @@
         JOIN `ca` ON `history`.CA = `ca`.CA
         WHERE `history`.CODE in ('S301', 'S302', 'S303', 'S304', 'S305')
             AND {$pea_branch_criteria}
-            AND YEAR(DATE_ADD(`HISTORY`, INTERVAL 1 YEAR)) >= '2019'
+            AND YEAR(DATE_ADD(`HISTORY`, INTERVAL 1 YEAR)) >= '{$current_year}'
         GROUP BY 1, 2, 3
         ORDER BY 1, 2, FIELD(
             MONTHNAME(DATE_ADD(`HISTORY`, INTERVAL 1 YEAR)), 
