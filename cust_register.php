@@ -23,15 +23,15 @@
           </div>
           <div class="form-group">
             <label for="nameInput" class="font-weight-bold"><i class="fas fa-user-edit"></i> ชื่อ - นามสกุล</label>
-            <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="กรอกชื่อ - นามสกุลของท่าน" required>
+            <input type="text" class="form-control" id="nameInput" name="nameInput" placeholder="ชื่อ - นามสกุลของท่าน" required>
           </div>
           <div class="form-group">
             <label for="telInput" class="font-weight-bold"><i class="fas fa-mobile-alt"></i> เบอร์โทรศัพท์</label>
-            <input type="text" class="form-control" id="telInput" name="telInput" placeholder="กรอกเบอร์โทรศัพท์" required>
+            <input type="text" class="form-control" id="telInput" name="telInput" placeholder="กรอกเบอร์โทรศัพท์ สำหรับติดต่อกลับ" required>
           </div>
           <div class="form-group">
             <label for="emailInput" class="font-weight-bold"><i class="fas fa-at"></i> Email</label>
-            <input type="text" class="form-control" id="emailInput" name="emailInput" placeholder="ระบุ Email ของท่าน" required>
+            <input type="text" class="form-control" id="emailInput" name="emailInput" placeholder="ระบุ Email ของท่านเพื่อรับการแจ้งเตือน" required>
           </div>
           <button type="submit" class="btn btn-primary">ส่งข้อมูล</button>
         </form>
