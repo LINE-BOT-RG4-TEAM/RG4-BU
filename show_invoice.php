@@ -114,7 +114,7 @@
             <table border="0" style="width:100%;height:100%;table-layout:fixed;overflow:hidden">
                 <tr>
                     <td style="font-size:24px;width:12%;text-align:right;font-weight:bold;">
-                        ใบเสนอความต้องการเลขที่:
+                        ใบเสนอฯ เลขที่:
                     </td>
                     <td style="font-size:22px;width:16%;padding-left:10px;border: 1px solid #E8E8E8;">
                         '.$purchase_id.'
