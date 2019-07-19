@@ -4,9 +4,10 @@
     require("../utils/db_connector.php"); 
     require("../utils/date_utils.php");
 
+    // pr = ใบเสนอความต้องการ
     if(!isset($_GET['purchase_id']) && !array_key_exists("purchase_id", $_GET)){
         http_response_code(403);
-        die("ไม่สามารถส่งอีเมล์ เนื่องจากไม่มีเลขที่คำสั่งซื้อ");
+        die("ไม่สามารถส่งอีเมล์ เนื่องจากไม่มีเลขที่เอกสารแจ้งความต้องการ");
     }
 
     ob_start();
@@ -62,7 +63,7 @@
     include "../assets/templates/email/email_template.php";
     $html_template = ob_get_clean();
 
-    $subject = "[คำสั่งซื้อ $purchase_id] เอกสารหลักฐานการสั่งซื้อบริการเสริมจาก กฟภ.";
+    $subject = "[หมายเลข $purchase_id] เอกสารแจ้งความต้องการบริการเสริมจาก กฟภ.";
     $email = new \SendGrid\Mail\Mail(); 
     $email->setFrom("crm_bu@pea.co.th", "Support PEA SmartBiz");
     $email->setSubject($subject);
@@ -78,7 +79,7 @@
         $email->addAttachment(
             $file_encoded,
             "application/pdf",
-            "เอกสารการชำระเงินหมายเลขคำสั่งซื้อ $purchase_id.pdf",
+            "เอกสารการชำระเงินหมายเลข $purchase_id.pdf",
             "attachment"
         );
     }

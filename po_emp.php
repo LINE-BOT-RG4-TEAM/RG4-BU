@@ -2,9 +2,9 @@
   <div class="col-sm-12 col-md-12 col-lg-12">
     <h1 class="float-left font-weight-bold text-primary">
       <i class="fas fa-clipboard-list"></i>
-      ใบสั่งซื้อ
+      ใบเสนอความต้องการ
       <small class="text-secondary">
-        รายการใบสั่งซื้อบริการของ กฟภ. จากผู้ใช้ไฟ
+        รายการใบเสนอความต้องการสั่งซื้อบริการเสริมของ กฟภ. จากผู้ใช้ไฟ
       </small>
     </h1>
     <table 
@@ -34,7 +34,7 @@
   <div class="col-sm-12 col-md-12 col-lg-12">
     <h2 class="float-left font-weight-bold text-success">
       <i class="far fa-check-square"></i>
-      ใบสั่งซื้อที่ กฟภ. ดำเนินการเรียบร้อยแล้ว
+      ใบเสนอความต้องการที่ กฟภ. ดำเนินการเรียบร้อยแล้ว
     </h2>
     <table 
       data-toggle="table" 

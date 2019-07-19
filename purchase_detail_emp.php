@@ -26,8 +26,8 @@
     <div class="card border">
       <div class="card-body">
         <h3 class="card-title font-weight-bold text-primary">
-          <i class="fas fa-walking"></i> รายละเอียดใบสั่งซื้อ
-          <span class="d-none d-lg-block d-lg-none float-right badge badge-pill badge-primary">หมายเลขใบสั่งซื้อ : <span id="purchase_id"></span></span>
+          <i class="fas fa-walking"></i> รายละเอียดใบเสนอความต้องการ
+          <span class="d-none d-lg-block d-lg-none float-right badge badge-pill badge-primary">หมายเลขใบเสนอความต้องการ : <span id="purchase_id"></span></span>
           <input type="hidden" name="hidden_purchase_id" id="hidden_purchase_id" />
         </h3>
         <div class="dropdown-divider"></div>
@@ -191,7 +191,7 @@
                 <div class='modal-dialog modal-lg' role='document' >
                     <div class='modal-content'>
                         <div class='modal-header'>
-                            <h5 class='modal-title font-weight-bold' id="head_modal"><i class='fas fa-shopping-cart'></i> รหัสสินค้า <span id="modal_cate_id"></span> ใบสั่งซื้อเลขที่ <span id="modal_purchase_id"></span></h5>
+                            <h5 class='modal-title font-weight-bold' id="head_modal"><i class='fas fa-shopping-cart'></i> รหัสสินค้า <span id="modal_cate_id"></span> ใบเสนอความต้องการเลขที่ <span id="modal_purchase_id"></span></h5>
                             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                                 <span aria-hidden='true'>&times;</span>
                             </button>
@@ -225,7 +225,7 @@
                 <div class='modal-dialog modal-lg' role='document' >
                     <div class='modal-content'>
                         <div class='modal-header'>
-                            <h5 class='modal-title font-weight-bold' id="head_modal"><i class='fas fa-shopping-cart'></i> เลือกบริการเพิ่ม--ใบสั่งซื้อเลขที่ <span id="select_service_modal_purchase_id"></span></h5>
+                            <h5 class='modal-title font-weight-bold' id="head_modal"><i class='fas fa-shopping-cart'></i> เลือกบริการเพิ่ม--ใบเสนอความต้องการเลขที่ <span id="select_service_modal_purchase_id"></span></h5>
                             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                                 <span aria-hidden='true'>&times;</span>
                             </button>

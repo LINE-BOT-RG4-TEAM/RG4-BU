@@ -12,7 +12,7 @@
 </div>
 <div class="row mt-3 ml-1">
   <h6 class="p-3 font-weight-bold pt-3 rounded-pill bg-primary text-white">
-    <i class="fas fa-table"></i> รายละเอียดใบสั่งซื้อเลขที่  <span id="purchase_id"></span><span id="edit_status"></span>
+    <i class="fas fa-table"></i> รายละเอียดใบเสนอความต้องการเลขที่  <span id="purchase_id"></span><span id="edit_status"></span>
   </h6>
 </div>
 <div class="row">

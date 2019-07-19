@@ -71,7 +71,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td class="esd-block-text" align="center">
-                                                                                        <h3 style="font-weight: bold;">เอกสารหลักฐานการสั่งซื้อบริการเสริมจาก กฟภ.</h3>
+                                                                                        <h3 style="font-weight: bold;">หลักฐานใบเสนอความต้องการซื้อบริการเสริมจาก กฟภ.</h3>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -103,7 +103,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <h4 style="font-size:24px;"><strong>ข้อมูลการสั่งซื้อ</strong></h4>
+                                                                                        <h4 style="font-size:24px;"><strong>ข้อมูลทั่วไป - ใบเสนอความต้องการ</strong></h4>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -125,7 +125,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <p style="font-size:20px;"><strong>หมายเลขคำสั่งซื้อ :&nbsp;</strong></p>
+                                                                                        <p style="font-size:20px;"><strong>ใบเสนอความต้องการเลขที่ :&nbsp;</strong></p>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>
@@ -145,7 +145,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <p style="margin-top:15px;font-size:20px;"><strong>ผู้สั่งซื้อ :&nbsp;</strong></p>
+                                                                                        <p style="margin-top:15px;font-size:20px;"><strong>ผู้เสนอความต้องการ :&nbsp;</strong></p>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>

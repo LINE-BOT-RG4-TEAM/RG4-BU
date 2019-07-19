@@ -52,7 +52,7 @@
     $person = $received_result->fetch_assoc();
     $pea_code = $person["PEA_CODE"];
     $pea_name = $person["PEA_NAME"];
-    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า '".$person["FullName"]."' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ ตามหมายเลขใบสั่งซื้อ $purchase_id พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ ในสังกัด '{$pea_name}' ";
+    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า '".$person["FullName"]."' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ ตามใบเสนอความต้องการหมายเลข $purchase_id พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ ในสังกัด '{$pea_name}' ";
     notifyToOfficer($person["access_token"], $notifyOfficerText);
     while($person = $received_result->fetch_assoc()){
         notifyToOfficer($person["access_token"], $notifyOfficerText);
@@ -103,7 +103,7 @@
                     <?php 
                         $encode_purchase_id = base64_encode("purchase_id=$purchase_id");
                     ?>
-                    var liff_message = "[ข้อความจาก SmartBiz]\n\nเรียน คุณลูกค้า\n\nคุณสนใจเลือกบริการเสริมจาก กฟภ. จำนวน <?=$quantity_purchase ?> บริการ จากหมายเลขคำสั่งซื้อ #<?=$purchase_id?> เมื่อวันที่ <?= date("Y-m-d"); ?> เวลา <?= date("H:i") ?>น. โดยพนักงาน กฟภ. จะดำเนินการวางแผนในการให้บริการ และติดต่อนัดหมายท่านอีกครั้งเพื่อยืนยันวันนัดหมาย \n\n เอกสารยืนยันการสั่งซื้อ: https://pea-crm.herokuapp.com/show_invoice.php?<?= $encode_purchase_id ?>";
+                    var liff_message = "[ข้อความจาก SmartBiz]\n\nเรียน คุณลูกค้า\n\nคุณสนใจเลือกบริการเสริมจาก กฟภ. จำนวน <?=$quantity_purchase ?> บริการ จากใบเสนอความต้องการหมายเลข #<?=$purchase_id?> เมื่อวันที่ <?= date("Y-m-d"); ?> เวลา <?= date("H:i") ?>น. โดยพนักงาน กฟภ. จะดำเนินการวางแผนในการให้บริการ และติดต่อนัดหมายท่านอีกครั้งเพื่อยืนยันวันนัดหมาย \n\n ใบเสนอความต้องการ: https://pea-crm.herokuapp.com/show_invoice.php?<?= $encode_purchase_id ?>";
                     
                     // send message from liff
                     liff.sendMessages([

@@ -12,7 +12,7 @@
 </div>
 <div class="row mt-3 ml-1">
   <h6 class="p-3 font-weight-bold pt-3 rounded-pill bg-primary text-white">
-    <i class="fas fa-table"></i> สถานะใบสั่งซื้อ
+    <i class="fas fa-table"></i> สถานะใบเสนอความต้องการ
   </h6>
 </div>
 <!-- <div class="dropdown-divider"></div> -->
