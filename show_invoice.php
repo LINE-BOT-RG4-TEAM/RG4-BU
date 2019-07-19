@@ -128,7 +128,7 @@
                 </tr>
                 <tr>
                     <td style="font-size:24px;width:14%;text-align:right;font-weight:bold;">
-                        ผู้เสนอความต้องการ:
+                        ผู้ติดต่อ:
                     </td>
                     <td colspan="3" style="font-size:20px;width:26%;padding-left:10px;border: 1px solid #E8E8E8;">
                         '.$row['FullName'].'
