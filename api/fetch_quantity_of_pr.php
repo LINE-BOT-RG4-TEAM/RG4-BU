@@ -2,6 +2,10 @@
     session_start();
     require("../utils/db_connector.php");
 
+    if(!array_key_exists("role", $_SESSION)){
+        exit(0);
+    }
+
     // check menu from user role
     $role = $_SESSION['role'];
     $existing_po_emp_menu = "
