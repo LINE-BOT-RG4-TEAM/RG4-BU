@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./assets/css/theme_1545570683953.css">
     <link href="https://fonts.googleapis.com/css?family=Sarabun|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/animate.css">
     <style>
       * {
         font-family: 'Sarabun', 'Roboto', sans-serif;
@@ -58,7 +59,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 offset-md-4 col-md-6 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4">
-            <div class="card border mb-3 shadow">
+            <div class="animated fadeInUp card border mb-3 shadow">
                 <div class="card-body mx-2">
                     <div class="text-center">
                         <img class="img-fluid" src="./assets/images/pea-logo-purple.png" style="max-width:130px"/>

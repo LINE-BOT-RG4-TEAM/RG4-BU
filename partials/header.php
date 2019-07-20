@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
     <link rel="stylesheet" href="./assets/css/bootstrap-table-sticky-header.css">
+    <link rel="stylesheet" href="./assets/css/animate.css">
     <style>
       * {
         font-family: 'Sarabun', 'Roboto', sans-serif;
@@ -25,7 +26,7 @@
       <!-- Image and text -->
       <nav class="shadow-sm navbar navbar-light bg-white">
         <div class="container-fluid">
-          <a class="navbar-brand font-weight-bold" href="#!">
+          <a class="navbar-brand font-weight-bold animated fadeIn" href="#!">
             <img src="./assets/images/pea-logo.png" width="100" class="d-inline-block align-top" alt="">
             บริหารจัดการฐานข้อมูลลูกค้ารายสำคัญและธุรกิจเสริม
           </a>
@@ -40,7 +41,7 @@
         <div class="row">
           <div class="col-sm-12 col-md-4 col-lg-3">
             <!-- <h5 class="header text-secondary font-weight-bold text-left">เมนูหลัก</h5> -->
-            <div class="nav flex-column nav-pills rounded sticky-top" style="z-index: 0;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <div class="animated fadeIn nav flex-column nav-pills rounded sticky-top" style="z-index: 0;" id="v-pills-tab" role="tablist" aria-orientation="vertical">
               <a class="header text-dark bg-light font-weight-bold text-center nav-link disabled" style="font-size:22px;">
                 เมนูหลัก
               </a>
