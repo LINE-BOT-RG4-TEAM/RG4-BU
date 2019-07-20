@@ -3,6 +3,16 @@ require('../utils/db_connector.php');
 $UserID = $_POST["userid"];
 $cate_id = $_POST["cate_id"];
 $comment = $_POST["comment"];
+// fetch pea code also
+$fetch_ca = "
+    SELECT CA
+    FROM `ca`
+    WHERE UserID = '{$UserID}'
+";
+$ca_results = $conn->query($fetch_ca);
+$ca_row = $ca_results->fetch_assoc();
+$ca = $ca_row["CA"];
+
 //////check ใบเสนอความต้องการที่มีสถานะ S อยู่ในสถานะ Shoping
 $sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'S'";
 $query_check = mysqli_query($conn,$sql_check_purchase_id_a);
@@ -24,7 +34,7 @@ if($obj_check["l_purchase"] == null && $obj_check_c["l_purchase"] == null)
     $num_new_purchase = str_pad($num_last_purchasr + 1, 5, 0, STR_PAD_LEFT);
     $new_purchase = "PR".$num_new_purchase;
 
-    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID,UserID) VALUES('$new_purchase','$UserID')";
+    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID, CA, UserID) VALUES('$new_purchase', '$ca', '$UserID')";
     mysqli_query($conn,$sql_insert_po);
 
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$new_purchase','$cate_id','$comment')";
@@ -62,7 +72,7 @@ else if($obj_check_c["l_purchase"] <> null && $obj_check["l_purchase"] == null )
     $num_new_purchase = str_pad($num_last_purchasr + 1, 5, 0, STR_PAD_LEFT);
     $new_purchase = "PR".$num_new_purchase;
 
-    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID,UserID) VALUES('$new_purchase','$UserID')";
+    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID, CA, UserID) VALUES('$new_purchase', '$ca', '$UserID')";
     mysqli_query($conn,$sql_insert_po);
 
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$new_purchase','$cate_id','$comment')";
