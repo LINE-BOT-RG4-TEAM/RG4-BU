@@ -42,7 +42,6 @@
 
   <body>
     <header class="pb-3">
-      <!-- Image and text -->
       <nav class="shadow-sm navbar navbar-light bg-white">
         <div class="container">
           <a class="navbar-brand font-weight-bold" href="#!">
@@ -55,16 +54,16 @@
         </div>
       </nav>
     </header>
-    <main class="mb-3">
+    <main class="mt-3 mb-3">
       <div class="container">
         <div class="row">
           <div class="col-sm-12 offset-md-4 col-md-6 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4">
-            <div class="animated fadeInUp card border mb-3 shadow">
-                <div class="card-body mx-2">
+            <div class="card border mb-3 shadow">
+                <div class="card-body mx-2 my-2">
                     <div class="text-center">
                         <img class="img-fluid" src="./assets/images/pea-logo-purple.png" style="max-width:130px"/>
                     </div>
-                    <h5 class="text-center card-title font-weight-bold mt-2">เข้าระบบจัดการข้อมูลฐานลูกค้าฯ</h5>
+                    <h5 class="text-center card-title font-weight-bold mt-2">เข้าระบบบริหารจัดการฐานข้อมูล<br/>ลูกค้ารายสำคัญและธุรกิจเสริม</h5>
                     <hr />
                     <form method="POST" action="#!" autocomplete="off">
                         <?php 
