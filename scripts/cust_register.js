@@ -43,11 +43,49 @@ function initializeApp(data) {
     });
 }
 
-function updateLINEInformationAjax(form_data){
+function getLINEInformationAjax(form_data){
   return $.ajax({
     url: "api/update_line_information.php",
     method: "POST",
     data: form_data
+  });
+}
+
+function successUpdateLINEInfoCallback(){
+  // can update data
+  $.blockUI({
+    message: "<h4 class=\"p-1 font-weight-bold text-center\">กำลังบันทึกข้อมูล...</h4>"
+  });
+  var updateLINEInfoCallback = getLINEInformationAjax();
+  updateLINEInfoCallback.done(function(){
+    Swal.fire({
+      title: "สำเร็จ!",
+      text: "ระบบบันทึกข้อมูลของท่านเรียบร้อยแล้ว ขอบคุณค่ะ",
+      type: "success",
+      confirmButtonText: "ปิดหน้าต่างนี้"
+    }).then(function() {
+      liff
+        .sendMessages([
+          {
+            type: "text",
+            text: "ลงทะเบียนสำเร็จ"
+          }
+        ])
+        .then(function() {
+          liff.closeWindow();
+        });
+    });
+  });
+  updateLINEInfoCallback.fail(function(){
+    Swal.fire({
+      title: "เกิดข้อผิดพลาด!",
+      text: "ไม่สามารถบันทึกข้อมูลได้, กรุณาลองใหม่อีกครั้ง",
+      type: "error",
+      confirmButtonText: "ปิดหน้าต่างนี้"
+    });
+  });
+  updateLINEInfoCallback.always(function(){
+    $.unblockUI();
   });
 }
 
@@ -65,11 +103,7 @@ $(function() {
           message: "<h4 class=\"p-1 font-weight-bold text-center\">กำลังตรวจสอบข้อมูล</h4>"
         });
       },
-      success: function(response){
-        // can update data
-        // var callback = updateLINEInformationAjax();
-        alert('ไม่พบปัญหา');
-      },
+      success: successUpdateLINEInfoCallback,
       error: function(error){
         var status = error.status;
         var responseText = error.responseText;
@@ -90,13 +124,7 @@ $(function() {
             cancelButtonText: 'ยกเลิก'
           }).then(function(result){
             if (result.value) {
-              Swal.fire(
-                'Deleted!',
-                'Your file has been deleted.',
-                'success'
-              )
-            } else {
-              alert('กดยกเลิก');
+              successUpdateLINEInfoCallback();
             }
           });
         }

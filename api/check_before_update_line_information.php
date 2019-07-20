@@ -25,7 +25,7 @@
   ";
   $existing_register_results = $conn->query($check_existing_register);
   if($existing_register_results->num_rows > 0){
-    echo "หมายเลขผู้ใช้ไฟหมายเลข `{$caInput}` มีผู้ลงทะเบียนเรียบร้อยแล้ว<br/> ท่านต้องการแทนที่ผู้ใช้คนดังกล่าวหรือไม่";
+    echo "หมายเลขผู้ใช้ไฟหมายเลข `{$caInput}` มีผู้ลงทะเบียนเรียบร้อยแล้ว ท่านต้องการแทนที่ผู้ใช้คนดังกล่าวหรือไม่";
     http_response_code(409);
     exit(1);
   }
