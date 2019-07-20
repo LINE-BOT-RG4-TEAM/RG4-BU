@@ -67,8 +67,17 @@ function successUpdateLINEInfoCallback(){
       liff
         .sendMessages([
           {
+            type: "sticker",
+            packageId: "11537",
+            stickerId: "52002734"
+          },
+          {
             type: "text",
-            text: "ลงทะเบียนสำเร็จ"
+            text: "ยินดีด้วยค่ะ ท่านลงทะเบียนการใช้งาน PEA SmartBiz เรียบร้อยแล้ว"
+          },
+          {
+            type: "text",
+            text: "ท่านสามารถเลือกบริการเสริมจาก กฟภ. จากแท็บ `เมนู` ด้านล่างได้เลยค่ะ :)"
           }
         ])
         .then(function() {
