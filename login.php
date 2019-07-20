@@ -61,7 +61,7 @@
             <div class="card border-primary mb-3 shadow-sm">
                 <div class="card-body mx-2">
                     <div class="text-center">
-                        <img class="img-fluid" src="https://fa.lnwfile.com/_/fa/_raw/xr/0p/2v.png" style="max-width:130px"/>
+                        <img class="img-fluid" src="./assets/images/pea-logo-purple.png" style="max-width:130px"/>
                     </div>
                     <h5 class="text-center card-title font-weight-bold mt-2">เข้าระบบจัดการข้อมูลฐานลูกค้าฯ</h5>
                     <hr />
