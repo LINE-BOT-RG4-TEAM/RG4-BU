@@ -58,7 +58,7 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 offset-md-4 col-md-6 offset-lg-4 col-lg-4 offset-xl-4 col-xl-4">
-            <div class="card border-primary mb-3 shadow-sm">
+            <div class="card border mb-3 shadow">
                 <div class="card-body mx-2">
                     <div class="text-center">
                         <img class="img-fluid" src="./assets/images/pea-logo-purple.png" style="max-width:130px"/>
