@@ -3,6 +3,7 @@
     <h1 class="float-left font-weight-bold text-primary">
       <i class="fas fa-clipboard-list"></i>
       ใบเสนอความต้องการ
+      <br/>
       <small class="text-secondary">
         รายการใบเสนอฯ สั่งซื้อบริการเสริมของ กฟภ. จากผู้ใช้ไฟ
       </small>
