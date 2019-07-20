@@ -66,6 +66,15 @@
                 <a class="nav-link <?=$action==$menu['menu_action']?'active':'' ?>" href="?action=<?=$menu['menu_action']?>">
                   <i class="<?=$menu['menu_icon']?>"></i>
                   <?=$menu['menu_description'] ?>
+                  <?php 
+                    if($menu['menu_action'] == "po_emp"){
+                  ?>
+                    <div class="float-right">
+                      <span class="badge border badge-light pr-quantity" style="display:none;">... งาน</span>
+                    </div>
+                  <?php
+                    }
+                  ?>
                 </a>
               <?php
                 }

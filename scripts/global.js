@@ -100,3 +100,29 @@ function getUrlVars() {
   return vars;
 }
 
+function updateQuantityOfPR(){
+  $.ajax({
+    url: "./api/fetch_quantity_of_pr.php",
+    method: "POST",
+    beforeSend: function(){
+
+    },
+    success: function(response){
+      response = response || "{}";
+      var object = JSON.parse(response) || {};
+      $(".pr-quantity").text(object.quantity+" ใบเสนอ");
+    },
+    error: function(error){
+      console.log('Not allowed show quantity of PR');
+    },
+    complete: function(){
+      $(".pr-quantity").fadeIn();
+    }
+  });
+}
+
+$(function(){
+  // autofetch quantity of pr 
+  updateQuantityOfPR();
+});
+

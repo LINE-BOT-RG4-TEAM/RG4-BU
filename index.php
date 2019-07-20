@@ -8,7 +8,7 @@
   }
   
   // check timeout session
-  $login_session_duration = 60 * 5;
+  $login_session_duration = 60 * 10;
   $current_time = time();
   $loggedint_time = $_SESSION["loggedin_time"];
   if($current_time - $loggedint_time > $login_session_duration){
