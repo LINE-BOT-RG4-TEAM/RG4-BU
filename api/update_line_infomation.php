@@ -3,10 +3,11 @@
 
   // fetch available userid in our database
   $caInput = $_POST['caInput'];
+  $remove_zero_prefix_ca = substr($caInput, 1);
   $check_ca = "
     SELECT CA
     FROM `ca`
-    WHERE CA = '{$caInput}'
+    WHERE CA = '{$remove_zero_prefix_ca}'
   ";
   $check_results = $conn->query($check_ca);
   if($check_results->num_rows == 0) {
@@ -22,7 +23,7 @@
 
   $stmt = $conn->prepare($update_line);
   $stmt->bind_param("sssss", $_POST['uIdInput'], 
-  $_POST['nameInput'], $_POST['telInput'], $_POST['emailInput'], $_POST['caInput']);
+  $_POST['nameInput'], $_POST['telInput'], $_POST['emailInput'], $remove_zero_prefix_ca);
   $stmt->execute();
   if($stmt->error) {
     http_response_code(503);
