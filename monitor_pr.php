@@ -6,7 +6,10 @@
       <span class="text-secondary" style="font-size: 0.6em;">รายการใบเสนอความต้องการจาก กฟฟ. ในสังกัด</span>
     </h1>
     <table 
+        class="table-bordered table-sm"
         data-toggle="table" 
+        data-group-by="true"
+        data-group-by-field="pea_name"
         data-url="./api/datatable/fetch_all_pr_by_district.php" 
         data-fixed-columns="true"
         data-sticky-header="true"
@@ -15,13 +18,14 @@
         data-pagination="true">
       <thead>
         <tr>
-            <th data-field="pea_name">pea_name</th>
-            <th data-field="PURCHASE_ID">PURCHASE_ID</th>
+            <th data-field="pea_name" data-visible="false" data-formatter="PEAGroupFormatter">ชื่อการไฟฟ้า</th>
+            <th data-field="PURCHASE_ID">เลขที่ใบเสนอ<br/>ความต้องการ</th>
             <!-- <th data-field="BP">BP</th> -->
-            <th data-field="CA">CA</th>
-            <th data-field="CUSTOMER_NAME">CUSTOMER_NAME</th>
-            <th data-field="FullName">FullName</th>
-            <th data-field="CA_TEL">CA_TEL</th>
+            <th data-field="CA">หมายเลขผู้ใช้ไฟ <br/>(CA)</th>
+            <th data-field="CUSTOMER_NAME">ชื่อตาม BP</th>
+            <th data-field="FullName">ชื่อ-สกุล</th>
+            <th data-field="quantity_service">จำนวนบริการ</th>
+            <!-- <th data-field="CA_TEL">CA_TEL</th> -->
             <th>
                 รายละเอียด
             </th>
