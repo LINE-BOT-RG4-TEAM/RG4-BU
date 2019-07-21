@@ -54,10 +54,10 @@ function getwithNo_cors(){
         }
     )
     .then(function(response){
-        console.log('getwithNo_cor - success', response);
+        console.log('getwithNo_cor - success', response.json());
     })
     .catch(function(error){
-        console.log('getwithNo_cor - error', response);
+        console.log('getwithNo_cor - error', error);
     });
 }
 
@@ -70,10 +70,10 @@ function getwith_cors(){
         }
     )
     .then(function(response){
-        console.log('getwith_cors - success', response);
+        console.log('getwith_cors - success', response.json());
     })
     .catch(function(error){
-        console.log('getwith_cors - error', response);
+        console.log('getwith_cors - error', error);
     });
 }
 
