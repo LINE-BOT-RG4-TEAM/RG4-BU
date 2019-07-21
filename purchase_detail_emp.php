@@ -165,21 +165,29 @@
                 <thead>
                   <tr>
                     <th data-field="cate_id" data-sortable="true" data-width="7">
-                      <i class="fas fa-indent"></i> รหัสสินค้า
+                      <i class="fas fa-indent"></i> รหัส<br/>บริการ
                     </th>
                     <th data-field="cate_name" data-width="200">
                       <i class="fas fa-user-tie"></i> ชื่อสินค้า
                     </th>
                     <th data-field="appointment_date" data-sortable="true" data-width="40">
-                      <i class="fas fa-receipt"></i> วันที่นัดหมาย
+                      <i class="fas fa-receipt"></i> วันนัดหมาย
+                    </th>
+                    <th data-field="contact_time" data-formatter="contactTimeFormatter">
+                      <!-- contact-time // type text -->
+                      ติดต่อผู้ใช้ไฟ<br/>(วันที่/เวลา)
+                    </th>
+                    <th data-field="quotation_notice" data-formatter="quotationNoticeFormatter">
+                      <!-- quotation-number // type text -->
+                      เลขที่ มท. หรือ<br/>เลขที่ใบเสนอราคา
                     </th>
                     <th data-field="report_document_url" data-width="90" data-formatter="reportFormatter">
                       <i class="fas fa-receipt"></i> รายงาน
                     </th>
-                    <th data-field="notice" data-width="200" data-formatter="noticeFormatter">
-                      <i class="far fa-images"></i> ข้อความหมายเหตุ<br/>จาก พนง.กฟฟ
+                    <th data-field="notice" data-formatter="noticeFormatter">
+                      <i class="far fa-images"></i> ข้อความหมายเหตุ
                     </th>
-                    <th data-formatter="lineitem_format" data-width="50" data-field="cate_id">
+                    <th data-formatter="lineitem_format" data-field="cate_id">
                       รายละเอียด
                     </th>
                   </tr>

@@ -1,5 +1,4 @@
 function reportFormatter(value, row, index){
-  console.log('value', value, row['purchase_lineitem_id']);
   var reportFieldArray = [];
   var report_document_url = value || '';
   reportFieldArray.push("<div class='text-center'>");
@@ -21,6 +20,110 @@ function reportFormatter(value, row, index){
   ].join(""));
 
   return reportFieldArray.join("");
+}
+
+function contactTimeFormatter(value, row, index) {
+  return [
+    "<textarea class='form-control' id='contact_time_"+row["purchase_lineitem_id"]+"'>",
+    value,
+    "</textarea>",
+    "<a href='javascript:void(0);' onclick='javascript:updateContactTime("+row["purchase_lineitem_id"]+", \""+value+"\");' class='btn btn-block btn-success btn-sm'>บันทึกข้อมูล</a>"
+  ].join("");
+}
+
+function updateContactTime(purchase_lineitem_id, previous_value){
+  var contact_time_value = $.trim($("#contact_time_"+purchase_lineitem_id).val()) || '';
+  previous_value = previous_value == "null" ? "" : previous_value;
+  if(contact_time_value.length == 0 && previous_value.length == 0){
+    Swal.fire(
+      'ไม่สามารถบันทึกวัน/เวลาติดต่อผู้ใช้ไฟ',
+      'เนื่องจากท่านไม่ได้กรอกข้อมูลใดๆ จึงไม่สามารถบันทึกข้อมูล',
+      'warning'
+    );
+    return;
+  }
+
+  $.ajax({
+    url: "./api/update_contact_time.php",
+    method: "POST",
+    data: {
+      purchase_lineitem_id: purchase_lineitem_id,
+      contact_time: contact_time_value
+    },
+    beforeSend: function(){
+      $.blockUI();
+    },
+    success: function(response){
+      Swal.fire(
+        "บันทึกสำเร็จ",
+        '',
+        "success"
+      );
+    },
+    error: function(error){
+      Swal.fire(
+        'เกิดข้อผิดพลาดในการบันทึกข้อมูล',
+        'กรุณาลองบันทึกใหม่อีกครั้ง',
+        'error'
+      );
+    },
+    complete: function(){
+      $.unblockUI();
+      $("table").bootstrapTable("refresh");
+    }
+  });
+}
+
+function quotationNoticeFormatter(value, row, index){
+  return [
+    "<textarea class='form-control' id='quotation_notice_"+row["purchase_lineitem_id"]+"'>",
+    value,
+    "</textarea>",
+    "<a href='javascript:void(0);' onclick='javascript:updateQuotationNotice("+row["purchase_lineitem_id"]+", \""+value+"\");' class='btn btn-block btn-success btn-sm'>บันทึกข้อมูล</a>"
+  ].join("");  
+}
+
+function updateQuotationNotice(purchase_lineitem_id, previous_value){
+  var quotation_notice_value = $.trim($("#quotation_notice_"+purchase_lineitem_id).val()) || '';
+  previous_value = previous_value == "null" ? "" : previous_value;
+  if(quotation_notice_value.length == 0 && previous_value.length == 0){
+    Swal.fire(
+      'ไม่สามารถบันทึกเลขที่ มท. หรือเลขที่ใบเสนอราคา',
+      'เนื่องจากท่านไม่ได้กรอกข้อมูลใดๆ จึงไม่สามารถบันทึกข้อมูล',
+      'warning'
+    );
+    return;
+  }
+
+  $.ajax({
+    url: "./api/update_quotation_notice.php",
+    method: "POST",
+    data: {
+      purchase_lineitem_id: purchase_lineitem_id,
+      quotation_notice: quotation_notice_value
+    },
+    beforeSend: function(){
+      $.blockUI();
+    },
+    success: function(response){
+      Swal.fire(
+        "บันทึกสำเร็จ",
+        '',
+        "success"
+      );
+    },
+    error: function(error){
+      Swal.fire(
+        'เกิดข้อผิดพลาดในการบันทึกข้อมูล',
+        'กรุณาลองบันทึกใหม่อีกครั้ง',
+        'error'
+      );
+    },
+    complete: function(){
+      $.unblockUI();
+      $("table").bootstrapTable("refresh");
+    }
+  });
 }
 
 function removeReport(purchase_id, purchase_lineitem_id){
@@ -61,7 +164,7 @@ function removeReport(purchase_id, purchase_lineitem_id){
 }
 
 function uploadReport(purchase_id, purchase_lineitem_id, e){
-  console.log('uploadReport->', purchase_id, purchase_lineitem_id);
+  // console.log('uploadReport->', purchase_id, purchase_lineitem_id);
   var file = e.files[0];
   var uploadReportStorage = firebase.storage().ref().child(purchase_id+'/'+purchase_lineitem_id+"/report.pdf");
   var uploadReportTask = uploadReportStorage.put(file);
@@ -140,13 +243,14 @@ function noticeFormatter(notice, row, index){
     "<textarea class='form-control' id='notice_id_"+row["purchase_lineitem_id"]+"'>",
     notice,
     "</textarea>",
-    "<a href='javascript:void(0);' onclick='javascript:updateNotice("+row["purchase_lineitem_id"]+");' class='btn btn-block btn-success btn-sm'>บันทึกข้อมูล</a>"
+    "<a href='javascript:void(0);' onclick='javascript:updateNotice("+row["purchase_lineitem_id"]+", \""+notice+"\");' class='btn btn-block btn-success btn-sm'>บันทึกข้อมูล</a>"
   ].join("");
 }
 
-function updateNotice(purchase_lineitem_id){
+function updateNotice(purchase_lineitem_id, previous_value){
   var notice_value = $.trim($("#notice_id_"+purchase_lineitem_id).val()) || '';
-  if(notice_value.length == 0){
+  previous_value = previous_value == "null" ? "" : previous_value;
+  if(notice_value.length == 0 && previous_value.length == 0){
     Swal.fire(
       'ไม่สามารถบันทึกหมายเหตุ',
       'เนื่องจากท่านไม่ได้กรอกข้อมูลใดๆ จึงไม่สามารถบันทึกข้อมูล',
