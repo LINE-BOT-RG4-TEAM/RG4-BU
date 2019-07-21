@@ -9,6 +9,7 @@
         SELECT purchase.PURCHASE_ID
             , bp.`BP`
             , ca.`CA`
+            , purchase.UserID
             , bp.CUSTOMER_NAME
             , purchase.FullName
             , purchase.CA_TEL
@@ -21,7 +22,7 @@
             JOIN purchase_lineitem ON purchase.PURCHASE_ID = purchase_lineitem.PURCHASE_ID
         WHERE `ca`.pea_code LIKE '$pea_district%'
                 AND purchase.PURCHASE_STATUS = 'P'
-        GROUP BY 1, 2, 3, 4, 5, 6, 7
+        GROUP BY 1, 2, 3, 4, 5, 6, 7, 8
         ORDER BY office.pea_code, purchase.PURCHASE_ID
     ";
 

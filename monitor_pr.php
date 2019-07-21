@@ -6,7 +6,7 @@
       <span class="text-secondary" style="font-size: 0.6em;">รายการใบเสนอความต้องการจาก กฟฟ. ในสังกัด</span>
     </h1>
     <table 
-        class="table-bordered table-sm"
+        class="table-bordered"
         data-toggle="table" 
         data-group-by="true"
         data-group-by-field="pea_name"
@@ -18,6 +18,7 @@
         data-pagination="true">
       <thead>
         <tr>
+            <th data-field="UserID" data-formatter="LINEProfileDisplayFormatter">ผู้ใช้</th>
             <th data-field="pea_name" data-visible="false" data-formatter="PEAGroupFormatter">ชื่อการไฟฟ้า</th>
             <th data-field="PURCHASE_ID" data-formatter="textCenterFormatter">เลขที่ใบเสนอ<br/>ความต้องการ</th>
             <!-- <th data-field="BP">BP</th> -->
