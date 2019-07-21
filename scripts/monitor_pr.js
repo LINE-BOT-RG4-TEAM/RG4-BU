@@ -19,8 +19,10 @@ function LINEProfileDisplayFormatter(userId, row, index){
     $.ajax({
         url: 'https://api.line.me/v2/bot/profile/'+userId,
         method: "get",
-        headers: {
-            "Authorization": 'Bearer <?=getenv("LINE_CHANNEL_ACCESS_TOKEN")?>'
+        crossDomain: true,
+        dataType: 'jsonp',
+        beforeSend: function(request) {
+            request.setRequestHeader("Authorization", 'Bearer <?=getenv("LINE_CHANNEL_ACCESS_TOKEN")?>');
         },
         success: function(response){
             console.log('response', response);
