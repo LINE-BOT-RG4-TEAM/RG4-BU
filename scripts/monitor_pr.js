@@ -42,7 +42,7 @@ $(function(){
             "font-size": "24px"
         })
         .addClass("p-2 bg-light text-primary font-weight-bold");
-        $("tr.groupBy > td").addClass("animated fadeInUp");
+        $("tr.groupBy > td").addClass("animated fadeInLeft");
     })
 });
 
