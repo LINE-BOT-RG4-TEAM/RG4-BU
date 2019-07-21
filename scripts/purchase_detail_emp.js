@@ -223,7 +223,7 @@ function lineitem_format(value, row, index) {
     '   <i class="fas fa-pen"></i> แก้ไข/ลบบริการ',
     " </a>",
     ' <a class="btn btn-block btn-outline-success" href="javascript:void(0);" title="Upload" data-toggle="modal" onclick="popupUploadWindow(\''+row['purchase_id']+'\', \''+row['purchase_lineitem_id']+'\');">',
-    '   <i class="far fa-images"></i> อัพโหลดรูปภาพ<br/>ก่อนหรือหลังดำเนินการ',
+    '   <i class="far fa-images"></i> อัพโหลดรูปภาพ',
     " </a>",
     '</div>',
     '</div>'

@@ -185,7 +185,7 @@
                       <i class="fas fa-receipt"></i> รายงาน
                     </th>
                     <th data-field="notice" data-formatter="noticeFormatter">
-                      <i class="far fa-images"></i> ข้อความหมายเหตุ
+                      <i class="far fa-images"></i> บันทึกช่วยจำ
                     </th>
                     <th data-formatter="lineitem_format" data-field="cate_id">
                       รายละเอียด
