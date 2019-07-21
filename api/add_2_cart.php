@@ -5,13 +5,16 @@ $cate_id = $_POST["cate_id"];
 $comment = $_POST["comment"];
 // fetch pea code also
 $fetch_ca = "
-    SELECT CA
+    SELECT CA, FullName, CA_TEL, CA_EMAIL
     FROM `ca`
     WHERE UserID = '{$UserID}'
 ";
 $ca_results = $conn->query($fetch_ca);
 $ca_row = $ca_results->fetch_assoc();
 $ca = $ca_row["CA"];
+$FullName = $ca_row["FullName"];
+$CA_TEL = $ca_row["CA_TEL"];
+$CA_EMAIL = $ca_row["CA_EMAIL"];
 
 //////check ใบเสนอความต้องการที่มีสถานะ S อยู่ในสถานะ Shoping
 $sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'S'";
@@ -34,7 +37,7 @@ if($obj_check["l_purchase"] == null && $obj_check_c["l_purchase"] == null)
     $num_new_purchase = str_pad($num_last_purchasr + 1, 5, 0, STR_PAD_LEFT);
     $new_purchase = "PR".$num_new_purchase;
 
-    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID, CA, UserID) VALUES('$new_purchase', '$ca', '$UserID')";
+    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID, CA, UserID, FullName, CA_TEL, CA_EMAIL) VALUES('$new_purchase', '$ca', '$UserID', '$FullName', '$CA_TEL', '$CA_EMAIL')";
     mysqli_query($conn,$sql_insert_po);
 
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$new_purchase','$cate_id','$comment')";
@@ -72,7 +75,8 @@ else if($obj_check_c["l_purchase"] <> null && $obj_check["l_purchase"] == null )
     $num_new_purchase = str_pad($num_last_purchasr + 1, 5, 0, STR_PAD_LEFT);
     $new_purchase = "PR".$num_new_purchase;
 
-    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID, CA, UserID) VALUES('$new_purchase', '$ca', '$UserID')";
+    $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID, CA, UserID, FullName, CA_TEL, CA_EMAIL) VALUES('$new_purchase', '$ca', '$UserID', '$FullName', '$CA_TEL', '$CA_EMAIL')";
+    // $sql_insert_po = "INSERT INTO purchase(PURCHASE_ID, CA, UserID) VALUES('$new_purchase', '$ca', '$UserID')";
     mysqli_query($conn,$sql_insert_po);
 
     $sql_insertlineitem = "INSERT INTO purchase_lineitem(purchase_id,cate_id,des) VALUES('$new_purchase','$cate_id','$comment')";
