@@ -199,7 +199,7 @@
                 <div class='modal-dialog modal-lg' role='document' >
                     <div class='modal-content'>
                         <div class='modal-header'>
-                            <h5 class='modal-title font-weight-bold' id="head_modal"><i class='fas fa-shopping-cart'></i> รหัสสินค้า <span id="modal_cate_id"></span> ใบเสนอความต้องการเลขที่ <span id="modal_purchase_id"></span></h5>
+                            <h5 class='modal-title font-weight-bold' id="head_modal"><i class='fas fa-shopping-cart'></i> รหัสสินค้า <span id="modal_cate_id"></span> ใบสรุปความต้องการเลขที่ <span id="modal_purchase_id"></span></h5>
                             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                                 <span aria-hidden='true'>&times;</span>
                             </button>
@@ -233,7 +233,7 @@
                 <div class='modal-dialog modal-lg' role='document' >
                     <div class='modal-content'>
                         <div class='modal-header'>
-                            <h5 class='modal-title font-weight-bold' id="head_modal"><i class='fas fa-shopping-cart'></i> เลือกบริการเพิ่ม--ใบเสนอความต้องการเลขที่ <span id="select_service_modal_purchase_id"></span></h5>
+                            <h5 class='modal-title font-weight-bold' id="head_modal"><i class='fas fa-shopping-cart'></i> เลือกบริการเพิ่ม--ใบสรุปความต้องการเลขที่ <span id="select_service_modal_purchase_id"></span></h5>
                             <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                                 <span aria-hidden='true'>&times;</span>
                             </button>

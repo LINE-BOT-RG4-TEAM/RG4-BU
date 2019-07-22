@@ -103,7 +103,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <h4 style="font-size:24px;"><strong>ข้อมูลทั่วไป - ใบเสนอความต้องการ</strong></h4>
+                                                                                        <h4 style="font-size:24px;"><strong>ข้อมูลทั่วไป - ใบสรุปความต้องการ</strong></h4>
                                                                                     </td>
                                                                                 </tr>
                                                                             </tbody>
@@ -125,7 +125,7 @@
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td align="left" class="esd-block-text">
-                                                                                        <p style="font-size:20px;"><strong>ใบเสนอความต้องการเลขที่ :&nbsp;</strong></p>
+                                                                                        <p style="font-size:20px;"><strong>ใบสรุปความต้องการเลขที่ :&nbsp;</strong></p>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>

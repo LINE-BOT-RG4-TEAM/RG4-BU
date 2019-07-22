@@ -25,7 +25,7 @@
                             <tbody style="font-size:20px;">
                                 <tr>
                                     <td class="text-right">
-                                        เลขที่ใบเสนอฯ :
+                                        เลขที่ใบสรุปฯ :
                                     </td>
                                     <td class="pl-3">
                                         <input type="text" class="text-center form-control readonly bg-white" style="width: 270px;" value="<?=$_GET["purchase_id"]?>" disabled="disabled">
@@ -110,7 +110,7 @@
                             บริการที่ผู้ใช้ไฟฟ้าสนใจ
                             <div class="float-right">
                                 <a href="show_invoice.php?<?=base64_encode("purchase_id=".$_GET["purchase_id"])?>" class="btn btn-primary" target="_blank">
-                                    <i class="fas fa-file-alt"></i> ใบเสนอความต้องการ
+                                    <i class="fas fa-file-alt"></i> ใบสรุปความต้องการ
                                 </a>
                             </div>
                         </h3>

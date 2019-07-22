@@ -35,7 +35,7 @@
   <div class="col-sm-12 col-md-12 col-lg-12">
     <h2 class="float-left font-weight-bold text-success">
       <i class="far fa-check-square"></i>
-      ใบเสนอความต้องการที่ กฟภ. ดำเนินการเรียบร้อยแล้ว
+      ใบสรุปความต้องการที่ กฟภ. ดำเนินการเรียบร้อยแล้ว
     </h2>
     <table 
       data-toggle="table" 
