@@ -18,8 +18,8 @@ function textCenterAndWorkSuffixFormatter(value, row, index){
 function viewPRFormatter(value, row, index) {
     return [
         '<div class="text-center">',
-        '<a href="javascript:void(0);" class="btn btn-sm btn-outline-primary">',
-        '<i class="far fa-eye"></i> รายละเอียดใบเสนอฯ',
+        '<a href="javascript:void(0);" class="btn btn-sm btn-outline-primary view-pr-detail">',
+        '<i class="far fa-eye"></i> รายละเอียด<br/>ใบเสนอความต้องการ',
         '</a>',
         '</div>'
     ].join("");
@@ -33,6 +33,13 @@ function LINEProfileDisplayFormatter(userId, row, index){
         "</div>"
     ].join("");
 }
+
+window.viewPRDetailEvents = {
+    'click .view-pr-detail': function (e, value, row, index) {
+        // alert('You click like action, row: ' + JSON.stringify(row));
+        window.location.href = "?action=monitor_pr_detail&purchase_id="+row["PURCHASE_ID"]+"&pictureUrl="+row["pictureUrl"]+"&displayName="+row["displayName"];
+    }
+};
 
 $(function(){
     // trigger when data table load success

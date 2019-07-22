@@ -18,7 +18,7 @@
         data-pagination="true">
       <thead>
         <tr>
-            <th data-field="UserID" data-width="120" data-formatter="LINEProfileDisplayFormatter">ผู้ใช้</th>
+            <th data-field="UserID" data-width="120" data-formatter="LINEProfileDisplayFormatter"><i class="fas fa-user-circle"></i> ผู้ใช้</th>
             <th data-field="pea_name" data-visible="false" data-formatter="PEAGroupFormatter">ชื่อการไฟฟ้า</th>
             <th data-field="PURCHASE_ID" data-formatter="textCenterFormatter">เลขที่ใบเสนอ<br/>ความต้องการ</th>
             <!-- <th data-field="BP">BP</th> -->
@@ -27,7 +27,7 @@
             <!-- <th data-field="FullName">ชื่อ-สกุล</th> -->
             <th data-field="quantity_service" data-formatter="textCenterAndWorkSuffixFormatter">จำนวนบริการ</th>
             <!-- <th data-field="CA_TEL">CA_TEL</th> -->
-            <th data-formatter="viewPRFormatter">
+            <th data-formatter="viewPRFormatter" data-events="viewPRDetailEvents">
               รายละเอียด
             </th>
         </tr>

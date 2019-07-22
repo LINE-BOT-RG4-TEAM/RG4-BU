@@ -15,7 +15,7 @@
         purchase.confident_document,
         ca.FullName
     FROM purchase 
-      INNER JOIN ca ON purchase.UserID = ca.UserID
+      INNER JOIN ca ON purchase.CA = ca.CA
       INNER JOIN bp ON ca.BP = bp.BP 
       INNER JOIN purchase_lineitem ON purchase_lineitem.purchase_id = purchase.PURCHASE_ID
     WHERE purchase.PURCHASE_STATUS = 'P'
