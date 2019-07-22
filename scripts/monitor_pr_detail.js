@@ -40,12 +40,11 @@ function reportFormatter(link, row, index){
 }
 
 function contactTimeFormatter(contactData, row, index){
-    console.log('contactTimeFormatter',row);
     contactData = contactData || '';
     if(contactData.length == 0){
         return [
             "<div class='text-danger font-weight-bold text-center'>",
-            '<i class="fas fa-times"></i> ไม่มีข้อมูลการติดต่อ',
+            '<i class="fas fa-times"></i> ไม่มีข้อมูล<br/>ติดต่อ',
             "</div>"
         ].join("");
     }
@@ -58,9 +57,17 @@ function quotationNoticeFormatter(notice, row, index){
     if(notice.length == 0){
         return [
             "<div class='text-info font-weight-bold text-center'>",
-            '<i class="fas fa-times"></i> ไม่มีเลขที่ มท./เลขที่ใบเสนอราคา',
+            '<i class="fas fa-times"></i> ไม่มีเลขที่ มท./<br/>เลขที่ใบเสนอราคา',
             "</div>"
         ].join("");
     }
     return notice;
+}
+
+function desFormatter(des, row, index){
+    des = des || '';
+    if(des.length == 0){
+        return "<div class='text-center text-success'>ไม่มีประสงค์เพิ่มเติม</div>";
+    }
+    return des;
 }

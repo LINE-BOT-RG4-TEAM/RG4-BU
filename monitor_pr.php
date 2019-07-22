@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-12 col-md-12 col-lg-12">
     <h1 class="float-left font-weight-bold text-primary animated fadeIn">
-      <i class="fas fa-file-invoice"></i> ดูใบเสนอความต้องการ (PR)
+      <i class="fas fa-file-invoice"></i> สรุปใบเสนอความต้องการ (PR)
       <br/>
       <span class="text-secondary" style="font-size: 0.6em;">รายการใบเสนอความต้องการจาก กฟฟ. ในสังกัด</span>
     </h1>

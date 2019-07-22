@@ -19,14 +19,14 @@
                 , bp.CUSTOMER_NAME
                 , ca.PEA_CODE
                 , ADDRESS
-                , FullName
-                , CA_TEL
-                , CA_EMAIL
+                , purchase.FullName
+                , purchase.CA_TEL
+                , purchase.CA_EMAIL
                 , purchase.UserID
         FROM purchase 
             JOIN ca ON ca.UserID = purchase.UserID
             JOIN bp ON ca.bp = bp.BP
-        WHERE purchase_id = '$purchase_id';
+        WHERE purchase.purchase_id = '$purchase_id';
     ";
     $general_results = $conn->query($fetch_general_data);
     $row = $general_results->fetch_assoc();

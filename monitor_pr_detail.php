@@ -5,7 +5,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12">
                         <h2 class="font-weight-bold text-primary">
-                            <i class="fas fa-receipt"></i> ติดตามใบเสนอความต้องการ
+                            <i class="fas fa-receipt"></i> ติดตามความต้องการ
                         </h2>
                     </div>
                 </div>
@@ -107,7 +107,12 @@
                     <div class="col-12">
                         <h3 class="font-weight-bold">
                             <i class="far fa-list-alt"></i>
-                            บริการที่สนใจ
+                            บริการที่ผู้ใช้ไฟฟ้าสนใจ
+                            <div class="float-right">
+                                <a href="show_invoice.php?<?=base64_encode("purchase_id=".$_GET["purchase_id"])?>" class="btn btn-primary" target="_blank">
+                                    <i class="fas fa-file-alt"></i> ใบเสนอความต้องการ
+                                </a>
+                            </div>
                         </h3>
                         <table
                             data-toggle="table" 
@@ -126,11 +131,14 @@
                                 <th data-field="appointment_date" data-sortable="true" data-width="40">
                                     <i class="fas fa-receipt"></i> วันนัดหมาย
                                 </th>
+                                <th data-field="des" data-formatter="desFormatter">
+                                    ความประสงค์เพิ่มเติม
+                                </th>
                                 <th data-field="contact_time" data-formatter="contactTimeFormatter">
                                     ติดต่อผู้ใช้ไฟ(วันที่/เวลา)
                                 </th>
                                 <th data-field="quotation_notice" data-formatter="quotationNoticeFormatter">
-                                    เลขที่ มท. หรือเลขที่ใบเสนอราคา
+                                    เลขที่ มท. หรือ<br/>เลขที่ใบเสนอราคา
                                 </th>
                                 <th data-field="report_document_url" data-width="90" data-formatter="reportFormatter">
                                     <i class="fas fa-receipt"></i> รายงาน
