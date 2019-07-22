@@ -1,4 +1,5 @@
 <?php
+    define('LINE_GET_PROFILE_URI', 'https://api.line.me/v2/bot/profile/');
     require('../../utils/db_connector.php');
     session_start();
 
@@ -28,4 +29,36 @@
 
     $pr_results = $conn->query($fetch_all_pr_by_district);
     $pr_list = $pr_results->fetch_all(MYSQLI_ASSOC);
-    echo json_encode($pr_list, JSON_UNESCAPED_UNICODE);
+    $new_pr_list = array();
+    foreach($pr_list as $pr_row) {
+        $userId = $pr_row['UserID'];
+        $profile_obj = getProfileByUserId($userId);
+        $pr_row["displayName"] = $profile_obj["displayName"];
+        $pr_row["pictureUrl"] = $profile_obj["pictureUrl"];
+        $new_pr_list[] = $pr_row;
+    }
+    echo json_encode($new_pr_list, JSON_UNESCAPED_UNICODE);
+
+    function getProfileByUserId($userId){
+    
+        $headers = [
+            'Authorization: Bearer ' . getenv("LINE_CHANNEL_ACCESS_TOKEN")
+        ];
+
+        try {
+            $ch = curl_init();
+        
+            curl_setopt($ch, CURLOPT_URL, LINE_GET_PROFILE_URI.$userId);
+            curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        
+            $res = curl_exec($ch);
+            curl_close($ch);
+        
+            $json = json_decode($res, true);
+            return $json;
+        } catch (Exception $e) {
+            http_response_code(404);
+        }
+    }

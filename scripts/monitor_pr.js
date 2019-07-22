@@ -15,22 +15,23 @@ function textCenterAndWorkSuffixFormatter(value, row, index){
     ].join("");
 }
 
+function viewPRFormatter(value, row, index) {
+    return [
+        '<div class="text-center">',
+        '<a href="javascript:void(0);" class="btn btn-sm btn-outline-primary">',
+        '<i class="far fa-eye"></i> รายละเอียดใบเสนอฯ',
+        '</a>',
+        '</div>'
+    ].join("");
+}
+
 function LINEProfileDisplayFormatter(userId, row, index){
-    $.ajax({
-        url: 'https://api.line.me/v2/bot/profile/'+userId,
-        method: "get",
-        crossDomain: true,
-        dataType: 'jsonp',
-        beforeSend: function(request) {
-            request.setRequestHeader("Authorization", 'Bearer <?=getenv("LINE_CHANNEL_ACCESS_TOKEN")?>');
-        },
-        success: function(response){
-            console.log('response', response);
-        },
-        error: function(error){
-            console.log('error', error);
-        }
-    });
+    return [
+        "<div class='text-center'>",
+        "<img class='w-75 rounded-circle' alt='"+row['displayName']+"' src='"+row['pictureUrl']+"' />",
+        "<p class='font-weight-bold'>"+row['displayName']+"</p>",
+        "</div>"
+    ].join("");
 }
 
 $(function(){
