@@ -110,7 +110,7 @@ function updateQuantityOfPR(){
     success: function(response){
       response = response || "{}";
       var object = JSON.parse(response) || {};
-      $(".pr-quantity").text(object.quantity+" ใบเสนอ");
+      $(".pr-quantity").text(object.quantity+" ใบสรุป");
     },
     error: function(error){
       console.log('Not allowed show quantity of PR');

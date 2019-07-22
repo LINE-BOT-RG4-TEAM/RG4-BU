@@ -71,7 +71,7 @@
                                                                                 </tr>
                                                                                 <tr>
                                                                                     <td class="esd-block-text" align="center">
-                                                                                        <h3 style="font-weight: bold;">หลักฐานใบเสนอความต้องการซื้อบริการเสริมจาก กฟภ.</h3>
+                                                                                        <h3 style="font-weight: bold;">หลักฐานใบสรุปความต้องการซื้อบริการเสริม</h3>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <tr>

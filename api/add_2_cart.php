@@ -16,12 +16,12 @@ $FullName = $ca_row["FullName"];
 $CA_TEL = $ca_row["CA_TEL"];
 $CA_EMAIL = $ca_row["CA_EMAIL"];
 
-//////check ใบเสนอความต้องการที่มีสถานะ S อยู่ในสถานะ Shoping
+//////check ใบสรุปความต้องการที่มีสถานะ S อยู่ในสถานะ Shoping
 $sql_check_purchase_id_a = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'S'";
 $query_check = mysqli_query($conn,$sql_check_purchase_id_a);
 $obj_check = mysqli_fetch_assoc($query_check);
 
-///// check ใบเสนอความต้องการที่มีสถานะ A คือใบเสนอความต้องการที่ approvr แล้ว
+///// check ใบสรุปความต้องการที่มีสถานะ A คือใบเสนอความต้องการที่ approvr แล้ว
 $sql_check_purchase_id_c = "SELECT MAX(PURCHASE_ID) as l_purchase FROM purchase WHERE UserID = '$UserID' AND PURCHASE_STATUS = 'A'";
 $query_check_c = mysqli_query($conn,$sql_check_purchase_id_c);
 $obj_check_c = mysqli_fetch_assoc($query_check_c); 

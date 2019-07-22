@@ -52,7 +52,7 @@
     $person = $received_result->fetch_assoc();
     $pea_code = $person["PEA_CODE"];
     $pea_name = $person["PEA_NAME"];
-    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า '".$person["FullName"]."' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ ตามใบเสนอความต้องการหมายเลข $purchase_id พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ ในสังกัด '{$pea_name}' ";
+    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า '".$person["FullName"]."' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ ตามใบสรุปความต้องการหมายเลข $purchase_id พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ ในสังกัด '{$pea_name}' ";
     notifyToOfficer($person["access_token"], $notifyOfficerText);
     while($person = $received_result->fetch_assoc()){
         notifyToOfficer($person["access_token"], $notifyOfficerText);

@@ -2,10 +2,10 @@
   <div class="col-sm-12 col-md-12 col-lg-12">
     <h1 class="float-left font-weight-bold text-primary">
       <i class="fas fa-clipboard-list"></i>
-      ใบเสนอความต้องการ
+      ใบสรุปความต้องการ
       <br/>
       <small class="text-secondary">
-        รายการใบเสนอฯ สั่งซื้อบริการเสริมของ กฟภ. จากผู้ใช้ไฟ
+        รายการใบสรุปฯ สั่งซื้อบริการเสริมของ กฟภ. จากผู้ใช้ไฟ
       </small>
     </h1>
     <table 

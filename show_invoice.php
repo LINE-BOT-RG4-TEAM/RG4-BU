@@ -9,7 +9,7 @@
 
     parse_str(base64_decode($queryString), $params);
     if(empty(array_filter($params))) {
-        die("ไม่พบใบเสนอความต้องการของท่าน, กรุณาลองใหม่อีกครั้ง");
+        die("ไม่พบใบสรุปความต้องการของท่าน, กรุณาลองใหม่อีกครั้ง");
     }
     $purchase_id = $params['purchase_id'];
 
@@ -60,7 +60,7 @@
 
     // set title and author
     $current_date = date("Y-m-d");
-    $mpdf->SetTitle("$current_date-ใบเสนอความต้องการ-$purchase_id");
+    $mpdf->SetTitle("$current_date-ใบสรุปความต้องการ-$purchase_id");
     $mpdf->SetAuthor("Automated report by PEA SmartBiz");
 
     $mpdf->SetHTMLHeader('
@@ -77,7 +77,7 @@
                 ระบบอัตโนมัติสร้างเอกสารนี้เมื่อวันที่ {DATE j-m-Y}
             </td>
             <td width="33%" align="center" style="vertical-align: bottom;">หน้าที่ {PAGENO} จากทั้งหมด {nbpg} หน้า</td>
-            <td width="33%" style="text-align: right;vertical-align: bottom;">ใบเสนอความต้องการ เลขที่ '.$purchase_id.'</td>
+            <td width="33%" style="text-align: right;vertical-align: bottom;">ใบสรุปความต้องการ เลขที่ '.$purchase_id.'</td>
         </tr>
     </table>');
     $body_page = "
@@ -107,14 +107,14 @@
     $body_page .= '
         <div>
             <img src="./assets/images/pea-logo.png" style="width:170px;margin: 0;padding-bottom:0px;" />
-            <h1 style="font-size: 40px;font-family: printable4u;">ใบเสนอความต้องการบริการเสริมจาก กฟภ.</h1>
+            <h1 style="font-size: 40px;font-family: printable4u;">ใบสรุปความต้องการบริการเสริม</h1>
             <h2 style="font-size: 30px;font-family: printable4u;">ข้อมูลทั่วไป</h2>
         </div>
         <div>
             <table border="0" style="width:100%;height:100%;table-layout:fixed;overflow:hidden">
                 <tr>
                     <td style="font-size:24px;width:12%;text-align:right;font-weight:bold;">
-                        ใบเสนอฯ เลขที่:
+                        ใบสรุปฯ เลขที่:
                     </td>
                     <td style="font-size:22px;width:16%;padding-left:10px;border: 1px solid #E8E8E8;">
                         '.$purchase_id.'
