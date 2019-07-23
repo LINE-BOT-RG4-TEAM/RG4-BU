@@ -47,11 +47,8 @@
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    $result = curl_exec($ch);
+    // $result = curl_exec($ch);
     curl_close($ch);
-
-    http_response_code(200);
-    exit(0);
 
     // notify officers
     $pea_code = $summary_row["PEA_CODE"];
@@ -68,3 +65,5 @@
     while($officer = $notify_results->fetch_assoc()){
         notifyToOfficer($officer["access_token"], $message);
     }
+    http_response_code(200);
+    exit(0);
