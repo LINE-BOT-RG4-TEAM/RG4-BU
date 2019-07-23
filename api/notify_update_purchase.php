@@ -66,5 +66,5 @@
     ";
     $notify_results = $conn->query($fetch_officers);
     while($officer = $notify_results->fetch_assoc()){
-        notifyToOfficer($officer["access_token"], "");
+        notifyToOfficer($officer["access_token"], $message);
     }
