@@ -982,33 +982,46 @@ function del()
 
 function notifyCustomerAndOfficers(purchase_id){
   // ajax call
-  $.ajax({
-    url: "./api/notify_update_purchase.php",
-    method: "POST",
-    data: {
-      purchase_id: purchase_id
-    },
-    beforeSend: function(){
-      $.blockUI({
-        message: "ระบบกำลังแจ้งเตือน..."
+  Swal.fire({
+    title: 'ต้องการแจ้งเตือน ?',
+    text: "ไม่สามารถยกเลิกข้อความได้ที่ส่งไปแล้วได้",
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'แจ้งเตือน',
+    cancelButtonText: 'ยกเลิก'
+  }).then(function(result){
+    if(result.value){
+      $.ajax({
+        url: "./api/notify_update_purchase.php",
+        method: "POST",
+        data: {
+          purchase_id: purchase_id
+        },
+        beforeSend: function(){
+          $.blockUI({
+            message: "ระบบกำลังแจ้งเตือน..."
+          });
+        },
+        success: function(response){
+          Swal.fire(
+            "สำเร็จ",
+            "ดำเนินการแจ้งเตือนไปยังผู้ใช้ไฟ และพนักงาน กบล.​กฟข. เรียบร้อยแล้ว",
+            "success"
+          );
+        },
+        error: function(error){
+          Swal.fire(
+            'ไม่สามารถแจ้งเตือน',
+            JSON.stringify(error),
+            'error'
+          )
+        },
+        complete: function(){
+          $.unblockUI();
+        }
       });
-    },
-    success: function(response){
-      Swal.fire(
-        "สำเร็จ",
-        "ดำเนินการแจ้งเตือนไปยังผู้ใช้ไฟ และพนักงาน กบล.​กฟข. เรียบร้อยแล้ว",
-        "success"
-      );
-    },
-    error: function(error){
-      Swal.fire(
-        'ไม่สามารถแจ้งเตือน',
-        JSON.stringify(error),
-        'error'
-      )
-    },
-    complete: function(){
-      $.unblockUI();
     }
   });
 }
