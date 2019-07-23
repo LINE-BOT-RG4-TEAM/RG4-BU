@@ -47,14 +47,14 @@
     curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
     curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-    // $result = curl_exec($ch);
+    $result = curl_exec($ch);
     curl_close($ch);
 
     // notify officers
     $pea_code = $summary_row["PEA_CODE"];
     $ca = $summary_row["CA"];
     $FullName = $summary_row["FullName"];
-    $message = "ผู้ใช้ไฟฟ้านามว่า `{$FullName}` ได้ปรับเปลี่ยนบริการเสริม ตามใบสรุปความต้องการเลขที่ #{$purchase_id} โดยมีจำนวนบริการทั้งหมด {$quantity_service} บริการ \n\n ใบสรุปความต้องการ: https://pea-crm.herokuapp.com/show_invoice.php?{$encode_purchase_id}";
+    $message = "ผู้ใช้ไฟฟ้านามว่า `{$FullName}` ได้ปรับเปลี่ยนบริการเสริม ตามใบสรุปความต้องการเลขที่ `#{$purchase_id}` โดยมีจำนวนบริการทั้งหมด {$quantity_service} บริการ \n\n ใบสรุปความต้องการ: https://pea-crm.herokuapp.com/show_invoice.php?{$encode_purchase_id}";
     $district = substr($pea_code, 0, 1);
     $fetch_officers = "
         SELECT access_token
