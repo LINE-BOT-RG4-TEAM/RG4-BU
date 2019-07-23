@@ -22,7 +22,7 @@
                     <!-- general data -->
                     <div class="col-5 border-right border-light">
                         <table>
-                            <tbody style="font-size:20px;">
+                            <tbody style="font-size:16px;">
                                 <tr>
                                     <td class="text-right">
                                         เลขที่ใบสรุปฯ :
@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-5">
                         <table class="mt-4">
-                            <tbody style="font-size:20px;">
+                            <tbody style="font-size:16px;">
                                 <tr>
                                     <td colspan="2">
                                         <h4 class="font-weight-bold text-right">ข้อมูลสำหรับติดต่อผู้ใช้ไฟ</h4>
