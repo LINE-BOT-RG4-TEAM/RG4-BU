@@ -89,6 +89,9 @@ function home_data() {
             $("#not_bu_card").html(obj.not_bu + ' ราย');
             console.log(obj);
             $(".quantity_jobs_area").unblock();
+        },
+        complete: function(){
+            $(".quantity_jobs_area").unblock();
         }				
     }); 
 }

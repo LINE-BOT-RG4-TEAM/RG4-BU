@@ -139,16 +139,19 @@
             <div class="col-sm-12 col-md-12 col-lg-12">
               <h4 class="font-weight-bold">รายการบริการ
                 <div class="float-right">
-                  <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#select_service_modal">
-                    <i class="fas fa-plus"></i> 
-                    เลือกสินค้าเพิ่ม
-                  </button>
-                </div>
-                <div class="float-right">
-                  <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">
-                    <i class="far fa-envelope"></i>
-                    ส่งอีเมล์ไปยังผู้ใช้ไฟ
-                  </a>
+                  <div class="btn-group" role="group" aria-label="Basic example">
+                    <button class="btn btn-primary btn-md" data-toggle="modal" data-target="#select_service_modal">
+                      <i class="fas fa-plus"></i> 
+                      เลือกสินค้าเพิ่ม
+                    </button>
+                    <a href="javascript:void(0);" class="btn btn-danger" onclick="javascript:notifyCustomerAndOfficers('<?=$_GET['purchase_id']?>');">
+                      <i class="far fa-bell"></i> แจ้งเตือนไปยังลูกค้า
+                    </a>
+                    <a id="send_confirm_email" href="javascript:void(0);" class="btn btn-outline-dark btn-block disabled">
+                      <i class="far fa-envelope"></i>
+                      ส่งอีเมล์ไปยังผู้ใช้ไฟ
+                    </a>
+                  </div>
                 </div>
               </h4>
             </div>

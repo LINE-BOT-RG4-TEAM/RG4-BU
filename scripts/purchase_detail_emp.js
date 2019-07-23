@@ -408,7 +408,7 @@ function fetch_purchase_emp()
     },
     success: function(response) {
       var obj = JSON.parse(response) || {};
-      console.log(obj);
+      // console.log(obj);
       $('#bp').val(obj[0].BP);
       $('#ca').val(obj[0].CA);
       $('#business_type').val(obj[0].BUSINESS_TYPE);
@@ -978,6 +978,39 @@ function del()
       }					
     });
     
+}
+
+function notifyCustomerAndOfficers(purchase_id){
+  // ajax call
+  $.ajax({
+    url: "./api/notify_update_purchase.php",
+    method: "POST",
+    data: {
+      purchase_id: purchase_id
+    },
+    beforeSend: function(){
+      $.blockUI({
+        message: "ระบบกำลังแจ้งเตือน..."
+      });
+    },
+    success: function(response){
+      Swal.fire(
+        "สำเร็จ",
+        "ดำเนินการแจ้งเตือนไปยังผู้ใช้ไฟ และพนักงาน กบล.​กฟข. เรียบร้อยแล้ว",
+        "success"
+      );
+    },
+    error: function(error){
+      Swal.fire(
+        'ไม่สามารถแจ้งเตือน',
+        JSON.stringify(error),
+        'error'
+      )
+    },
+    complete: function(){
+      $.unblockUI();
+    }
+  });
 }
 
 $('#btn_add').hide();
