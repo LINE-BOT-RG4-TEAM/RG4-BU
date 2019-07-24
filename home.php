@@ -133,7 +133,7 @@
               <th data-footer-formatter="summaryS303Formatter" data-formatter="quantityJobsS303Formatter" data-class="text-danger" data-align="right" data-field="S303">รหัส S303</th>
               <th data-footer-formatter="summaryS304Formatter" data-formatter="quantityJobsS304Formatter" data-class="text-info" data-align="right" data-field="S304">รหัส S304</th>
               <th data-footer-formatter="summaryS305Formatter" data-formatter="quantityJobsS305Formatter" data-class="text-secondary" data-align="right" data-field="S305">รหัส S305</th>
-              <th data-formatter="monthlyFormatter" data-align="right" data-footer-formatter="grandSummaryFormatter">รวมตามเดือน</th>
+              <th data-formatter="monthlyFormatter" data-align="right" data-footer-formatter="grandSummaryFormatter">รวมตามไตรมาส</th>
             </tr>
           </thead>
         </table>
