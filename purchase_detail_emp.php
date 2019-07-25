@@ -27,7 +27,7 @@
       <div class="card-body">
         <h3 class="card-title font-weight-bold text-primary">
           <i class="fas fa-walking"></i> รายละเอียดใบสรุปความต้องการ
-          <span class="d-none d-lg-block d-lg-none float-right badge badge-pill badge-primary">หมายเลขใบเสนอความต้องการ : <span id="purchase_id"></span></span>
+          <span class="d-none d-lg-block d-lg-none float-right badge badge-pill badge-primary">ความสรุปความต้องการเลขที่ : <span id="purchase_id"></span></span>
           <input type="hidden" name="hidden_purchase_id" id="hidden_purchase_id" />
         </h3>
         <div class="dropdown-divider"></div>

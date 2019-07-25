@@ -19,7 +19,7 @@ function viewPRFormatter(value, row, index) {
     return [
         '<div class="text-center">',
         '<a href="javascript:void(0);" class="btn btn-sm btn-outline-primary view-pr-detail">',
-        '<i class="far fa-eye"></i> รายละเอียด<br/>ใบเสนอความต้องการ',
+        '<i class="far fa-eye"></i> รายละเอียด<br/>ใบสรุปความต้องการ',
         '</a>',
         '</div>'
     ].join("");
