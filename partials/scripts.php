@@ -19,8 +19,11 @@
 <script src="./assets/js/Chart.min.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144567539-1"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144567539-1"></script>
 <script>
+  alert('hello from script php');
+</script>
+<!-- <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
