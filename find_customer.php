@@ -51,9 +51,9 @@
                 </div>
 
                 <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div class="card-body">
+                  <div class="card-body border border-top-0 border-left-0 border-right-0 border-secondary">
                     <img class="w-100" src="./assets/images/qr-code-with-logo.png"/>
-                    <p class='font-weight-bold text-center'>LINE ID<br/>@jgz8631b</p>
+                    <p class='font-weight-bold text-center' style="font-size: 35px;">LINE ID<br/>@jgz8631b</p>
                   </div>
                 </div>
               </div>
