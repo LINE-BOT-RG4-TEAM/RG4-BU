@@ -72,7 +72,7 @@
                     <div class="text-center">
                         <img class="img-fluid" src="./assets/images/pea-logo-purple.png" style="max-width:130px"/>
                     </div>
-                    <h5 class="text-center card-title font-weight-bold mt-2">ค้นหาหมายเลขข้อมูลภายในระบบฐานข้อมูลลูกค้ารายสำคัญ</h5>
+                    <h5 class="text-center card-title font-weight-bold mt-2">ค้นหาข้อมูลลูกค้าระบบฐานข้อมูลลูกค้ารายสำคัญ</h5>
                     <hr />
                     <form method="POST" action="#!" autocomplete="off">
                         <div class="form-group">
