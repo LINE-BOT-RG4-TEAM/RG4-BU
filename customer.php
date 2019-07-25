@@ -37,6 +37,7 @@
     echo "<script>";
     include("scripts/liff_global.js");
     include($page_script_path);
+    include("scripts/ga.js");
     echo "</script>";
   }
   
