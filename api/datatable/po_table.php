@@ -13,7 +13,7 @@
         COUNT(purchase_lineitem.purchase_id) AS service_num,
         purchase.PURCHASE_STATUS AS po_status,
         purchase.confident_document,
-        ca.FullName
+        purchase.FullName
     FROM purchase 
       INNER JOIN ca ON purchase.CA = ca.CA
       INNER JOIN bp ON ca.BP = bp.BP 
