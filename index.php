@@ -47,7 +47,6 @@
   if(file_exists($page_script_path)){
     echo "<script>";
     include($page_script_path);
-    include("scripts/ga.js");
     echo "</script>";
   }
   
