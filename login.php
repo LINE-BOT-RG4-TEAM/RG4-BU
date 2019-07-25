@@ -137,7 +137,7 @@
       </div> <!-- end of container -->
     </main> <!-- end of main tag -->
     <div class="text-center pt-2 pb-3 border border-left-0 border-right-0 border-bottom-0">
-      <img src="./assets/images/pea-logo.png" width="150" class="pt-2 d-inline-block align-top"><br>
+      <!-- <img src="./assets/images/pea-logo.png" width="150" class="pt-2 d-inline-block align-top"><br> -->
       <span class="text-muted font-weight-bold">PEA 4.0 - Digital Utility</span><br/>
       <span class="text-muted">พัฒนาโดย สายงานการไฟฟ้า ภาค 4</span>
     </div>
