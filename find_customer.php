@@ -112,11 +112,11 @@
               data-url="./api/datatable/find_customer.php?cust_name=<?=$_POST['cust_name']?>&address=<?=$_POST['address']?>">
               <thead>
                 <tr>
-                  <th data-field="PEA_NAME" data-sortable="true"><i class="fas fa-indent"></i>PEA_NAME</th>
+                  <th data-field="PEA_NAME" data-sortable="true"><i class="fas fa-indent"></i>การไฟฟ้า</th>
                   <th data-field="CA" data-sortable="true"><i class="fas fa-user-tie"></i>CA</th>
-                  <th data-field="CUSTOMER_NAME" data-sortable="true"><i class="fas fa-user-tie"></i>CUSTOMER_NAME</th>
-                  <th data-field="ADDRESS" data-sortable="true"><i class="fas fa-receipt"></i> ADDRESS</th>
-                  <th data-field="BUSINESS_TYPE"> BUSINESS_TYPE</th>
+                  <th data-field="CUSTOMER_NAME" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อลูกค้า</th>
+                  <th data-field="ADDRESS" data-sortable="true"><i class="fas fa-receipt"></i> ที่อยู่</th>
+                  <th data-field="BUSINESS_TYPE"> ประเภทธุรกิจ</th>
                 </tr>
               </thead>
             </table>
