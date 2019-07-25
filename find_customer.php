@@ -12,6 +12,8 @@
     <link href="https://fonts.googleapis.com/css?family=Sarabun|Roboto" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/animate.css">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="./assets/css/bootstrap-table-sticky-header.css">
     <style>
       * {
         font-family: 'Sarabun', 'Roboto', sans-serif;
@@ -22,7 +24,13 @@
     </style>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="http://malsup.github.io/jquery.blockUI.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+    <!-- <script src="./assets/js/jquery-3.3.1.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.14.2/dist/bootstrap-table.min.js"></script>
+    <script src="./assets/js/bootstrap-table-sticky-header.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.th.min.js"></script> -->
   </head>
 
   <body>
@@ -69,15 +77,15 @@
                     <form method="POST" action="#!" autocomplete="off">
                         <div class="form-group">
                           <label for="cust_name" class="font-weight-bold"><i class="fas fa-user-shield"></i> ชื่อลูกค้า (ส่วนใดส่วนหนึ่ง)</label>
-                          <input type="text" class="form-control" id="cust_name" name="cust_name" placeholder="กรอกส่วนใดส่วนของชื่อลูกค้า">
+                          <input type="text" class="form-control" id="cust_name" name="cust_name" placeholder="กรอกส่วนใดส่วนของชื่อลูกค้า" value="<?=isset($_POST['cust_name'])?$_POST['cust_name']:''?>">
                         </div>
                         <div class="form-group">
                           <label for="address" class="font-weight-bold"><i class="fas fa-key"></i> ที่อยู่ลูกค้า</label>
-                          <input type="password" class="form-control" id="address" name="address" placeholder="กรอกส่วนใดส่วนหนึ่งของที่อยู่">
+                          <input type="text" class="form-control" id="address" name="address" placeholder="กรอกส่วนใดส่วนหนึ่งของที่อยู่" value="<?=isset($_POST['address'])?$_POST['address']:''?>">
                         </div>
-                        <div class="alert alert-primary font-weight-bold" role="alert">
+                        <!-- <div class="alert alert-primary font-weight-bold" role="alert">
                           <i class="far fa-question-circle"></i> หากท่านต้องการค้นหาข้อมูลในช่องข้อมูลเดียวด้วยหลายๆ ค่า ท่านสามารถกรอกเครื่องหมาย , (comma) คั่นระหว่างค่า
-                        </div>
+                        </div> -->
                         <div class="form-group text-center">
                           <button type="submit" class="btn btn-primary btn-block btn-lg">
                             <i class="fas fa-paper-plane"></i> ค้นหา
@@ -91,7 +99,7 @@
         <!-- show results of data -->
         <?php 
           if($_POST){
-            ?>
+        ?>
             <table 
               data-toggle="table" 
               data-pagination="true"
@@ -101,18 +109,18 @@
               data-search="true"
               data-page-size="5"
               data-page-list="[5, 10, 20, 100, ALL]"
-              data-url="./api/datatable/complete_po_table.php">
+              data-url="./api/datatable/find_customer.php?cust_name=<?=$_POST['cust_name']?>&address=<?=$_POST['address']?>">
               <thead>
                 <tr>
-                  <th data-field="purchase_id" data-sortable="true"><i class="fas fa-indent"></i>หมายเลข PR</th>
-                  <th data-field="cus_name" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อ BP</th>
-                  <th data-field="FullName" data-sortable="true"><i class="fas fa-user-tie"></i>ชื่อผู้ติดต่อของ BP</th>
-                  <th data-field="service_num" data-sortable="true"><i class="fas fa-receipt"></i> จำนวนบริการ</th>
-                  <th data-formatter="po_Formatter" data-events="po_Events" > รายละเอียด</th>
+                  <th data-field="PEA_NAME" data-sortable="true"><i class="fas fa-indent"></i>PEA_NAME</th>
+                  <th data-field="CA" data-sortable="true"><i class="fas fa-user-tie"></i>CA</th>
+                  <th data-field="CUSTOMER_NAME" data-sortable="true"><i class="fas fa-user-tie"></i>CUSTOMER_NAME</th>
+                  <th data-field="ADDRESS" data-sortable="true"><i class="fas fa-receipt"></i> ADDRESS</th>
+                  <th data-field="BUSINESS_TYPE"> BUSINESS_TYPE</th>
                 </tr>
               </thead>
             </table>
-            <?php
+        <?php
           }
         ?>
       </div> <!-- end of container -->
@@ -122,8 +130,5 @@
       <span class="text-muted font-weight-bold">PEA 4.0 - Digital Utility</span><br/>
       <span class="text-muted">พัฒนาโดย สายงานการไฟฟ้า ภาค 4</span>
     </div>
-    <script src="./assets/js/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="./assets/js/bootstrap.min.js"></script>
   </body>
 </html>
