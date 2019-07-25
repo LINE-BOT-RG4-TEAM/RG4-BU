@@ -18,7 +18,7 @@
             <input type="hidden" id="uIdInput" name="uIdInput">
           </div>
           <div class="form-group">
-            <label for="caInput" class="font-weight-bold"><i class="fas fa-asterisk"></i> หมายเลขผู้ใช้ไฟฟ้า (CA)</label>
+            <label for="caInput" class="font-weight-bold"><i class="fas fa-asterisk"></i> หมายเลขผู้ใช้ไฟฟ้า (CA) - จำนวน 12 หลัก</label>
             <img class="w-100 border" src="./assets/images/invoice/invoice-type-1.png" />
             <img class="w-100 border mt-1 mb-1" src="./assets/images/invoice/invoice-type-2.png" />
             <input type="number" class="form-control" id="caInput" name="caInput" placeholder="กรอกหมายเลขผู้ใช้ไฟฟ้าของท่าน" size="12" autofocus required>
