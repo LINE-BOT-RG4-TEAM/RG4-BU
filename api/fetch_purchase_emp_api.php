@@ -20,12 +20,9 @@
                         ca.CA_EMAIL,
                         purchase.confident_document,
                         purchase.PURCHASE_ID
-                    FROM 
-                        purchase  
-                    INNER JOIN ca 
-                    ON purchase.UserID = ca.UserID
-                    INNER JOIN bp
-                    ON ca.BP = bp.BP 
+                    FROM purchase  
+                        INNER JOIN ca ON purchase.ca = ca.ca
+                        INNER JOIN bp ON ca.BP = bp.BP 
                     WHERE PURCHASE_ID = '$purchase_id'";
     $query = mysqli_query($conn,$sql_purchase);
 
