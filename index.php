@@ -4,7 +4,7 @@
 <?php 
   // check user session
   if(!isset($_SESSION['username']) || empty($_SESSION['username'])){
-    header("Location: login.php");
+    header("Location: https://pea-crm.herokuapp.com/login.php");
   }
   
   // check timeout session
@@ -18,7 +18,7 @@
 
   // check 'action' from get params
   if(!array_key_exists("action", $_GET)){
-    header("Location: index.php?action=home");
+    header("Location: https://pea-crm.herokuapp.com/index.php?action=home");
     exit(0);
   }
 
