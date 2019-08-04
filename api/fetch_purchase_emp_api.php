@@ -15,9 +15,9 @@
                         ca.KAMR,
                         ca.UserID,
                         bp.BP,
-                        ca.FullName,
-                        ca.CA_TEL,
-                        ca.CA_EMAIL,
+                        purchase.FullName,
+                        purchase.CA_TEL,
+                        purchase.CA_EMAIL,
                         purchase.confident_document,
                         purchase.PURCHASE_ID
                     FROM purchase  
