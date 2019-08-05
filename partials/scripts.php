@@ -19,4 +19,4 @@
 <script src="./assets/js/Chart.min.js"></script>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144567539-1"></script> -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-144567539-1"></script>
