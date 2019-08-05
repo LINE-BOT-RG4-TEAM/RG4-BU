@@ -28,6 +28,8 @@
     include("404.php");
   }
   
+  require("./partials/ga_tags.php");
+
   // include essentials scripts 
   require("./partials/scripts.php");
 
@@ -39,6 +41,5 @@
     include($page_script_path);
     echo "</script>";
   }
-  include("./partials/ga_tags.php");
 ?>
 <?php require("./partials/marketplace_footer.php"); ?>
