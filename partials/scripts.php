@@ -17,6 +17,3 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.th.min.js"></script>
 <script src="./assets/js/jquery.blockUI.js"></script>
 <script src="./assets/js/Chart.min.js"></script>
-
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144567539-1"></script> -->
