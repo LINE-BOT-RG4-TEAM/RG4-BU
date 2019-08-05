@@ -39,8 +39,8 @@
     include($page_script_path);
     echo "</script>";
   }
-  
+
   // include ga
-  include("partials/ga_tags.php");
+  // include("partials/ga_tags.php");
 ?>
 <?php require("./partials/marketplace_footer.php"); ?>
