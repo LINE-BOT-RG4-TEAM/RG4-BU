@@ -49,6 +49,6 @@
     include($page_script_path);
     echo "</script>";
   }
-  
+  include("./partials/ga_tags.php");
 ?>
 <?php require("./partials/footer.php"); ?>
