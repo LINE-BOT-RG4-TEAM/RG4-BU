@@ -28,7 +28,7 @@
     include("404.php");
   }
   
-  require("./partials/ga_tags.php");
+  // require("./partials/ga_tags.php");
 
   // include essentials scripts 
   require("./partials/scripts.php");
