@@ -87,6 +87,10 @@
                 ออกจากระบบ
               </a>
               <div class="dropdown-divider"></div>
+              <a class="nav-link disabled text-center">
+                <label class="font-weight-bold text-secondary" style="font-size:22px;">PEA SmartBiz's QR Code</label>
+                <img src="./assets/images/qr-code-with-logo.png" class="rounded w-100 mx-auto d-block">
+              </a>
               <a class="nav-link border p-3 disabled text-center bg-light">
                 <i class="far fa-2x fa-id-card"></i><br/>
                 ติดต่อสอบถาม, แนะนำ <br/>หรือแจ้งปัญหาการใช้งาน<br/>ที่ 5140 หรือ <br/>chiwawon.sae@pea.co.th 
