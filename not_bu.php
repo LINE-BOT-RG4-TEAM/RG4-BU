@@ -13,7 +13,7 @@
         data-sticky-header="true">
       <thead>
         <tr>
-          <th data-field="CA" data-sortable="true">หมายเลขผู้ใช้ไฟฟ้า (CA/Ref.No.1)</th>
+          <th data-field="CA" data-sortable="true">หมายเลขผู้ใช้ไฟฟ้า (CA)</th>
           <th data-field="CUSTOMER_NAME" data-sortable="true">ชื่อลูกค้า</th>
           <th data-formatter="operateFormatter" data-events="operateEvents" > รายละเอียด</th>
         </tr>

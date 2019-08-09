@@ -51,7 +51,7 @@
             <div class="col-sm-12 col-md-12 col-lg-8">
               <div class="form-group">
                 <label for="bp" class="text-center font-weight-bold">
-                  <i class="fas fa-sort-numeric-up"></i> ที่อยู่ตามหมายเลขผู้ใช้ไฟฟ้า (CA/Ref.No.1)
+                  <i class="fas fa-sort-numeric-up"></i> ที่อยู่ตามหมายเลขผู้ใช้ไฟฟ้า (CA)
                 </label>
                 <input type="text" class="text-center form-control readonly" id="address" name="address" disabled="disabled">
                 <input type="hidden" id="hidden_address" name="hidden_address" />
