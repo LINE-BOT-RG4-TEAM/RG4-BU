@@ -24,8 +24,16 @@
         font-family: 'Roboto';
       }
     </style>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144567539-1"></script>
     <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
     <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-144567539-1');
+      
       window.TrackJS && TrackJS.install({ 
         token: "31760aee61124452892788c7eaf8e748"
         // for more configuration options, see https://docs.trackjs.com
