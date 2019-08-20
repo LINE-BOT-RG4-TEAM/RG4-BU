@@ -24,6 +24,13 @@
         font-family: 'Roboto';
       }
     </style>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+      window.TrackJS && TrackJS.install({ 
+        token: "31760aee61124452892788c7eaf8e748"
+        // for more configuration options, see https://docs.trackjs.com
+      });
+    </script>
   </head>
 
   <body>
