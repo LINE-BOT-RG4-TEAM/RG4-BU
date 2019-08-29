@@ -1,5 +1,6 @@
 window.onload = function(e) {
   liff.init(function(data) {
+    window.localStorage.setItem('userId', data.context.userId);
     initializeUserId(data);
     liff
     .getProfile()
@@ -11,11 +12,6 @@ window.onload = function(e) {
 
 window.onerror = function(message, file, line, column, error) {
   console.log('onerror now');
-  // console.log('message', message)
-  // console.log('file', file)
-  // console.log('line', line)
-  // console.log('column', column)
-  // console.log('error', error)
   TrackJS.track(error);
 }
 
@@ -31,7 +27,7 @@ function initializeUserId(data) {
 
   // update data in page by functions
   quantity_service();
-  try{
+  try {
     purchase_status();
   } catch(error) {
     console.error(error);
