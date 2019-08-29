@@ -31,7 +31,11 @@ function initializeUserId(data) {
 
   // update data in page by functions
   quantity_service();
-  purchase_status();
+  try{
+    purchase_status();
+  } catch(error) {
+    console.error(error);
+  }
   // check_lineitem();
 }
 
