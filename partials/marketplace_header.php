@@ -31,7 +31,7 @@
     <script>
       // sentry log
       Sentry.init({ dsn: 'https://7749d09b43d446bd8b339d85e517e287@sentry.io/1545928' });
-      myUndefinedFunction();
+      // myUndefinedFunction();
       // window.dataLayer = window.dataLayer || [];
       // function gtag(){dataLayer.push(arguments);}
       // gtag('js', new Date());
