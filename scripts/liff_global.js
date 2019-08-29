@@ -9,6 +9,16 @@ window.onload = function(e) {
   });
 };
 
+window.onerror = function(message, file, line, column, error) {
+  console.log('onerror now');
+  // console.log('message', message)
+  // console.log('file', file)
+  // console.log('line', line)
+  // console.log('column', column)
+  // console.log('error', error)
+  TrackJS.track(error);
+}
+
 
 function initializeUserId(data) {
   var userId = data.context.userId;
