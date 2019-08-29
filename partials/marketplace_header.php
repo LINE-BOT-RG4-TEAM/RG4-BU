@@ -27,7 +27,11 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-144567539-1"></script> -->
     <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script src="https://browser.sentry-cdn.com/5.6.2/bundle.min.js" integrity="sha384-H4chu/XQ3ztniOYTpWo+kwec6yx3KQutpNkHiKyeY05XCZwCSap7KSwahg16pzJo" crossorigin="anonymous"></script>
     <script>
+      // sentry log
+      Sentry.init({ dsn: 'https://7749d09b43d446bd8b339d85e517e287@sentry.io/1545928' });
+      myUndefinedFunction();
       // window.dataLayer = window.dataLayer || [];
       // function gtag(){dataLayer.push(arguments);}
       // gtag('js', new Date());
