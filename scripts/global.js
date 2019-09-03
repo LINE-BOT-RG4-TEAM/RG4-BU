@@ -24,9 +24,10 @@ window.operateEvents = {
 function quantity_service()
 {
   console.log("quantity...");
-  var UserID = document.getElementById('userId').value;
+  // var UserID = document.getElementById('userId').value;
+  var userId = localStorage.getItem("userId");
   var formData = new FormData();
-  formData.append('userid',UserID);
+  formData.append('userid',userId);
   $.ajax({
     url: './api/check_service_api.php',
     method: 'POST',
