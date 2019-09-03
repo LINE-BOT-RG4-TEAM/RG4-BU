@@ -66,6 +66,7 @@ function purchase_status()
 
 $(document).ready(function() {
 //   alert('from document ready');
-  purchase_status();
+  var userId = localStorage.getItem('userId');
+  purchase_status(userId);
 //   alert('from purchase_status: '+document.getElementById("userId").value);
 });
