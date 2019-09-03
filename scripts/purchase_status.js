@@ -23,12 +23,12 @@ function render_purchase_status(obj)
     if(html_purchase_approve == ''){html_purchase_approve = '--ไม่มีข้อมูล--'}
     $("#approve").html(html_purchase_approve);
 }
-function purchase_status()
+function purchase_status(userId)
 {
     console.log("js run");
-    var UserID = document.getElementById('userId').value;
+    // var UserID = document.getElementById('userId').value;
     var formData = new FormData();
-    formData.append('userid',UserID);
+    formData.append('userid',userId);
     $.ajax({
       url: './api/purchase_status_api.php',
       method: 'POST',
