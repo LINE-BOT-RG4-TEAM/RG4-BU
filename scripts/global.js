@@ -35,32 +35,11 @@ function quantity_service()
 		cache: false,
 		processData: false,
 		contentType: false,
-    success: function(response) 
-              {
-                /*if(response == 0 )
-                {
-                  $("#notify_total").hide();
-                  $("#notify_cart").hide();
-                }
-                else if (response > 0 )
-                {
-                  $("#notify_total").text(response);
-                  $("#notify_cart").text(response);
-                  if($("#circularMenu").hasClass('active'))
-                  {
-                    $("#notify_cart").show();
-                    $("#notify_total").hide();
-                  }
-                  else
-                  {
-                    $("#notify_cart").hide();
-                    $("#notify_total").show();
-                  } 
-                }*/
-                show_num_service(response);
-                
-              }				
-    });
+    success: function(response) {
+      show_num_service(response);
+      $.unblockUI();
+    }				
+  });
 }
 function toggle_menu()
 {
@@ -113,7 +92,7 @@ function updateQuantityOfPR(){
       $(".pr-quantity").text(object.quantity+" ใบสรุป");
     },
     error: function(error){
-      console.log('Not allowed show quantity of PR');
+      console.error('Not allowed show quantity of PR');
     },
     complete: function(){
       $(".pr-quantity").fadeIn();
