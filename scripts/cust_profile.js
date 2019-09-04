@@ -36,6 +36,23 @@ function initialLIFFData(data){
       $("#profileImage").attr("src", pictureURL);
       
       userProfileAjax.fail(redirectWhenError);
+    }).then(function(){
+      // fetch user data 
+      var userProfileAjax = fetchUserData(userId);
+      userProfileAjax.done(function(data){
+        var obj_data = JSON.parse(data) || {};
+        var ca_txt = obj_data.CA;
+        var fullName_txt = obj_data.FullName;
+        var caTel_txt = obj_data.CA_TEL;
+        var caEmail_txt = obj_data.CA_EMAIL;
+
+        $("#ca_txt, #ca_hidden").val(ca_txt);
+        $("#fullName_txt, #fullName_hidden").val(fullName_txt);
+        $("#caTel_txt, #caTel_hidden").val(caTel_txt);
+        $("#caEmail_txt, #caEmail_hidden").val(caEmail_txt);
+
+        $.unblockUI();
+      });
     })
     .catch(redirectWhenError);
 }
@@ -72,26 +89,9 @@ function fetchUserData(userId){
 
 $(function(){
   alert("userId: "+localStorage.getItem("userId"));
-  var userId = localStorage.getItem("userId");
+  // var userId = localStorage.getItem("userId");
 
   liff.init(initialLIFFData, handleErrorLIFF);
-
-  // fetch user data 
-  var userProfileAjax = fetchUserData(userId);
-  userProfileAjax.done(function(data){
-    var obj_data = JSON.parse(data) || {};
-    var ca_txt = obj_data.CA;
-    var fullName_txt = obj_data.FullName;
-    var caTel_txt = obj_data.CA_TEL;
-    var caEmail_txt = obj_data.CA_EMAIL;
-
-    $("#ca_txt, #ca_hidden").val(ca_txt);
-    $("#fullName_txt, #fullName_hidden").val(fullName_txt);
-    $("#caTel_txt, #caTel_hidden").val(caTel_txt);
-    $("#caEmail_txt, #caEmail_hidden").val(caEmail_txt);
-
-    $.unblockUI();
-  });
 });
 
 $("form").submit(function(event){
