@@ -87,6 +87,7 @@ function fetchUserData(userId){
 }
 
 $(function(){
+  alert("userId: "+localStorage.getItem("userId"));
     liff.init(initialLIFFData, handleErrorLIFF);
 });
 
