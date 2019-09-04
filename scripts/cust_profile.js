@@ -74,6 +74,8 @@ $(function(){
   alert("userId: "+localStorage.getItem("userId"));
   var userId = localStorage.getItem("userId");
 
+  liff.init(initialLIFFData, handleErrorLIFF);
+
   // fetch user data 
   var userProfileAjax = fetchUserData(userId);
   userProfileAjax.done(function(data){
@@ -90,8 +92,6 @@ $(function(){
 
     $.unblockUI();
   });
-
-  liff.init(initialLIFFData, handleErrorLIFF);
 });
 
 $("form").submit(function(event){
