@@ -25,7 +25,7 @@ function quantity_service()
 {
   console.log("quantity...");
   // var UserID = document.getElementById('userId').value;
-  var userId = sessionStorage.getItem("userId");
+  var userId = localStorage.getItem("userId");
   var formData = new FormData();
   formData.append('userid',userId);
   $.ajax({

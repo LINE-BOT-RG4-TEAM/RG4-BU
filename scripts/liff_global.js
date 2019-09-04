@@ -1,6 +1,6 @@
 window.onload = function(e) {
   liff.init(function(data) {
-    sessionStorage.setItem('userId', data.context.userId);
+    localStorage.setItem('userId', data.context.userId);
     initializeUserId(data);
     liff
     .getProfile()
@@ -54,9 +54,10 @@ function render_lineitem(obj)
 
 function check_lineitem()
 {
-  var UserID = document.getElementById('userId').value;
+  // var UserID = document.getElementById('userId').value;
+  var userId = localStorage.getItem("userId");
   var formData = new FormData();
-  formData.append('userid',UserID);
+  formData.append('userid',userId);
   $.ajax({
     url: './api/check_lineitem_api.php',
     method: 'POST',
