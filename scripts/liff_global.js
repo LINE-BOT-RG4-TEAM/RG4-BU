@@ -1,6 +1,6 @@
 window.onload = function(e) {
   liff.init(function(data) {
-    window.localStorage.setItem('userId', data.context.userId);
+    sessionStorage.setItem('userId', data.context.userId);
     initializeUserId(data);
     liff
     .getProfile()

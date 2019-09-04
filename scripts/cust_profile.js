@@ -87,8 +87,8 @@ function fetchUserData(userId){
 }
 
 $(function(){
-  alert("userId: "+localStorage.getItem("userId"));
-    liff.init(initialLIFFData, handleErrorLIFF);
+  alert("userId: "+sessionStorage.getItem("userId"));
+  liff.init(initialLIFFData, handleErrorLIFF);
 });
 
 $("form").submit(function(event){
