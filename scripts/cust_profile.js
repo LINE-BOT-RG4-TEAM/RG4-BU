@@ -34,13 +34,9 @@ function initialLIFFData(data){
       $("#LINEDisplayName").text(displayName);
       $("#userIdHidden").val(userId);
       $("#profileImage").attr("src", pictureURL);
-      
-      userProfileAjax.fail(redirectWhenError);
-      return fetchUserData(userId);
-    }).then(function(profileCallback){
-      // fetch user data 
-      // var userProfileAjax = fetchUserData(userId);
-      profileCallback.done(function(data){
+
+      var userProfileAjax = fetchUserData(userId);
+      userProfileAjax.done(function(data){
         var obj_data = JSON.parse(data) || {};
         var ca_txt = obj_data.CA;
         var fullName_txt = obj_data.FullName;
@@ -54,6 +50,8 @@ function initialLIFFData(data){
 
         $.unblockUI();
       });
+      
+      userProfileAjax.fail(redirectWhenError);
     })
     .catch(redirectWhenError);
 }
