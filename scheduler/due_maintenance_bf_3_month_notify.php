@@ -19,7 +19,7 @@
     $today = "2019-11-18"; // 2019-11-25 
     // fetch history for duedate maintenance before 3 month for officer
     $fetch_duedate_bf_3_month = "
-        SELECT PEA_CODE, COUNT(*) AS 'count_job'
+        SELECT pea_code, COUNT(*) AS 'count_job'
         FROM history
         WHERE DATE_ADD(`HISTORY`, INTERVAL 9 MONTH) = '{$today}'
             AND CODE IN ('S301', 'S302', 'S303', 'S304', 'S305')
