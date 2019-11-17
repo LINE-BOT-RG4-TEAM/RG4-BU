@@ -48,7 +48,7 @@
         $full_name = $row["FullName"];
         $due_date = $row["due_date"];
         $count_job = $row["count_job"];
-        $message = "[ข้อความจาก SmartBiz]\n\nเรียน คุณ {$full_name}\n\nท่านมีรายการบำรุงรักษาที่ครบกำหนดภายในวันที่ {$due_date} จำนวน {$count_job} รายการ \n\n ท่านสามารถตรวจสอบรายการดังกล่าว https://pea-crm.herokuapp.com/show_duedate_1_month.php?ca={$CA}&due_date={$due_date}";
+        $message = "[ข้อความจาก SmartBiz]\n\nเรียน คุณ {$full_name}\n\nท่านมีรายการบำรุงรักษาที่ครบกำหนดภายในวันที่ {$due_date} \n\n ท่านสามารถตรวจสอบรายการดังกล่าว https://pea-crm.herokuapp.com/show_duedate_1_month.php?ca={$CA}&due_date={$due_date}";
         pushMessageToCustomer($userId, $message);
     }
 

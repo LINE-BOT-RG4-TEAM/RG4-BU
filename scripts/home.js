@@ -483,6 +483,10 @@ function dateThaiFormatter(value, row) {
     return str_thai;
   }
 
+function runningFormatter(value, row, index){
+    return index + 1;
+}
+
 $(function(){
     $("#jobsModalLgCenter").on('hide.bs.modal', function(event) {
         $("#modal_table").bootstrapTable('destroy');
