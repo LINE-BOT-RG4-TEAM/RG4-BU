@@ -17,7 +17,8 @@
         return;
     }
 
-    $today = date("Y-m-d");
+    // $today = date("Y-m-d");
+    $today = "2019-11-18"; // 2019-11-25
     // fetch history for duedate maintenance before 3 month for officer
     $fetch_duedate_bf_3_month = "
         SELECT PEA_CODE, COUNT(*) AS 'count_job'
