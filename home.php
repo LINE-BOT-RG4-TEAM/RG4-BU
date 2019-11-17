@@ -69,7 +69,27 @@
 <div class="row mt-2">
   <?php if(substr($_SESSION["pea_code"], -5) == "00000"){ ?>
     <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
-      <h3 class="">งานบำรุงรักษาที่ครบกำหนดบำรุงรักษาของวันนี้</h3>
+      <h3>งานบำรุงรักษาครบกำหนดบำรุงรักษาอีก 3 เดือนนับจากวันนี้</h3>
+      <table 
+        data-toggle="table" 
+        data-url="./api/datatable/summary_maintenance_3_month.php" 
+        data-fixed-columns="true"
+        data-group-by="true"
+        data-group-by-field="office_name"
+        data-sticky-header="true">
+        <thead>
+          <tr>
+            <th data-align="center" data-field="CA" data-formatter="caFormatter">หมายเลขผู้ใช้ไฟ</th>
+            <th data-align="center" data-field="CUSTOMER_NAME">ชื่อผู้ใช้ไฟฟ้า</th>
+            <th data-align="center" data-field="due_date" data-formatter="dateThaiFormatter"><i class="far fa-calendar-alt"></i> วันที่ครบกำหนด</th>
+            <th data-align="center" data-field="CODE_EXPLAIN">รายการการดำเนินการ</th>
+            <th data-align="center" data-field="PAYMENT">ค่าใช้จ่ายครั้งก่อน</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
+      <h3>งานบำรุงรักษาที่ครบกำหนดบำรุงรักษาของวันนี้</h3>
       <table 
         data-toggle="table" 
         data-url="./api/datatable/summary_maintenance_today.php" 
@@ -79,16 +99,36 @@
         data-sticky-header="true">
         <thead>
           <tr>
-            <th data-align="center" data-field="CA"><i class="far fa-calendar-alt"></i> หมายเลขผู้ใช้ไฟ</th>
-            <th data-align="center" data-field="CUSTOMER_NAME"><i class="far fa-calendar-alt"></i> ชื่อผู้ใช้ไฟฟ้า</th>
-            <th data-align="center" data-field="CODE_EXPLAIN"><i class="far fa-calendar-alt"></i> รายการการดำเนินการ</th>
-            <th data-align="center" data-field="PAYMENT"><i class="far fa-calendar-alt"></i> ค่าใช้จ่ายครั้งก่อน</th>
+            <th data-align="center" data-field="CA" data-formatter="caFormatter">หมายเลขผู้ใช้ไฟ</th>
+            <th data-align="center" data-field="CUSTOMER_NAME">ชื่อผู้ใช้ไฟฟ้า</th>
+            <th data-align="center" data-field="CODE_EXPLAIN">รายการการดำเนินการ</th>
+            <th data-align="center" data-field="PAYMENT">ค่าใช้จ่ายครั้งก่อน</th>
           </tr>
         </thead>
       </table>
     </div>
   <?php } else { ?>
-    <div class="col-sm-12 col-md-5 col-lg-5">
+    <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
+      <h3>งานบำรุงรักษาครบกำหนดบำรุงรักษาอีก 3 เดือนนับจากวันนี้</h3>
+      <table 
+        data-toggle="table" 
+        data-url="./api/datatable/summary_maintenance_3_month.php" 
+        data-fixed-columns="true"
+        data-group-by="true"
+        data-group-by-field="CA"
+        data-sticky-header="true">
+        <thead>
+          <tr>
+            <th data-align="center" data-field="CA" data-formatter="caFormatter">หมายเลขผู้ใช้ไฟ</th>
+            <th data-align="center" data-field="CUSTOMER_NAME">ชื่อผู้ใช้ไฟฟ้า</th>
+            <th data-align="center" data-field="due_date" data-formatter="dateThaiFormatter"><i class="far fa-calendar-alt"></i> วันที่ครบกำหนด</th>
+            <th data-align="center" data-field="CODE_EXPLAIN">รายการการดำเนินการ</th>
+            <th data-align="center" data-field="PAYMENT">ค่าใช้จ่ายครั้งก่อน</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="col-sm-12 col-md-5 col-lg-5 mt-2">
       <div class="card h-100">
         <div class="card-header">
           <span class="my-0 font-weight-bold text-primary" style="font-size:16px;">
@@ -111,7 +151,7 @@
         </div>
       </div>
     </div>
-    <div class="col-sm-12 col-md-7 col-lg-7">
+    <div class="col-sm-12 col-md-7 col-lg-7 mt-2">
       <div class="card h-100">
         <div class="card-header">
           <span class="my-0 font-weight-bold text-primary" style="font-size:20px;">
@@ -123,13 +163,14 @@
             data-toggle="table" 
             data-url="./api/datatable/summary_maintenance_today.php" 
             data-fixed-columns="true"
+            data-pagination="true"
             data-sticky-header="true">
             <thead>
               <tr>
-                <th data-align="center" data-field="CA"><i class="far fa-calendar-alt"></i> รหัสผู้ใช้ไฟฟ้า</th>
-                <th data-align="center" data-field="CUSTOMER_NAME"><i class="far fa-calendar-alt"></i> ชื่อผู้ใช้ไฟฟ้า</th>
-                <th data-align="center" data-field="CODE_EXPLAIN"><i class="far fa-calendar-alt"></i> รายการการดำเนินการ</th>
-                <th data-align="center" data-field="PAYMENT"><i class="far fa-calendar-alt"></i> ค่าใช้จ่ายครั้งก่อน</th>
+                <th data-align="center" data-field="CA" data-formatter="caFormatter">รหัสผู้ใช้ไฟฟ้า</th>
+                <th data-align="center" data-field="CUSTOMER_NAME">ชื่อผู้ใช้ไฟฟ้า</th>
+                <th data-align="center" data-field="CODE_EXPLAIN">รายการการดำเนินการ</th>
+                <th data-align="center" data-field="PAYMENT">ค่าใช้จ่ายครั้งก่อน</th>
               </tr>
             </thead>
           </table>
@@ -153,10 +194,6 @@
 
         var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
         var isTomorrow = isSameDay(tomorrow, dateParameter);
-
-        console.log("is today?", isToday);
-        console.log("is yesterday?", isYesterday);
-        console.log("is tomorrow?", isTomorrow);
 
         if(isToday) return "วันนี้";
         else if(isYesterday) return "เมื่อวานนี้";
@@ -274,7 +311,7 @@
           <thead>
             <tr>
               <th data-field="BP">BP</th>
-              <th data-field="CA" data-formatter="caFormatter">CA</th>
+              <th data-field="CA" data-formatter="caFormatter">หมายเลขผู้ใช้ไฟ</th>
               <!-- <th data-field="invoice_date" data-formatter="dateThaiFormatter">วันชำระเงิน</th> -->
               <th data-field="next_due_date" data-formatter="dateThaiFormatter">ครบกำหนด</th>
               <th data-field="CUSTOMER_NAME">ชื่อลูกค้า</th>

@@ -23,7 +23,7 @@
         SELECT 
             DATE_ADD(history.`HISTORY`, INTERVAL 1 YEAR) AS 'str_date'
             , COUNT(*) AS 'count'
-        FROM heroku_3bd2ba953f29004.history 
+        FROM history 
         WHERE DATE_ADD(history.`HISTORY`, INTERVAL 1 YEAR) BETWEEN DATE('{$today}') - INTERVAL 1 DAY AND DATE('{$today}') + INTERVAL 1 DAY
                 AND CODE IN ('S301', 'S302', 'S303', 'S304', 'S305')
                 AND {$pea_branch_criteria}
