@@ -5,15 +5,17 @@
     require("/app/api/notify/notify_func.php");
     require("/app/utils/date_utils.php");
 
-    // check holiday
-    $todaytime = strtotime('today');
-    $todaydate = date('Y-m-d', $todaytime);
-    $fetch_holiday = "SELECT * FROM holiday WHERE status = 'A' AND holiday_date = '$todaydate'";
-    $holiday_list = mysqli_query($conn, $fetch_holiday);
+    notify_func('DNpiDs3lkpU1ZEt4eGnXQhKs0ZcwkYn11NIL9Sfz1Ct', "ทดสอบส่งจากระบบ");
 
-    if(isWeekend($todaydate) || mysqli_num_rows($holiday_list) > 0){
-        return;
-    }
+    // check holiday
+    // $todaytime = strtotime('today');
+    // $todaydate = date('Y-m-d', $todaytime);
+    // $fetch_holiday = "SELECT * FROM holiday WHERE status = 'A' AND holiday_date = '$todaydate'";
+    // $holiday_list = mysqli_query($conn, $fetch_holiday);
+
+    // if(isWeekend($todaydate) || mysqli_num_rows($holiday_list) > 0){
+    //     return;
+    // }
 
     $today = date("Y-m-d");
     // fetch history for duedate maintenance before 3 month for officer
