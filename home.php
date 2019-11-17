@@ -66,6 +66,119 @@
     </div>
   </div>
 </div>
+<div class="row mt-2">
+  <?php if(substr($_SESSION["pea_code"], -5) == "00000"){ ?>
+    <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
+      <h3 class="">งานบำรุงรักษาที่ครบกำหนดบำรุงรักษาของวันนี้</h3>
+      <table 
+        data-toggle="table" 
+        data-url="./api/datatable/summary_maintenance_today.php" 
+        data-fixed-columns="true"
+        data-group-by="true"
+        data-group-by-field="office_name"
+        data-sticky-header="true">
+        <thead>
+          <tr>
+            <th data-align="center" data-field="CA"><i class="far fa-calendar-alt"></i> หมายเลขผู้ใช้ไฟ</th>
+            <th data-align="center" data-field="CUSTOMER_NAME"><i class="far fa-calendar-alt"></i> ชื่อผู้ใช้ไฟฟ้า</th>
+            <th data-align="center" data-field="CODE_EXPLAIN"><i class="far fa-calendar-alt"></i> รายการการดำเนินการ</th>
+            <th data-align="center" data-field="PAYMENT"><i class="far fa-calendar-alt"></i> ค่าใช้จ่ายครั้งก่อน</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+  <?php } else { ?>
+    <div class="col-sm-12 col-md-5 col-lg-5">
+      <div class="card h-100">
+        <div class="card-header">
+          <span class="my-0 font-weight-bold text-primary" style="font-size:16px;">
+            งานบำรุงรักษาที่ครบกำหนดบำรุงรักษาในรอบ 3 วัน (เมื่อวาน, วันนี้ และพรุ่งนี้)
+          </span>
+        </div>
+        <div class="card-body">
+          <table 
+            data-toggle="table" 
+            data-url="./api/datatable/summary_maintenance_3_days.php" 
+            data-fixed-columns="true"
+            data-sticky-header="true">
+            <thead>
+              <tr>
+                <th data-align="center" data-field="str_date" data-formatter="thaiDateFormatter"><i class="far fa-calendar-alt"></i> วันที่</th>
+                <th data-align="center" data-field="count"><i class="far fa-calendar-alt"></i> จำนวนงานที่ครบกำหนด</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-7 col-lg-7">
+      <div class="card h-100">
+        <div class="card-header">
+          <span class="my-0 font-weight-bold text-primary" style="font-size:20px;">
+            งานบำรุงรักษาที่ครบกำหนดบำรุงรักษาของวันนี้
+          </span>
+        </div>
+        <div class="card-body">
+          <table 
+            data-toggle="table" 
+            data-url="./api/datatable/summary_maintenance_today.php" 
+            data-fixed-columns="true"
+            data-sticky-header="true">
+            <thead>
+              <tr>
+                <th data-align="center" data-field="CA"><i class="far fa-calendar-alt"></i> รหัสผู้ใช้ไฟฟ้า</th>
+                <th data-align="center" data-field="CUSTOMER_NAME"><i class="far fa-calendar-alt"></i> ชื่อผู้ใช้ไฟฟ้า</th>
+                <th data-align="center" data-field="CODE_EXPLAIN"><i class="far fa-calendar-alt"></i> รายการการดำเนินการ</th>
+                <th data-align="center" data-field="PAYMENT"><i class="far fa-calendar-alt"></i> ค่าใช้จ่ายครั้งก่อน</th>
+              </tr>
+            </thead>
+          </table>
+        </div>
+      </div>
+    </div>
+    <script>
+
+      function isSameDay(firstDate, secondDate){
+        return firstDate.getDate() === secondDate.getDate() && firstDate.getMonth() === secondDate.getMonth() && firstDate.getFullYear() === secondDate.getFullYear();
+      }
+
+      function getDateDesc(dateParameter) {
+        var today = new Date();
+        var isToday = isSameDay(today, dateParameter);
+        
+        // check is 
+        var yesterday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 1);
+        // var yesterday = new Date(today);
+        var isYesterday = isSameDay(yesterday, dateParameter);
+
+        var tomorrow = new Date(today.getFullYear(), today.getMonth(), today.getDate() + 1);
+        var isTomorrow = isSameDay(tomorrow, dateParameter);
+
+        console.log("is today?", isToday);
+        console.log("is yesterday?", isYesterday);
+        console.log("is tomorrow?", isTomorrow);
+
+        if(isToday) return "วันนี้";
+        else if(isYesterday) return "เมื่อวานนี้";
+        else if(isTomorrow) return "วันพรุ่งนี้";
+      }
+
+      function thaiDateFormatter(value, row){
+        var monthNamesThai = ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.",
+        "ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."];
+        // var monthNamesThai = ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
+        // "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤษจิกายน","ธันวาคม"];
+
+        var dayNames = ["วันอาทิตย์ที่","วันจันทร์ที่","วันอังคารที่","วันพุทธที่","วันพฤหัสบดีที่","วันศุกร์ที่","วันเสาร์ที่"];
+        var dateObj = new Date(value);
+
+        var plain_format = "วันที่ "+dateObj.getDate()+" "+monthNamesThai[dateObj.getMonth()] + " " + (dateObj.getFullYear() + 543) + "<br/>("+getDateDesc(dateObj)+")";
+        // var plain_format = dayNames[dateObj.getDay()]+" "+dateObj.getDay()+" "+monthNamesThai[dateObj.getMonth()] + " " + (dateObj.getFullYear() + 543) + "("+getDateDesc(dateObj)+")";
+        return plain_format;
+      }
+    </script>
+  <?php } ?>
+</div>
 
 <div class="row mt-2">
   <div class="col-sm-12 col-md-12 col-lg-12">
