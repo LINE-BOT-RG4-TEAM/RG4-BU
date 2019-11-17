@@ -5,7 +5,7 @@
     require("/app/api/notify/notify_func.php");
     require("/app/utils/date_utils.php");
 
-    notify_func('DNpiDs3lkpU1ZEt4eGnXQhKs0ZcwkYn11NIL9Sfz1Ct', "ทดสอบส่งจากระบบ");
+    notifyToOfficer('DNpiDs3lkpU1ZEt4eGnXQhKs0ZcwkYn11NIL9Sfz1Ct', "ทดสอบส่งจากระบบ");
 
     // check holiday
     // $todaytime = strtotime('today');
