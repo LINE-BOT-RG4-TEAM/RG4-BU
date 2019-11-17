@@ -14,3 +14,11 @@
         $strMonthThai=$strMonthCut[$strMonth];
         return "$strDay $strMonthThai $strYear";
     }
+
+    function isToday($otherDate){
+        return (strtotime('today') == strtotime($otherDate));
+    }
+
+    function isWeekend($date){
+        return (date('N', strtotime($date)) >= 6);
+    }
