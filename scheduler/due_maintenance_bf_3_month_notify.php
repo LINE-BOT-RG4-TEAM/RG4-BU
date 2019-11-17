@@ -1,7 +1,7 @@
 <?php
     set_time_limit(0);
     date_default_timezone_set("Asia/Bangkok");
-    require("../../utils/db_connector.php");
+    require("../utils/db_connector.php");
     require("../api/notify/notify_func.php");
     require("../utils/date_utils.php");
 
