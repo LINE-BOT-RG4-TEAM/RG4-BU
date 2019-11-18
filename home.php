@@ -115,13 +115,12 @@
         data-url="./api/datatable/summary_maintenance_3_month.php" 
         data-fixed-columns="true"
         data-group-by="true"
-        data-group-by-field="CA"
-        data-group-by-formatter="caGroupByFormatter"
+        data-group-by-field="CUSTOMER_NAME"
         data-sticky-header="true">
         <thead>
           <tr>
             <th data-align="center" data-field="CA" data-formatter="caFormatter">หมายเลขผู้ใช้ไฟ</th>
-            <th data-align="center" data-field="CUSTOMER_NAME">ชื่อผู้ใช้ไฟฟ้า</th>
+            <th data-align="center" data-field="CUSTOMER_NAME" data-visible="false">ชื่อผู้ใช้ไฟฟ้า</th>
             <th data-align="center" data-field="due_date" data-formatter="dateThaiFormatter"><i class="far fa-calendar-alt"></i> วันที่ครบกำหนด</th>
             <th data-align="center" data-field="CODE_EXPLAIN">รายการการดำเนินการ</th>
             <th data-align="center" data-field="PAYMENT">ค่าใช้จ่ายครั้งก่อน</th>
