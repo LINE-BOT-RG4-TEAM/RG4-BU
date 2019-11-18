@@ -488,6 +488,7 @@ function runningFormatter(value, row, index){
 }
 
 function caGroupByFormatter(value, index, row){
+    console.log('caGroupByFormatter',value, index, row);
     return "<b>หมายเลขผู้ใช้ไฟ: "+value+"</b>";
 }
 
