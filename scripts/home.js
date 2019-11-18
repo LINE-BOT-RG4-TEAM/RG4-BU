@@ -487,6 +487,10 @@ function runningFormatter(value, row, index){
     return index + 1;
 }
 
+function caGroupByFormatter(value, index, row){
+    return "<b>หมายเลขผู้ใช้ไฟ: "+value+"</b>";
+}
+
 $(function(){
     $("#jobsModalLgCenter").on('hide.bs.modal', function(event) {
         $("#modal_table").bootstrapTable('destroy');
