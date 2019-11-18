@@ -29,7 +29,7 @@
                 JOIN ca ON history.CA = ca.CA
                 JOIN bp ON ca.BP = bp.BP
                 JOIN office ON office.PEA_CODE = history.PEA_CODE COLLATE utf8_unicode_ci
-        WHERE DATE_ADD(history.`HISTORY`, INTERVAL 11 MONTH) = '{$today}'
+        WHERE DATE_ADD(history.`HISTORY`, INTERVAL 9 MONTH) = '{$today}'
                 AND CODE IN ('S301', 'S302', 'S303', 'S304', 'S305')
                 AND {$pea_branch_criteria}
         ORDER BY 6 DESC
