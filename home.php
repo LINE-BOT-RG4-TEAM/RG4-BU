@@ -116,6 +116,7 @@
         data-fixed-columns="true"
         data-group-by="true"
         data-group-by-field="CA"
+        data-group-by-formatter="caGroupByFormatter"
         data-sticky-header="true">
         <thead>
           <tr>
