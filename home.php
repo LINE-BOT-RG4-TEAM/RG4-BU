@@ -180,6 +180,10 @@
     </div>
     <script>
 
+      function caGroupByFormatter(value, index, row){
+          return "<b>หมายเลขผู้ใช้ไฟ: "+value+"</b>";
+      }
+
       function isSameDay(firstDate, secondDate){
         return firstDate.getDate() === secondDate.getDate() && firstDate.getMonth() === secondDate.getMonth() && firstDate.getFullYear() === secondDate.getFullYear();
       }
