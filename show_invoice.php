@@ -23,9 +23,12 @@
                 , purchase.CA_TEL
                 , purchase.CA_EMAIL
                 , purchase.UserID
+                , office.TEL_CONTACT
+                , office.PEA_NAME
         FROM purchase 
             JOIN ca ON ca.UserID = purchase.UserID
             JOIN bp ON ca.bp = bp.BP
+            JOIN office ON ca.PEA_CODE = office.PEA_CODE
         WHERE purchase.purchase_id = '$purchase_id';
     ";
     $general_results = $conn->query($fetch_general_data);
@@ -182,6 +185,16 @@
                         </tr>
                         ';
         }
+        
+        $tel_contact = $row["TEL_CONTACT"];
+        $tel_contact_template = "";
+        if(!is_null($tel_contact)){
+            $pea_name = $row["PEA_NAME"];
+            $tel_contact_template .= "<li>
+                ท่านสามารถติดต่อพนักงานของ {$pea_name} ผ่านหมายเลขโทรศัพท์ {$tel_contact}
+            </li>";
+        }
+        
         $body_page .= '        </tbody>
             </table>
         </div>
@@ -191,6 +204,7 @@
                 <li>
                     ทาง กฟภ. ได้รับความต้องการของท่านเรียบร้อยแล้ว หากมีข้อมูลไม่ถูกต้อง เช่น ชื่อ-สกุล, เบอร์โทรศัพท์, อีเมล์ หรือที่อยู่ ท่านสามารถแก้ไขได้ทันที ผ่าน LINE Account "PEA SmartBiz" หรือ QR Code บริเวณมุมล่างซ้ายค่ะ
                 </li>
+                '.$tel_contact.'
             </ul>
         </div>
     ';
