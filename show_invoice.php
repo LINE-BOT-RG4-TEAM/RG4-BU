@@ -185,13 +185,13 @@
                         </tr>
                         ';
         }
-        
+
         $tel_contact = $row["TEL_CONTACT"];
         $tel_contact_template = "";
         if(!is_null($tel_contact)){
             $pea_name = $row["PEA_NAME"];
             $tel_contact_template .= "<li>
-                ท่านสามารถติดต่อพนักงานของ {$pea_name} ผ่านหมายเลขโทรศัพท์ {$tel_contact}
+                ท่านสามารถติดต่อพนักงานของ {$pea_name} ผ่านโทรศัพท์หมายเลข {$tel_contact}
             </li>";
         }
         
@@ -204,7 +204,7 @@
                 <li>
                     ทาง กฟภ. ได้รับความต้องการของท่านเรียบร้อยแล้ว หากมีข้อมูลไม่ถูกต้อง เช่น ชื่อ-สกุล, เบอร์โทรศัพท์, อีเมล์ หรือที่อยู่ ท่านสามารถแก้ไขได้ทันที ผ่าน LINE Account "PEA SmartBiz" หรือ QR Code บริเวณมุมล่างซ้ายค่ะ
                 </li>
-                '.$tel_contact.'
+                '.$tel_contact_template.'
             </ul>
         </div>
     ';
