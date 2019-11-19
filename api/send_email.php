@@ -73,8 +73,8 @@
     );
 
     // attachment confidential document
-    $document_contents = file_get_contents($general_row["confident_document"]);
-    if(isset($document_contents) && !empty($document_contents)){
+    if(isset($general_row["confident_document"]) && !empty($general_row["confident_document"])){
+        $document_contents = file_get_contents($general_row["confident_document"]);
         $file_encoded = base64_encode($document_contents);
         $email->addAttachment(
             $file_encoded,
