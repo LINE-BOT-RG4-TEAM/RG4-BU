@@ -19,15 +19,15 @@
                 , bp.CUSTOMER_NAME
                 , ca.PEA_CODE
                 , ADDRESS
-                , FullName
-                , CA_TEL
-                , CA_EMAIL
+                , ca.FullName
+                , ca.CA_TEL
+                , ca.CA_EMAIL
                 , purchase.UserID
                 , purchase.confident_document
         FROM purchase 
             JOIN ca ON ca.UserID = purchase.UserID
             JOIN bp ON ca.bp = bp.BP
-        WHERE purchase_id = '$purchase_id';
+        WHERE purchase_id = '$purchase_id'
     ";
     $general_results = $conn->query($fetch_general_data);
     $general_row = $general_results->fetch_assoc();
