@@ -39,10 +39,12 @@
             , date_add(`history`.`HISTORY`, INTERVAL 1 YEAR) AS `next_due_date`
             , `history`.CODE_EXPLAIN
             , `bp`.CUSTOMER_NAME
-            , `history`.PAYMENT
+            , `history`.PAYMENT,
+            , CONCAT(office.PEA_CODE, ' - ', office.PEA_NAME) AS 'pea_name'
         FROM `history` 
         JOIN `ca` ON `ca`.CA = `history`.CA
         JOIN `bp` ON `bp`.BP = `ca`.BP
+        JOIN `office` ON `ca`.PEA_CODE = office.PEA_CODE
         WHERE `history`.CODE = '{$code}'
             AND {$where_criteria}
             AND {$pea_branch_criteria}

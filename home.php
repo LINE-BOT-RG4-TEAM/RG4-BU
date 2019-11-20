@@ -306,6 +306,8 @@
           id="modal_table"
           data-pagination="true"
           data-page-size="5"
+          data-group-by="true"
+          data-group-by-field="pea_name"
           data-page-list="[5, 10, 20, 100, ALL]">
           <thead>
             <tr>
