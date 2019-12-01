@@ -52,7 +52,7 @@
     $person = $received_result->fetch_assoc();
     $pea_code = $person["PEA_CODE"];
     $pea_name = $person["PEA_NAME"];
-    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า '".$person["FullName"]."' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ ตามใบสรุปความต้องการหมายเลข $purchase_id พร้อมระบุวันนัดหมายที่สะดวกในการรับบริการ ในสังกัด '{$pea_name}' ";
+    $notifyOfficerText = "\n\nผู้ใช้ไฟฟ้านามว่า '".$person["FullName"]."' สนใจบริการธุรกิจเสริม จำนวน {$quantity_purchase} รายการ ตามใบสรุปความต้องการหมายเลข $purchase_id พร้อมระบุวันนัดหมายที่สะดวกให้พนักงาน กฟภ. ติดต่อกลับ จาก '{$pea_name}' ";
     notifyToOfficer($person["access_token"], $notifyOfficerText);
     while($person = $received_result->fetch_assoc()){
         notifyToOfficer($person["access_token"], $notifyOfficerText);
@@ -92,7 +92,7 @@
         <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
         <script>
             window.onload = function(){
-                var responseHTML = '<p style="font-size:24px;">ได้รับข้อมูลบริการที่ท่านสนใจพร้อมวันนัดหมายเรียบร้อยแล้ว</p>'+ 
+                var responseHTML = '<p style="font-size:24px;">ได้รับข้อมูลบริการที่ท่านสนใจพร้อมวันที่ท่านต้องการให้ พนักงาน กฟภ. ติดต่อกลับเรียบร้อยแล้ว</p>'+ 
                                 '<p style="font-size:20px">การไฟฟ้าส่วนภูมิภาคจะดำเนินการตรวจสอบข้อมูล และวางแผนในการให้บริการต่อไปค่ะ</p>';
                 
                 Swal.fire({

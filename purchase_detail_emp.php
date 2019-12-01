@@ -174,7 +174,7 @@
                       <i class="fas fa-user-tie"></i> ชื่อสินค้า
                     </th>
                     <th data-field="appointment_date" data-sortable="true" data-width="40">
-                      <i class="fas fa-receipt"></i> วันนัดหมาย
+                      <i class="fas fa-receipt"></i> วันที่ให้พนักงานติดต่อกลับ
                     </th>
                     <th data-field="contact_time" data-formatter="contactTimeFormatter">
                       <!-- contact-time // type text -->
@@ -216,10 +216,10 @@
                                 <label> ความต้องการเพิ่มเติม</label>
                                 <textarea class="form-control" rows="3" id="des" name = "des" disabled></textarea>
                             </div>
-                            <label>วันที่นัดหมาย</label>
+                            <label>วันที่ให้พนักงานติดต่อกลับ</label>
                             <input class="form-control text-center datepicker" 
                                 style="font-size:22px;"
-                                placeholder="เลือกวันนัดหมาย" 
+                                placeholder="เลือกวันที่ให้พนักงานติดต่อกลับ" 
                                 type="date" disabled name="date_input" id="app_date"/>
                         </div>
                         <div class='modal-footer'>
@@ -264,10 +264,10 @@
                                 <textarea class="form-control" rows="5" id="detail_from_cus" name = "detail_from_cus"></textarea>
                             </div>
                             <div id="div_date">
-                            <label>วันที่นัดหมาย</label>
+                            <label>วันที่ให้พนักงานติดต่อกลับ</label>
                             <input class="form-control text-center datepicker" 
                                 style="font-size:22px;"
-                                placeholder="เลือกวันนัดหมาย" 
+                                placeholder="เลือกวันที่ให้พนักงานติดต่อกลับ" 
                                 type="date" name="date_input" id="app_date_add2po" required/>
                             </div>
                         </div>

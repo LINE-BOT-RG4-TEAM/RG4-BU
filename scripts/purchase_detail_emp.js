@@ -852,7 +852,7 @@ function add2po(product)
     if(appointment_date.length == 0){
       Swal.fire(
         '',
-        'กรุณากรอกวันที่นัดหมายของบริการ',
+        'กรุณากรอกวันที่ต้องการให้ พนักงาน กฟภ. ติดต่อกลับ',
         'warning'
       );
       $("#app_date_add2po").focus();

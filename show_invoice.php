@@ -168,7 +168,7 @@
                     <tr style="background-color: black;">
                         <th style="font-weight:bold;font-size:22px;color:white;">ลำดับ</th>
                         <th style="font-weight:bold;font-size:22px;color:white;">บริการ</th>
-                        <th style="font-weight:bold;font-size:22px;color:white;">วันนัดหมาย</th>
+                        <th style="font-weight:bold;font-size:22px;color:white;">วันที่ให้พนักงานติดต่อกลับ</th>
                         <th style="font-weight:bold;font-size:22px;color:white;">ความประสงค์เพิ่มเติม</th>
                     </tr>
                 </thead>

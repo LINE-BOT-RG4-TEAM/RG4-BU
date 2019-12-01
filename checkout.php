@@ -1,6 +1,6 @@
 <h2 class="text-center shadow-sm font-weight-bold" 
     style='border:1px; border-style:solid; border-color:#F1F1F1; padding: 20px;border-radius:40px 40px;'>
-    นัดหมายช่วงเวลา
+    ยืนยันการเลือกบริการเสริม
 </h2>
 <div class="alert alert-primary" role="alert">
     <p id="dear_title" class="font-weight-bold" style="font-size:18px;">
@@ -8,8 +8,8 @@
     </p>
     <p style="text-indent:20px;">
         เรามีความยินดีที่ท่านสนใจบริการของการไฟฟ้าส่วนภูมิภาค
-        เพื่อความสะดวกในการรับบริการ ท่านสามารถนัดหมายวันที่ต้องการรับบริการเบื้องต้น
-        ผ่านช่องว่าง "นัดหมายวันรับบริการ" ในแต่ละรายการบริการด้านล่างค่ะ
+        เพื่อความสะดวกในการรับบริการ ท่านสามารถเลือกวันที่ต้องการให้พนักงาน กฟภ. ติดต่อกลับ
+        เพื่อยืนยันวันนัดหมาย ผ่านช่อง "วันที่ให้พนักงานติดต่อกลับ" ในแต่ละรายการบริการด้านล่างค่ะ
     </p>
     <p class="blockquote-footer text-right" style="font-size:18px;">ขอบคุณค่ะ</p>
 </div>
@@ -71,12 +71,12 @@
             </span>
         </p>
         <p class="font-weight-bold" style="font-size:20px;">
-            <i class="far fa-calendar-alt"></i> นัดหมายวันรับบริการ:
+            <i class="far fa-calendar-alt"></i> วันที่ให้พนักงานติดต่อกลับ:
         </p>
         <p>
             <input class="form-control text-center datepicker" 
                 style="font-size:22px;"
-                placeholder="เลือกวันนัดหมาย" 
+                placeholder="เลือกวันที่ให้พนักงาน กฟภ. ติดต่อกลับ" 
                 type="text" 
                 data-cate-id="<?=$product['cate_id']?>" 
                 id="<?=$product['cate_id']?>_appointment_date" 

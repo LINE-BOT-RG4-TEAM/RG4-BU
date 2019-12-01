@@ -44,12 +44,12 @@
               <textarea class="form-control" rows="5" id="des" name = "des" disabled></textarea>
             </span>
             <p class="font-weight-bold" style="font-size:20px;">
-              <i class="far fa-calendar-alt"></i> นัดหมายวันรับบริการ:
+              <i class="far fa-calendar-alt"></i> วันที่ให้พนักงานติดต่อ:
             </p>
             <p>
               <input class="form-control text-center datepicker" 
                 style="font-size:22px;"
-                placeholder="เลือกวันนัดหมาย" 
+                placeholder="เลือกวันที่ต้องการให้พนักงานติดต่อกลับ" 
                 type="date" disabled name="date_input"/>
             </p>
         </p>
@@ -78,12 +78,12 @@
               <textarea class="form-control" rows="5" id="des" name = "des" disabled></textarea>
             </span>
             <p class="font-weight-bold" style="font-size:20px;">
-              <i class="far fa-calendar-alt"></i> นัดหมายวันรับบริการ:
+              <i class="far fa-calendar-alt"></i> วันที่ให้พนักงานติดต่อ:
             </p>
             <p>
               <input class="form-control text-center datepicker" 
                 style="font-size:22px;"
-                placeholder="เลือกวันนัดหมาย" 
+                placeholder="เลือกวันที่ต้องการให้พนักงานติดต่อกลับ" 
                 type="date" disabled name="date_input"/>
             </p>
         </p>

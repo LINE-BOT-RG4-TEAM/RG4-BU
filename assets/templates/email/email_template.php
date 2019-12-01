@@ -230,7 +230,7 @@
                                                                                                 <tr>
                                                                                                     <th scope="col">ลำดับ</th>
                                                                                                     <th scope="col">บริการ</th>
-                                                                                                    <th scope="col" style="width:18%;">วันนัดหมาย</th>
+                                                                                                    <th scope="col" style="width:18%;">วันที่ให้พนักงานติดต่อกลับ</th>
                                                                                                     <!--<th scope="col">หมายเหตุ</th>-->
                                                                                                 </tr>
                                                                                             </thead>

@@ -129,7 +129,7 @@
                                     <i class="fas fa-user-tie"></i> ชื่อสินค้า
                                 </th>
                                 <th data-field="appointment_date" data-sortable="true" data-width="40">
-                                    <i class="fas fa-receipt"></i> วันนัดหมาย
+                                    <i class="fas fa-receipt"></i> วันที่ให้พนักงานติดต่อกลับ
                                 </th>
                                 <th data-field="des" data-formatter="desFormatter">
                                     ความประสงค์เพิ่มเติม
