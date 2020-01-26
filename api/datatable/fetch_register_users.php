@@ -13,14 +13,11 @@
     $pea_branch_criteria = "ca.PEA_CODE = '$pea_code'";
   }
 
-  // get branch params
-  $mode = $_GET['office_type'];
-
   $fetch_register_user = "
     SELECT ca.CA, FullName, CA_TEL, CA_EMAIL, bp.CUSTOMER_NAME, ca.UserID
     FROM heroku_3bd2ba953f29004.ca
       JOIN bp ON ca.BP = bp.BP
-    WHERE LENGTH(ca.UserID) > 0 AND ca.PEA_CODE = '{$pea_code}';
+    WHERE LENGTH(ca.UserID) > 0 AND {$pea_branch_criteria};
   ";
 
   $fetch_register_user_query = $conn->query($fetch_register_user);
