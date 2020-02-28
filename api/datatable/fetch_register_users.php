@@ -15,7 +15,7 @@
 
   $fetch_register_user = "
     SELECT ca.CA, FullName, CA_TEL, CA_EMAIL, bp.CUSTOMER_NAME, ca.UserID
-    FROM heroku_3bd2ba953f29004.ca
+    FROM ca
       JOIN bp ON ca.BP = bp.BP
     WHERE LENGTH(ca.UserID) > 0 AND {$pea_branch_criteria};
   ";
@@ -29,7 +29,11 @@
       $userId = $user['UserID'];
       $profile_obj = getProfileByUserId($userId);
       $user["displayName"] = $profile_obj["displayName"];
-      $user["pictureUrl"] = $profile_obj["pictureUrl"];
+      if(array_key_exists('pictureUrl', $profile_obj)) {
+        $user["pictureUrl"] = $profile_obj["pictureUrl"];
+      } else {
+        $user["pictureUrl"] = "./images/default_avatar.png";
+      }
       $new_user_list[] = $user;
   }
   echo json_encode($new_user_list, JSON_UNESCAPED_UNICODE);
