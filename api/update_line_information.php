@@ -12,7 +12,7 @@
 
   // create current timestamp
   $date = date();
-  $current_timestamp = date_format($date,"Y/m/d H:i:s");
+  $current_timestamp = date_format($date,"Y-m-d H:i:s");
 
   $update_line = "
     UPDATE ca
