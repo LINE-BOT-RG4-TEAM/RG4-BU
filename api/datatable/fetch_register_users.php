@@ -14,7 +14,7 @@
   }
 
   $fetch_register_user = "
-    SELECT ca.CA, FullName, CA_TEL, CA_EMAIL, bp.CUSTOMER_NAME, ca.UserID
+    SELECT ca.CA, FullName, CA_TEL, CA_EMAIL, bp.CUSTOMER_NAME, ca.UserID, ca.Register_Timestamp, DATE_FORMAT(ca.Register_Timestamp, '%d/%m/%Y') AS formatted_date
     FROM ca
       JOIN bp ON ca.BP = bp.BP
     WHERE LENGTH(ca.UserID) > 0 AND {$pea_branch_criteria};

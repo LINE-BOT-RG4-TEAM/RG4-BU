@@ -10,10 +10,12 @@
         data-sticky-header="true"
         data-pagination-v-align="both"
         data-search="true"
+        data-group-by="true"
+        data-group-by-field="formatted_date"
         data-pagination="true">
       <thead>
         <tr>
-            <th data-field="UserID" data-width="120" data-formatter="LINEProfileDisplayFormatter"><i class="fas fa-user-circle"></i> ผู้ใช้</th>
+          <th data-field="UserID" data-width="120" data-formatter="LINEProfileDisplayFormatter"><i class="fas fa-user-circle"></i> ผู้ใช้</th>
           <th data-field="CA" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-indent"></i> หมายเลขผู้ใช้ไฟ</th>
           <!-- <th data-field="BP" data-sortable="true" data-formatter="textCenterFormatter"><i class="fas fa-business-time"></i> หมายเลข BP</th> -->
           <th data-field="FullName"><i class="fas fa-user-tie"></i> ชื่อที่ลงทะเบียนผ่าน SmartBiz</th>
