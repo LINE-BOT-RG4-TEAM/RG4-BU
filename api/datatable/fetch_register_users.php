@@ -2,6 +2,7 @@
   session_start();
   define('LINE_GET_PROFILE_URI', 'https://api.line.me/v2/bot/profile/');
   require('../../utils/db_connector.php');
+  requure('../../utils/date_utils.php');
 
   // get current pea_code 
   $pea_code = $_SESSION['pea_code'];
@@ -14,7 +15,7 @@
   }
 
   $fetch_register_user = "
-    SELECT ca.CA, FullName, CA_TEL, CA_EMAIL, bp.CUSTOMER_NAME, ca.UserID, ca.Register_Timestamp, DATE_FORMAT(ca.Register_Timestamp, '%d/%m/%Y') AS formatted_date
+    SELECT ca.CA, FullName, CA_TEL, CA_EMAIL, bp.CUSTOMER_NAME, ca.UserID, ca.Register_Timestamp
     FROM ca
       JOIN bp ON ca.BP = bp.BP
     WHERE LENGTH(ca.UserID) > 0 AND {$pea_branch_criteria}
@@ -35,6 +36,7 @@
       } else {
         $user["pictureUrl"] = "./images/default_avatar.png";
       }
+      $user["formatted_date"] = dateThaiWithTime($user["Register_Timestamp"]);
       $new_user_list[] = $user;
   }
   echo json_encode($new_user_list, JSON_UNESCAPED_UNICODE);

@@ -20,7 +20,7 @@
           <th data-field="CUSTOMER_NAME"><i class="fas fa-user-tie"></i> ชื่อลูกค้าจาก SAP</th>
           <th data-field="CA_TEL"> เบอร์โทร</th>
           <th data-field="CA_EMAIL"> อีเมล์</th>
-          <th data-field="Register_Timestamp"> วันเวลาที่ลงทะเบียน</th>
+          <th data-field="formatted_date"> วันเวลาที่ลงทะเบียน</th>
           <!-- <th data-field="QUANTITY_PURCHASE" data-formatter="suffixQuantityTextCenterFormatter" data-sortable="true"><i class="fas fa-receipt"></i> จำนวนครั้ง</th> -->
           <!-- <th data-formatter="operateFormatter" data-events="operateEvents"><i class="fas fa-cogs"></i> จัดการ</th> -->
         </tr>
