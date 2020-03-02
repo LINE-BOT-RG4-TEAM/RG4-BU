@@ -2,7 +2,7 @@
   session_start();
   define('LINE_GET_PROFILE_URI', 'https://api.line.me/v2/bot/profile/');
   require('../../utils/db_connector.php');
-  requure('../../utils/date_utils.php');
+  require('../../utils/date_utils.php');
 
   // get current pea_code 
   $pea_code = $_SESSION['pea_code'];
