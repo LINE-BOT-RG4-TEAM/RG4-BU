@@ -11,7 +11,7 @@
           , target_name
           , access_token
     FROM notify_officers
-    WHERE pea_code = '$pea_code';
+    WHERE pea_code = '$pea_code' AND `status` = 'A';
   ";
 
   $fetch_list_user_query = $conn->query($fetch_list_user);

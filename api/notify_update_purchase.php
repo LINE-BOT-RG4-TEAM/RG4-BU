@@ -59,7 +59,7 @@
     $fetch_officers = "
         SELECT access_token
         FROM notify_officers
-        WHERE pea_code in ('{$pea_code}', '{$district}00000')
+        WHERE pea_code in ('{$pea_code}', '{$district}00000') AND `status` = 'A'
     ";
     $notify_results = $conn->query($fetch_officers);
     while($officer = $notify_results->fetch_assoc()){

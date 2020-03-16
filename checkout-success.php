@@ -46,7 +46,7 @@
             JOIN ca ON purchase.UserID = ca.UserID
             JOIN notify_officers ON ca.PEA_CODE = notify_officers.PEA_CODE
             JOIN office ON ca.PEA_CODE = office.PEA_CODE
-        WHERE purchase.purchase_id = '{$purchase_id}';
+        WHERE purchase.purchase_id = '{$purchase_id}' AND notify_officers.status = 'A'
     ";
     $received_result = $conn->query($fetch_notify_received_person);
     $person = $received_result->fetch_assoc();
@@ -65,7 +65,7 @@
             , employee_code
             , target_type
         FROM notify_officers
-        WHERE notify_officers.pea_code = CONCAT(LEFT('$pea_code',1), '00000');
+        WHERE notify_officers.pea_code = CONCAT(LEFT('$pea_code',1), '00000') AND `status` = 'A';
     ";
     $received_result = $conn->query($fetch_district_notify_recevied_person);
     while($person = $received_result->fetch_assoc()){
