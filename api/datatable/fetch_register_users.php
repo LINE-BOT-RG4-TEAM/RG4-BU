@@ -30,12 +30,19 @@
   foreach($user_obj as $user) {
       $userId = $user['UserID'];
       $profile_obj = getProfileByUserId($userId);
-      $user["displayName"] = $profile_obj["displayName"];
+
+      if(array_key_exists('displayName', $profile_obj)) {
+        $user["displayName"] = $profile_obj["displayName"];
+      }else{
+        $user["displayName"] = "ไม่พบชื่ือ";
+      }
+
       if(array_key_exists('pictureUrl', $profile_obj)) {
         $user["pictureUrl"] = $profile_obj["pictureUrl"];
       } else {
         $user["pictureUrl"] = "./images/default_avatar.png";
       }
+
       $user["formatted_date"] = dateThaiWithTime($user["Register_Timestamp"]);
       $new_user_list[] = $user;
   }
